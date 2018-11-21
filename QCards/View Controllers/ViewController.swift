@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(myLabel)
         
-        myLabel.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        myLabel.centerInSuperview()
         
         setupNavigationBar()
     }
