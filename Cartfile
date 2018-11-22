@@ -1,1 +1,2 @@
 github "SwipeCellKit/SwipeCellKit"
+github "realm/realm-cocoa"

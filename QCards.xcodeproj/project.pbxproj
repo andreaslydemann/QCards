@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E122506921A60DF1005B2D12 /* SwipeCellKit.framework */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
-		E15457EA21A4C619002ED341 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E921A4C619002ED341 /* ViewController.swift */; };
+		E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E921A4C619002ED341 /* DeckViewController.swift */; };
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
 		E154580121A4C670002ED341 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154580021A4C670002ED341 /* UIView+Ext.swift */; };
+		E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */; };
+		E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C321A75D370043B441 /* Realm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E122506921A60DF1005B2D12 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15457E721A4C619002ED341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E15457E921A4C619002ED341 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E15457E921A4C619002ED341 /* DeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
 		E15457EE21A4C61B002ED341 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154580021A4C670002ED341 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		E1E3A5C321A75D370043B441 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */,
+				E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */,
+				E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +47,8 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1E3A5C321A75D370043B441 /* Realm.framework */,
+				E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */,
 				E122506921A60DF1005B2D12 /* SwipeCellKit.framework */,
 			);
 			name = Frameworks;
@@ -70,7 +78,7 @@
 				E15457FD21A4C64D002ED341 /* Services */,
 				E15457FC21A4C647002ED341 /* Models */,
 				E15457FB21A4C63F002ED341 /* View Models */,
-				E15457FA21A4C638002ED341 /* View Controllers */,
+				E15457FA21A4C638002ED341 /* Controllers */,
 				E15457F921A4C631002ED341 /* Supporting Files */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
 				E15457F321A4C61B002ED341 /* Info.plist */,
@@ -87,12 +95,12 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E15457FA21A4C638002ED341 /* View Controllers */ = {
+		E15457FA21A4C638002ED341 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E15457E921A4C619002ED341 /* ViewController.swift */,
+				E15457E921A4C619002ED341 /* DeckViewController.swift */,
 			);
-			path = "View Controllers";
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E15457FB21A4C63F002ED341 /* View Models */ = {
@@ -208,12 +216,16 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwipeCellKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -226,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E15457EA21A4C619002ED341 /* ViewController.swift in Sources */,
+				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 				E154580121A4C670002ED341 /* UIView+Ext.swift in Sources */,
 			);
