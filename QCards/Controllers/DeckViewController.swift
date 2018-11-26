@@ -64,6 +64,11 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
             // handle action by updating model with deletion
             
             self.updateModel(at: indexPath)
+            action.fulfill(with: .delete)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
         }
         
         // customize the action appearance
@@ -74,8 +79,8 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
-        options.expansionStyle = .destructive
         options.transitionStyle = .border
+        options.expansionStyle = .none
         return options
         
     }
