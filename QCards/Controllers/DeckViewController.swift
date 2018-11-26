@@ -23,9 +23,10 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = .green
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(addButtonPressed))
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#34495e")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
+        navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.title = "QCards"
     }
     
@@ -73,6 +74,7 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
         options.expansionStyle = .destructive
         options.transitionStyle = .border
         return options
+        
     }
     
     @IBAction func addButtonPressed() {
