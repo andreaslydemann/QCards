@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E122506921A60DF1005B2D12 /* SwipeCellKit.framework */; };
 		E14715F321AC80F40083726D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F221AC80F40083726D /* UIColor+Ext.swift */; };
+		E14715F521AC91690083726D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F421AC91690083726D /* Deck.swift */; };
+		E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F721AC95060083726D /* DeckTableViewCell.swift */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
 		E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E921A4C619002ED341 /* DeckViewController.swift */; };
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		E122506921A60DF1005B2D12 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		E14715F221AC80F40083726D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		E14715F421AC91690083726D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		E14715F721AC95060083726D /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15457E721A4C619002ED341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E15457E921A4C619002ED341 /* DeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E14715F621AC93E50083726D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E14715F721AC95060083726D /* DeckTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E15457DB21A4C619002ED341 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +92,7 @@
 				E15457FD21A4C64D002ED341 /* Services */,
 				E15457FC21A4C647002ED341 /* Models */,
 				E15457FB21A4C63F002ED341 /* View Models */,
+				E14715F621AC93E50083726D /* Cells */,
 				E15457FA21A4C638002ED341 /* Controllers */,
 				E15457F921A4C631002ED341 /* Supporting Files */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
@@ -115,6 +128,7 @@
 		E15457FC21A4C647002ED341 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E14715F421AC91690083726D /* Deck.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,8 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */,
 				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
 				E14715F321AC80F40083726D /* UIColor+Ext.swift in Sources */,
+				E14715F521AC91690083726D /* Deck.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 				E154580121A4C670002ED341 /* UIView+Ext.swift in Sources */,
 			);

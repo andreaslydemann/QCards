@@ -11,12 +11,23 @@ import RealmSwift
 import SwipeCellKit
 
 class DeckController: UITableViewController, SwipeTableViewCellDelegate {
+    
+    let realm = try! Realm()
+    
+    var decks: Results<Deck>?
+    
+    let cellId = "cellId"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadDecks()
+        // print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
         tableView.rowHeight = 80
         view.backgroundColor = .white
+        
+        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: cellId)
         
         setupNavigationBar()
     }
@@ -30,26 +41,18 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
         navigationItem.title = "QCards"
     }
     
-    @objc func handleAddDeck() {
-        print("hello")
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return decks?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DeckTableViewCell
         cell.delegate = self
         
-        /*if let category = categories?[indexPath.row] {
-            cell.textLabel?.text = category.name
-            
-            guard let categoryColor = UIColor(hexString: category.color) else {fatalError()}
-            
-            cell.backgroundColor = categoryColor
-            cell.textLabel?.textColor = ContrastColorOf(categoryColor, returnFlat: true)
-        }*/
+        if let deck = decks?[indexPath.row] {
+            cell.textLabel?.text = deck.name
+            //cell.labTime.text = DateFormatter.localizedString(from: NSDate() as Date, dateStyle: .short, timeStyle: .short)
+        }
         
         return cell
     }
@@ -60,7 +63,7 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
             
-            //self.updateModel(at: indexPath)
+            self.updateModel(at: indexPath)
         }
         
         // customize the action appearance
@@ -77,15 +80,44 @@ class DeckController: UITableViewController, SwipeTableViewCellDelegate {
         
     }
     
+    func save(deck: Deck) {
+        do {
+            try realm.write {
+                realm.add(deck)
+            }
+        } catch {
+            print("Error saving deck \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func loadDecks() {
+        decks = realm.objects(Deck.self)
+        
+        tableView.reloadData()
+    }
+    
+    func updateModel(at indexPath: IndexPath) {
+        if let deckForDeletion = self.decks?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(deckForDeletion)
+                }
+            } catch {
+                print("Error deleting deck, \(error)")
+            }
+        }
+    }
+    
     @IBAction func addButtonPressed() {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Deck", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            /*let newDeck = Deck()
+            let newDeck = Deck()
             newDeck.name = textField.text!
-            newDeck.color = UIColor.randomFlat.hexValue()
             
-            self.save(category: newCategory)*/
+            self.save(deck: newDeck)
         }
         
         alert.addAction(action)
