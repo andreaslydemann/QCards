@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
+		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
 		E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E122506921A60DF1005B2D12 /* SwipeCellKit.framework */; };
 		E14715F321AC80F40083726D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F221AC80F40083726D /* UIColor+Ext.swift */; };
 		E14715F521AC91690083726D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F421AC91690083726D /* Deck.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E122506921A60DF1005B2D12 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		E14715F221AC80F40083726D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E14715F421AC91690083726D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -44,6 +48,8 @@
 				E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */,
 				E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */,
 				E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */,
+				E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */,
+				E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +59,8 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E118207A21ADF2AA00F1959B /* RxCocoa.framework */,
+				E118207821ADF09A00F1959B /* RxSwift.framework */,
 				E1E3A5C321A75D370043B441 /* Realm.framework */,
 				E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */,
 				E122506921A60DF1005B2D12 /* SwipeCellKit.framework */,
@@ -235,6 +243,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
@@ -243,6 +253,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwipeCellKit.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

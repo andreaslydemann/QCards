@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import RxSwift
 
 class DeckController: UITableViewController, SwipeTableViewCellDelegate {
     
