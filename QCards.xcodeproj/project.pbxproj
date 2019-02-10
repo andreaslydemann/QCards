@@ -9,15 +9,18 @@
 /* Begin PBXBuildFile section */
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
-		E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E122506921A60DF1005B2D12 /* SwipeCellKit.framework */; };
-		E14715F321AC80F40083726D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F221AC80F40083726D /* UIColor+Ext.swift */; };
+		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
+		E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BC22107D19009EDD13 /* UIView+Ext.swift */; };
+		E13C88C022107D36009EDD13 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BF22107D36009EDD13 /* DeckViewModel.swift */; };
 		E14715F521AC91690083726D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F421AC91690083726D /* Deck.swift */; };
 		E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F721AC95060083726D /* DeckTableViewCell.swift */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
 		E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E921A4C619002ED341 /* DeckViewController.swift */; };
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
-		E154580121A4C670002ED341 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154580021A4C670002ED341 /* UIView+Ext.swift */; };
+		E1DFF2CC2210947600BBB85F /* DeckDataAccessProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2CB2210947600BBB85F /* DeckDataAccessProvider.swift */; };
+		E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2CE221094A200BBB85F /* DeckEntity.swift */; };
+		E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */; };
 		E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */; };
 		E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C321A75D370043B441 /* Realm.framework */; };
 /* End PBXBuildFile section */
@@ -26,7 +29,9 @@
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E122506921A60DF1005B2D12 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
-		E14715F221AC80F40083726D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		E13C88BC22107D19009EDD13 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E13C88BF22107D36009EDD13 /* DeckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
 		E14715F421AC91690083726D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		E14715F721AC95060083726D /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +40,9 @@
 		E15457EE21A4C61B002ED341 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E154580021A4C670002ED341 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E1DFF2CB2210947600BBB85F /* DeckDataAccessProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckDataAccessProvider.swift; sourceTree = "<group>"; };
+		E1DFF2CE221094A200BBB85F /* DeckEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEntity.swift; sourceTree = "<group>"; };
+		E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Ext.swift"; sourceTree = "<group>"; };
 		E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E1E3A5C321A75D370043B441 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E122506A21A60DF1005B2D12 /* SwipeCellKit.framework in Frameworks */,
 				E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */,
 				E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */,
 				E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */,
@@ -66,6 +72,16 @@
 				E122506921A60DF1005B2D12 /* SwipeCellKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E13C88BA22107D19009EDD13 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */,
+				E13C88BC22107D19009EDD13 /* UIView+Ext.swift */,
+				E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E14715F621AC93E50083726D /* Cells */ = {
@@ -96,12 +112,12 @@
 		E15457E621A4C619002ED341 /* QCards */ = {
 			isa = PBXGroup;
 			children = (
-				E15457FE21A4C657002ED341 /* Utilities */,
-				E15457FD21A4C64D002ED341 /* Services */,
-				E15457FC21A4C647002ED341 /* Models */,
-				E15457FB21A4C63F002ED341 /* View Models */,
-				E14715F621AC93E50083726D /* Cells */,
+				E1DFF2C92210947600BBB85F /* Data Access */,
+				E13C88BA22107D19009EDD13 /* Extensions */,
 				E15457FA21A4C638002ED341 /* Controllers */,
+				E15457FB21A4C63F002ED341 /* View Models */,
+				E15457FC21A4C647002ED341 /* Models */,
+				E14715F621AC93E50083726D /* Cells */,
 				E15457F921A4C631002ED341 /* Supporting Files */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
 				E15457F321A4C61B002ED341 /* Info.plist */,
@@ -129,6 +145,7 @@
 		E15457FB21A4C63F002ED341 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				E13C88BF22107D36009EDD13 /* DeckViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -141,28 +158,29 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E15457FD21A4C64D002ED341 /* Services */ = {
+		E1DFF2C92210947600BBB85F /* Data Access */ = {
 			isa = PBXGroup;
 			children = (
+				E1DFF2CD2210948400BBB85F /* Entities */,
+				E1DFF2CA2210947600BBB85F /* Data Access Providers */,
 			);
-			path = Services;
+			path = "Data Access";
 			sourceTree = "<group>";
 		};
-		E15457FE21A4C657002ED341 /* Utilities */ = {
+		E1DFF2CA2210947600BBB85F /* Data Access Providers */ = {
 			isa = PBXGroup;
 			children = (
-				E15457FF21A4C65F002ED341 /* Extensions */,
+				E1DFF2CB2210947600BBB85F /* DeckDataAccessProvider.swift */,
 			);
-			path = Utilities;
+			path = "Data Access Providers";
 			sourceTree = "<group>";
 		};
-		E15457FF21A4C65F002ED341 /* Extensions */ = {
+		E1DFF2CD2210948400BBB85F /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				E154580021A4C670002ED341 /* UIView+Ext.swift */,
-				E14715F221AC80F40083726D /* UIColor+Ext.swift */,
+				E1DFF2CE221094A200BBB85F /* DeckEntity.swift */,
 			);
-			path = Extensions;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +277,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
@@ -269,7 +286,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwipeCellKit.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
@@ -288,10 +304,14 @@
 			files = (
 				E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */,
 				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
-				E14715F321AC80F40083726D /* UIColor+Ext.swift in Sources */,
+				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
+				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
 				E14715F521AC91690083726D /* Deck.swift in Sources */,
+				E1DFF2CC2210947600BBB85F /* DeckDataAccessProvider.swift in Sources */,
+				E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */,
+				E13C88C022107D36009EDD13 /* DeckViewModel.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
-				E154580121A4C670002ED341 /* UIView+Ext.swift in Sources */,
+				E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

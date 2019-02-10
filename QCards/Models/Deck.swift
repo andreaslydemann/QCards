@@ -2,13 +2,16 @@
 //  Deck.swift
 //  QCards
 //
-//  Created by Andreas Lüdemann on 26/11/2018.
-//  Copyright © 2018 Andreas Lüdemann. All rights reserved.
+//  Created by Andreas Lüdemann on 10/02/2019.
+//  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
-import Foundation
-import RealmSwift
-
-class Deck: Object {
-    @objc dynamic var name: String = ""
+class Deck {
+    var id: String?
+    var name: String?
+    
+    init(id: String, name: String) {
+        self.id = id
+        self.name = name
+    }
 }
