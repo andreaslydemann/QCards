@@ -12,7 +12,7 @@ import RxSwift
 
 class DeckViewModel {
 
-    public var decks = BehaviorRelay<[Deck]>(value: [])
+    public var decks: BehaviorRelay<[Deck]> = BehaviorRelay(value: [])
     private var deckProvider: DeckProvider?
     private var notificationToken: NotificationToken?
     private let disposeBag = DisposeBag()
