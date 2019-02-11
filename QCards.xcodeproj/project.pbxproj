@@ -112,12 +112,11 @@
 		E15457E621A4C619002ED341 /* QCards */ = {
 			isa = PBXGroup;
 			children = (
-				E1DFF2C92210947600BBB85F /* Data Access */,
 				E13C88BA22107D19009EDD13 /* Extensions */,
-				E15457FA21A4C638002ED341 /* Controllers */,
-				E15457FB21A4C63F002ED341 /* View Models */,
 				E15457FC21A4C647002ED341 /* Models */,
-				E14715F621AC93E50083726D /* Cells */,
+				E15457FA21A4C638002ED341 /* Views */,
+				E15457FB21A4C63F002ED341 /* View Models */,
+				E1DFF2C92210947600BBB85F /* Data Access */,
 				E15457F921A4C631002ED341 /* Supporting Files */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
 				E15457F321A4C61B002ED341 /* Info.plist */,
@@ -134,12 +133,13 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E15457FA21A4C638002ED341 /* Controllers */ = {
+		E15457FA21A4C638002ED341 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E14715F621AC93E50083726D /* Cells */,
 				E15457E921A4C619002ED341 /* DeckViewController.swift */,
 			);
-			path = Controllers;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E15457FB21A4C63F002ED341 /* View Models */ = {
