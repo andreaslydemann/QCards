@@ -60,9 +60,8 @@ class DeckViewController: UIViewController {
                     return
                 }
                 
-                //viewModel?.newDeck = newDeck
                 DispatchQueue.global(qos: .background).async {
-                    //self.viewModel?.onAddDeck()
+                    self.viewModel?.onAddDeck(name: newDeck)
                 }
             }
             

@@ -1,5 +1,5 @@
 //
-//  Deck.swift
+//  DeckEntity.swift
 //  QCards
 //
 //  Created by Andreas Lüdemann on 26/11/2018.

@@ -1,5 +1,5 @@
 //
-//  DeckDataAccessProvider.swift
+//  DeckProvider.swift
 //  QCards
 //
 //  Created by Andreas Lüdemann on 10/02/2019.
@@ -8,8 +8,9 @@
 
 import RealmSwift
 
-class DeckDataAccessProvider {
+class DeckProvider {
     private var realm: Realm!
+    static let shared = DeckProvider()
     
     init() {
         do {

@@ -13,12 +13,13 @@ import RxSwift
 class DeckViewModel {
 
     public var decks = BehaviorRelay<[Deck]>(value: [])
-    private var deckDataAccessProvider: DeckDataAccessProvider?
+    private var deckProvider: DeckProvider?
     private var notificationToken: NotificationToken?
     private let disposeBag = DisposeBag()
     
     init() {
-        let deckResults = deckDataAccessProvider?.fetch()
+        deckProvider = DeckProvider.shared
+        let deckResults = deckProvider?.fetch()
         
         if let deckResults = deckResults {
             observeChanges(to: deckResults)
@@ -70,11 +71,11 @@ class DeckViewModel {
     }*/
     
     func onAddDeck(name: String) {
-        deckDataAccessProvider?.add(name: name)
+        deckProvider?.add(name: name)
     }
     
     func onRemoveDeck(id: String) {
-        deckDataAccessProvider?.delete(primaryKey: (Int(id))!)
+        deckProvider?.delete(primaryKey: (Int(id))!)
     }
     
     deinit {
