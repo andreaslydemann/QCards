@@ -1,7 +1,7 @@
 disabled_rules: # rule identifiers to exclude from running
  - line_length
-# - trailing_whitespace
-# - vertical_whitespace
+ - trailing_whitespace
+ - vertical_whitespace
  - file_length
  - trailing_newline
  - force_cast

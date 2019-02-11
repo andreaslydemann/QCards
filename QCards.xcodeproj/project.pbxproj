@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
+		E128675D2211648F00078748 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E128675C2211648F00078748 /* DeckViewModel.swift */; };
 		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
 		E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BC22107D19009EDD13 /* UIView+Ext.swift */; };
-		E13C88C022107D36009EDD13 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BF22107D36009EDD13 /* DeckViewModel.swift */; };
 		E14715F521AC91690083726D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F421AC91690083726D /* Deck.swift */; };
 		E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F721AC95060083726D /* DeckTableViewCell.swift */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
@@ -29,9 +29,9 @@
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E122506921A60DF1005B2D12 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		E128675C2211648F00078748 /* DeckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13C88BC22107D19009EDD13 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		E13C88BF22107D36009EDD13 /* DeckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
 		E14715F421AC91690083726D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		E14715F721AC95060083726D /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +145,7 @@
 		E15457FB21A4C63F002ED341 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				E13C88BF22107D36009EDD13 /* DeckViewModel.swift */,
+				E128675C2211648F00078748 /* DeckViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -305,11 +305,11 @@
 				E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */,
 				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
+				E128675D2211648F00078748 /* DeckViewModel.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
 				E14715F521AC91690083726D /* Deck.swift in Sources */,
 				E1DFF2CC2210947600BBB85F /* DeckDataAccessProvider.swift in Sources */,
 				E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */,
-				E13C88C022107D36009EDD13 /* DeckViewModel.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 				E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */,
 			);
