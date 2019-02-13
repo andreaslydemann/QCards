@@ -12,4 +12,8 @@ import RealmSwift
 class DeckEntity: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

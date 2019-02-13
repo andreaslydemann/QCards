@@ -54,7 +54,7 @@ class DeckViewController: UITableViewController {
             let action = UIAlertAction(title: "Add", style: .default) { _ in
                 
                 guard let newDeck = textField.text, !newDeck.isEmpty else {
-                    print("No todo value entered.")
+                    print("No deck name entered.")
                     return
                 }
                 
@@ -100,9 +100,9 @@ class DeckViewController: UITableViewController {
     private func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let deck = viewModel?.decks.value[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Delete", handler: { _, _, completion in
-            DispatchQueue.global(qos: .background).async {
+            //DispatchQueue.global(qos: .background).async {
                 self.viewModel?.onRemoveDeck(id: (deck?.id)!)
-            }
+            //}
             
             completion(true)
         })

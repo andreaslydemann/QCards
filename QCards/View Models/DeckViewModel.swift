@@ -35,7 +35,11 @@ class DeckViewModel {
                     let deck = Deck(id: "\(deckEntity.id)", name: deckEntity.name)
                     self?.decks.append(deck)
                 })
-            case .update(_, _, let insertions, _):
+            case .update(_, let deletions, let insertions, _):
+                
+                deletions.forEach({ index in
+                    self?.decks.remove(at: index)
+                })
                 
                 insertions.forEach({ index in
                     let deckEntity = deckResults[index]

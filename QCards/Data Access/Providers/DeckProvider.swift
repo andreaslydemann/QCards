@@ -14,7 +14,7 @@ class DeckProvider {
     
     init() {
         do {
-            // print(Realm.Configuration.defaultConfiguration.fileURL!)
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
             realm = try Realm()
         } catch {
             fatalError("Could not create instance of realm")
@@ -29,7 +29,10 @@ class DeckProvider {
         var id: Int? = 1
         
         let deckNameIsNew = realm.objects(DeckEntity.self).filter({ $0.name.lowercased() == name.lowercased() }).isEmpty
-        if !deckNameIsNew { return }
+        if !deckNameIsNew {
+            print("Deck name already exists.")
+            return
+        }
         
         if let lastEntity = realm.objects(DeckEntity.self).last {
             id = lastEntity.id + 1
