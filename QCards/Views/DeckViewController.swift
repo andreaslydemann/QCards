@@ -63,13 +63,19 @@ class DeckViewController: UITableViewController {
                 }
             }
             
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            
             alert.addAction(action)
             alert.addTextField { (field) in
                 textField = field
                 textField.placeholder = "Presentation"
             }
             
-            self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true) {
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
+                alert.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+            }
         }).disposed(by: disposeBag)
         
     tableView.rx.itemSelected
@@ -77,6 +83,10 @@ class DeckViewController: UITableViewController {
             
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }).disposed(by: disposeBag)
+    }
+    
+    @objc func dismissAlertController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
