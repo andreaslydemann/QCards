@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 
 class DeckViewController: UITableViewController {
-
+    
     private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let cellIdentifier = "cellIdentifier"
     private var viewModel: DeckViewModel?
@@ -100,9 +100,9 @@ class DeckViewController: UITableViewController {
     private func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let deck = viewModel?.decks.value[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Delete", handler: { _, _, completion in
-            //DispatchQueue.global(qos: .background).async {
+            DispatchQueue.global(qos: .background).async {
                 self.viewModel?.onRemoveDeck(id: (deck?.id)!)
-            //}
+            }
             
             completion(true)
         })
