@@ -12,6 +12,7 @@
 		E128675D2211648F00078748 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E128675C2211648F00078748 /* DeckViewModel.swift */; };
 		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
 		E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BC22107D19009EDD13 /* UIView+Ext.swift */; };
+		E142F73322149D4E0096DCB4 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142F73222149D4E0096DCB4 /* Database.swift */; };
 		E14715F521AC91690083726D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F421AC91690083726D /* Deck.swift */; };
 		E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14715F721AC95060083726D /* DeckTableViewCell.swift */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 		E128675C2211648F00078748 /* DeckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13C88BC22107D19009EDD13 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E142F73222149D4E0096DCB4 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E14715F421AC91690083726D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		E14715F721AC95060083726D /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 		E1DFF2CA2210947600BBB85F /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				E142F73222149D4E0096DCB4 /* Database.swift */,
 				E1DFF2CB2210947600BBB85F /* DeckProvider.swift */,
 			);
 			path = Providers;
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E142F73322149D4E0096DCB4 /* Database.swift in Sources */,
 				E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */,
 				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,

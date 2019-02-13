@@ -58,9 +58,9 @@ class DeckViewController: UITableViewController {
                     return
                 }
                 
-                //DispatchQueue.global(qos: .background).async {
+                DispatchQueue.global(qos: .background).async {
                     self.viewModel?.onAddDeck(name: newDeck)
-                //}
+                }
             }
             
             alert.addAction(action)
