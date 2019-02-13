@@ -82,7 +82,11 @@ class DeckViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //let edit = editAction(at: indexPath)
         let delete = deleteAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete])
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete])
+        swipeActions.performsFirstActionWithFullSwipe = false
+        
+        return swipeActions
         //return UISwipeActionsConfiguration(actions: [delete, edit])
     }
     
