@@ -7,6 +7,7 @@
 //
 
 import RxCocoa
+import RxDataSources
 import RxSwift
 import UIKit
 
@@ -60,7 +61,7 @@ class DeckViewController: UITableViewController {
             textField.placeholder = "Presentation"
             
             UIAlertController
-                .present(in: self, text: UIAlertController.AlertText(title: "Add New Deck", message: ""), style: .alert, actions: actions, textFields: [textField])
+                .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, actions: actions, textFields: [textField])
                 .filter({ element in
                     if let inputText = element.inputText, !inputText.isEmpty {
                         return element.index == 0 && !inputText[0].isEmpty
