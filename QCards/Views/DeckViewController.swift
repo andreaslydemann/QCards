@@ -19,16 +19,18 @@ class DeckViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        
+
         viewModel = DeckViewModel()
-        
-        tableView.rowHeight = 80
-        view.backgroundColor = .white
-        
+
+        setupTableView()
         setupNavigationBar()
         setupBindings()
+    }
+    
+    private func setupTableView() {
+        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.rowHeight = 80
+        view.backgroundColor = .white
     }
 
     private func setupNavigationBar() {
@@ -78,7 +80,6 @@ class DeckViewController: UITableViewController {
         
     tableView.rx.itemSelected
         .subscribe(onNext: { [weak self] indexPath in
-            
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }).disposed(by: disposeBag)
     }
