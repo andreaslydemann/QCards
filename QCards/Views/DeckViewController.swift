@@ -49,33 +49,49 @@ class DeckViewController: UITableViewController {
             }.disposed(by: disposeBag)
         
         addButton.rx.tap.subscribe(onNext: { _ in
-            var textField = UITextField()
             let alert = UIAlertController(title: "Add New Deck", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Add", style: .default) { _ in
+            let addAction = UIAlertAction(title: "Add", style: .default) { _ in
                 
-                guard let newDeck = textField.text, !newDeck.isEmpty else {
+                /*guard let newDeck = textField.text, !newDeck.isEmpty else {
                     print("No deck name entered.")
                     return
-                }
+                }*/
                 
-                DispatchQueue.global(qos: .background).async {
+                /*DispatchQueue.global(qos: .background).async {
                     self.viewModel?.onAddDeck(name: newDeck)
-                }
+                }*/
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(cancelAction)
             
-            alert.addAction(action)
-            alert.addTextField { (field) in
-                textField = field
-                textField.placeholder = "Presentation"
-            }
+            alert.addAction(addAction)
             
-            self.present(alert, animated: true) {
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
-                alert.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
-            }
+            let actions: [UIAlertController.AlertAction] = [
+                .action(title: "Add", style: .default),
+                .action(title: "Cancel", style: .cancel)
+            ]
+
+            let textField = UITextField()
+            textField.placeholder = "Presentation"
+            
+            UIAlertController
+                .present(in: self, text: UIAlertController.AlertText(title: "Add New Deck", message: ""), style: .alert, actions: actions, textFields: [textField])
+                .filter({ element in
+                    if let inputText = element.inputText, !inputText.isEmpty {
+                        return element.index == 0 && !inputText[0].isEmpty
+                    } else {
+                        return element.index == 0
+                    }
+                })
+                .subscribe(onNext: { element in
+                    if let deckName = element.inputText?[0] {
+                        DispatchQueue.global(qos: .background).async {
+                            self.viewModel?.onAddDeck(name: deckName)
+                        }
+                    }
+                })
+                .disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
         
     tableView.rx.itemSelected

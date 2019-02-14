@@ -19,6 +19,7 @@
 		E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E921A4C619002ED341 /* DeckViewController.swift */; };
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
+		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
 		E1DFF2CC2210947600BBB85F /* DeckProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2CB2210947600BBB85F /* DeckProvider.swift */; };
 		E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2CE221094A200BBB85F /* DeckEntity.swift */; };
 		E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */; };
@@ -41,6 +42,7 @@
 		E15457EE21A4C61B002ED341 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
 		E1DFF2CB2210947600BBB85F /* DeckProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckProvider.swift; sourceTree = "<group>"; };
 		E1DFF2CE221094A200BBB85F /* DeckEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEntity.swift; sourceTree = "<group>"; };
 		E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Ext.swift"; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */,
 				E13C88BC22107D19009EDD13 /* UIView+Ext.swift */,
 				E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */,
+				E154F9762215697C00A7081B /* UIAlertController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
 				E14715F521AC91690083726D /* Deck.swift in Sources */,
 				E1DFF2CC2210947600BBB85F /* DeckProvider.swift in Sources */,
+				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
 				E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 				E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */,
