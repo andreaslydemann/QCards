@@ -49,24 +49,6 @@ class DeckViewController: UITableViewController {
             }.disposed(by: disposeBag)
         
         addButton.rx.tap.subscribe(onNext: { _ in
-            let alert = UIAlertController(title: "Add New Deck", message: "", preferredStyle: .alert)
-            let addAction = UIAlertAction(title: "Add", style: .default) { _ in
-                
-                /*guard let newDeck = textField.text, !newDeck.isEmpty else {
-                    print("No deck name entered.")
-                    return
-                }*/
-                
-                /*DispatchQueue.global(qos: .background).async {
-                    self.viewModel?.onAddDeck(name: newDeck)
-                }*/
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addAction(cancelAction)
-            
-            alert.addAction(addAction)
-            
             let actions: [UIAlertController.AlertAction] = [
                 .action(title: "Add", style: .default),
                 .action(title: "Cancel", style: .cancel)
