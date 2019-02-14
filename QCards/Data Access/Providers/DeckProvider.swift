@@ -9,7 +9,7 @@
 import RealmSwift
 
 class DeckProvider: Database {
-    static let sharedInstance = DeckProvider()
+    static let shared = DeckProvider()
     
     public func fetch() -> Results<DeckEntity> {
         let realm = getRealm()

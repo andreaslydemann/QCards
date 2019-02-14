@@ -18,7 +18,7 @@ class DeckViewModel {
     private let disposeBag = DisposeBag()
     
     init() {
-        deckProvider = DeckProvider.sharedInstance
+        deckProvider = DeckProvider.shared
         let deckResults = deckProvider?.fetch()
         
         if let deckResults = deckResults {
