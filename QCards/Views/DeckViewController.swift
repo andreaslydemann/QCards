@@ -11,17 +11,17 @@ import RxDataSources
 import RxSwift
 import UIKit
 
-struct SectionOfDecks {
+struct DeckSection {
     var header: String?
     var items: [Deck]
 }
 
-extension SectionOfDecks: AnimatableSectionModelType {
+extension DeckSection: AnimatableSectionModelType {
     typealias Item = Deck
     
-    var identity: String { return self.header ?? "SectionOfDecks" }
+    var identity: String { return self.header ?? "DeckSection" }
     
-    init(original: SectionOfDecks, items: [Deck]) {
+    init(original: DeckSection, items: [Deck]) {
         self = original
         self.items = items
     }
@@ -33,7 +33,7 @@ class DeckViewController: UITableViewController {
     private let cellIdentifier = "cellIdentifier"
     private var viewModel: DeckViewModel!
     
-    private var dataSource: RxTableViewSectionedAnimatedDataSource<SectionOfDecks>!
+    private var dataSource: RxTableViewSectionedAnimatedDataSource<DeckSection>!
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ class DeckViewController: UITableViewController {
             .decks
             .asObservable()
             .map { decks in
-                [SectionOfDecks(header: "My decks", items: decks)]
+                [DeckSection(header: "My decks", items: decks)]
             }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -92,7 +92,7 @@ class DeckViewController: UITableViewController {
         }).disposed(by: disposeBag)
         
         viewModel.decks
-            .map { decks in [SectionOfDecks(header: "My decks", items: decks)] }
+            .map { decks in [DeckSection(header: "My decks", items: decks)] }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
@@ -110,7 +110,7 @@ class DeckViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<SectionOfDecks> {
+    private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
         return RxTableViewSectionedAnimatedDataSource(
             animationConfiguration: AnimationConfiguration(insertAnimation: .automatic, reloadAnimation: .automatic, deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
