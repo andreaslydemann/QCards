@@ -9,11 +9,6 @@
 import RxSwift
 import UIKit
 
-struct AlertElement {
-    var index: Int
-    var inputText: [String]
-}
-
 extension UIAlertController {
     
     struct AlertText {
@@ -28,6 +23,11 @@ extension UIAlertController {
         static func action(title: String?, style: UIAlertAction.Style = .default) -> AlertAction {
             return AlertAction(title: title, style: style)
         }
+    }
+    
+    struct AlertElement {
+        var index: Int
+        var inputText: [String]
     }
 
     static func present(

@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 
 class DeckViewModel {
+    
     // MARK: inputs
     private let deckProvider: IDeckProvider?
     let deleteCommand = PublishRelay<IndexPath>()
@@ -85,16 +86,6 @@ class DeckViewModel {
             }
         })
     }
-    
-    /*func saveDeck(deck: Deck) {
-        do {
-            try realm.write {
-                realm.add(deck)
-            }
-        } catch {
-            print("Error saving deck \(error)")
-        }
-    }*/
     
     deinit {
         notificationToken?.invalidate()

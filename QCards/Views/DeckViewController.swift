@@ -11,22 +11,6 @@ import RxDataSources
 import RxSwift
 import UIKit
 
-struct DeckSection {
-    var header: String?
-    var items: [Deck]
-}
-
-extension DeckSection: AnimatableSectionModelType {
-    typealias Item = Deck
-    
-    var identity: String { return self.header ?? "DeckSection" }
-    
-    init(original: DeckSection, items: [Deck]) {
-        self = original
-        self.items = items
-    }
-}
-
 class DeckViewController: UITableViewController {
     
     private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
@@ -120,5 +104,21 @@ class DeckViewController: UITableViewController {
         },
             canEditRowAtIndexPath: { _, _ in true }
         )
+    }
+}
+
+struct DeckSection {
+    var header: String?
+    var items: [Deck]
+}
+
+extension DeckSection: AnimatableSectionModelType {
+    typealias Item = Deck
+    
+    var identity: String { return self.header ?? "DeckSection" }
+    
+    init(original: DeckSection, items: [Deck]) {
+        self = original
+        self.items = items
     }
 }
