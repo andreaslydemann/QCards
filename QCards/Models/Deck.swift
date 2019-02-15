@@ -24,5 +24,4 @@ class Deck: IdentifiableType, Equatable {
     static func == (lhs: Deck, rhs: Deck) -> Bool {
         return lhs.id == rhs.id
     }
-
 }

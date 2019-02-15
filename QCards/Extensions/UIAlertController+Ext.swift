@@ -9,6 +9,11 @@
 import RxSwift
 import UIKit
 
+struct AlertElement {
+    var index: Int
+    var inputText: [String]
+}
+
 extension UIAlertController {
     
     struct AlertText {
@@ -24,12 +29,7 @@ extension UIAlertController {
             return AlertAction(title: title, style: style)
         }
     }
-    
-    struct AlertElement {
-        var index: Int
-        var inputText: [String]?
-    }
-    
+
     static func present(
         in viewController: UIViewController,
         text: AlertText?,
@@ -50,14 +50,14 @@ extension UIAlertController {
             
             actions.enumerated().forEach { index, action in
                 let action = UIAlertAction(title: action.title, style: action.style) { _ in
-
                     let inputText = alertController.textFields?.map({ textField in
                         return textField.text ?? ""
                     })
                     
-                    observer.onNext(AlertElement(index: index, inputText: inputText))
+                    observer.onNext(AlertElement(index: index, inputText: inputText ?? []))
                     observer.onCompleted()
                 }
+                
                 alertController.addAction(action)
             }
             

@@ -14,6 +14,7 @@ class DeckViewModel {
     // MARK: inputs
     private let deckProvider: IDeckProvider?
     let deleteCommand = PublishRelay<IndexPath>()
+    let addCommand = PublishRelay<String>()
     
     // MARK: outputs
     public let decks: BehaviorRelay<[Deck]> = BehaviorRelay(value: [])
@@ -31,7 +32,14 @@ class DeckViewModel {
             }
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .subscribe(onNext: { [weak self] id in
-                self?.onRemoveDeck(id: id)
+                self?.deckProvider?.delete(primaryKey: Int(id)!)
+            })
+            .disposed(by: disposeBag)
+        
+        addCommand
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribe(onNext: { [weak self] name in
+                self?.deckProvider?.add(name: name)
             })
             .disposed(by: disposeBag)
         
@@ -49,8 +57,8 @@ class DeckViewModel {
                     let deck = Deck(id: "\(deckEntity.id)", name: deckEntity.name)
                     self?.decks.append(deck)
                 })
-            case .update(_, let deletions, let insertions, _):
                 
+            case .update(_, let deletions, let insertions, _):
                 deletions.forEach({ index in
                     self?.decks.remove(at: index)
                 })
@@ -87,14 +95,6 @@ class DeckViewModel {
             print("Error saving deck \(error)")
         }
     }*/
-    
-    func onAddDeck(name: String) {
-        deckProvider?.add(name: name)
-    }
-    
-    func onRemoveDeck(id: String) {
-        deckProvider?.delete(primaryKey: (Int(id))!)
-    }
     
     deinit {
         notificationToken?.invalidate()

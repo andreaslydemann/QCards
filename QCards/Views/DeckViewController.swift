@@ -54,8 +54,10 @@ class DeckViewController: UITableViewController {
     }
 
     private func setupNavigationBar() {
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
+        navigationController?.navigationBar.titleTextAttributes = titleAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#34495e")
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -80,23 +82,12 @@ class DeckViewController: UITableViewController {
             
             let textField = UITextField()
             textField.placeholder = "Presentation"
-            
+
             UIAlertController
                 .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, actions: actions, textFields: [textField])
-                .filter({ element in
-                    if let inputText = element.inputText, !inputText.isEmpty {
-                        return element.index == 0 && !inputText[0].isEmpty
-                    } else {
-                        return element.index == 0
-                    }
-                })
-                .subscribe(onNext: { element in
-                    if let deckName = element.inputText?[0] {
-                        DispatchQueue.global(qos: .background).async {
-                            self.viewModel.onAddDeck(name: deckName)
-                        }
-                    }
-                })
+                .filter { $0.index == 0 }
+                .map { $0.inputText[0] }
+                .bind(to: self.viewModel.addCommand)
                 .disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
         
