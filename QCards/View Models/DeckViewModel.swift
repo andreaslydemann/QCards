@@ -11,15 +11,19 @@ import RxCocoa
 import RxSwift
 
 class DeckViewModel {
-
-    public var decks: BehaviorRelay<[Deck]> = BehaviorRelay(value: [])
-    private var deckProvider: DeckProvider?
+    // MARK: inputs
+    private let deckProvider: IDeckProvider?
+    private let deleteCommand = PublishRelay<IndexPath>()
+    
+    // MARK: outputs
+    public let decks: BehaviorRelay<[Deck]> = BehaviorRelay(value: [])
+    
     private var notificationToken: NotificationToken?
     private let disposeBag = DisposeBag()
     
-    init() {
-        deckProvider = DeckProvider.shared
-        let deckResults = deckProvider?.fetch()
+    init(deckProvider: IDeckProvider) {
+        self.deckProvider = deckProvider
+        let deckResults = self.deckProvider?.fetch()
         
         if let deckResults = deckResults {
             observeChanges(to: deckResults)

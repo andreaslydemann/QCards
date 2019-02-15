@@ -21,7 +21,7 @@ class DeckViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = DeckViewModel()
+        viewModel = DeckViewModel(deckProvider: DeckProvider.shared)
 
         setupTableView()
         setupNavigationBar()

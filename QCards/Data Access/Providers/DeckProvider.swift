@@ -8,7 +8,13 @@
 
 import RealmSwift
 
-class DeckProvider: Database {
+protocol IDeckProvider {
+    func fetch() -> Results<DeckEntity>
+    func add(name: String)
+    func delete(primaryKey: Int)
+}
+
+class DeckProvider: Database, IDeckProvider {
     static let shared = DeckProvider()
     
     public func fetch() -> Results<DeckEntity> {
