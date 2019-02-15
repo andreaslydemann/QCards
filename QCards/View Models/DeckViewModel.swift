@@ -13,7 +13,7 @@ import RxSwift
 class DeckViewModel {
     // MARK: inputs
     private let deckProvider: IDeckProvider?
-    private let deleteCommand = PublishRelay<IndexPath>()
+    let deleteCommand = PublishRelay<IndexPath>()
     
     // MARK: outputs
     public let decks: BehaviorRelay<[Deck]> = BehaviorRelay(value: [])

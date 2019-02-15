@@ -15,7 +15,7 @@ class DeckViewController: UITableViewController {
     
     private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let cellIdentifier = "cellIdentifier"
-    private var viewModel: DeckViewModel?
+    private var viewModel: DeckViewModel!
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class DeckViewController: UITableViewController {
     }
 
     private func setupBindings() {
-        viewModel?
+        viewModel
             .decks
             .asObservable()
             .bind(to: self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: DeckTableViewCell.self)) { _, item, cell in
@@ -56,7 +56,7 @@ class DeckViewController: UITableViewController {
                 .action(title: "Add", style: .default),
                 .action(title: "Cancel", style: .cancel)
             ]
-
+            
             let textField = UITextField()
             textField.placeholder = "Presentation"
             
@@ -72,17 +72,22 @@ class DeckViewController: UITableViewController {
                 .subscribe(onNext: { element in
                     if let deckName = element.inputText?[0] {
                         DispatchQueue.global(qos: .background).async {
-                            self.viewModel?.onAddDeck(name: deckName)
+                            self.viewModel.onAddDeck(name: deckName)
                         }
                     }
                 })
                 .disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
         
-    tableView.rx.itemSelected
-        .subscribe(onNext: { [weak self] indexPath in
-            self?.tableView.deselectRow(at: indexPath, animated: true)
-        }).disposed(by: disposeBag)
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+            }).disposed(by: disposeBag)
+        
+        
+        tableView.rx.itemDeleted
+            .bind(to: self.viewModel.deleteCommand)
+            .disposed(by: disposeBag)
     }
     
     @objc func dismissAlertController() {
@@ -112,10 +117,12 @@ class DeckViewController: UITableViewController {
      }*/
     
     private func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-        let deck = viewModel?.decks.value[indexPath.row]
+        let deck = viewModel.decks.value[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Delete", handler: { _, _, completion in
             DispatchQueue.global(qos: .background).async {
-                self.viewModel?.onRemoveDeck(id: (deck?.id)!)
+                if let id = deck.id {
+                    self.viewModel.onRemoveDeck(id: id)
+                }
             }
             
             completion(true)
@@ -137,7 +144,7 @@ class DeckViewController: UITableViewController {
     /*
      func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
      
-     let deckItem = viewModel?.decks[indexPath.row]
+     let deckItem = viewModel.decks[indexPath.row]
      
      var menuActions: [UIContextualAction] = []
      
