@@ -23,9 +23,19 @@ class DeckViewModel {
     
     init(deckProvider: IDeckProvider) {
         self.deckProvider = deckProvider
-        let deckResults = self.deckProvider?.fetch()
         
-        if let deckResults = deckResults {
+        deleteCommand
+            .map { $0.row }
+            .withLatestFrom(decks) { rowIndex, decks in
+                return decks[rowIndex].id
+            }
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribe(onNext: { [weak self] id in
+                self?.onRemoveDeck(id: id)
+            })
+            .disposed(by: disposeBag)
+        
+        if let deckResults = self.deckProvider?.fetch() {
             observeChanges(to: deckResults)
         }
     }

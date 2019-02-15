@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E103BDA322161E6900FF3A44 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E103BDA222161E6900FF3A44 /* RxDataSources.framework */; };
+		E103BDA52217055D00FF3A44 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E103BDA42217055D00FF3A44 /* Differentiator.framework */; };
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
 		E128675D2211648F00078748 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E128675C2211648F00078748 /* DeckViewModel.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		E103BDA222161E6900FF3A44 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		E103BDA42217055D00FF3A44 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E128675C2211648F00078748 /* DeckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E103BDA52217055D00FF3A44 /* Differentiator.framework in Frameworks */,
 				E103BDA322161E6900FF3A44 /* RxDataSources.framework in Frameworks */,
 				E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */,
 				E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */,
@@ -71,6 +74,7 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E103BDA42217055D00FF3A44 /* Differentiator.framework */,
 				E103BDA222161E6900FF3A44 /* RxDataSources.framework */,
 				E118207A21ADF2AA00F1959B /* RxCocoa.framework */,
 				E118207821ADF09A00F1959B /* RxSwift.framework */,
@@ -290,6 +294,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
@@ -300,6 +305,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differentiator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
