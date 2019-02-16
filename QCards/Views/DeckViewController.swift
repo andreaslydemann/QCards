@@ -59,16 +59,11 @@ class DeckViewController: UITableViewController {
             .disposed(by: disposeBag)
         
         addButton.rx.tap.subscribe(onNext: { _ in
-            let actions: [UIAlertController.AlertAction] = [
-                .action(title: "Add", style: .default),
-                .action(title: "Cancel", style: .cancel)
-            ]
-            
             let textField = UITextField()
             textField.placeholder = "Presentation"
 
             UIAlertController
-                .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, actions: actions, textFields: [textField])
+                .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, buttons: [.default("Add"), .cancel("Cancel")], textFields: [textField])
                 .filter { $0.0 == 0 }
                 .map { $0.1[0] }
                 .bind(to: self.viewModel.addCommand)
@@ -84,16 +79,8 @@ class DeckViewController: UITableViewController {
             .subscribe(onNext: { [weak self] indexPath in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
-        
-        tableView.rx.itemDeleted
-            .bind(to: self.viewModel.deleteCommand)
-            .disposed(by: disposeBag)
     }
     
-    @objc func dismissAlertController() {
-        self.dismiss(animated: true, completion: nil)
-    }
-
     private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
         return RxTableViewSectionedAnimatedDataSource(
             animationConfiguration: AnimationConfiguration(insertAnimation: .automatic, reloadAnimation: .automatic, deleteAnimation: .left),
