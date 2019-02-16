@@ -62,7 +62,7 @@ class DeckViewController: UITableViewController {
         addButton.rx.tap.subscribe(onNext: { _ in
             UIAlertController
                 .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, buttons: [.default("Add"), .cancel("Cancel")], textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
-                .filter { $0.0 == 0 }
+                .filter { $0.0 == 0 && $0.1[0] != "" }
                 .map { $0.1[0] }
                 .bind(to: self.viewModel.addCommand)
                 .disposed(by: self.disposeBag)
