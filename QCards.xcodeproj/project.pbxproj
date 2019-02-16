@@ -47,6 +47,7 @@
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
+		E1D3A92822188AB400D7A4F4 /* RxAlertController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlertController.framework; path = Carthage/Build/iOS/RxAlertController.framework; sourceTree = "<group>"; };
 		E1DFF2CB2210947600BBB85F /* DeckProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckProvider.swift; sourceTree = "<group>"; };
 		E1DFF2CE221094A200BBB85F /* DeckEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEntity.swift; sourceTree = "<group>"; };
 		E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Ext.swift"; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1D3A92822188AB400D7A4F4 /* RxAlertController.framework */,
 				E103BDA42217055D00FF3A44 /* Differentiator.framework */,
 				E103BDA222161E6900FF3A44 /* RxDataSources.framework */,
 				E118207A21ADF2AA00F1959B /* RxCocoa.framework */,

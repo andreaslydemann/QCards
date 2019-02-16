@@ -69,8 +69,8 @@ class DeckViewController: UITableViewController {
 
             UIAlertController
                 .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, actions: actions, textFields: [textField])
-                .filter { $0.index == 0 }
-                .map { $0.inputText[0] }
+                .filter { $0.0 == 0 }
+                .map { $0.1[0] }
                 .bind(to: self.viewModel.addCommand)
                 .disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)

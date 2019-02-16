@@ -25,18 +25,13 @@ extension UIAlertController {
         }
     }
     
-    struct AlertElement {
-        var index: Int
-        var inputText: [String]
-    }
-
     static func present(
         in viewController: UIViewController,
         text: AlertText?,
         style: UIAlertController.Style,
         actions: [AlertAction],
         textFields: [UITextField])
-        -> Observable<AlertElement> {
+        -> Observable<(Int, [String])> {
         return Observable.create { observer in
             let alertController = UIAlertController(title: text?.title, message: text?.message, preferredStyle: style)
             
@@ -54,7 +49,7 @@ extension UIAlertController {
                         return textField.text ?? ""
                     })
                     
-                    observer.onNext(AlertElement(index: index, inputText: inputText ?? []))
+                    observer.onNext((index, inputText ?? []))
                     observer.onCompleted()
                 }
                 
