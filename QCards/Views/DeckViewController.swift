@@ -59,11 +59,8 @@ class DeckViewController: UITableViewController {
             .disposed(by: disposeBag)
         
         addButton.rx.tap.subscribe(onNext: { _ in
-            let textField = UITextField()
-            textField.placeholder = "Presentation"
-
             UIAlertController
-                .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, buttons: [.default("Add"), .cancel("Cancel")], textFields: [textField])
+                .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, buttons: [.default("Add"), .cancel("Cancel")], textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Login"} ])
                 .filter { $0.0 == 0 }
                 .map { $0.1[0] }
                 .bind(to: self.viewModel.addCommand)
@@ -78,6 +75,18 @@ class DeckViewController: UITableViewController {
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 self?.tableView.deselectRow(at: indexPath, animated: true)
+            }).disposed(by: disposeBag)
+        
+        tableView.rx.itemDeleted
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.selectedDeck.accept(indexPath)
+                
+                UIAlertController
+                    .present(in: self!, text: UIAlertController.AlertText(title: "Do you want to delete this deck?", message: "You can't undo this action"), style: .alert, buttons: [.default("Yes"), .cancel("No")], textFields: [])
+                    .filter { $0.0 == 0 }
+                    .bind(to: (self?.viewModel.deleteCommand)!)
+                    .disposed(by: (self?.disposeBag)!)
+                
             }).disposed(by: disposeBag)
     }
     

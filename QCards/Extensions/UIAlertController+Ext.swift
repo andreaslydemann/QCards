@@ -11,6 +11,8 @@ import UIKit
 
 extension UIAlertController {
     
+    public typealias TextFieldConfiguration = ((UITextField) -> Void)
+    
     public enum AlertButton {
         case `default`(String)
         case disabled(String)
@@ -28,18 +30,10 @@ extension UIAlertController {
         text: AlertText?,
         style: Style,
         buttons: [AlertButton],
-        textFields: [UITextField])
+        textFields: [TextFieldConfiguration?])
         -> Observable<(Int, [String])> {
         return Observable.create { observer in
             let alertController = UIAlertController(title: text?.title, message: text?.message, preferredStyle: style)
-            
-            textFields.enumerated().forEach { args in
-                var (_, textField) = args
-                alertController.addTextField { field in
-                    field.placeholder = textField.placeholder
-                    textField = field
-                }
-            }
             
             buttons.enumerated().forEach { index, action in
                 let handler = { [unowned alertController] (action: UIAlertAction) -> Void in
@@ -62,6 +56,10 @@ extension UIAlertController {
                 }
                 
                 alertController.addAction(action)
+            }
+            
+            for textField in textFields {
+                alertController.addTextField(configurationHandler: textField)
             }
             
             viewController.present(alertController, animated: true) {

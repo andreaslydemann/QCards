@@ -14,7 +14,8 @@ class DeckViewModel {
     
     // MARK: inputs
     private let deckProvider: IDeckProvider?
-    let deleteCommand = PublishRelay<IndexPath>()
+    let selectedDeck = PublishRelay<IndexPath>()
+    let deleteCommand = PublishRelay<(Int, [String])>()
     let addCommand = PublishRelay<String>()
     
     // MARK: outputs
@@ -27,9 +28,12 @@ class DeckViewModel {
         self.deckProvider = deckProvider
         
         deleteCommand
-            .map { $0.row }
-            .withLatestFrom(decks) { rowIndex, decks in
-                return decks[rowIndex].id
+            .map { $0.0 }
+            .withLatestFrom(selectedDeck) { _, selectedDeck in
+                return selectedDeck.row
+            }
+            .withLatestFrom(decks) { selectedDeck, decks in
+                return decks[selectedDeck].id
             }
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .subscribe(onNext: { [weak self] id in
