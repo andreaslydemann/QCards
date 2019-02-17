@@ -27,6 +27,14 @@ class DeckViewModel {
     init(deckProvider: IDeckProvider) {
         self.deckProvider = deckProvider
         
+        setupCommands()
+
+        if let deckResults = self.deckProvider?.fetch() {
+            observeChanges(to: deckResults)
+        }
+    }
+    
+    private func setupCommands() {
         deleteCommand
             .map { $0.0 }
             .withLatestFrom(selectedDeck) { _, selectedDeck in
@@ -47,10 +55,6 @@ class DeckViewModel {
                 self?.deckProvider?.add(name: name)
             })
             .disposed(by: disposeBag)
-        
-        if let deckResults = self.deckProvider?.fetch() {
-            observeChanges(to: deckResults)
-        }
     }
     
     func observeChanges(to deckResults: Results<DeckEntity>) {

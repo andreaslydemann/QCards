@@ -74,19 +74,19 @@ class DeckViewController: UITableViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.tableView.deselectRow(at: indexPath, animated: true)
+            .subscribe(onNext: { indexPath in
+                self.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
         
         tableView.rx.itemDeleted
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.viewModel.selectedDeck.accept(indexPath)
+            .subscribe(onNext: { indexPath in
+                self.viewModel.selectedDeck.accept(indexPath)
                 
                 UIAlertController
-                    .present(in: self!, text: UIAlertController.AlertText(title: "Do you want to delete this deck?", message: "You can't undo this action"), style: .alert, buttons: [.default("Yes"), .cancel("No")], textFields: [])
+                    .present(in: self, text: UIAlertController.AlertText(title: "Do you want to delete this deck?", message: "You can't undo this action"), style: .alert, buttons: [.default("Yes"), .cancel("No")], textFields: [])
                     .filter { $0.0 == 0 }
-                    .bind(to: (self?.viewModel.deleteCommand)!)
-                    .disposed(by: (self?.disposeBag)!)
+                    .bind(to: self.viewModel.deleteCommand)
+                    .disposed(by: self.disposeBag)
                 
             }).disposed(by: disposeBag)
     }
