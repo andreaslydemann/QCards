@@ -25,6 +25,7 @@ class DeckViewModel {
     private let disposeBag = DisposeBag()
     
     init(deckProvider: IDeckProvider) {
+        
         self.deckProvider = deckProvider
         
         setupCommands()
@@ -37,22 +38,22 @@ class DeckViewModel {
     private func setupCommands() {
         deleteCommand
             .map { $0.0 }
-            .withLatestFrom(selectedDeck) { _, selectedDeck in
-                return selectedDeck.row
-            }
+            .withLatestFrom(selectedDeck) { $1.row }
             .withLatestFrom(decks) { selectedDeck, decks in
                 return decks[selectedDeck].id
             }
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .subscribe(onNext: { [weak self] id in
-                self?.deckProvider?.delete(primaryKey: Int(id)!)
+            .subscribe(onNext: { [unowned self] id in
+                if let id = Int(id) {
+                    self.deckProvider?.delete(primaryKey: id)
+                }
             })
             .disposed(by: disposeBag)
         
         addCommand
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .subscribe(onNext: { [weak self] name in
-                self?.deckProvider?.add(name: name)
+            .subscribe(onNext: { [unowned self] name in
+                self.deckProvider?.add(name: name)
             })
             .disposed(by: disposeBag)
     }
@@ -68,6 +69,10 @@ class DeckViewModel {
                 })
                 
             case .update(_, let deletions, let insertions, _):
+                
+                print(deletions, insertions)
+                
+                
                 deletions.forEach({ index in
                     self?.decks.remove(at: index)
                 })

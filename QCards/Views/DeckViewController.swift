@@ -61,7 +61,10 @@ class DeckViewController: UITableViewController {
         
         addButton.rx.tap.subscribe(onNext: { _ in
             UIAlertController
-                .present(in: self, text: UIAlertController.AlertText(title: "Create deck", message: "Input a name for the deck"), style: .alert, buttons: [.default("Add"), .cancel("Cancel")], textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
+                .present(in: self, text: UIAlertController.AlertText(
+                    title: "Create deck", message: "Input a name for the deck"),
+                    style: .alert, buttons: [.default("Add"), .cancel("Cancel")],
+                    textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
                 .filter { $0.0 == 0 && $0.1[0] != "" }
                 .map { $0.1[0] }
                 .bind(to: self.viewModel.addCommand)
@@ -83,7 +86,12 @@ class DeckViewController: UITableViewController {
                 self.viewModel.selectedDeck.accept(indexPath)
                 
                 UIAlertController
-                    .present(in: self, text: UIAlertController.AlertText(title: "Do you want to delete this deck?", message: "You can't undo this action"), style: .alert, buttons: [.default("Yes"), .cancel("No")], textFields: [])
+                    .present(in: self, text: UIAlertController.AlertText(
+                        title: "Do you want to delete this deck?",
+                        message: "You can't undo this action"),
+                        style: .alert,
+                        buttons: [.default("Yes"), .cancel("No")],
+                        textFields: [])
                     .filter { $0.0 == 0 }
                     .bind(to: self.viewModel.deleteCommand)
                     .disposed(by: self.disposeBag)

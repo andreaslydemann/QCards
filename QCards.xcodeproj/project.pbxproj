@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E103BDA322161E6900FF3A44 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E103BDA222161E6900FF3A44 /* RxDataSources.framework */; };
-		E103BDA52217055D00FF3A44 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E103BDA42217055D00FF3A44 /* Differentiator.framework */; };
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
 		E128675D2211648F00078748 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E128675C2211648F00078748 /* DeckViewModel.swift */; };
@@ -22,6 +20,11 @@
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
 		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
+		E1BFE4E4221CA54E005FF6DB /* Reactive+RxRealmDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BFE4E3221CA54E005FF6DB /* Reactive+RxRealmDataSources.swift */; };
+		E1BFE4E6221CA577005FF6DB /* RealmBindObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BFE4E5221CA577005FF6DB /* RealmBindObserver.swift */; };
+		E1BFE4E8221CA5A3005FF6DB /* RxCollectionViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BFE4E7221CA5A3005FF6DB /* RxCollectionViewRealmDataSource.swift */; };
+		E1BFE4EA221CA5D7005FF6DB /* RxTableViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BFE4E9221CA5D7005FF6DB /* RxTableViewRealmDataSource.swift */; };
+		E1BFE4EC221CB0B1005FF6DB /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */; };
 		E1DFF2CC2210947600BBB85F /* DeckProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2CB2210947600BBB85F /* DeckProvider.swift */; };
 		E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2CE221094A200BBB85F /* DeckEntity.swift */; };
 		E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */; };
@@ -47,6 +50,11 @@
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
+		E1BFE4E3221CA54E005FF6DB /* Reactive+RxRealmDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+RxRealmDataSources.swift"; sourceTree = "<group>"; };
+		E1BFE4E5221CA577005FF6DB /* RealmBindObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBindObserver.swift; sourceTree = "<group>"; };
+		E1BFE4E7221CA5A3005FF6DB /* RxCollectionViewRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCollectionViewRealmDataSource.swift; sourceTree = "<group>"; };
+		E1BFE4E9221CA5D7005FF6DB /* RxTableViewRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewRealmDataSource.swift; sourceTree = "<group>"; };
+		E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		E1DFF2CB2210947600BBB85F /* DeckProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckProvider.swift; sourceTree = "<group>"; };
 		E1DFF2CE221094A200BBB85F /* DeckEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEntity.swift; sourceTree = "<group>"; };
 		E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Ext.swift"; sourceTree = "<group>"; };
@@ -59,8 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E103BDA52217055D00FF3A44 /* Differentiator.framework in Frameworks */,
-				E103BDA322161E6900FF3A44 /* RxDataSources.framework in Frameworks */,
+				E1BFE4EC221CB0B1005FF6DB /* RxRealm.framework in Frameworks */,
 				E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */,
 				E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */,
 				E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */,
@@ -74,6 +81,7 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */,
 				E103BDA42217055D00FF3A44 /* Differentiator.framework */,
 				E103BDA222161E6900FF3A44 /* RxDataSources.framework */,
 				E118207A21ADF2AA00F1959B /* RxCocoa.framework */,
@@ -123,7 +131,7 @@
 		E15457E621A4C619002ED341 /* QCards */ = {
 			isa = PBXGroup;
 			children = (
-				E13C88BA22107D19009EDD13 /* Extensions */,
+				E1BFE4DF221CA4EE005FF6DB /* Utilities */,
 				E15457FC21A4C647002ED341 /* Models */,
 				E15457FA21A4C638002ED341 /* Views */,
 				E15457FB21A4C63F002ED341 /* View Models */,
@@ -167,6 +175,26 @@
 				E14715F421AC91690083726D /* Deck.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E1BFE4DF221CA4EE005FF6DB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E13C88BA22107D19009EDD13 /* Extensions */,
+				E1BFE4E2221CA520005FF6DB /* RxRealmDataSources */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E1BFE4E2221CA520005FF6DB /* RxRealmDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				E1BFE4E3221CA54E005FF6DB /* Reactive+RxRealmDataSources.swift */,
+				E1BFE4E5221CA577005FF6DB /* RealmBindObserver.swift */,
+				E1BFE4E7221CA5A3005FF6DB /* RxCollectionViewRealmDataSource.swift */,
+				E1BFE4E9221CA5D7005FF6DB /* RxTableViewRealmDataSource.swift */,
+			);
+			path = RxRealmDataSources;
 			sourceTree = "<group>";
 		};
 		E1DFF2C92210947600BBB85F /* Data Access */ = {
@@ -293,8 +321,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
@@ -304,8 +331,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differentiator.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRealm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,12 +350,16 @@
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
 				E128675D2211648F00078748 /* DeckViewModel.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
+				E1BFE4E6221CA577005FF6DB /* RealmBindObserver.swift in Sources */,
 				E14715F521AC91690083726D /* Deck.swift in Sources */,
 				E1DFF2CC2210947600BBB85F /* DeckProvider.swift in Sources */,
 				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
 				E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
+				E1BFE4E4221CA54E005FF6DB /* Reactive+RxRealmDataSources.swift in Sources */,
+				E1BFE4E8221CA5A3005FF6DB /* RxCollectionViewRealmDataSource.swift in Sources */,
 				E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */,
+				E1BFE4EA221CA5D7005FF6DB /* RxTableViewRealmDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

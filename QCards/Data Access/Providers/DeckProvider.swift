@@ -19,6 +19,7 @@ class DeckProvider: Database, IDeckProvider {
     
     public func fetch() -> Results<DeckEntity> {
         let realm = getRealm()
+        printDatabaseLocation()
         
         return realm.objects(DeckEntity.self)
     }
@@ -47,6 +48,8 @@ class DeckProvider: Database, IDeckProvider {
     
     func delete(primaryKey: Int) {
         let realm = getRealm()
+        
+        print("realm delete: ", primaryKey)
         
         if let deckEntity = realm.object(ofType: DeckEntity.self, forPrimaryKey: primaryKey) {
             do {

@@ -26,7 +26,9 @@ extension BehaviorRelay where Element: RangeReplaceableCollection {
     }
     
     public func remove(at index: Element.Index) {
+        print(index)
         var newValue = value
+        print(newValue)
         newValue.remove(at: index)
         accept(newValue)
     }
