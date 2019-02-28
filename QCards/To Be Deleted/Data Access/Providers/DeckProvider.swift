@@ -11,7 +11,7 @@ import RealmSwift
 protocol IDeckProvider {
     func fetch() -> Results<DeckEntity>
     func add(name: String)
-    func delete(primaryKey: Int)
+    func delete(deck: DeckEntity)
 }
 
 class DeckProvider: Database, IDeckProvider {
@@ -46,19 +46,21 @@ class DeckProvider: Database, IDeckProvider {
         }
     }
     
-    func delete(primaryKey: Int) {
+    func delete(deck: DeckEntity) {
         let realm = getRealm()
         
-        print("realm delete: ", primaryKey)
+        print("realm delete deck with id: ", deck.id)
         
-        if let deckEntity = realm.object(ofType: DeckEntity.self, forPrimaryKey: primaryKey) {
-            do {
-                try realm.write {
-                    realm.delete(deckEntity)
-                }
-            } catch {
-                print("Error deleting deck, \(error)")
+        do {
+            try realm.write {
+                realm.delete(deck)
             }
+        } catch {
+            print("Error deleting deck, \(error)")
         }
+        
+        /*if let deckEntity = realm.object(ofType: DeckEntity.self, forPrimaryKey: primaryKey) {
+            
+        }*/
     }
 }

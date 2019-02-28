@@ -27,7 +27,7 @@ class DeckTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configure(withItem item: Deck) {
+    func configure(withItem item: DeckEntity) {
         nameLabel.text = item.name
     }
 }
