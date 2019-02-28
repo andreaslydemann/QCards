@@ -20,16 +20,16 @@
 		E1104B97222739CD001FFA9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B96222739CD001FFA9D /* UseCaseProvider.swift */; };
 		E1104B9922273A21001FFA9D /* DeckUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B9822273A21001FFA9D /* DeckUseCase.swift */; };
 		E1104B9B22273A73001FFA9D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B9A22273A73001FFA9D /* Deck.swift */; };
-		E1104BA022273CB0001FFA9D /* Platform.h in Headers */ = {isa = PBXBuildFile; fileRef = E1104B6922272DA2001FFA9D /* Platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1104BA422274017001FFA9D /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B5522272D92001FFA9D /* Domain.framework */; };
 		E1104BA5222740EA001FFA9D /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104BA122273E61001FFA9D /* Domain.framework */; };
 		E1104BA822274220001FFA9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA722274220001FFA9D /* Application.swift */; };
 		E1104BAA222742AF001FFA9D /* DeckUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA9222742AF001FFA9D /* DeckUseCase.swift */; };
 		E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */; };
 		E1104BAE222743E3001FFA9D /* RMDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BAD222743E3001FFA9D /* RMDeck.swift */; };
-		E1104BB022274650001FFA9D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BAF22274650001FFA9D /* Attribute.swift */; };
 		E1104BB222274725001FFA9D /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BB122274725001FFA9D /* Expression.swift */; };
 		E1104BB6222748B0001FFA9D /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BB5222748B0001FFA9D /* ViewModelType.swift */; };
+		E1104BD12227D20A001FFA9D /* Platform.h in Headers */ = {isa = PBXBuildFile; fileRef = E1104BD02227D20A001FFA9D /* Platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1104BD32227D346001FFA9D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BD22227D346001FFA9D /* Attribute.swift */; };
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
 		E128675D2211648F00078748 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E128675C2211648F00078748 /* DeckViewModel.swift */; };
@@ -92,7 +92,6 @@
 		E1104B5722272D92001FFA9D /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		E1104B5822272D92001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B6722272DA2001FFA9D /* Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1104B6922272DA2001FFA9D /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		E1104B6A22272DA2001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		E1104B8B22273601001FFA9D /* RealmRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepresentable.swift; sourceTree = "<group>"; };
@@ -108,9 +107,10 @@
 		E1104BA9222742AF001FFA9D /* DeckUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckUseCase.swift; sourceTree = "<group>"; };
 		E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		E1104BAD222743E3001FFA9D /* RMDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDeck.swift; sourceTree = "<group>"; };
-		E1104BAF22274650001FFA9D /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		E1104BB122274725001FFA9D /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		E1104BB5222748B0001FFA9D /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		E1104BD02227D20A001FFA9D /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		E1104BD22227D346001FFA9D /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E128675C2211648F00078748 /* DeckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				E1104B8322273554001FFA9D /* Repository */,
 				E1104B852227356D001FFA9D /* Use Cases */,
 				E1104B842227355E001FFA9D /* Utility */,
-				E1104B6922272DA2001FFA9D /* Platform.h */,
+				E1104BD02227D20A001FFA9D /* Platform.h */,
 				E1104B6A22272DA2001FFA9D /* Info.plist */,
 			);
 			path = Platform;
@@ -261,8 +261,8 @@
 			children = (
 				E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */,
 				E1104B8B22273601001FFA9D /* RealmRepresentable.swift */,
-				E1104BAF22274650001FFA9D /* Attribute.swift */,
 				E1104BB122274725001FFA9D /* Expression.swift */,
+				E1104BD22227D346001FFA9D /* Attribute.swift */,
 			);
 			path = Conversion;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1104BA022273CB0001FFA9D /* Platform.h in Headers */,
+				E1104BD12227D20A001FFA9D /* Platform.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,7 +678,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1104BB022274650001FFA9D /* Attribute.swift in Sources */,
 				E1104BAE222743E3001FFA9D /* RMDeck.swift in Sources */,
 				E1104B8C22273601001FFA9D /* RealmRepresentable.swift in Sources */,
 				E1104B95222736CB001FFA9D /* Realm+Ext.swift in Sources */,
@@ -686,6 +685,7 @@
 				E1104BB222274725001FFA9D /* Expression.swift in Sources */,
 				E1104BAA222742AF001FFA9D /* DeckUseCase.swift in Sources */,
 				E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */,
+				E1104BD32227D346001FFA9D /* Attribute.swift in Sources */,
 				E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */,
 				E1104B8E22273642001FFA9D /* Repository.swift in Sources */,
 				E1104B93222736BA001FFA9D /* Observable+Ext.swift in Sources */,
