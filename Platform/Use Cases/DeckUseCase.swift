@@ -12,8 +12,8 @@ import Realm
 import RealmSwift
 import RxSwift
 
-/*
-final class PostsUseCase<Repository>: Domain.DeckUseCase where Repository: AbstractRepository, Repository.T == Post {
+
+final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
     
     private let repository: Repository
     
@@ -33,4 +33,3 @@ final class PostsUseCase<Repository>: Domain.DeckUseCase where Repository: Abstr
         return repository.delete(entity: post)
     }
 }
-*/

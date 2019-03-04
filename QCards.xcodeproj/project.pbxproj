@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1104B5922272D92001FFA9D /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = E1104B5722272D92001FFA9D /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1104B5D22272D92001FFA9D /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B5522272D92001FFA9D /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1104B6E22272DA2001FFA9D /* Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; };
 		E1104B6F22272DA2001FFA9D /* Platform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */; };
@@ -17,11 +15,6 @@
 		E1104B9122273670001FFA9D /* RunLoopThreadScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B9022273670001FFA9D /* RunLoopThreadScheduler.swift */; };
 		E1104B93222736BA001FFA9D /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B92222736BA001FFA9D /* Observable+Ext.swift */; };
 		E1104B95222736CB001FFA9D /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B94222736CB001FFA9D /* Realm+Ext.swift */; };
-		E1104B97222739CD001FFA9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B96222739CD001FFA9D /* UseCaseProvider.swift */; };
-		E1104B9922273A21001FFA9D /* DeckUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B9822273A21001FFA9D /* DeckUseCase.swift */; };
-		E1104B9B22273A73001FFA9D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B9A22273A73001FFA9D /* Deck.swift */; };
-		E1104BA422274017001FFA9D /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B5522272D92001FFA9D /* Domain.framework */; };
-		E1104BA5222740EA001FFA9D /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104BA122273E61001FFA9D /* Domain.framework */; };
 		E1104BA822274220001FFA9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA722274220001FFA9D /* Application.swift */; };
 		E1104BAA222742AF001FFA9D /* DeckUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA9222742AF001FFA9D /* DeckUseCase.swift */; };
 		E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */; };
@@ -53,22 +46,28 @@
 		E1DFF2D32210D15200BBB85F /* BehaviorRelay+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */; };
 		E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */; };
 		E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C321A75D370043B441 /* Realm.framework */; };
+		E1E518B9222DB7F000E4AED2 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E518B2222DB7F000E4AED2 /* Domain.framework */; };
+		E1E518BA222DB7F000E4AED2 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1E518B2222DB7F000E4AED2 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E1E518C3222DB87200E4AED2 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = E1E518C1222DB87200E4AED2 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1E518C6222DB9A900E4AED2 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C5222DB9A900E4AED2 /* Deck.swift */; };
+		E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */; };
+		E1E518CC222DB9F000E4AED2 /* PostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518CB222DB9F000E4AED2 /* PostsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E1104B5A22272D92001FFA9D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E1104B5422272D92001FFA9D;
-			remoteInfo = Domain;
-		};
 		E1104B6C22272DA2001FFA9D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E1104B6622272DA2001FFA9D;
 			remoteInfo = Platform;
+		};
+		E1E518B7222DB7F000E4AED2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1E518B1222DB7F000E4AED2;
+			remoteInfo = Domain;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -79,7 +78,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E1104B5D22272D92001FFA9D /* Domain.framework in Embed Frameworks */,
+				E1E518BA222DB7F000E4AED2 /* Domain.framework in Embed Frameworks */,
 				E1104B6F22272DA2001FFA9D /* Platform.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -88,9 +87,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E1104B5522272D92001FFA9D /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1104B5722272D92001FFA9D /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
-		E1104B5822272D92001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B6722272DA2001FFA9D /* Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1104B6A22272DA2001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
@@ -99,10 +95,6 @@
 		E1104B9022273670001FFA9D /* RunLoopThreadScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoopThreadScheduler.swift; sourceTree = "<group>"; };
 		E1104B92222736BA001FFA9D /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		E1104B94222736CB001FFA9D /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
-		E1104B96222739CD001FFA9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
-		E1104B9822273A21001FFA9D /* DeckUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckUseCase.swift; sourceTree = "<group>"; };
-		E1104B9A22273A73001FFA9D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
-		E1104BA122273E61001FFA9D /* Domain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Domain.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/QCards-bgkzjbillpxtbbfzcxtdzpdvlmhf/Build/Products/Debug-iphonesimulator/Domain.framework"; sourceTree = "<group>"; };
 		E1104BA722274220001FFA9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		E1104BA9222742AF001FFA9D /* DeckUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckUseCase.swift; sourceTree = "<group>"; };
 		E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
@@ -136,21 +128,19 @@
 		E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+Ext.swift"; sourceTree = "<group>"; };
 		E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E1E3A5C321A75D370043B441 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		E1E518B2222DB7F000E4AED2 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1E518C1222DB87200E4AED2 /* Domain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
+		E1E518C2222DB87200E4AED2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1E518C5222DB9A900E4AED2 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		E1E518CB222DB9F000E4AED2 /* PostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E1104B5222272D92001FFA9D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E1104B6422272DA2001FFA9D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1104BA422274017001FFA9D /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1104BA5222740EA001FFA9D /* Domain.framework in Frameworks */,
+				E1E518B9222DB7F000E4AED2 /* Domain.framework in Frameworks */,
 				E1104B6E22272DA2001FFA9D /* Platform.framework in Frameworks */,
 				E1BFE4EC221CB0B1005FF6DB /* RxRealm.framework in Frameworks */,
 				E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */,
@@ -168,20 +158,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1E518AF222DB7F000E4AED2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E1104B5622272D92001FFA9D /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				E1104B8022273507001FFA9D /* Entries */,
-				E1104B8122273530001FFA9D /* Use Cases */,
-				E1104B5722272D92001FFA9D /* Domain.h */,
-				E1104B5822272D92001FFA9D /* Info.plist */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
 		E1104B6822272DA2001FFA9D /* Platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,23 +179,6 @@
 				E1104B6A22272DA2001FFA9D /* Info.plist */,
 			);
 			path = Platform;
-			sourceTree = "<group>";
-		};
-		E1104B8022273507001FFA9D /* Entries */ = {
-			isa = PBXGroup;
-			children = (
-				E1104B9A22273A73001FFA9D /* Deck.swift */,
-			);
-			path = Entries;
-			sourceTree = "<group>";
-		};
-		E1104B8122273530001FFA9D /* Use Cases */ = {
-			isa = PBXGroup;
-			children = (
-				E1104B96222739CD001FFA9D /* UseCaseProvider.swift */,
-				E1104B9822273A21001FFA9D /* DeckUseCase.swift */,
-			);
-			path = "Use Cases";
 			sourceTree = "<group>";
 		};
 		E1104B822227354E001FFA9D /* Entities */ = {
@@ -320,7 +289,6 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E1104BA122273E61001FFA9D /* Domain.framework */,
 				E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */,
 				E118207A21ADF2AA00F1959B /* RxCocoa.framework */,
 				E118207821ADF09A00F1959B /* RxSwift.framework */,
@@ -352,8 +320,8 @@
 		E15457DB21A4C619002ED341 = {
 			isa = PBXGroup;
 			children = (
+				E1E518C0222DB87200E4AED2 /* Domain */,
 				E15457E621A4C619002ED341 /* QCards */,
-				E1104B5622272D92001FFA9D /* Domain */,
 				E1104B6822272DA2001FFA9D /* Platform */,
 				E15457E521A4C619002ED341 /* Products */,
 				E122506821A60DF0005B2D12 /* Frameworks */,
@@ -364,8 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				E15457E421A4C619002ED341 /* QCards.app */,
-				E1104B5522272D92001FFA9D /* Domain.framework */,
 				E1104B6722272DA2001FFA9D /* Platform.framework */,
+				E1E518B2222DB7F000E4AED2 /* Domain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,17 +433,37 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		E1E518C0222DB87200E4AED2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E1E518C7222DB9C400E4AED2 /* Entries */,
+				E1E518C8222DB9CC00E4AED2 /* Use Cases */,
+				E1E518C1222DB87200E4AED2 /* Domain.h */,
+				E1E518C2222DB87200E4AED2 /* Info.plist */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E1E518C7222DB9C400E4AED2 /* Entries */ = {
+			isa = PBXGroup;
+			children = (
+				E1E518C5222DB9A900E4AED2 /* Deck.swift */,
+			);
+			path = Entries;
+			sourceTree = "<group>";
+		};
+		E1E518C8222DB9CC00E4AED2 /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */,
+				E1E518CB222DB9F000E4AED2 /* PostsUseCase.swift */,
+			);
+			path = "Use Cases";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		E1104B5022272D92001FFA9D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1104B5922272D92001FFA9D /* Domain.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E1104B9F22273C97001FFA9D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -484,27 +472,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1E518AD222DB7F000E4AED2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1E518C3222DB87200E4AED2 /* Domain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E1104B5422272D92001FFA9D /* Domain */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E1104B6022272D92001FFA9D /* Build configuration list for PBXNativeTarget "Domain" */;
-			buildPhases = (
-				E1104B5022272D92001FFA9D /* Headers */,
-				E1104B5122272D92001FFA9D /* Sources */,
-				E1104B5222272D92001FFA9D /* Frameworks */,
-				E1104B5322272D92001FFA9D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Domain;
-			productName = Domain;
-			productReference = E1104B5522272D92001FFA9D /* Domain.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		E1104B6622272DA2001FFA9D /* Platform */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1104B7022272DA2001FFA9D /* Build configuration list for PBXNativeTarget "Platform" */;
@@ -537,13 +515,31 @@
 			buildRules = (
 			);
 			dependencies = (
-				E1104B5B22272D92001FFA9D /* PBXTargetDependency */,
 				E1104B6D22272DA2001FFA9D /* PBXTargetDependency */,
+				E1E518B8222DB7F000E4AED2 /* PBXTargetDependency */,
 			);
 			name = QCards;
 			productName = QCards;
 			productReference = E15457E421A4C619002ED341 /* QCards.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E1E518B1222DB7F000E4AED2 /* Domain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1E518BB222DB7F000E4AED2 /* Build configuration list for PBXNativeTarget "Domain" */;
+			buildPhases = (
+				E1E518AD222DB7F000E4AED2 /* Headers */,
+				E1E518AE222DB7F000E4AED2 /* Sources */,
+				E1E518AF222DB7F000E4AED2 /* Frameworks */,
+				E1E518B0222DB7F000E4AED2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Domain;
+			productName = Domain;
+			productReference = E1E518B2222DB7F000E4AED2 /* Domain.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -555,16 +551,16 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Andreas Lüdemann";
 				TargetAttributes = {
-					E1104B5422272D92001FFA9D = {
-						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
-					};
 					E1104B6622272DA2001FFA9D = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
 					};
 					E15457E321A4C619002ED341 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					E1E518B1222DB7F000E4AED2 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -582,20 +578,13 @@
 			projectRoot = "";
 			targets = (
 				E15457E321A4C619002ED341 /* QCards */,
-				E1104B5422272D92001FFA9D /* Domain */,
 				E1104B6622272DA2001FFA9D /* Platform */,
+				E1E518B1222DB7F000E4AED2 /* Domain */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E1104B5322272D92001FFA9D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E1104B6522272DA2001FFA9D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -609,6 +598,13 @@
 			files = (
 				E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */,
 				E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1E518B0222DB7F000E4AED2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,16 +660,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E1104B5122272D92001FFA9D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1104B9B22273A73001FFA9D /* Deck.swift in Sources */,
-				E1104B9922273A21001FFA9D /* DeckUseCase.swift in Sources */,
-				E1104B97222739CD001FFA9D /* UseCaseProvider.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E1104B6322272DA2001FFA9D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -717,18 +703,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1E518AE222DB7F000E4AED2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1E518CC222DB9F000E4AED2 /* PostsUseCase.swift in Sources */,
+				E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */,
+				E1E518C6222DB9A900E4AED2 /* Deck.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E1104B5B22272D92001FFA9D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E1104B5422272D92001FFA9D /* Domain */;
-			targetProxy = E1104B5A22272D92001FFA9D /* PBXContainerItemProxy */;
-		};
 		E1104B6D22272DA2001FFA9D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E1104B6622272DA2001FFA9D /* Platform */;
 			targetProxy = E1104B6C22272DA2001FFA9D /* PBXContainerItemProxy */;
+		};
+		E1E518B8222DB7F000E4AED2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1E518B1222DB7F000E4AED2 /* Domain */;
+			targetProxy = E1E518B7222DB7F000E4AED2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -744,65 +740,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E1104B5E22272D92001FFA9D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XX77A4QKHR;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Domain/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = AL.Domain;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E1104B5F22272D92001FFA9D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XX77A4QKHR;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Domain/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = AL.Domain;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		E1104B7122272DA2001FFA9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1032,18 +969,70 @@
 			};
 			name = Release;
 		};
+		E1E518BC222DB7F000E4AED2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
+				INFOPLIST_FILE = Domain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = AL.Domain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E1E518BD222DB7F000E4AED2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
+				INFOPLIST_FILE = Domain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = AL.Domain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1104B6022272D92001FFA9D /* Build configuration list for PBXNativeTarget "Domain" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E1104B5E22272D92001FFA9D /* Debug */,
-				E1104B5F22272D92001FFA9D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E1104B7022272DA2001FFA9D /* Build configuration list for PBXNativeTarget "Platform" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1067,6 +1056,15 @@
 			buildConfigurations = (
 				E15457F721A4C61B002ED341 /* Debug */,
 				E15457F821A4C61B002ED341 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1E518BB222DB7F000E4AED2 /* Build configuration list for PBXNativeTarget "Domain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1E518BC222DB7F000E4AED2 /* Debug */,
+				E1E518BD222DB7F000E4AED2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
