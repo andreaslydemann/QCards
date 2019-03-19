@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 public protocol DecksUseCase {
-    func posts() -> Observable<[Deck]>
-    func save(post: Deck) -> Observable<Void>
-    func delete(post: Deck) -> Observable<Void>
+    func decks() -> Observable<[Deck]>
+    func save(deck: Deck) -> Observable<Void>
+    func delete(deck: Deck) -> Observable<Void>
 }
