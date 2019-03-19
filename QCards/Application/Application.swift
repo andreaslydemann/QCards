@@ -20,16 +20,13 @@ final class Application {
     }
     
     func configureMainInterface(in window: UIWindow) {
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = UINavigationController()
         
-        //let navigationController = UINavigationController()
+        let navigator = DefaultDecksNavigator(services: realmUseCaseProvider,
+                                              navigationController: navigationController)
         
-        //let navigator = DefaultPostsNavigator(services: realmUseCaseProvider,
-        //                                      navigationController: navigationController,
-        //                                      storyBoard: storyboard)
+        window.rootViewController = navigationController
         
-        //window.rootViewController = navigationController
-        
-        //navigator.toPosts()
+        //navigator.toDecks()
     }
 }
