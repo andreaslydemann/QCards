@@ -18,8 +18,8 @@ public final class UseCaseProvider {
         self.configuration = configuration
     }
     
-    public func makeDecksUseCase() -> Domain.PostsUseCase {
-        let repository = Repository<Domain.Deck>(configuration: configuration)
+    public func makeDecksUseCase() -> Domain.DecksUseCase {
+        let repository = Repository<Deck>(configuration: configuration)
         return PostsUseCase(repository: repository)
     }
 }

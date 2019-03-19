@@ -51,7 +51,7 @@
 		E1E518C3222DB87200E4AED2 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = E1E518C1222DB87200E4AED2 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1E518C6222DB9A900E4AED2 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C5222DB9A900E4AED2 /* Deck.swift */; };
 		E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */; };
-		E1E518CC222DB9F000E4AED2 /* PostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518CB222DB9F000E4AED2 /* PostsUseCase.swift */; };
+		E1E518CC222DB9F000E4AED2 /* DecksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +133,7 @@
 		E1E518C2222DB87200E4AED2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E518C5222DB9A900E4AED2 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
-		E1E518CB222DB9F000E4AED2 /* PostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUseCase.swift; sourceTree = "<group>"; };
+		E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,7 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */,
-				E1E518CB222DB9F000E4AED2 /* PostsUseCase.swift */,
+				E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -707,7 +707,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E518CC222DB9F000E4AED2 /* PostsUseCase.swift in Sources */,
+				E1E518CC222DB9F000E4AED2 /* DecksUseCase.swift in Sources */,
 				E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */,
 				E1E518C6222DB9A900E4AED2 /* Deck.swift in Sources */,
 			);
