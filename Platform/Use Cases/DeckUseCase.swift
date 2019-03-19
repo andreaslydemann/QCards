@@ -13,7 +13,7 @@ import RealmSwift
 import RxSwift
 
 
-final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
+final class DecksUseCase<Repository>: Domain.DecksUseCase where Repository: AbstractRepository, Repository.T == Deck {
     
     private let repository: Repository
     
@@ -21,15 +21,15 @@ final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: Abst
         self.repository = repository
     }
     
-    func posts() -> Observable<[Post]> {
+    func decks() -> Observable<[Deck]> {
         return repository.queryAll()
     }
     
-    func save(post: Post) -> Observable<Void> {
-        return repository.save(entity: post)
+    func save(deck: Deck) -> Observable<Void> {
+        return repository.save(entity: deck)
     }
     
-    func delete(post: Post) -> Observable<Void> {
-        return repository.delete(entity: post)
+    func delete(deck: Deck) -> Observable<Void> {
+        return repository.delete(entity: deck)
     }
 }
