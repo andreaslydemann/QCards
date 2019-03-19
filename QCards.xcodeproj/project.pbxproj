@@ -52,6 +52,7 @@
 		E1E518C6222DB9A900E4AED2 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C5222DB9A900E4AED2 /* Deck.swift */; };
 		E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */; };
 		E1E518CC222DB9F000E4AED2 /* DecksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */; };
+		E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		E1E518C5222DB9A900E4AED2 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksUseCase.swift; sourceTree = "<group>"; };
+		E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksNavigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 		E1104BB822274917001FFA9D /* AllDecks */ = {
 			isa = PBXGroup;
 			children = (
+				E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */,
 			);
 			path = AllDecks;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
 				E128675D2211648F00078748 /* DeckViewModel.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
+				E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */,
 				E1BFE4E6221CA577005FF6DB /* RealmBindObserver.swift in Sources */,
 				E1104BB6222748B0001FFA9D /* ViewModelType.swift in Sources */,
 				E14715F521AC91690083726D /* Deck.swift in Sources */,
