@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 extension ObservableType where E == Bool {
     /// Boolean not operator
     public func not() -> Observable<Bool> {
         return self.map(!)
     }
-    
 }
 
 extension SharedSequenceConvertibleType {
@@ -24,8 +23,7 @@ extension SharedSequenceConvertibleType {
     }
 }
 
-extension ObservableType {
-    
+extension ObservableType {    
     func catchErrorJustComplete() -> Observable<E> {
         return catchError { _ in
             return Observable.empty()

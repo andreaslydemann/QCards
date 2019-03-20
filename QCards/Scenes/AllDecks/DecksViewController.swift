@@ -40,7 +40,7 @@ class DecksViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#34495e")
         navigationController?.navigationBar.barStyle = .black
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = createDeckButton
         navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.title = "QCards"
     }
@@ -56,7 +56,11 @@ class DecksViewController: UITableViewController {
                     title: "Create deck", message: "Input a title for the deck"),
                          style: .alert, buttons: [.default("Add"), .cancel("Cancel")],
                          textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
-            }.map { $0.1[0] }        
+            }.map { $0.1[0] }
+        
+        let input = DecksViewModel.Input(trigger: viewWillAppear,
+                                         createPostTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
+                                         selection: tableView.rx.itemSelected.asDriver())
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
