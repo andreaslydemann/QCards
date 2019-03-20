@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Application.shared.configureMainInterface(in: window)
         
         self.window = window
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
