@@ -53,6 +53,9 @@
 		E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */; };
 		E1E518CC222DB9F000E4AED2 /* DecksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */; };
 		E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */; };
+		E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */; };
+		E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA592242E0FE00D17BE3 /* DecksViewController.swift */; };
+		E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +139,9 @@
 		E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksUseCase.swift; sourceTree = "<group>"; };
 		E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksNavigator.swift; sourceTree = "<group>"; };
+		E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewModel.swift; sourceTree = "<group>"; };
+		E1FEDA592242E0FE00D17BE3 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
+		E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +280,8 @@
 			isa = PBXGroup;
 			children = (
 				E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */,
+				E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */,
+				E1FEDA592242E0FE00D17BE3 /* DecksViewController.swift */,
 			);
 			path = AllDecks;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				E13C88BC22107D19009EDD13 /* UIView+Ext.swift */,
 				E1DFF2D22210D15200BBB85F /* BehaviorRelay+Ext.swift */,
 				E154F9762215697C00A7081B /* UIAlertController+Ext.swift */,
+				E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -687,10 +696,13 @@
 			files = (
 				E142F73322149D4E0096DCB4 /* Database.swift in Sources */,
 				E14715F821AC95060083726D /* DeckTableViewCell.swift in Sources */,
+				E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */,
 				E1104BA822274220001FFA9D /* Application.swift in Sources */,
 				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
+				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
 				E128675D2211648F00078748 /* DeckViewModel.swift in Sources */,
+				E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
 				E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */,
 				E1BFE4E6221CA577005FF6DB /* RealmBindObserver.swift in Sources */,

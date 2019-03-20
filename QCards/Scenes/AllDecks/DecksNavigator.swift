@@ -24,6 +24,7 @@ class DefaultDecksNavigator: DecksNavigator {
     }
     
     func toDecks() {
+        let vc = DecksViewController()
         //let vc = storyBoard.instantiateViewController(ofType: DecksViewController.self)
         vc.viewModel = DecksViewModel(useCase: services.makeDecksUseCase(),
                                       navigator: self)
