@@ -15,7 +15,6 @@ class DecksViewController: UITableViewController {
     
     private let disposeBag = DisposeBag()
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-    private let deckCellId = "deckCellId"
     
     var viewModel: DecksViewModel!
     
@@ -28,7 +27,7 @@ class DecksViewController: UITableViewController {
     }
     
     private func setupTableView() {
-        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: deckCellId)
+        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
         tableView.rowHeight = 80
         view.backgroundColor = .white
     }

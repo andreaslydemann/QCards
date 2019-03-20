@@ -58,6 +58,7 @@
 		E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */; };
 		E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */; };
 		E1FEDA602242E90400D17BE3 /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5F2242E90400D17BE3 /* DeckTableViewCell.swift */; };
+		E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA612242EBAF00D17BE3 /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckItemViewModel.swift; sourceTree = "<group>"; };
 		E1FEDA5F2242E90400D17BE3 /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
+		E1FEDA612242EBAF00D17BE3 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +412,7 @@
 			children = (
 				E13C88BA22107D19009EDD13 /* Extensions */,
 				E1BFE4E2221CA520005FF6DB /* RxRealmDataSources */,
+				E1FEDA612242EBAF00D17BE3 /* Reusable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				E14715F821AC95060083726D /* DecksTableViewCell.swift in Sources */,
 				E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */,
 				E1104BA822274220001FFA9D /* Application.swift in Sources */,
+				E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */,
 				E15457EA21A4C619002ED341 /* DeckViewController.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
 				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
