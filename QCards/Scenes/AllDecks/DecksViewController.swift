@@ -62,7 +62,7 @@ class DecksViewController: UITableViewController {
                                          selection: tableView.rx.itemSelected.asDriver())
         let output = viewModel.transform(input: input)
         
-        output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { tv, viewModel, cell in
+        output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { _, viewModel, cell in
             cell.bind(viewModel)
             }.disposed(by: disposeBag)
         

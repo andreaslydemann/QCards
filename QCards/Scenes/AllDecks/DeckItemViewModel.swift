@@ -9,7 +9,7 @@
 import Domain
 import Foundation
 
-final class DeckItemViewModel   {
+final class DeckItemViewModel {
     let title: String
     let deck: Domain.Deck
     init (with deck: Domain.Deck) {

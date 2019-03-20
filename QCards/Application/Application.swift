@@ -27,6 +27,6 @@ final class Application {
         
         window.rootViewController = navigationController
         
-        //navigator.toDecks()
+        navigator.toDecks()
     }
 }

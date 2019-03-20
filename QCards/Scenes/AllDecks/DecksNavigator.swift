@@ -6,8 +6,8 @@
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
-import UIKit
 import Domain
+import UIKit
 
 protocol DecksNavigator {
     func toDecks()
@@ -25,7 +25,6 @@ class DefaultDecksNavigator: DecksNavigator {
     
     func toDecks() {
         let vc = DecksViewController()
-        //let vc = storyBoard.instantiateViewController(ofType: DecksViewController.self)
         vc.viewModel = DecksViewModel(useCase: services.makeDecksUseCase(),
                                       navigator: self)
         navigationController.pushViewController(vc, animated: true)

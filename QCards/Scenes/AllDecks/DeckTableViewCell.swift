@@ -26,7 +26,7 @@ final class DeckTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func bind(_ viewModel:DeckItemViewModel) {
+    func bind(_ viewModel: DeckItemViewModel) {
         self.titleLabel.text = viewModel.title
     }
 }
