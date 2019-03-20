@@ -8,8 +8,8 @@
 
 import Foundation
 import Domain
-import RxSwift
 import RxCocoa
+import RxSwift
 
 final class DecksViewModel: ViewModelType {
     
@@ -20,11 +20,8 @@ final class DecksViewModel: ViewModelType {
     }
     
     struct Output {
-        let fetching: Driver<Bool>
         let decks: Driver<[DeckItemViewModel]>
         let createDeck: Driver<Void>
-        let selectedDeck: Driver<Deck>
-        let error: Driver<Error>
     }
     
     private let useCase: DecksUseCase
@@ -37,7 +34,7 @@ final class DecksViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let decks = input.trigger.flatMapLatest {
-            return self.useCase.posts()
+            return self.useCase.decks()
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { DeckItemViewModel(with: $0) } }
         }

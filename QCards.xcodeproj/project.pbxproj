@@ -56,6 +56,7 @@
 		E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */; };
 		E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA592242E0FE00D17BE3 /* DecksViewController.swift */; };
 		E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */; };
+		E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewModel.swift; sourceTree = "<group>"; };
 		E1FEDA592242E0FE00D17BE3 /* DecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewController.swift; sourceTree = "<group>"; };
 		E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
+		E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 				E1FEDA5522419A1100D17BE3 /* DecksNavigator.swift */,
 				E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */,
 				E1FEDA592242E0FE00D17BE3 /* DecksViewController.swift */,
+				E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */,
 			);
 			path = AllDecks;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				E14715F521AC91690083726D /* Deck.swift in Sources */,
 				E1DFF2CC2210947600BBB85F /* DeckProvider.swift in Sources */,
 				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
+				E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */,
 				E1DFF2CF221094A200BBB85F /* DeckEntity.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 				E1BFE4E4221CA54E005FF6DB /* Reactive+RxRealmDataSources.swift in Sources */,

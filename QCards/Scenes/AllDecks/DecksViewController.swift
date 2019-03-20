@@ -59,7 +59,7 @@ class DecksViewController: UITableViewController {
             }.map { $0.1[0] }
         
         let input = DecksViewModel.Input(trigger: viewWillAppear,
-                                         createPostTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
+                                         createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
                                          selection: tableView.rx.itemSelected.asDriver())
     }
     
