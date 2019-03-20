@@ -61,6 +61,15 @@ class DecksViewController: UITableViewController {
         let input = DecksViewModel.Input(trigger: viewWillAppear,
                                          createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
                                          selection: tableView.rx.itemSelected.asDriver())
+        let output = viewModel.transform(input: input)
+        
+        output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { tv, viewModel, cell in
+            cell.bind(viewModel)
+            }.disposed(by: disposeBag)
+        
+        output.createDeck
+            .drive()
+            .disposed(by: disposeBag)
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

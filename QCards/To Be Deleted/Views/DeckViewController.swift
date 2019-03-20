@@ -29,7 +29,7 @@ class DeckViewController: UITableViewController {
     }
     
     private func populateTableView() {
-        let dataSource = RxTableViewRealmDataSource<DeckEntity>(cellIdentifier: deckCellId, cellType: DeckTableViewCell.self) { cell, _, deck in
+        let dataSource = RxTableViewRealmDataSource<DeckEntity>(cellIdentifier: deckCellId, cellType: DecksTableViewCell.self) { cell, _, deck in
             cell.configure(withItem: deck)
         }
         
@@ -40,7 +40,7 @@ class DeckViewController: UITableViewController {
     }
     
     private func setupTableView() {
-        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: deckCellId)
+        tableView.register(DecksTableViewCell.self, forCellReuseIdentifier: deckCellId)
         tableView.rowHeight = 80
         view.backgroundColor = .white
     }
