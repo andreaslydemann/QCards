@@ -16,14 +16,17 @@ final class DecksViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
         let createDeckTrigger: Driver<String>
+        let deleteDeckTrigger: Driver<Void>
         let selection: Driver<IndexPath>
     }
     
     struct Output {
         let decks: Driver<[DeckItemViewModel]>
         let createDeck: Driver<Void>
+        let deleteDeck: Driver<Void>
     }
     
+    //private let deck: Deck
     private let useCase: DecksUseCase
     private let navigator: DecksNavigator
     
@@ -48,7 +51,15 @@ final class DecksViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
         }
         
+        /*let deleteDeck = input.deleteTrigger.withLatestFrom(deck)
+            .flatMapLatest { deck in
+                return self.useCase.delete(deck: deck)
+                    .asDriverOnErrorJustComplete()
+            }*/
+        
         return Output(decks: decks,
-                      createDeck: createDeck)
+                      createDeck: createDeck,
+                      deleteDeck: input.deleteDeckTrigger)
+        // deleteDeck: deleteDeck
     }
 }
