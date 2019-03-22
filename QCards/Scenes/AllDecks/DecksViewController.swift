@@ -15,7 +15,7 @@ class DecksViewController: UITableViewController {
     
     private let disposeBag = DisposeBag()
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-    
+    private let store = PublishSubject<(Int, Int)>()
     var viewModel: DecksViewModel!
     
     override func viewDidLoad() {
@@ -57,16 +57,19 @@ class DecksViewController: UITableViewController {
                          textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
             }.map { $0.1[0] }
         
-        let deleteDeckTrigger = createDeckButton.rx.tap.flatMap {
-            return Observable<Void>.create { observer in
+        let deleteDeckTrigger = store
+            .filter { $0.0 == 0 }
+            .map { $0.1 }
+            .flatMap { row in
+            return Observable<Int>.create { observer in
                 
                 let alert = UIAlertController(title: "Delete Deck",
                                               message: "Are you sure you want to delete this deck?",
                                               preferredStyle: .alert
                 )
                 
-                let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> Void in observer.onNext(()) })
-                let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> Void in observer.onNext(()) })
+                let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> Void in observer.onNext((row)) })
+                let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> Void in observer.onNext((-1)) })
                 alert.addAction(yesAction)
                 alert.addAction(noAction)
                 
@@ -91,27 +94,19 @@ class DecksViewController: UITableViewController {
             .disposed(by: disposeBag)
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let editAction = UIContextualAction(style: .normal, title: "Edit", handler: { _, _, completion in
-            //self.displayAlertToAddDeck(indexPath.row)
-            completion(true)
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let edit = UITableViewRowAction(style: .default, title: "Edit", handler: { [unowned self] _, indexPath in
+            self.store.onNext((1, indexPath.row))
         })
         
-        //editAction.image = #imageLiteral(resourceName: "edit")
-        editAction.backgroundColor = .purple
+        edit.backgroundColor = .red
         
-        let deleteAction = UIContextualAction(style: .normal, title: "Delete", handler: { _, _, completion in
-            //self.displayAlertToDeleteDeck(withIndex: indexPath.row)
-            
-            //self.viewModel.selectedDeck.onNext(indexPath)
-            
-            //self.categoryListViewModel.removeCategory(withIndex: indexPath.row)
-            completion(true)
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] _, indexPath in
+            self.store.onNext((0, indexPath.row))
         })
         
-        //deleteAction.image = #imageLiteral(resourceName: "trash")
-        deleteAction.backgroundColor = .red
+        delete.backgroundColor = .blue
         
-        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return [delete, edit]
     }
 }
