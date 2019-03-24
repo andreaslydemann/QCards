@@ -49,20 +49,14 @@ final class DecksViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
         }
         
-        /*let deleteDeck = input.deleteDeckTrigger
-            .filter { $0 != -1 }
-            .withLatestFrom(decks)
-            .flatMapLatest { decks, row in
-                return self.useCase.delete(deck: decks[row])
-                    .asDriverOnErrorJustComplete()
-        }*/
-            
         let deleteDeck = input.deleteDeckTrigger
-            .filter { $0 != -1 }
-            .do(onNext: { _ in
-                print("hello")
-            })
-            .mapToVoid()
+            .withLatestFrom(decks) { row, decks in
+                return decks[row].deck
+            }
+            .flatMapLatest { deck in
+                return self.useCase.delete(deck: deck)
+                    .asDriverOnErrorJustComplete()
+        }
         
         return Output(decks: decks,
                       createDeck: createDeck,

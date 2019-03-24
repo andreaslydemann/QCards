@@ -60,26 +60,19 @@ class DecksViewController: UITableViewController {
                     title: "Create deck", message: "Input a title for the deck"),
                          style: .alert, buttons: [.default("Add"), .cancel("Cancel")],
                          textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
-            }.map { $0.1[0] }
+            }
+            .filter { $0.0 == 0 }
+            .map { $0.1[0] }
         
         let deleteDeckTrigger = store
             .filter { $0.0 == RowAction.delete }.flatMap { _, row in
-                return Observable<Int>.create { observer in
-                    let alert = UIAlertController(title: "Delete Deck",
-                                                  message: "Do you want to delete this deck?",
-                                                  preferredStyle: .alert)
-                    
-                    let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> Void in observer.onNext((row)) })
-                    let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> Void in observer.onNext((-1)) })
-                    alert.addAction(yesAction)
-                    alert.addAction(noAction)
-                    
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    return Disposables.create()
-                }
-        }
-        
+                return UIAlertController
+                    .confirm(in: self, text: UIAlertController.AlertText(
+                        title: "Delete deck", message: "Do you want to delete this deck?"), rowIndex: row)
+            }
+            .filter { $0.0 == 1 && $0.1 != -1 }
+            .map { $0.1 }
+
         let input = DecksViewModel.Input(trigger: viewWillAppear,
                                          createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
                                          deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())

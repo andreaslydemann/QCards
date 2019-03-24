@@ -25,6 +25,28 @@ extension UIAlertController {
         let message: String?
     }
     
+    static func confirm(
+        in viewController: UIViewController,
+        text: AlertText?,
+        rowIndex: Int?
+        ) -> Observable<(Int, Int)> {
+        return Observable<(Int, Int)>.create { observer in
+            let alert = UIAlertController(title: text?.title,
+                                          message: text?.message,
+                                          preferredStyle: .alert)
+            
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> Void in observer.onNext((1, rowIndex ?? 0)) })
+            let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> Void in observer.onNext((0, -1)) })
+        
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+            
+            viewController.present(alert, animated: true, completion: nil)
+            
+            return Disposables.create()
+        }
+    }
+    
     static func present(
         in viewController: UIViewController,
         text: AlertText?,
