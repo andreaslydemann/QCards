@@ -64,13 +64,32 @@ class DecksViewController: UITableViewController {
             .filter { $0.0 == 0 }
             .map { $0.1[0] }
         
+        
+        let editDeckTrigger = store
+            .filter { $0.0 == RowAction.edit }.flatMap { _, row in
+                return UIAlertController
+                    .present(in: self, text: UIAlertController.AlertText(
+                        title: "Edit deck", message: "Update the name of the deck"),
+                             style: .alert, buttons: [.default("Update"), .cancel("Cancel")],
+                             textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
+            }
+            .filter { $0.0 == 0 }
+            .map { $0.1[0] }
+        
         let deleteDeckTrigger = store
             .filter { $0.0 == RowAction.delete }.flatMap { _, row in
                 return UIAlertController
-                    .confirm(in: self, text: UIAlertController.AlertText(
-                        title: "Delete deck", message: "Do you want to delete this deck?"), rowIndex: row)
+                    .present(in: self, text: UIAlertController.AlertText(
+                        title: "Do you want to delete this deck?",
+                        message: "You can't undo this action"),
+                             style: .alert,
+                             buttons: [.default("Yes"), .cancel("No")],
+                             textFields: [])
+                    .withLatestFrom(Observable.just(row)) { alertData, row in
+                        return (alertData.0, row)
+                }
             }
-            .filter { $0.0 == 1 && $0.1 != -1 }
+            .filter { $0.0 == 0 }
             .map { $0.1 }
 
         let input = DecksViewModel.Input(trigger: viewWillAppear,
