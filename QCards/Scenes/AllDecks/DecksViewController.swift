@@ -61,9 +61,8 @@ class DecksViewController: UITableViewController {
                          style: .alert, buttons: [.default("Add"), .cancel("Cancel")],
                          textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
             }
-            .filter { $0.0 == 0 }
+            .filter { $0.buttonIndex == 0 }
             .map { $0.1[0] }
-        
         
         let editDeckTrigger = store
             .filter { $0.0 == RowAction.edit }.flatMap { _, row in
@@ -72,9 +71,10 @@ class DecksViewController: UITableViewController {
                         title: "Edit deck", message: "Update the name of the deck"),
                              style: .alert, buttons: [.default("Update"), .cancel("Cancel")],
                              textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
+                    .withLatestFrom(Observable.just(row)) { ($0, $1) }
             }
-            .filter { $0.0 == 0 }
-            .map { $0.1[0] }
+            .filter { $0.0.buttonIndex == 0 }
+            .map { return (title: $0.0.texts[0], row: $0.1) }
         
         let deleteDeckTrigger = store
             .filter { $0.0 == RowAction.delete }.flatMap { _, row in
@@ -94,20 +94,16 @@ class DecksViewController: UITableViewController {
 
         let input = DecksViewModel.Input(trigger: viewWillAppear,
                                          createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
+                                         editDeckTrigger: editDeckTrigger.asDriverOnErrorJustComplete(),
                                          deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())
         let output = viewModel.transform(input: input)
         
         output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { _, viewModel, cell in
             cell.bind(viewModel)
             }.disposed(by: disposeBag)
-        
-        output.createDeck
-            .drive()
-            .disposed(by: disposeBag)
-        
-        output.deleteDeck
-            .drive()
-            .disposed(by: disposeBag)
+        output.createDeck.drive().disposed(by: disposeBag)
+        output.editDeck.drive().disposed(by: disposeBag)
+        output.deleteDeck.drive().disposed(by: disposeBag)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

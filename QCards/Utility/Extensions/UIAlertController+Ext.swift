@@ -25,47 +25,26 @@ extension UIAlertController {
         let message: String?
     }
     
-    static func confirm(
-        in viewController: UIViewController,
-        text: AlertText?,
-        rowIndex: Int?
-        ) -> Observable<(Int, Int)> {
-        return Observable<(Int, Int)>.create { observer in
-            let alert = UIAlertController(title: text?.title,
-                                          message: text?.message,
-                                          preferredStyle: .alert)
-            
-            let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> Void in observer.onNext((1, rowIndex ?? 0)) })
-            let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> Void in observer.onNext((0, -1)) })
-        
-            alert.addAction(yesAction)
-            alert.addAction(noAction)
-            
-            viewController.present(alert, animated: true, completion: nil)
-            
-            return Disposables.create()
-        }
-    }
-    
     static func present(
         in viewController: UIViewController,
         text: AlertText?,
         style: Style,
         buttons: [AlertButton],
         textFields: [TextFieldConfiguration?])
-        -> Observable<(Int, [String])> {
+        -> Observable<(buttonIndex: Int, texts: [String])> {
         return Observable.create { observer in
             let alertController = UIAlertController(title: text?.title, message: text?.message, preferredStyle: style)
             
-            buttons.enumerated().forEach { index, action in
+            buttons.enumerated().forEach { buttonIndex, action in
                 let handler = { [unowned alertController] (action: UIAlertAction) -> Void in
                     let texts: [String] = alertController.textFields?.map { $0.text ?? "" } ?? []
-                    observer.onNext((index, texts))
+                    
+                    observer.onNext((buttonIndex, texts))
                     observer.onCompleted()
                 }
                 
                 let action: UIAlertAction
-                switch buttons[index] {
+                switch buttons[buttonIndex] {
                 case .default(let title):
                     action = UIAlertAction(title: title, style: .default, handler: handler)
                 case .cancel(let title):

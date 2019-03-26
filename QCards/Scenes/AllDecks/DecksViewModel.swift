@@ -16,12 +16,14 @@ final class DecksViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
         let createDeckTrigger: Driver<String>
+        let editDeckTrigger: Driver<(title: String, row: Int)>
         let deleteDeckTrigger: Driver<Int>
     }
     
     struct Output {
         let decks: Driver<[DeckItemViewModel]>
         let createDeck: Driver<Void>
+        let editDeck: Driver<Void>
         let deleteDeck: Driver<Void>
     }
     
@@ -49,6 +51,20 @@ final class DecksViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
         }
         
+        
+        let editDeck = input.editDeckTrigger
+            .withLatestFrom(decks) { arg, decks -> (Domain.Deck, String) in
+                let (title, row) = arg
+                return (decks[row].deck, title)
+            }
+            .map { arg -> Domain.Deck in
+                let (deck, title) = arg
+                return Domain.Deck(title: title, uid: deck.uid, createdAt: deck.createdAt)
+            }.flatMapLatest { [unowned self] in
+                return self.useCase.save(deck: $0)
+                    .asDriverOnErrorJustComplete()
+        }
+        
         let deleteDeck = input.deleteDeckTrigger
             .withLatestFrom(decks) { row, decks in
                 return decks[row].deck
@@ -60,6 +76,7 @@ final class DecksViewModel: ViewModelType {
         
         return Output(decks: decks,
                       createDeck: createDeck,
+                      editDeck: editDeck,
                       deleteDeck: deleteDeck)
     }
 }
