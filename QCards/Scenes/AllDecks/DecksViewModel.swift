@@ -36,10 +36,10 @@ final class DecksViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let decks = input.trigger.flatMapLatest {
+        let decks = input.trigger.flatMapLatest { _ in
             return self.useCase.decks()
                 .asDriverOnErrorJustComplete()
-                .map { $0.map { DeckItemViewModel(with: $0) } }
+                .map { $0.map { deck in DeckItemViewModel(with: deck) }.sorted(by: {$0.deck.createdAt > $1.deck.createdAt}) }
         }
         
         let createDeck = input.createDeckTrigger
@@ -50,7 +50,6 @@ final class DecksViewModel: ViewModelType {
                 return self.useCase.save(deck: $0)
                     .asDriverOnErrorJustComplete()
         }
-        
         
         let editDeck = input.editDeckTrigger
             .withLatestFrom(decks) { arg, decks -> (Domain.Deck, String) in

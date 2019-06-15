@@ -98,7 +98,8 @@ class DecksViewController: UITableViewController {
                                          deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())
         let output = viewModel.transform(input: input)
         
-        [output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { _, viewModel, cell in cell.bind(viewModel) },
+        [output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self))
+        { _, viewModel, cell in cell.bind(viewModel) },
          output.createDeck.drive(),
          output.editDeck.drive(),
          output.deleteDeck.drive()]
