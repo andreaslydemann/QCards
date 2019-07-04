@@ -42,7 +42,7 @@ class DecksViewController: UITableViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#34495e")
+        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = createDeckButton
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -116,13 +116,13 @@ class DecksViewController: UITableViewController {
             self.store.onNext((RowAction.edit, indexPath.row))
         })
         
-        edit.backgroundColor = .red
+        edit.backgroundColor = UIColor.UIColorFromHex(hex: "#002B39")
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] _, indexPath in
             self.store.onNext((RowAction.delete, indexPath.row))
         })
         
-        delete.backgroundColor = .blue
+        delete.backgroundColor = UIColor.UIColorFromHex(hex: "#BD2F3A")
         
         return [delete, edit]
     }
