@@ -91,19 +91,24 @@ class DecksViewController: UITableViewController {
             }
             .filter { $0.0 == 0 }
             .map { $0.1 }
-
+        
         let input = DecksViewModel.Input(trigger: viewWillAppear,
                                          createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
                                          editDeckTrigger: editDeckTrigger.asDriverOnErrorJustComplete(),
                                          deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())
         let output = viewModel.transform(input: input)
         
-        [output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self))
-        { _, viewModel, cell in cell.bind(viewModel) },
+        [output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { _, viewModel, cell in
+            cell.bind(viewModel)
+            },
          output.createDeck.drive(),
          output.editDeck.drive(),
          output.deleteDeck.drive()]
             .forEach({$0.disposed(by: disposeBag)})
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.accessoryType = .disclosureIndicator
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
