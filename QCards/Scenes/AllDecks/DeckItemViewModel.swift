@@ -11,9 +11,11 @@ import Foundation
 
 final class DeckItemViewModel {
     let title: String
+    let createdAt: String
     let deck: Domain.Deck
     init (with deck: Domain.Deck) {
         self.deck = deck
-        self.title = deck.title.uppercased()
+        self.title = deck.title
+        self.createdAt = deck.createdAt
     }
 }

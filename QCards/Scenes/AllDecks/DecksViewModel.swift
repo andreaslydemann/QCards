@@ -39,7 +39,7 @@ final class DecksViewModel: ViewModelType {
         let decks = input.trigger.flatMapLatest { _ in
             return self.useCase.decks()
                 .asDriverOnErrorJustComplete()
-                .map { $0.map { deck in DeckItemViewModel(with: deck) }.sorted(by: {$0.deck.createdAt > $1.deck.createdAt}) }
+                .map { $0.map { deck in DeckItemViewModel(with: deck) }.sorted(by: {$0.createdAt > $1.createdAt}) }
         }
         
         let createDeck = input.createDeckTrigger

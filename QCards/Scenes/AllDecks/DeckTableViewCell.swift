@@ -15,11 +15,24 @@ final class DeckTableViewCell: UITableViewCell {
         return label
     }()
     
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubview(titleLabel)
-        titleLabel.centerInSuperview()
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, dateLabel])
+        
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        
+        addSubview(stackView)
+        
+        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
+                         padding: .init(top: 12, left: 12, bottom: 12, right: 0), size: .init(width: 0, height: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,5 +41,14 @@ final class DeckTableViewCell: UITableViewCell {
     
     func bind(_ viewModel: DeckItemViewModel) {
         self.titleLabel.text = viewModel.title
+        
+        if let date = Double(viewModel.createdAt) {
+            let dateObj = Date(timeIntervalSince1970: TimeInterval(date / 1000))
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            
+            self.dateLabel.text = dateFormatter.string(from: dateObj)
+        }
     }
 }
