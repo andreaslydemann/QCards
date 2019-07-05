@@ -17,7 +17,7 @@ final class DeckTableViewCell: UITableViewCell {
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
@@ -27,12 +27,12 @@ final class DeckTableViewCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, dateLabel])
         
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalCentering
         
         addSubview(stackView)
         
         stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
-                         padding: .init(top: 12, left: 12, bottom: 12, right: 0), size: .init(width: 0, height: 0))
+                         padding: .init(top: 15, left: 15, bottom: 12, right: 0), size: .init(width: 0, height: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {

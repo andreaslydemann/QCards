@@ -33,7 +33,7 @@ class DecksViewController: UITableViewController {
     
     private func setupTableView() {
         tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
-        tableView.rowHeight = 80
+        tableView.rowHeight = 65
         view.backgroundColor = .white
     }
     
