@@ -1,6 +1,6 @@
 # QCards
 
-An iOS app for creating smarter cue cards fast and easy. Use it for your next presentation to help you stay within topic and time.
+An iOS app for creating smarter cue cards. Use it for your next presentation to help you stay within topic and time.
 
 ---
 
