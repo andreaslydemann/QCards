@@ -55,6 +55,8 @@ class DecksViewController: UITableViewController {
             .mapToVoid()
             .asDriverOnErrorJustComplete()
         
+        let selection = tableView.rx.itemSelected
+        
         let createDeckTrigger = createDeckButton.rx.tap.flatMap {
             return UIAlertController
                 .present(in: self, text: UIAlertController.AlertText(
@@ -94,6 +96,7 @@ class DecksViewController: UITableViewController {
             .map { $0.1 }
         
         let input = DecksViewModel.Input(trigger: viewWillAppear,
+                                         selection: selection.asDriverOnErrorJustComplete(),
                                          createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
                                          editDeckTrigger: editDeckTrigger.asDriverOnErrorJustComplete(),
                                          deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())
@@ -102,6 +105,7 @@ class DecksViewController: UITableViewController {
         [output.decks
             .map { [DeckSection(items: $0)] }
             .drive(tableView!.rx.items(dataSource: createDataSource())),
+         output.selectedDeck.drive(),
          output.createDeck.drive(),
          output.editDeck.drive(),
          output.deleteDeck.drive()]

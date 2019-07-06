@@ -15,6 +15,7 @@ final class DecksViewModel: ViewModelType {
     
     struct Input {
         let trigger: Driver<Void>
+        let selection: Driver<IndexPath>
         let createDeckTrigger: Driver<String>
         let editDeckTrigger: Driver<(title: String, row: Int)>
         let deleteDeckTrigger: Driver<Int>
@@ -22,6 +23,7 @@ final class DecksViewModel: ViewModelType {
     
     struct Output {
         let decks: Driver<[DeckItemViewModel]>
+        let selectedDeck: Driver<Deck>
         let createDeck: Driver<Void>
         let editDeck: Driver<Void>
         let deleteDeck: Driver<Void>
@@ -41,6 +43,12 @@ final class DecksViewModel: ViewModelType {
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { deck in DeckItemViewModel(with: deck) }.sorted(by: {$0.createdAt > $1.createdAt}) }
         }
+        
+        let selectedDeck = input.selection
+            .withLatestFrom(decks) { (indexPath, decks) -> Deck in
+                return decks[indexPath.row].deck
+            }
+            .do(onNext: navigator.toDeck)
         
         let createDeck = input.createDeckTrigger
             .map { (title) in
@@ -74,6 +82,7 @@ final class DecksViewModel: ViewModelType {
         }
         
         return Output(decks: decks,
+                      selectedDeck: selectedDeck,
                       createDeck: createDeck,
                       editDeck: editDeck,
                       deleteDeck: deleteDeck)

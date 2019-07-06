@@ -11,6 +11,7 @@ import UIKit
 
 protocol DecksNavigator {
     func toDecks()
+    func toDeck(_ decj: Deck)
 }
 
 class DefaultDecksNavigator: DecksNavigator {
@@ -27,6 +28,13 @@ class DefaultDecksNavigator: DecksNavigator {
         let vc = DecksViewController()
         vc.viewModel = DecksViewModel(useCase: services.makeDecksUseCase(),
                                       navigator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func toDeck(_ deck: Deck) {
+        let navigator = DefaultCardsNavigator(navigationController: navigationController)
+        let vc = CardsViewController()
+        vc.viewModel = CardsViewModel(deck: deck, useCase: services.makeDecksUseCase(), navigator: navigator)
         navigationController.pushViewController(vc, animated: true)
     }
 }
