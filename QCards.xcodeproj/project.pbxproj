@@ -32,6 +32,8 @@
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
 		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
 		E1BFE4EC221CB0B1005FF6DB /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */; };
+		E1C6C78822CFB61000AE2484 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C6C78722CFB61000AE2484 /* Differentiator.framework */; };
+		E1DB59F622CF8499000387A6 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DB59F522CF8499000387A6 /* RxDataSources.framework */; };
 		E1E3A5C221A75C7D0043B441 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */; };
 		E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E3A5C321A75D370043B441 /* Realm.framework */; };
 		E1E518B9222DB7F000E4AED2 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E518B2222DB7F000E4AED2 /* Domain.framework */; };
@@ -109,6 +111,8 @@
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
 		E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
+		E1C6C78722CFB61000AE2484 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
+		E1DB59F522CF8499000387A6 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		E1E3A5C321A75D370043B441 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E1E518B2222DB7F000E4AED2 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +149,8 @@
 				E1E3A5C421A75D370043B441 /* Realm.framework in Frameworks */,
 				E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */,
 				E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */,
+				E1DB59F622CF8499000387A6 /* RxDataSources.framework in Frameworks */,
+				E1C6C78822CFB61000AE2484 /* Differentiator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +279,8 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1C6C78722CFB61000AE2484 /* Differentiator.framework */,
+				E1DB59F522CF8499000387A6 /* RxDataSources.framework */,
 				E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */,
 				E118207A21ADF2AA00F1959B /* RxCocoa.framework */,
 				E118207821ADF09A00F1959B /* RxSwift.framework */,
@@ -470,7 +478,7 @@
 					};
 					E15457E321A4C619002ED341 = {
 						CreatedOnToolsVersion = 10.1;
-                        LastSwiftMigration = 1020;
+						LastSwiftMigration = 1020;
 					};
 					E1E518B1222DB7F000E4AED2 = {
 						CreatedOnToolsVersion = 10.1;
@@ -556,6 +564,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
@@ -566,6 +576,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRealm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differentiator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -12,7 +12,6 @@ import Realm
 import RealmSwift
 import RxSwift
 
-
 final class DecksUseCase<Repository>: Domain.DecksUseCase where Repository: AbstractRepository, Repository.T == Deck {
     
     private let repository: Repository

@@ -8,6 +8,7 @@
 
 import Domain
 import RxCocoa
+import RxDataSources
 import RxSwift
 import UIKit
 
@@ -98,21 +99,26 @@ class DecksViewController: UITableViewController {
                                          deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())
         let output = viewModel.transform(input: input)
         
-        [output.decks.drive(tableView.rx.items(cellIdentifier: DeckTableViewCell.reuseID, cellType: DeckTableViewCell.self)) { _, viewModel, cell in
-            cell.bind(viewModel)
-            },
+        [output.decks
+            .map { [DeckSection(items: $0)] }
+            .drive(tableView!.rx.items(dataSource: createDataSource())),
          output.createDeck.drive(),
          output.editDeck.drive(),
          output.deleteDeck.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.accessoryType = .disclosureIndicator
-        cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        UIView.animate(withDuration: 0.4) {
-            cell.transform = CGAffineTransform.identity
-        }
+    private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
+        return RxTableViewSectionedAnimatedDataSource(
+            animationConfiguration: AnimationConfiguration(insertAnimation: .automatic, reloadAnimation: .automatic, deleteAnimation: .left),
+            configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
+                let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
+                cell.accessoryType = .disclosureIndicator
+                cell.bind(deck)
+                return cell
+        },
+            canEditRowAtIndexPath: { _, _ in true }
+        )
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -129,5 +135,18 @@ class DecksViewController: UITableViewController {
         delete.backgroundColor = UIColor.UIColorFromHex(hex: "#BD2F3A")
         
         return [delete, edit]
+    }
+}
+
+struct DeckSection {
+    var items: [DeckItemViewModel]
+}
+
+extension DeckSection: AnimatableSectionModelType {
+    var identity: String { return "DeckSection" }
+    
+    init(original: DeckSection, items: [DeckItemViewModel]) {
+        self = original
+        self.items = items
     }
 }

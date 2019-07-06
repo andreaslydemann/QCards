@@ -1,3 +1,4 @@
 github "realm/realm-cocoa"
 github "ReactiveX/RxSwift" ~> 4.0
 github "RxSwiftCommunity/RxRealm"
+github "RxSwiftCommunity/RxDataSources" ~> 3.0

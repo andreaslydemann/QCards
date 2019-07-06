@@ -35,7 +35,7 @@ final class Repository<T: RealmRepresentable>: AbstractRepository where T == T.R
     
     init(configuration: Realm.Configuration) {
         self.configuration = configuration
-        let name = "com.CleanArchitectureRxSwift.RealmPlatform.Repository"
+        let name = "com.andreaslydemann.Platform.Repository"
         self.scheduler = RunLoopThreadScheduler(threadName: name)
         print("File 📁 url: \(RLMRealmPathForFile("default.realm"))")
     }
