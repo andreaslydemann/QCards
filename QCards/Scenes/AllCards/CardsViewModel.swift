@@ -14,10 +14,12 @@ import RxSwift
 final class CardsViewModel: ViewModelType {
     
     struct Input {
+        let trigger: Driver<Void>
         let editTrigger: Driver<Void>
     }
     
     struct Output {
+        let cards: Driver<[DeckItemViewModel]>
         let editing: Driver<Bool>
     }
     
@@ -32,10 +34,16 @@ final class CardsViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        let cards = input.trigger.flatMapLatest { _ in
+            return self.useCase.decks()
+                .asDriverOnErrorJustComplete()
+                .map { $0.map { deck in DeckItemViewModel(with: deck) }.sorted(by: {$0.createdAt > $1.createdAt}) }
+        }
+        
         let editing = input.editTrigger.scan(false) { editing, _ in
             return !editing
             }.startWith(false)
         
-        return Output(editing: editing)
+        return Output(cards: cards, editing: editing)
     }
 }

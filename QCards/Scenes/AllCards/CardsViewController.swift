@@ -8,12 +8,14 @@
 
 import Domain
 import RxCocoa
+import RxDataSources
 import RxSwift
 import UIKit
 
 final class CardsViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
+    private let store = PublishSubject<(RowAction, Int)>()
     private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
     private lazy var tableView: UITableView = {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
@@ -29,6 +31,9 @@ final class CardsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
         
         setupTableView()
         setupNavigationBar()
@@ -54,19 +59,56 @@ final class CardsViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = CardsViewModel.Input(editTrigger: editButton.rx.tap.asDriver())
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        
+        let input = CardsViewModel.Input(trigger: viewWillAppear, editTrigger: editButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input: input)
         
-        [output.editing.do(onNext: { _ in print("hello") }).drive()]
+        [output.cards
+            .map { [DeckSection(items: $0)] }
+            .drive(tableView.rx.items(dataSource: createDataSource())),
+         output.editing.do(onNext: { editing in
+            self.tableView.isEditing = editing
+         }).drive()]
             .forEach({$0.disposed(by: disposeBag)})
+    }
+    
+    private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
+        return RxTableViewSectionedAnimatedDataSource(
+            animationConfiguration: AnimationConfiguration(insertAnimation: .top,
+                                                           reloadAnimation: .fade,
+                                                           deleteAnimation: .left),
+            configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
+                let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
+                cell.shouldIndentWhileEditing = true
+                cell.accessoryType = .disclosureIndicator
+                cell.bind(deck)
+                return cell
+            },
+            canEditRowAtIndexPath: { _, _ in true },
+            canMoveRowAtIndexPath: { _, _ in true }
+        )
     }
 }
 
-extension Reactive where Base: UITextView {
-    var isEditable: Binder<Bool> {
-        return Binder(self.base, binding: { (textView, isEditable) in
-            textView.isEditable = isEditable
-        })
+extension CardsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { _, indexPath in
+            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+            return
+        }
+        
+        return [deleteButton]
     }
 }

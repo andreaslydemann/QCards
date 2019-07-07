@@ -19,11 +19,6 @@ class DecksViewController: UITableViewController {
     private let store = PublishSubject<(RowAction, Int)>()
     var viewModel: DecksViewModel!
     
-    enum RowAction {
-        case edit
-        case delete
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
