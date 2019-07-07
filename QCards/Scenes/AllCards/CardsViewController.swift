@@ -14,26 +14,37 @@ import UIKit
 
 final class CardsViewController: UIViewController {
     
+    var viewModel: CardsViewModel!
     private let disposeBag = DisposeBag()
     private let store = PublishSubject<(RowAction, Int)>()
+    
     private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
+    
     private lazy var tableView: UITableView = {
-        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
+        let width = view.frame.width
+        let height = view.frame.height
         
-        let tv = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-        tv.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
-        tv.rowHeight = 65
-        return tv
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
+        tableView.rowHeight = 65
+        return tableView
     }()
-    var viewModel: CardsViewModel!
+    
+    private lazy var footerView: UIView = {
+        let footerView = UIView()
+        
+        let border = UIView()
+        border.backgroundColor = .gray
+        border.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        border.frame = CGRect(x: 0, y: 0, width: 0, height: 1)
+        
+        footerView.addSubview(border)
+        
+        return footerView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
         
         setupTableView()
         setupNavigationBar()
@@ -41,7 +52,15 @@ final class CardsViewController: UIViewController {
     }
     
     private func setupTableView() {
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+
         view.addSubview(tableView)
+        view.addSubview(footerView)
+        
+        tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor)
+        footerView.anchor(top: .none, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 80))
+        
         view.backgroundColor = .white
     }
     

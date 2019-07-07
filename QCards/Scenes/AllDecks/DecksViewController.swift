@@ -14,11 +14,11 @@ import UIKit
 
 class DecksViewController: UITableViewController {
     
+    var viewModel: DecksViewModel!
     private let disposeBag = DisposeBag()
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let store = PublishSubject<(RowAction, Int)>()
-    var viewModel: DecksViewModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
