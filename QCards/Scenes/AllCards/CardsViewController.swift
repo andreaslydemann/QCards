@@ -30,19 +30,31 @@ final class CardsViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var footerView: UIView = {
-        let footerView = UIView()
+    private var footerView: UIStackView = {
+        let settingsButton = UIButton()
+        settingsButton.setImage(UIImage(named: "settings")!, for: .normal)
         
-        let border = UIView()
-        border.backgroundColor = .gray
-        border.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        border.frame = CGRect(x: 0, y: 0, width: 0, height: 1)
+        let reorderButton = UIButton()
+        reorderButton.setTitle("Reorder", for: .normal)
+        reorderButton.setTitleColor(UIColor.black, for: .normal)
         
-        footerView.addSubview(border)
+        let playButton = UIButton()
+        playButton.setImage(UIImage(named: "play")!, for: .normal)
+        
+        let footerView = UIStackView(arrangedSubviews: [settingsButton, reorderButton, playButton])
+        
+        footerView.distribution = .equalCentering
         
         return footerView
     }()
-
+    
+    private var divider: UIView = {
+        let divider = UIView()
+        divider.backgroundColor = .gray
+        divider.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        return divider
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,10 +68,12 @@ final class CardsViewController: UIViewController {
             .disposed(by: disposeBag)
 
         view.addSubview(tableView)
+        view.addSubview(divider)
         view.addSubview(footerView)
-        
-        tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor)
-        footerView.anchor(top: .none, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 80))
+    
+        tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: divider.topAnchor, trailing: view.trailingAnchor)
+        divider.anchor(top: tableView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
+        footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
         
         view.backgroundColor = .white
     }
