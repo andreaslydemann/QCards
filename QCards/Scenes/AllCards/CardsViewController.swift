@@ -18,39 +18,45 @@ final class CardsViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let store = PublishSubject<(RowAction, Int)>()
     
-    private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
+    private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     
     private lazy var tableView: UITableView = {
-        let width = view.frame.width
-        let height = view.frame.height
-        
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
         tableView.rowHeight = 65
         return tableView
     }()
     
-    private var footerView: UIStackView = {
-        let settingsButton = UIButton()
-        settingsButton.setImage(UIImage(named: "settings")!, for: .normal)
-        
-        let reorderButton = UIButton()
-        reorderButton.setTitle("Reorder", for: .normal)
-        reorderButton.setTitleColor(UIColor.black, for: .normal)
-        
-        let playButton = UIButton()
-        playButton.setImage(UIImage(named: "play")!, for: .normal)
-        
-        let footerView = UIStackView(arrangedSubviews: [settingsButton, reorderButton, playButton])
-        
+    private lazy var footerView: UIStackView = {
+        let footerView = UIStackView(arrangedSubviews: [settingsButton, editButton, playButton])
         footerView.distribution = .equalCentering
-        
         return footerView
     }()
     
+    private var settingsButton: UIButton = {
+        let settingsButton = UIButton(type: .system)
+        settingsButton.setImage(UIImage(named: "settings"), for: .normal)
+        settingsButton.tintColor = .black
+        return settingsButton
+    }()
+    
+    private var editButton: UIButton = {
+        let editButton = UIButton(type: .system)
+        editButton.setTitle("Edit", for: .normal)
+        editButton.setTitleColor(.black, for: .normal)
+        return editButton
+    }()
+    
+    private var playButton: UIButton = {
+        let playButton = UIButton(type: .system)
+        playButton.setImage(UIImage(named: "play"), for: .normal)
+        playButton.tintColor = .black
+        return playButton
+    }()
+
     private var divider: UIView = {
         let divider = UIView()
-        divider.backgroundColor = .gray
+        divider.backgroundColor = .lightGray
         divider.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         return divider
     }()
@@ -86,7 +92,7 @@ final class CardsViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.view.tintColor = .white
-        navigationItem.rightBarButtonItem = editButton
+        navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.title = "Decks"
     }

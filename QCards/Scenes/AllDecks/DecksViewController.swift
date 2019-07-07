@@ -109,7 +109,9 @@ class DecksViewController: UITableViewController {
     
     private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
         return RxTableViewSectionedAnimatedDataSource(
-            animationConfiguration: AnimationConfiguration(insertAnimation: .automatic, reloadAnimation: .automatic, deleteAnimation: .left),
+            animationConfiguration: AnimationConfiguration(insertAnimation: .automatic,
+                                                           reloadAnimation: .automatic,
+                                                           deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
                 cell.accessoryType = .disclosureIndicator
