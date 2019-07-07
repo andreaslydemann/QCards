@@ -15,12 +15,14 @@ final class CardsViewModel: ViewModelType {
     
     struct Input {
         let trigger: Driver<Void>
+        let createCardTrigger: Driver<Void>
         let editTrigger: Driver<Void>
     }
     
     struct Output {
         let cards: Driver<[DeckItemViewModel]>
         let editing: Driver<Bool>
+        let createCard: Driver<Void>
     }
     
     private let deck: Deck
@@ -44,6 +46,9 @@ final class CardsViewModel: ViewModelType {
             return !editing
             }.startWith(false)
         
-        return Output(cards: cards, editing: editing)
+        let createCard = input.createCardTrigger
+            .do(onNext: navigator.toCreateCard)
+        
+        return Output(cards: cards, editing: editing, createCard: createCard)
     }
 }

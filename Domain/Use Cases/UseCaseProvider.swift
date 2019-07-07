@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol UseCaseProvider {
-    
     func makeDecksUseCase() -> DecksUseCase
+    func makeCardsUseCase() -> CardsUseCase
 }

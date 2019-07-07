@@ -16,7 +16,7 @@
 		E1104B93222736BA001FFA9D /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B92222736BA001FFA9D /* Observable+Ext.swift */; };
 		E1104B95222736CB001FFA9D /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B94222736CB001FFA9D /* Realm+Ext.swift */; };
 		E1104BA822274220001FFA9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA722274220001FFA9D /* Application.swift */; };
-		E1104BAA222742AF001FFA9D /* DeckUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA9222742AF001FFA9D /* DeckUseCase.swift */; };
+		E1104BAA222742AF001FFA9D /* DecksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BA9222742AF001FFA9D /* DecksUseCase.swift */; };
 		E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */; };
 		E1104BAE222743E3001FFA9D /* RMDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BAD222743E3001FFA9D /* RMDeck.swift */; };
 		E1104BB222274725001FFA9D /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104BB122274725001FFA9D /* Expression.swift */; };
@@ -27,6 +27,13 @@
 		E116045F22D0C47F00E64FD4 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116045E22D0C47F00E64FD4 /* CardsViewController.swift */; };
 		E116046122D0E72700E64FD4 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046022D0E72700E64FD4 /* CardsViewModel.swift */; };
 		E116046522D259B800E64FD4 /* RowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046422D259B800E64FD4 /* RowAction.swift */; };
+		E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046722D2A4AC00E64FD4 /* CreateCardViewController.swift */; };
+		E116046A22D2A4C300E64FD4 /* CreateCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046922D2A4C300E64FD4 /* CreateCardNavigator.swift */; };
+		E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046B22D2A54900E64FD4 /* CreateCardViewModel.swift */; };
+		E116046E22D2A76700E64FD4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046D22D2A76700E64FD4 /* Card.swift */; };
+		E116047022D2AFF700E64FD4 /* CardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116046F22D2AFF700E64FD4 /* CardsUseCase.swift */; };
+		E116047222D2B0C100E64FD4 /* RMCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116047122D2B0C100E64FD4 /* RMCard.swift */; };
+		E116047422D2B17C00E64FD4 /* CardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116047322D2B17C00E64FD4 /* CardsUseCase.swift */; };
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
 		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
@@ -97,7 +104,7 @@
 		E1104B92222736BA001FFA9D /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		E1104B94222736CB001FFA9D /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
 		E1104BA722274220001FFA9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		E1104BA9222742AF001FFA9D /* DeckUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckUseCase.swift; sourceTree = "<group>"; };
+		E1104BA9222742AF001FFA9D /* DecksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksUseCase.swift; sourceTree = "<group>"; };
 		E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		E1104BAD222743E3001FFA9D /* RMDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDeck.swift; sourceTree = "<group>"; };
 		E1104BB122274725001FFA9D /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
@@ -108,6 +115,13 @@
 		E116045E22D0C47F00E64FD4 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		E116046022D0E72700E64FD4 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		E116046422D259B800E64FD4 /* RowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowAction.swift; sourceTree = "<group>"; };
+		E116046722D2A4AC00E64FD4 /* CreateCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewController.swift; sourceTree = "<group>"; };
+		E116046922D2A4C300E64FD4 /* CreateCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardNavigator.swift; sourceTree = "<group>"; };
+		E116046B22D2A54900E64FD4 /* CreateCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
+		E116046D22D2A76700E64FD4 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E116046F22D2AFF700E64FD4 /* CardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUseCase.swift; sourceTree = "<group>"; };
+		E116047122D2B0C100E64FD4 /* RMCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCard.swift; sourceTree = "<group>"; };
+		E116047322D2B17C00E64FD4 /* CardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUseCase.swift; sourceTree = "<group>"; };
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -190,6 +204,7 @@
 			children = (
 				E1104B88222735C2001FFA9D /* Conversion */,
 				E1104BAD222743E3001FFA9D /* RMDeck.swift */,
+				E116047122D2B0C100E64FD4 /* RMCard.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -214,8 +229,9 @@
 		E1104B852227356D001FFA9D /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
-				E1104BA9222742AF001FFA9D /* DeckUseCase.swift */,
 				E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */,
+				E1104BA9222742AF001FFA9D /* DecksUseCase.swift */,
+				E116047322D2B17C00E64FD4 /* CardsUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -267,6 +283,7 @@
 		E1104BB7222748DE001FFA9D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E116046622D2A46A00E64FD4 /* CreateCard */,
 				E116045B22D0C2EF00E64FD4 /* AllCards */,
 				E1104BB822274917001FFA9D /* AllDecks */,
 			);
@@ -293,6 +310,16 @@
 				E116046022D0E72700E64FD4 /* CardsViewModel.swift */,
 			);
 			path = AllCards;
+			sourceTree = "<group>";
+		};
+		E116046622D2A46A00E64FD4 /* CreateCard */ = {
+			isa = PBXGroup;
+			children = (
+				E116046922D2A4C300E64FD4 /* CreateCardNavigator.swift */,
+				E116046722D2A4AC00E64FD4 /* CreateCardViewController.swift */,
+				E116046B22D2A54900E64FD4 /* CreateCardViewModel.swift */,
+			);
+			path = CreateCard;
 			sourceTree = "<group>";
 		};
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
@@ -389,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E518C5222DB9A900E4AED2 /* Deck.swift */,
+				E116046D22D2A76700E64FD4 /* Card.swift */,
 			);
 			path = Entries;
 			sourceTree = "<group>";
@@ -398,6 +426,7 @@
 			children = (
 				E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */,
 				E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */,
+				E116046F22D2AFF700E64FD4 /* CardsUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -615,9 +644,11 @@
 				E1104B95222736CB001FFA9D /* Realm+Ext.swift in Sources */,
 				E1104B9122273670001FFA9D /* RunLoopThreadScheduler.swift in Sources */,
 				E1104BB222274725001FFA9D /* Expression.swift in Sources */,
-				E1104BAA222742AF001FFA9D /* DeckUseCase.swift in Sources */,
+				E1104BAA222742AF001FFA9D /* DecksUseCase.swift in Sources */,
 				E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */,
 				E1104BD32227D346001FFA9D /* Attribute.swift in Sources */,
+				E116047422D2B17C00E64FD4 /* CardsUseCase.swift in Sources */,
+				E116047222D2B0C100E64FD4 /* RMCard.swift in Sources */,
 				E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */,
 				E1104B8E22273642001FFA9D /* Repository.swift in Sources */,
 				E1104B93222736BA001FFA9D /* Observable+Ext.swift in Sources */,
@@ -634,6 +665,9 @@
 				E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
 				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
+				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
+				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
+				E116046A22D2A4C300E64FD4 /* CreateCardNavigator.swift in Sources */,
 				E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
 				E116046122D0E72700E64FD4 /* CardsViewModel.swift in Sources */,
@@ -652,9 +686,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E116047022D2AFF700E64FD4 /* CardsUseCase.swift in Sources */,
 				E1E518CC222DB9F000E4AED2 /* DecksUseCase.swift in Sources */,
 				E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */,
 				E1E518C6222DB9A900E4AED2 /* Deck.swift in Sources */,
+				E116046E22D2A76700E64FD4 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

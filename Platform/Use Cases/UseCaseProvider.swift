@@ -22,4 +22,9 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
         let repository = Repository<Deck>(configuration: configuration)
         return DecksUseCase(repository: repository)
     }
+    
+    public func makeCardsUseCase() -> Domain.CardsUseCase {
+        let repository = Repository<Card>(configuration: configuration)
+        return CardsUseCase(repository: repository)
+    }
 }

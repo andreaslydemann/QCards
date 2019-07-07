@@ -102,7 +102,7 @@ final class CardsViewController: UIViewController {
             .mapToVoid()
             .asDriverOnErrorJustComplete()
         
-        let input = CardsViewModel.Input(trigger: viewWillAppear, editTrigger: editButton.rx.tap.asDriver())
+        let input = CardsViewModel.Input(trigger: viewWillAppear, createCardTrigger: addButton.rx.tap.asDriver(), editTrigger: editButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input: input)
         
@@ -111,7 +111,9 @@ final class CardsViewController: UIViewController {
             .drive(tableView.rx.items(dataSource: createDataSource())),
          output.editing.do(onNext: { editing in
             self.tableView.isEditing = editing
-         }).drive()]
+         }).drive(),
+         output.createCard.drive()
+            ]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
