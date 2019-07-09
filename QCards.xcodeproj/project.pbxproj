@@ -276,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				E1104BB5222748B0001FFA9D /* ViewModelType.swift */,
+				E116046422D259B800E64FD4 /* RowAction.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -396,7 +397,6 @@
 			children = (
 				E13C88BA22107D19009EDD13 /* Extensions */,
 				E1FEDA612242EBAF00D17BE3 /* Reusable.swift */,
-				E116046422D259B800E64FD4 /* RowAction.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";

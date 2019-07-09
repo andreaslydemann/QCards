@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class CreateCardViewController: UIViewController {
+final class CreateCardViewController: UIViewController, UITextViewDelegate {
     private let disposeBag = DisposeBag()
     
     var viewModel: CreateCardViewModel!
@@ -20,21 +20,41 @@ final class CreateCardViewController: UIViewController {
     private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
     
     private var titleTextField: UITextField = {
-        let titleTextField = UITextField(frame: CGRect(x: 20, y: 100, width: 300, height: 40))
+        let titleTextField = UITextField()
         titleTextField.placeholder = "Enter title here"
-        titleTextField.borderStyle = .roundedRect
+        titleTextField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        titleTextField.layer.cornerRadius = 10
+        titleTextField.font = UIFont.systemFont(ofSize: 14)
         return titleTextField
     }()
     
-    private var contentTextView: UITextView = {
-        let contentTextField = UITextView(frame: CGRect(x: 20.0, y: 30.0, width: 300.0, height: 40))
-        return contentTextField
+    private lazy var placeholderLabel: UILabel = {
+        let placeholderLabel = UILabel()
+        placeholderLabel.text = "Enter some text..."
+        placeholderLabel.font = UIFont.systemFont(ofSize: (contentTextView.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        return placeholderLabel
     }()
+    
+    private var contentTextView: UITextView = {
+        let contentTextView = UITextView()
+        contentTextView.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        contentTextView.layer.cornerRadius = 10
+        contentTextView.font = UIFont.systemFont(ofSize: 14)
+        return contentTextView
+    }()
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
     
     private lazy var fieldsView: UIStackView = {
         let fieldsView = UIStackView(arrangedSubviews: [titleTextField, contentTextView])
+
         fieldsView.axis = .vertical
-        fieldsView.distribution = .equalCentering
+        fieldsView.spacing = 10
         return fieldsView
     }()
     
@@ -47,10 +67,14 @@ final class CreateCardViewController: UIViewController {
     }
     
     private func setupLayout() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        
+        contentTextView.delegate = self
+        contentTextView.addSubview(placeholderLabel)
+
         view.addSubview(fieldsView)
- 
-        fieldsView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        
+        fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     private func setupNavigationBar() {
