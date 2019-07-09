@@ -28,6 +28,14 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
         return titleTextField
     }()
     
+    private var contentTextView: UITextView = {
+        let contentTextView = UITextView()
+        contentTextView.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        contentTextView.layer.cornerRadius = 10
+        contentTextView.font = UIFont.systemFont(ofSize: 14)
+        return contentTextView
+    }()
+    
     private lazy var placeholderLabel: UILabel = {
         let placeholderLabel = UILabel()
         placeholderLabel.text = "Enter some text..."
@@ -36,14 +44,6 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
         return placeholderLabel
-    }()
-    
-    private var contentTextView: UITextView = {
-        let contentTextView = UITextView()
-        contentTextView.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        contentTextView.layer.cornerRadius = 10
-        contentTextView.font = UIFont.systemFont(ofSize: 14)
-        return contentTextView
     }()
     
     func textViewDidChange(_ textView: UITextView) {
