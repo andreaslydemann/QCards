@@ -101,7 +101,23 @@ final class CardsViewController: UIViewController {
             .mapToVoid()
             .asDriverOnErrorJustComplete()
         
-        let input = CardsViewModel.Input(trigger: viewWillAppear, createCardTrigger: addButton.rx.tap.asDriver(), editTrigger: editButton.rx.tap.asDriver())
+        let deleteCardTrigger = store
+            .filter { $0.0 == RowAction.delete }.flatMap { _, row in
+                return UIAlertController
+                    .present(in: self, text: UIAlertController.AlertText(
+                        title: "Do you want to delete this card?",
+                        message: "You can't undo this action"),
+                             style: .alert,
+                             buttons: [.default("Yes"), .cancel("No")],
+                             textFields: [])
+                    .withLatestFrom(Observable.just(row)) { alertData, row in
+                        return (alertData.0, row)
+                }
+            }
+            .filter { $0.0 == 0 }
+            .map { $0.1 }
+        
+        let input = CardsViewModel.Input(trigger: viewWillAppear, createCardTrigger: addButton.rx.tap.asDriver(), deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(), editOrderTrigger: editButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input: input)
         
@@ -111,8 +127,7 @@ final class CardsViewController: UIViewController {
          output.editing.do(onNext: { editing in
             self.tableView.isEditing = editing
          }).drive(),
-         output.createCard.drive()
-            ]
+         output.createCard.drive(), output.deleteCard.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
@@ -145,8 +160,7 @@ extension CardsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { _, indexPath in
-            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
-            return
+            self.store.onNext((RowAction.delete, indexPath.row))
         }
         
         return [deleteButton]
