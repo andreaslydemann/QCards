@@ -20,8 +20,8 @@ final class CardsUseCase<Repository>: Domain.CardsUseCase where Repository: Abst
         self.repository = repository
     }
     
-    func cards() -> Observable<[Card]> {
-        return repository.queryAll()
+    func cards(of deck: Deck) -> Observable<[Card]> {
+        return repository.query(with: NSPredicate(format: "deckId == %@", deck.uid), sortDescriptors: [])
     }
     
     func save(card: Card) -> Observable<Void> {

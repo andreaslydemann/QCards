@@ -20,16 +20,16 @@ final class CardsViewModel: ViewModelType {
     }
     
     struct Output {
-        let cards: Driver<[DeckItemViewModel]>
+        let cards: Driver<[CardItemViewModel]>
         let editing: Driver<Bool>
         let createCard: Driver<Void>
     }
     
     private let deck: Deck
-    private let useCase: DecksUseCase
+    private let useCase: CardsUseCase
     private let navigator: CardsNavigator
     
-    init(deck: Deck, useCase: DecksUseCase, navigator: CardsNavigator) {
+    init(deck: Deck, useCase: CardsUseCase, navigator: CardsNavigator) {
         self.deck = deck
         self.useCase = useCase
         self.navigator = navigator
@@ -37,18 +37,18 @@ final class CardsViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let cards = input.trigger.flatMapLatest { _ in
-            return self.useCase.decks()
+            return self.useCase.cards(of: self.deck)
                 .asDriverOnErrorJustComplete()
-                .map { $0.map { deck in DeckItemViewModel(with: deck) }.sorted(by: {$0.createdAt > $1.createdAt}) }
+                .map { $0.map { card in CardItemViewModel(with: card) }}
+            }
+            
+            let editing = input.editTrigger.scan(false) { editing, _ in
+                return !editing
+                }.startWith(false)
+            
+            let createCard = input.createCardTrigger
+                .do(onNext: { self.navigator.toCreateCard(self.deck) })
+            
+            return Output(cards: cards, editing: editing, createCard: createCard)
         }
-        
-        let editing = input.editTrigger.scan(false) { editing, _ in
-            return !editing
-            }.startWith(false)
-        
-        let createCard = input.createCardTrigger
-            .do(onNext: navigator.toCreateCard)
-        
-        return Output(cards: cards, editing: editing, createCard: createCard)
-    }
 }

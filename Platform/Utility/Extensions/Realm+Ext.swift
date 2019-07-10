@@ -30,7 +30,7 @@ extension Reactive where Base: Realm {
         return Observable.create { observer in
             do {
                 try self.base.write {
-                    self.base.add(entity.asRealm(), update: update)
+                    self.base.add(entity.asRealm(), update: update ? .all : .error)
                 }
                 observer.onNext(())
                 observer.onCompleted()

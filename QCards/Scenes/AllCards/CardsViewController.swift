@@ -22,7 +22,7 @@ final class CardsViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
+        tableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.reuseID)
         tableView.rowHeight = 65
         return tableView
     }()
@@ -94,7 +94,7 @@ final class CardsViewController: UIViewController {
         navigationController?.view.tintColor = .white
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = .white
-        navigationItem.title = "Decks"
+        navigationItem.title = "Cards"
     }
     
     private func bindViewModel() {
@@ -107,7 +107,7 @@ final class CardsViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         [output.cards
-            .map { [DeckSection(items: $0)] }
+            .map { [CardSection(items: $0)] }
             .drive(tableView.rx.items(dataSource: createDataSource())),
          output.editing.do(onNext: { editing in
             self.tableView.isEditing = editing
@@ -117,16 +117,16 @@ final class CardsViewController: UIViewController {
             .forEach({$0.disposed(by: disposeBag)})
     }
     
-    private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
+    private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<CardSection> {
         return RxTableViewSectionedAnimatedDataSource(
             animationConfiguration: AnimationConfiguration(insertAnimation: .top,
                                                            reloadAnimation: .fade,
                                                            deleteAnimation: .left),
-            configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
-                let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
+            configureCell: { _, tableView, indexPath, card -> CardTableViewCell in
+                let cell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCell.reuseID, for: indexPath) as! CardTableViewCell
                 cell.shouldIndentWhileEditing = true
                 cell.accessoryType = .disclosureIndicator
-                cell.bind(deck)
+                cell.bind(card)
                 return cell
             },
             canEditRowAtIndexPath: { _, _ in true },
@@ -151,5 +151,18 @@ extension CardsViewController: UITableViewDelegate {
         }
         
         return [deleteButton]
+    }
+}
+
+struct CardSection {
+    var items: [CardItemViewModel]
+}
+
+extension CardSection: AnimatableSectionModelType {
+    var identity: String { return "CardSection" }
+    
+    init(original: CardSection, items: [CardItemViewModel]) {
+        self = original
+        self.items = items
     }
 }

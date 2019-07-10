@@ -25,23 +25,23 @@ final class CreateCardViewModel: ViewModelType {
         let saveEnabled: Driver<Bool>
     }
     
+    private let deck: Deck
     private let useCase: CardsUseCase
     private let navigator: CreateCardNavigator
     
-    init(useCase: CardsUseCase, navigator: CreateCardNavigator) {
+    init(deck: Deck, useCase: CardsUseCase, navigator: CreateCardNavigator) {
+        self.deck = deck
         self.useCase = useCase
         self.navigator = navigator
     }
     
     func transform(input: Input) -> Output {
-        let titleAndContent = Driver.combineLatest(input.title, input.content)
-        
         let canSave = Driver.combineLatest(input.title, input.content) { title, content in
             return !title.isEmpty && !content.isEmpty
         }
         
-        let save = input.saveTrigger.withLatestFrom(titleAndContent)
-            .map { Domain.Card(title: $0.0, content: $0.1, deckId: "deck123") }
+        let save = input.saveTrigger.withLatestFrom(Driver.combineLatest(input.title, input.content, Driver.just(deck)))
+            .map { Domain.Card(title: $0.0, content: $0.1, deckId: $0.2.uid) }
             .flatMapLatest { [unowned self] in
                 return self.useCase.save(card: $0)
                     .asDriverOnErrorJustComplete()
