@@ -94,7 +94,6 @@ final class CardsViewController: UIViewController {
         navigationController?.view.tintColor = .white
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = .white
-        navigationItem.title = "Cards"
     }
     
     private func bindViewModel() {

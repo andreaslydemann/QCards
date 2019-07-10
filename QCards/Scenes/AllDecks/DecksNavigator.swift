@@ -35,6 +35,7 @@ class DefaultDecksNavigator: DecksNavigator {
         let navigator = DefaultCardsNavigator(services: services, navigationController: navigationController)
         let vc = CardsViewController()
         vc.viewModel = CardsViewModel(deck: deck, useCase: services.makeCardsUseCase(), navigator: navigator)
+        vc.navigationItem.title = deck.title
         navigationController.pushViewController(vc, animated: true)
     }
 }
