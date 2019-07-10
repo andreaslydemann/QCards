@@ -76,5 +76,4 @@ final class Repository<T: RealmRepresentable>: AbstractRepository where T == T.R
             return self.realm.rx.delete(entity: entity)
             }.subscribeOn(scheduler)
     }
-    
 }

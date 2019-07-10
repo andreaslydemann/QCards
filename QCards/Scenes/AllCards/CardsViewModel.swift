@@ -41,7 +41,7 @@ final class CardsViewModel: ViewModelType {
         let cards = input.trigger.flatMapLatest { _ in
             return self.useCase.cards(of: self.deck)
                 .asDriverOnErrorJustComplete()
-                .map { $0.map { card in CardItemViewModel(with: card) }}
+                .map { $0.map { CardItemViewModel(with: $0) }}
             }
             
             let editing = input.editOrderTrigger.scan(false) { editing, _ in
@@ -61,5 +61,5 @@ final class CardsViewModel: ViewModelType {
             }
         
         return Output(cards: cards, editing: editing, createCard: createCard, deleteCard: deleteCard)
-        }
+    }
 }
