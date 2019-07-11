@@ -294,10 +294,10 @@
 		E1104BB7222748DE001FFA9D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				E1A854E322D782FA0082574B /* EditCard */,
-				E116046622D2A46A00E64FD4 /* CreateCard */,
-				E116045B22D0C2EF00E64FD4 /* AllCards */,
 				E1104BB822274917001FFA9D /* AllDecks */,
+				E116045B22D0C2EF00E64FD4 /* AllCards */,
+				E116046622D2A46A00E64FD4 /* CreateCard */,
+				E1A854E322D782FA0082574B /* EditCard */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

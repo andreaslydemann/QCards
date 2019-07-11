@@ -44,6 +44,7 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = true
         return placeholderLabel
     }()
     

@@ -53,7 +53,7 @@ final class EditCardViewModel: ViewModelType {
         
         let titleAndContent = Driver.combineLatest(input.title, input.content)
         let card = Driver.combineLatest(Driver.just(self.card), titleAndContent) { (card, titleAndContent) -> Card in
-            return Card(title: titleAndContent.0, content: titleAndContent.1, deckId: card.deckId)
+            return Card(uid: card.uid, title: titleAndContent.0, content: titleAndContent.1, deckId: card.deckId)
             }.startWith(self.card)
         
         let saveCard = saveTrigger.withLatestFrom(card)
