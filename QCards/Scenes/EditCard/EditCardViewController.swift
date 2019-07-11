@@ -16,7 +16,6 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
     var viewModel: EditCardViewModel!
     
     private let disposeBag = DisposeBag()
-    private let store = PublishSubject<(RowAction, Int)>()
     
     private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
     private let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: nil)
@@ -90,8 +89,7 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
     }
     
     private func bindViewModel() {
-        let deleteCardTrigger = store
-            .filter { $0.0 == RowAction.delete }.flatMap { _, row in
+        let deleteCardTrigger = deleteButton.rx.tap.flatMap { row in
                 return UIAlertController
                     .present(in: self, text: UIAlertController.AlertText(
                         title: "Do you want to delete this card?",

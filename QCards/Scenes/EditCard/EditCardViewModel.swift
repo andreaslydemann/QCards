@@ -15,7 +15,7 @@ final class EditCardViewModel: ViewModelType {
     
     struct Input {
         let editCardTrigger: Driver<Void>
-        let deleteCardTrigger: Driver<Int>
+        let deleteCardTrigger: Driver<Void>
         let title: Driver<String>
         let content: Driver<String>
     }
@@ -47,7 +47,7 @@ final class EditCardViewModel: ViewModelType {
             return editing == true ? "Save" : "Edit"
         }
         
-        let saveTrigger = editing.skip(1) //we dont need initial state
+        let saveTrigger = editing.skip(1)
             .filter { $0 == false }
             .mapToVoid()
         
