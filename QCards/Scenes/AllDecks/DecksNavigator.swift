@@ -26,8 +26,7 @@ class DefaultDecksNavigator: DecksNavigator {
     
     func toDecks() {
         let vc = DecksViewController()
-        vc.viewModel = DecksViewModel(decksUseCase: services.makeDecksUseCase(), cardsUseCase: services.makeCardsUseCase(),
-                                      navigator: self)
+        vc.viewModel = DecksViewModel(useCase: services.makeDecksUseCase(), navigator: self)
         navigationController.pushViewController(vc, animated: true)
     }
     

@@ -103,7 +103,7 @@ class DecksViewController: UITableViewController {
          output.selectedDeck.drive(),
          output.createDeck.drive(),
          output.editDeck.drive(),
-         output.deletion.drive()]
+         output.deleteDeck.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
