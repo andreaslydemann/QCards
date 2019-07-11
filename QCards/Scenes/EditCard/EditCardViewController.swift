@@ -1,8 +1,8 @@
 //
-//  CreateCardViewController.swift
+//  EditCardViewController.swift
 //  QCards
 //
-//  Created by Andreas Lüdemann on 08/07/2019.
+//  Created by Andreas Lüdemann on 11/07/2019.
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
@@ -11,13 +11,15 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class CreateCardViewController: UIViewController, UITextViewDelegate {
+final class EditCardViewController: UIViewController, UITextViewDelegate {
     
-    var viewModel: CreateCardViewModel!
-        
+    var viewModel: EditCardViewModel!
+    
     private let disposeBag = DisposeBag()
-    private let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: nil)
-    private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
+    private let store = PublishSubject<(RowAction, Int)>()
+    
+    private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
+    private let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: nil)
     
     private var titleTextField: UITextField = {
         let titleTextField = UITextField()
@@ -52,7 +54,7 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private lazy var fieldsView: UIStackView = {
         let fieldsView = UIStackView(arrangedSubviews: [titleTextField, contentTextView])
-
+        
         fieldsView.axis = .vertical
         fieldsView.spacing = 10
         return fieldsView
@@ -60,7 +62,7 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupLayout()
         setupNavigationBar()
         bindViewModel()
@@ -71,7 +73,7 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
         
         contentTextView.delegate = self
         contentTextView.addSubview(placeholderLabel)
-
+        
         view.addSubview(fieldsView)
         
         fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
@@ -81,23 +83,60 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
         navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.view.tintColor = .white
-        navigationItem.leftBarButtonItem = cancelButton
-        navigationItem.rightBarButtonItem = saveButton
+        navigationItem.rightBarButtonItems = [editButton, deleteButton]
         navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.title = "Create Card"
+        navigationItem.title = "Edit Card"
     }
     
     private func bindViewModel() {
-        let input = CreateCardViewModel.Input(cancelTrigger: cancelButton.rx.tap.asDriver(),
-                                              saveTrigger: saveButton.rx.tap.asDriver(),
-                                              title: titleTextField.rx.text.orEmpty.asDriver(),
-                                              content: contentTextView.rx.text.orEmpty.asDriver())
+        let deleteCardTrigger = store
+            .filter { $0.0 == RowAction.delete }.flatMap { _, row in
+                return UIAlertController
+                    .present(in: self, text: UIAlertController.AlertText(
+                        title: "Do you want to delete this card?",
+                        message: "You can't undo this action"),
+                             style: .alert,
+                             buttons: [.default("Yes"), .cancel("No")],
+                             textFields: [])
+                    .withLatestFrom(Observable.just(row)) { alertData, row in
+                        return (alertData.0, row)
+                }
+            }
+            .filter { $0.0 == 0 }
+            .map { $0.1 }
         
+        let input = EditCardViewModel.Input(
+            editCardTrigger: editButton.rx.tap.asDriver(),
+            deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
+            title: titleTextField.rx.text.orEmpty.asDriver(),
+            content: contentTextView.rx.text.orEmpty.asDriver())
+    
         let output = viewModel.transform(input: input)
         
-        [output.dismiss.drive(),
-         output.saveEnabled.drive(saveButton.rx.isEnabled)]
+        [output.editButtonTitle.drive(editButton.rx.title),
+         output.editing.drive(titleTextField.rx.isEnabled),
+         output.editing.drive(contentTextView.rx.isEditable),
+         output.card.drive(cardBinding),
+         output.save.drive(),
+         output.delete.drive()]
             .forEach({$0.disposed(by: disposeBag)})
+    }
+    
+    var cardBinding: Binder<Card> {
+        return Binder(self, binding: { (vc, card) in
+            vc.titleTextField.text = card.title
+            vc.contentTextView.text = card.content
+            vc.title = card.title
+        })
+    }
+    
+}
+
+extension Reactive where Base: UITextView {
+    var isEditable: Binder<Bool> {
+        return Binder(self.base, binding: { (textView, isEditable) in
+            textView.isEditable = isEditable
+        })
     }
 }

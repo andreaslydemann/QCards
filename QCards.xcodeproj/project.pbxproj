@@ -44,6 +44,9 @@
 		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
 		E183D3F622D64F5400198AC1 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183D3F522D64F5400198AC1 /* CardTableViewCell.swift */; };
 		E183D3F822D650D700198AC1 /* CardItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183D3F722D650D700198AC1 /* CardItemViewModel.swift */; };
+		E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E422D7830F0082574B /* EditCardNavigator.swift */; };
+		E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E622D7831F0082574B /* EditCardViewController.swift */; };
+		E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E822D7832C0082574B /* EditCardViewModel.swift */; };
 		E1BFE4EC221CB0B1005FF6DB /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */; };
 		E1C6C78822CFB61000AE2484 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C6C78722CFB61000AE2484 /* Differentiator.framework */; };
 		E1DB59F622CF8499000387A6 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DB59F522CF8499000387A6 /* RxDataSources.framework */; };
@@ -134,8 +137,11 @@
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
-		E183D3F522D64F5400198AC1 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
-		E183D3F722D650D700198AC1 /* CardItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItemViewModel.swift; sourceTree = "<group>"; };
+		E183D3F522D64F5400198AC1 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardTableViewCell.swift; path = ../CreateCard/CardTableViewCell.swift; sourceTree = "<group>"; };
+		E183D3F722D650D700198AC1 /* CardItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardItemViewModel.swift; path = ../CreateCard/CardItemViewModel.swift; sourceTree = "<group>"; };
+		E1A854E422D7830F0082574B /* EditCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardNavigator.swift; sourceTree = "<group>"; };
+		E1A854E622D7831F0082574B /* EditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewController.swift; sourceTree = "<group>"; };
+		E1A854E822D7832C0082574B /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
 		E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		E1C6C78722CFB61000AE2484 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		E1DB59F522CF8499000387A6 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 		E1104BB7222748DE001FFA9D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E1A854E322D782FA0082574B /* EditCard */,
 				E116046622D2A46A00E64FD4 /* CreateCard */,
 				E116045B22D0C2EF00E64FD4 /* AllCards */,
 				E1104BB822274917001FFA9D /* AllDecks */,
@@ -313,6 +320,8 @@
 				E116045C22D0C30D00E64FD4 /* CardsNavigator.swift */,
 				E116045E22D0C47F00E64FD4 /* CardsViewController.swift */,
 				E116046022D0E72700E64FD4 /* CardsViewModel.swift */,
+				E183D3F722D650D700198AC1 /* CardItemViewModel.swift */,
+				E183D3F522D64F5400198AC1 /* CardTableViewCell.swift */,
 			);
 			path = AllCards;
 			sourceTree = "<group>";
@@ -323,8 +332,6 @@
 				E116046922D2A4C300E64FD4 /* CreateCardNavigator.swift */,
 				E116046722D2A4AC00E64FD4 /* CreateCardViewController.swift */,
 				E116046B22D2A54900E64FD4 /* CreateCardViewModel.swift */,
-				E183D3F522D64F5400198AC1 /* CardTableViewCell.swift */,
-				E183D3F722D650D700198AC1 /* CardItemViewModel.swift */,
 			);
 			path = CreateCard;
 			sourceTree = "<group>";
@@ -396,6 +403,16 @@
 				E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1A854E322D782FA0082574B /* EditCard */ = {
+			isa = PBXGroup;
+			children = (
+				E1A854E422D7830F0082574B /* EditCardNavigator.swift */,
+				E1A854E622D7831F0082574B /* EditCardViewController.swift */,
+				E1A854E822D7832C0082574B /* EditCardViewModel.swift */,
+			);
+			path = EditCard;
 			sourceTree = "<group>";
 		};
 		E1BFE4DF221CA4EE005FF6DB /* Utility */ = {
@@ -670,7 +687,10 @@
 				E116045F22D0C47F00E64FD4 /* CardsViewController.swift in Sources */,
 				E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
+				E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */,
 				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
+				E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */,
+				E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */,
 				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
 				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
 				E116046A22D2A4C300E64FD4 /* CreateCardNavigator.swift in Sources */,

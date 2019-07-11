@@ -15,10 +15,12 @@ import UIKit
 final class CardsViewController: UIViewController {
     
     var viewModel: CardsViewModel!
+    
     private let disposeBag = DisposeBag()
     private let store = PublishSubject<(RowAction, Int)>()
     
     private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+    private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
@@ -28,7 +30,7 @@ final class CardsViewController: UIViewController {
     }()
     
     private lazy var footerView: UIStackView = {
-        let footerView = UIStackView(arrangedSubviews: [settingsButton, editButton, playButton])
+        let footerView = UIStackView(arrangedSubviews: [settingsButton, playButton])
         footerView.distribution = .equalCentering
         return footerView
     }()
@@ -40,20 +42,13 @@ final class CardsViewController: UIViewController {
         return settingsButton
     }()
     
-    private var editButton: UIButton = {
-        let editButton = UIButton(type: .system)
-        editButton.setTitle("Edit", for: .normal)
-        editButton.setTitleColor(.black, for: .normal)
-        return editButton
-    }()
-    
     private var playButton: UIButton = {
         let playButton = UIButton(type: .system)
         playButton.setImage(UIImage(named: "play"), for: .normal)
         playButton.tintColor = .black
         return playButton
     }()
-
+    
     private var divider: UIView = {
         let divider = UIView()
         divider.backgroundColor = .lightGray
@@ -72,11 +67,11 @@ final class CardsViewController: UIViewController {
     private func setupTableView() {
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-
+        
         view.addSubview(tableView)
         view.addSubview(divider)
         view.addSubview(footerView)
-    
+        
         tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: divider.topAnchor, trailing: view.trailingAnchor)
         divider.anchor(top: tableView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
         footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
@@ -92,7 +87,7 @@ final class CardsViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.view.tintColor = .white
-        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItems = [addButton, editButton]
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
@@ -117,7 +112,12 @@ final class CardsViewController: UIViewController {
             .filter { $0.0 == 0 }
             .map { $0.1 }
         
-        let input = CardsViewModel.Input(trigger: viewWillAppear, createCardTrigger: addButton.rx.tap.asDriver(), deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(), editOrderTrigger: editButton.rx.tap.asDriver())
+        let input = CardsViewModel.Input(
+            trigger: viewWillAppear,
+            selection: tableView.rx.itemSelected.asDriver(),
+            createCardTrigger: addButton.rx.tap.asDriver(),
+            deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
+            editOrderTrigger: editButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input: input)
         
@@ -127,7 +127,9 @@ final class CardsViewController: UIViewController {
          output.editing.do(onNext: { editing in
             self.tableView.isEditing = editing
          }).drive(),
-         output.createCard.drive(), output.deleteCard.drive()]
+         output.createCard.drive(),
+         output.deleteCard.drive(),
+         output.selectedCard.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
@@ -142,7 +144,7 @@ final class CardsViewController: UIViewController {
                 cell.accessoryType = .disclosureIndicator
                 cell.bind(card)
                 return cell
-            },
+        },
             canEditRowAtIndexPath: { _, _ in true },
             canMoveRowAtIndexPath: { _, _ in true }
         )
