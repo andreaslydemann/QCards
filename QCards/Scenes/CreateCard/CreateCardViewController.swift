@@ -25,6 +25,7 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
         titleTextField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         titleTextField.layer.cornerRadius = 10
         titleTextField.font = UIFont.systemFont(ofSize: 14)
+        titleTextField.becomeFirstResponder()
         return titleTextField
     }()
     
@@ -74,7 +75,11 @@ final class CreateCardViewController: UIViewController, UITextViewDelegate {
 
         view.addSubview(fieldsView)
         
-        fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          leading: view.leadingAnchor,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     private func setupNavigationBar() {

@@ -14,17 +14,16 @@ import RxSwift
 final class EditCardViewModel: ViewModelType {
     
     struct Input {
-        let editCardTrigger: Driver<Void>
-        let deleteCardTrigger: Driver<Void>
+        let saveTrigger: Driver<Void>
+        let deleteTrigger: Driver<Void>
         let title: Driver<String>
         let content: Driver<String>
     }
     
     struct Output {
-        let editButtonTitle: Driver<String>
         let save: Driver<Void>
         let delete: Driver<Void>
-        let editing: Driver<Bool>
+        let saveEnabled: Driver<Bool>
         let card: Driver<Card>
     }
     
@@ -39,41 +38,30 @@ final class EditCardViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let editing = input.editCardTrigger.scan(false) { editing, _ in
-            return !editing
-            }.startWith(false)
-        
-        let editButtonTitle = editing.map { editing -> String in
-            return editing == true ? "Save" : "Edit"
+        let canSave = Driver.combineLatest(input.title, input.content) { title, content in
+            return !title.isEmpty && !content.isEmpty
         }
-        
-        let saveTrigger = editing.skip(1)
-            .filter { $0 == false }
-            .mapToVoid()
         
         let titleAndContent = Driver.combineLatest(input.title, input.content)
         let card = Driver.combineLatest(Driver.just(self.card), titleAndContent) { (card, titleAndContent) -> Card in
             return Card(uid: card.uid, title: titleAndContent.0, content: titleAndContent.1, deckId: card.deckId)
             }.startWith(self.card)
-        
-        let saveCard = saveTrigger.withLatestFrom(card)
+
+        let saveCard = input.saveTrigger.withLatestFrom(card)
             .flatMapLatest { card in
                 return self.useCase.save(card: card)
                     .asDriverOnErrorJustComplete()
-        }
+        }.do(onNext: navigator.toCards)
         
-        let deleteCard = input.deleteCardTrigger.withLatestFrom(card)
+        let deleteCard = input.deleteTrigger.withLatestFrom(card)
             .flatMapLatest { card in
                 return self.useCase.delete(card: card)
                     .asDriverOnErrorJustComplete()
-            }.do(onNext: {
-                self.navigator.toCards()
-            })
+            }.do(onNext: navigator.toCards)
         
-        return Output(editButtonTitle: editButtonTitle,
-                      save: saveCard,
+        return Output(save: saveCard,
                       delete: deleteCard,
-                      editing: editing,
+                      saveEnabled: canSave,
                       card: card)
     }
 }

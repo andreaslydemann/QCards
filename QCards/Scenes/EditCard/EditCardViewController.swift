@@ -17,7 +17,7 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
     
     private let disposeBag = DisposeBag()
     
-    private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
+    private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
     private let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: nil)
     
     private var titleTextField: UITextField = {
@@ -26,6 +26,7 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
         titleTextField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         titleTextField.layer.cornerRadius = 10
         titleTextField.font = UIFont.systemFont(ofSize: 14)
+        titleTextField.becomeFirstResponder()
         return titleTextField
     }()
     
@@ -76,17 +77,20 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
         
         view.addSubview(fieldsView)
         
-        fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                          leading: view.leadingAnchor,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          trailing: view.trailingAnchor,
+                          padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.view.tintColor = .white
-        navigationItem.rightBarButtonItems = [editButton, deleteButton]
+        navigationItem.rightBarButtonItems = [saveButton, deleteButton]
         navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.title = "Edit Card"
     }
     
     private func bindViewModel() {
@@ -106,18 +110,16 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
             .map { $0.1 }
         
         let input = EditCardViewModel.Input(
-            editCardTrigger: editButton.rx.tap.asDriver(),
-            deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
+            saveTrigger: saveButton.rx.tap.asDriver(),
+            deleteTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
             title: titleTextField.rx.text.orEmpty.asDriver(),
             content: contentTextView.rx.text.orEmpty.asDriver())
     
         let output = viewModel.transform(input: input)
         
-        [output.editButtonTitle.drive(editButton.rx.title),
-         output.editing.drive(titleTextField.rx.isEnabled),
-         output.editing.drive(contentTextView.rx.isEditable),
-         output.card.drive(cardBinding),
+        [output.card.drive(cardBinding),
          output.save.drive(),
+         output.saveEnabled.drive(saveButton.rx.isEnabled),
          output.delete.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
@@ -130,12 +132,4 @@ final class EditCardViewController: UIViewController, UITextViewDelegate {
         })
     }
     
-}
-
-extension Reactive where Base: UITextView {
-    var isEditable: Binder<Bool> {
-        return Binder(self.base, binding: { (textView, isEditable) in
-            textView.isEditable = isEditable
-        })
-    }
 }

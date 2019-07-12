@@ -21,6 +21,6 @@ final class DefaultEditCardNavigator: EditCardNavigator {
     }
     
     func toCards() {
-        navigationController.dismiss(animated: true)
+        navigationController.popViewController(animated: true)
     }
 }
