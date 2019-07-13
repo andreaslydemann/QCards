@@ -36,6 +36,8 @@
 		E116047422D2B17C00E64FD4 /* CardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E116047322D2B17C00E64FD4 /* CardsUseCase.swift */; };
 		E118207921ADF09A00F1959B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207821ADF09A00F1959B /* RxSwift.framework */; };
 		E118207B21ADF2AA00F1959B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E118207A21ADF2AA00F1959B /* RxCocoa.framework */; };
+		E129CC7E22D9E335005EF576 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129CC7D22D9E335005EF576 /* PresentationViewController.swift */; };
+		E129CC9022D9E774005EF576 /* PresentationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */; };
 		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
 		E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BC22107D19009EDD13 /* UIView+Ext.swift */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
@@ -129,6 +131,8 @@
 		E116047322D2B17C00E64FD4 /* CardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUseCase.swift; sourceTree = "<group>"; };
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		E129CC7D22D9E335005EF576 /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
+		E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationNavigator.swift; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13C88BC22107D19009EDD13 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +298,8 @@
 		E1104BB7222748DE001FFA9D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E129CC7F22D9E4D2005EF576 /* Settings */,
+				E129CC7C22D9E2E3005EF576 /* Presentation */,
 				E1104BB822274917001FFA9D /* AllDecks */,
 				E116045B22D0C2EF00E64FD4 /* AllCards */,
 				E116046622D2A46A00E64FD4 /* CreateCard */,
@@ -348,6 +354,22 @@
 				E1E3A5C121A75C7D0043B441 /* RealmSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E129CC7C22D9E2E3005EF576 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */,
+				E129CC7D22D9E335005EF576 /* PresentationViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E129CC7F22D9E4D2005EF576 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E13C88BA22107D19009EDD13 /* Extensions */ = {
@@ -688,9 +710,11 @@
 				E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
 				E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */,
+				E129CC7E22D9E335005EF576 /* PresentationViewController.swift in Sources */,
 				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
 				E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */,
 				E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */,
+				E129CC9022D9E774005EF576 /* PresentationNavigator.swift in Sources */,
 				E1ED1DC922D7D4DF0052AEA9 /* CardItemViewModel.swift in Sources */,
 				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
 				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
@@ -937,6 +961,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -950,6 +975,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = andreaslydemann.QCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -960,6 +987,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -973,6 +1001,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = andreaslydemann.QCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

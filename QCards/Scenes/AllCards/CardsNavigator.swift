@@ -13,6 +13,7 @@ protocol CardsNavigator {
     func toDecks()
     func toCreateCard(_ deck: Deck)
     func toEditCard(_ card: Card)
+    func toPresentation()
 }
 
 class DefaultCardsNavigator: CardsNavigator {
@@ -41,5 +42,19 @@ class DefaultCardsNavigator: CardsNavigator {
         let vc = EditCardViewController()
         vc.viewModel = EditCardViewModel(card: card, useCase: services.makeCardsUseCase(), navigator: navigator)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func toPresentation() {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.4
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        navigationController.view.layer.add(transition, forKey: nil)
+        
+        let vc = PresentationViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        //let navigator = DefaultPresentationNavigator(navigationController: navigationController)
+        
+        navigationController.pushViewController(vc, animated: false)
     }
 }

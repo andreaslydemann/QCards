@@ -115,6 +115,7 @@ final class CardsViewController: UIViewController {
         let input = CardsViewModel.Input(
             trigger: viewWillAppear,
             selection: tableView.rx.itemSelected.asDriver(),
+            presentationTrigger: playButton.rx.tap.asDriver(),
             createCardTrigger: addButton.rx.tap.asDriver(),
             deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
             editOrderTrigger: editButton.rx.tap.asDriver())
@@ -127,6 +128,7 @@ final class CardsViewController: UIViewController {
          output.editing.do(onNext: { editing in
             self.tableView.isEditing = editing
          }).drive(),
+         output.presentation.drive(),
          output.createCard.drive(),
          output.deleteCard.drive(),
          output.selectedCard.drive()]

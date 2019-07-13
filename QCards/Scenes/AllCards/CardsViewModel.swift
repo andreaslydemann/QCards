@@ -16,6 +16,7 @@ final class CardsViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
         let selection: Driver<IndexPath>
+        let presentationTrigger: Driver<Void>
         let createCardTrigger: Driver<Void>
         let deleteCardTrigger: Driver<Int>
         let editOrderTrigger: Driver<Void>
@@ -24,6 +25,7 @@ final class CardsViewModel: ViewModelType {
     struct Output {
         let cards: Driver<[CardItemViewModel]>
         let editing: Driver<Bool>
+        let presentation: Driver<Void>
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
         let selectedCard: Driver<Card>
@@ -55,6 +57,10 @@ final class CardsViewModel: ViewModelType {
             let editing = input.editOrderTrigger.scan(false) { editing, _ in
                 return !editing
                 }.startWith(false)
+        
+            let presentation = input.presentationTrigger
+                .do(onNext: navigator.toPresentation)
+        
             
             let createCard = input.createCardTrigger
                 .do(onNext: { self.navigator.toCreateCard(self.deck) })
@@ -68,6 +74,6 @@ final class CardsViewModel: ViewModelType {
                         .asDriverOnErrorJustComplete()
             }
         
-        return Output(cards: cards, editing: editing, createCard: createCard, deleteCard: deleteCard, selectedCard: selectedCard)
+        return Output(cards: cards, editing: editing, presentation: presentation, createCard: createCard, deleteCard: deleteCard, selectedCard: selectedCard)
     }
 }
