@@ -44,6 +44,7 @@
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
 		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
+		E1A49D5622DAA54A00B9F818 /* PresentationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5522DAA54A00B9F818 /* PresentationViewModel.swift */; };
 		E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E422D7830F0082574B /* EditCardNavigator.swift */; };
 		E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E622D7831F0082574B /* EditCardViewController.swift */; };
 		E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E822D7832C0082574B /* EditCardViewModel.swift */; };
@@ -141,6 +142,7 @@
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
+		E1A49D5522DAA54A00B9F818 /* PresentationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewModel.swift; sourceTree = "<group>"; };
 		E1A854E422D7830F0082574B /* EditCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardNavigator.swift; sourceTree = "<group>"; };
 		E1A854E622D7831F0082574B /* EditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewController.swift; sourceTree = "<group>"; };
 		E1A854E822D7832C0082574B /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */,
 				E129CC7D22D9E335005EF576 /* PresentationViewController.swift */,
+				E1A49D5522DAA54A00B9F818 /* PresentationViewModel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
 				E116046122D0E72700E64FD4 /* CardsViewModel.swift in Sources */,
+				E1A49D5622DAA54A00B9F818 /* PresentationViewModel.swift in Sources */,
 				E116046522D259B800E64FD4 /* RowAction.swift in Sources */,
 				E116045D22D0C30D00E64FD4 /* CardsNavigator.swift in Sources */,
 				E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */,

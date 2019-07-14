@@ -23,7 +23,7 @@ final class CardsViewController: UIViewController {
     private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        let tableView = UITableView(frame: view.bounds)
         tableView.register(CardTableViewCell.self, forCellReuseIdentifier: CardTableViewCell.reuseID)
         tableView.rowHeight = 65
         return tableView

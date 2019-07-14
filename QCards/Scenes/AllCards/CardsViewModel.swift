@@ -25,7 +25,7 @@ final class CardsViewModel: ViewModelType {
     struct Output {
         let cards: Driver<[CardItemViewModel]>
         let editing: Driver<Bool>
-        let presentation: Driver<Void>
+        let presentation: Driver<[Card]>
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
         let selectedCard: Driver<Card>
@@ -59,8 +59,11 @@ final class CardsViewModel: ViewModelType {
                 }.startWith(false)
         
             let presentation = input.presentationTrigger
+                .withLatestFrom(cards) { _, cards -> [CardItemViewModel] in
+                    return cards
+                }
+                .map { $0.map { $0.card } }
                 .do(onNext: navigator.toPresentation)
-        
             
             let createCard = input.createCardTrigger
                 .do(onNext: { self.navigator.toCreateCard(self.deck) })

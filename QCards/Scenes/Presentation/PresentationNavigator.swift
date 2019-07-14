@@ -21,6 +21,12 @@ final class DefaultPresentationNavigator: PresentationNavigator {
     }
     
     func toCards() {
-        navigationController.dismiss(animated: true)
+        let transition: CATransition = CATransition()
+        transition.duration = 0.4
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        
+        navigationController.view.layer.add(transition, forKey: nil)
+        navigationController.popViewController(animated: false)
     }
 }
