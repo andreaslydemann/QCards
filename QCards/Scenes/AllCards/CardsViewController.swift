@@ -12,7 +12,7 @@ import RxDataSources
 import RxSwift
 import UIKit
 
-final class CardsViewController: UIViewController {
+class CardsViewController: UIViewController {
     
     var viewModel: CardsViewModel!
     
@@ -116,6 +116,7 @@ final class CardsViewController: UIViewController {
             trigger: viewWillAppear,
             selection: tableView.rx.itemSelected.asDriver(),
             presentationTrigger: playButton.rx.tap.asDriver(),
+            settingsTrigger: settingsButton.rx.tap.asDriver(),
             createCardTrigger: addButton.rx.tap.asDriver(),
             deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
             editOrderTrigger: editButton.rx.tap.asDriver())
@@ -129,6 +130,7 @@ final class CardsViewController: UIViewController {
             self.tableView.isEditing = editing
          }).drive(),
          output.presentation.drive(),
+         output.settings.drive(),
          output.createCard.drive(),
          output.deleteCard.drive(),
          output.selectedCard.drive()]

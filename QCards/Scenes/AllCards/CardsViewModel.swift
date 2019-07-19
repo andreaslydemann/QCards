@@ -17,6 +17,7 @@ final class CardsViewModel: ViewModelType {
         let trigger: Driver<Void>
         let selection: Driver<IndexPath>
         let presentationTrigger: Driver<Void>
+        let settingsTrigger: Driver<Void>
         let createCardTrigger: Driver<Void>
         let deleteCardTrigger: Driver<Int>
         let editOrderTrigger: Driver<Void>
@@ -26,6 +27,7 @@ final class CardsViewModel: ViewModelType {
         let cards: Driver<[CardItemViewModel]>
         let editing: Driver<Bool>
         let presentation: Driver<[Card]>
+        let settings: Driver<Void>
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
         let selectedCard: Driver<Card>
@@ -46,37 +48,40 @@ final class CardsViewModel: ViewModelType {
             return self.useCase.cards(of: self.deck)
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { CardItemViewModel(with: $0) }}
-            }
+        }
         
-            let selectedCard = input.selection
+        let selectedCard = input.selection
             .withLatestFrom(cards) { (indexPath, cards) -> Card in
                 return cards[indexPath.row].card
             }
             .do(onNext: navigator.toEditCard)
-            
-            let editing = input.editOrderTrigger.scan(false) { editing, _ in
-                return !editing
-                }.startWith(false)
         
-            let presentation = input.presentationTrigger
-                .withLatestFrom(cards) { _, cards -> [CardItemViewModel] in
-                    return cards
-                }
-                .map { $0.map { $0.card } }
-                .do(onNext: navigator.toPresentation)
-            
-            let createCard = input.createCardTrigger
-                .do(onNext: { self.navigator.toCreateCard(self.deck) })
+        let editing = input.editOrderTrigger.scan(false) { editing, _ in
+            return !editing
+            }.startWith(false)
         
-            let deleteCard = input.deleteCardTrigger
-                .withLatestFrom(cards) { row, cards in
-                    return cards[row].card
-                }
-                .flatMapLatest { card in
-                    return self.useCase.delete(card: card)
-                        .asDriverOnErrorJustComplete()
+        let presentation = input.presentationTrigger
+            .withLatestFrom(cards) { _, cards -> [CardItemViewModel] in
+                return cards
             }
+            .map { $0.map { $0.card } }
+            .do(onNext: navigator.toPresentation)
         
-        return Output(cards: cards, editing: editing, presentation: presentation, createCard: createCard, deleteCard: deleteCard, selectedCard: selectedCard)
+        let settings = input.settingsTrigger
+            .do(onNext: navigator.toSettings)
+        
+        let createCard = input.createCardTrigger
+            .do(onNext: { self.navigator.toCreateCard(self.deck) })
+        
+        let deleteCard = input.deleteCardTrigger
+            .withLatestFrom(cards) { row, cards in
+                return cards[row].card
+            }
+            .flatMapLatest { card in
+                return self.useCase.delete(card: card)
+                    .asDriverOnErrorJustComplete()
+        }
+        
+        return Output(cards: cards, editing: editing, presentation: presentation, settings: settings, createCard: createCard, deleteCard: deleteCard, selectedCard: selectedCard)
     }
 }

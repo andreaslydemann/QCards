@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class CreateCardViewController: UIViewController, UITextViewDelegate {
+class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     var viewModel: CreateCardViewModel!
         
