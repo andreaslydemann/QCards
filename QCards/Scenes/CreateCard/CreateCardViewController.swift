@@ -77,13 +77,13 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
                           leading: view.leadingAnchor,
                           bottom: nil,
                           trailing: view.trailingAnchor,
-                          padding: .init(top: 20, left: 20, bottom: 20, right: 20), size: .init(width: 0, height: 30))
+                          padding: .init(top: 20, left: 15, bottom: 20, right: 15), size: .init(width: 0, height: 30))
         
         contentTextView.anchor(top: titleTextField.bottomAnchor,
                               leading: view.leadingAnchor,
                               bottom: view.safeAreaLayoutGuide.bottomAnchor,
                               trailing: view.trailingAnchor,
-                              padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+                              padding: .init(top: 20, left: 15, bottom: 0, right: 15))
         
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }

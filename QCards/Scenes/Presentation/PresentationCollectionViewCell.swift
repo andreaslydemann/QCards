@@ -12,19 +12,38 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 34)
         return label
+    }()
+    
+    private var contentTextView: UITextView = {
+        let contentTextView = UITextView()
+        contentTextView.isEditable = false
+        contentTextView.textColor = .white
+        contentTextView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        contentTextView.font = UIFont.systemFont(ofSize: 14)
+        return contentTextView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
-        
         addSubview(titleLabel)
+        addSubview(contentTextView)
         
-        titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
-                          padding: .init(top: 15, left: 15, bottom: 12, right: 0), size: .init(width: 0, height: 0))
+        titleLabel.anchor(top: safeAreaLayoutGuide.topAnchor,
+                          leading: leadingAnchor,
+                          bottom: nil,
+                          trailing: trailingAnchor,
+                          padding: .init(top: 75, left: 15, bottom: 15, right: 15))
+        
+        contentTextView.anchor(top: titleLabel.bottomAnchor,
+                               leading: leadingAnchor,
+                               bottom: bottomAnchor,
+                               trailing: trailingAnchor,
+                               padding: .init(top: 15, left: 15, bottom: 15, right: 15))
+        
+        backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,5 +52,6 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
     
     func bind(_ viewModel: CardItemViewModel) {
         self.titleLabel.text = viewModel.title
+        self.contentTextView.text = viewModel.content
     }
 }

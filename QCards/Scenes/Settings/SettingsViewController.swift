@@ -85,7 +85,7 @@ class SettingsViewController: UITableViewController {
         case 1: return timePerCardCell
         case 2: return flashRedCell
         case 3: return showCountdownCell
-        default: fatalError("Unknown row in section 1")
+        default: fatalError("Unknown row")
         }
     }
     
