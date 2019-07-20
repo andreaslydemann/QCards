@@ -27,6 +27,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         titleTextField.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         titleTextField.layer.cornerRadius = 10
+        titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
         titleTextField.font = UIFont.systemFont(ofSize: 14)
         titleTextField.becomeFirstResponder()
         return titleTextField
@@ -55,13 +56,6 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
     
-    private lazy var fieldsView: UIStackView = {
-        let fieldsView = UIStackView(arrangedSubviews: [titleTextField, contentTextView])
-        fieldsView.axis = .vertical
-        fieldsView.spacing = 10
-        return fieldsView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,18 +65,27 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     }
     
     private func setupLayout() {
-        view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        hideKeyboardWhenTappedAround()
         
         contentTextView.delegate = self
         contentTextView.addSubview(placeholderLabel)
 
-        view.addSubview(fieldsView)
+        view.addSubview(titleTextField)
+        view.addSubview(contentTextView)
         
-        fieldsView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        titleTextField.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                           leading: view.leadingAnchor,
-                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                          bottom: nil,
                           trailing: view.trailingAnchor,
-                          padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+                          padding: .init(top: 20, left: 20, bottom: 20, right: 20), size: .init(width: 0, height: 30))
+        
+        contentTextView.anchor(top: titleTextField.bottomAnchor,
+                              leading: view.leadingAnchor,
+                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                              trailing: view.trailingAnchor,
+                              padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        
+        view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }
     
     private func setupNavigationBar() {

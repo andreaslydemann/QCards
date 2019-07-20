@@ -40,6 +40,7 @@
 		E129CC9022D9E774005EF576 /* PresentationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */; };
 		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
 		E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BC22107D19009EDD13 /* UIView+Ext.swift */; };
+		E14AB7D122E3CF96006B07CC /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */; };
 		E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15457E721A4C619002ED341 /* AppDelegate.swift */; };
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
@@ -142,6 +143,7 @@
 		E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationNavigator.swift; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13C88BC22107D19009EDD13 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		E15457E421A4C619002ED341 /* QCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15457E721A4C619002ED341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E15457EE21A4C61B002ED341 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */,
 				E13C88BC22107D19009EDD13 /* UIView+Ext.swift */,
 				E154F9762215697C00A7081B /* UIAlertController+Ext.swift */,
+				E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */,
 				E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */,
 			);
 			path = Extensions;
@@ -727,6 +730,7 @@
 			files = (
 				E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */,
 				E1104BA822274220001FFA9D /* Application.swift in Sources */,
+				E14AB7D122E3CF96006B07CC /* UIViewController+Ext.swift in Sources */,
 				E1A49D5822DFA01800B9F818 /* PresentationCollectionViewCell.swift in Sources */,
 				E116045F22D0C47F00E64FD4 /* CardsViewController.swift in Sources */,
 				E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */,
