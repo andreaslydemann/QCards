@@ -15,10 +15,12 @@ final class SettingsViewModel: ViewModelType {
     
     struct Input {
         let okTrigger: Driver<Void>
+        let enableTimerTrigger: Observable<Bool>
     }
     
     struct Output {
         let dismiss: Driver<Void>
+        let showTimerSettings: Observable<Bool>
     }
     
     private let useCase: CardsUseCase
@@ -33,6 +35,8 @@ final class SettingsViewModel: ViewModelType {
         let dismiss = input.okTrigger
             .do(onNext: navigator.toCards)
         
-        return Output(dismiss: dismiss)
+        let showTimerSettings = input.enableTimerTrigger.map({ !$0 })
+        
+        return Output(dismiss: dismiss, showTimerSettings: showTimerSettings)
     }
 }

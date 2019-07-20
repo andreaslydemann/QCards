@@ -18,8 +18,9 @@ class SettingsViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     private let okButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: nil)
     
-    var shareCell1 = SwitchTableViewCell()
-    var shareCell2 = SwitchTableViewCell()
+    var enableTimerCell = SwitchTableViewCell()
+    var flashRedCell = SwitchTableViewCell()
+    var showCountdownCell = SwitchTableViewCell()
     
     override func loadView() {
         super.loadView()
@@ -30,8 +31,14 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setupTableView() {
-        self.shareCell1.titleLabel.text = "Enable timer"
-        self.shareCell2.titleLabel.text = "Share with Friends"
+        enableTimerCell.titleLabel.text = "Enable timer"
+        enableTimerCell.selectionStyle = .none
+        
+        flashRedCell.titleLabel.text = "Flash red at 10 secs left on card"
+        flashRedCell.selectionStyle = .none
+        
+        showCountdownCell.titleLabel.text = "Show countdown on each card"
+        showCountdownCell.selectionStyle = .none
     }
     
     private func setupNavigationBar() {
@@ -44,44 +51,30 @@ class SettingsViewController: UITableViewController {
     }
     
     private func bindViewModel() {
-        let input = SettingsViewModel.Input(okTrigger: okButton.rx.tap.asDriver())
+        let input = SettingsViewModel.Input(okTrigger: okButton.rx.tap.asDriver(), enableTimerTrigger: enableTimerCell.cellSwitch.rx.value.share(replay: 1, scope: .forever))
         
         let output = viewModel.transform(input: input)
         
-        [output.dismiss.drive()]
+        [output.dismiss.drive(),
+         output.showTimerSettings.bind(to: flashRedCell.rx.isHidden),
+         output.showTimerSettings.bind(to: showCountdownCell.rx.isHidden)]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0: return self.shareCell1
-        case 1: return self.shareCell2
+        case 0: return enableTimerCell
+        case 1: return flashRedCell
+        case 2: return showCountdownCell
         default: fatalError("Unknown row in section 1")
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
-        
-        if indexPath.row == 0 {
-            if self.shareCell1.accessoryType == UITableViewCell.AccessoryType.none {
-                self.shareCell1.accessoryType = UITableViewCell.AccessoryType.checkmark
-            } else {
-                self.shareCell1.accessoryType = UITableViewCell.AccessoryType.none
-            }
-        } else {
-            if indexPath.row == 1 {
-                if self.shareCell2.accessoryType == UITableViewCell.AccessoryType.none {
-                    self.shareCell2.accessoryType = UITableViewCell.AccessoryType.checkmark
-                } else {
-                    self.shareCell2.accessoryType = UITableViewCell.AccessoryType.none
-                }
-            }
-        }
-        
     }
 }

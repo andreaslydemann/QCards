@@ -21,7 +21,6 @@ final class DefaultSettingsNavigator: SettingsNavigator {
     }
     
     func toCards() {
-        print("hello")
         navigationController.dismiss(animated: true)
     }
 }
