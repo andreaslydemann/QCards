@@ -11,6 +11,7 @@ import UIKit
 final class CardTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()

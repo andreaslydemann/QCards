@@ -11,6 +11,7 @@ import UIKit
 final class PresentationCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -18,7 +19,7 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
+        backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         
         addSubview(titleLabel)
         

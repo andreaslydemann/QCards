@@ -21,8 +21,11 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private var titleTextField: UITextField = {
         let titleTextField = UITextField()
-        titleTextField.placeholder = "Enter title here"
-        titleTextField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        titleTextField.textColor = .white
+        titleTextField.attributedPlaceholder =
+            NSAttributedString(string: "Enter title",
+                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        titleTextField.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         titleTextField.layer.cornerRadius = 10
         titleTextField.font = UIFont.systemFont(ofSize: 14)
         titleTextField.becomeFirstResponder()
@@ -31,7 +34,8 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private var contentTextView: UITextView = {
         let contentTextView = UITextView()
-        contentTextView.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        contentTextView.textColor = .white
+        contentTextView.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         contentTextView.layer.cornerRadius = 10
         contentTextView.font = UIFont.systemFont(ofSize: 14)
         return contentTextView
@@ -43,7 +47,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.font = UIFont.systemFont(ofSize: (contentTextView.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
-        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.textColor = .lightGray
         return placeholderLabel
     }()
     
@@ -53,7 +57,6 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private lazy var fieldsView: UIStackView = {
         let fieldsView = UIStackView(arrangedSubviews: [titleTextField, contentTextView])
-
         fieldsView.axis = .vertical
         fieldsView.spacing = 10
         return fieldsView
@@ -68,7 +71,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     }
     
     private func setupLayout() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         
         contentTextView.delegate = self
         contentTextView.addSubview(placeholderLabel)
@@ -83,7 +86,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
+        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.view.tintColor = .white
         navigationItem.leftBarButtonItem = cancelButton

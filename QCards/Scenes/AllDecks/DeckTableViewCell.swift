@@ -11,12 +11,14 @@ import UIKit
 final class DeckTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()

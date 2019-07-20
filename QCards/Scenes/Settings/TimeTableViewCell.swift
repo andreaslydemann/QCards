@@ -1,5 +1,5 @@
 //
-//  ToggleTableViewCell.swift
+//  TextTableViewCell.swift
 //  QCards
 //
 //  Created by Andreas Lüdemann on 20/07/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SwitchTableViewCell: UITableViewCell {
+final class TimeTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -16,24 +16,31 @@ final class SwitchTableViewCell: UITableViewCell {
         return label
     }()
     
-    let cellSwitch: UISwitch = {
-        return UISwitch()
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.UIColorFromHex(hex: "#C7C7CC")
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, cellSwitch])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, timeLabel])
         
         stackView.distribution = .equalSpacing
         
         addSubview(stackView)
         
         stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
-                         padding: .init(top: 10, left: 20, bottom: 6, right: 15), size: .init(width: 0, height: 35))
+                         padding: .init(top: 8, left: 20, bottom: 8, right: 35), size: .init(width: 0, height: 35))
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    /*func bind(_ viewModel: TimeItemViewModel) {
+     self.timeLabel.text = viewModel.time
+     }*/
 }

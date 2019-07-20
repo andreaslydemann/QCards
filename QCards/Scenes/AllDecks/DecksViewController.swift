@@ -30,7 +30,7 @@ class DecksViewController: UITableViewController {
     private func setupTableView() {
         tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
         tableView.rowHeight = 65
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }
     
     private func setupNavigationBar() {
@@ -38,7 +38,7 @@ class DecksViewController: UITableViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
+        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = createDeckButton
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -114,6 +114,8 @@ class DecksViewController: UITableViewController {
                                                            deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
+                cell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+                cell.selectionStyle = .none
                 cell.accessoryType = .disclosureIndicator
                 cell.bind(deck)
                 return cell

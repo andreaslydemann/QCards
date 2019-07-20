@@ -38,14 +38,14 @@ class CardsViewController: UIViewController {
     private var settingsButton: UIButton = {
         let settingsButton = UIButton(type: .system)
         settingsButton.setImage(UIImage(named: "settings"), for: .normal)
-        settingsButton.tintColor = .black
+        settingsButton.tintColor = .white
         return settingsButton
     }()
     
     private var playButton: UIButton = {
         let playButton = UIButton(type: .system)
         playButton.setImage(UIImage(named: "play"), for: .normal)
-        playButton.tintColor = .black
+        playButton.tintColor = .white
         return playButton
     }()
     
@@ -65,6 +65,8 @@ class CardsViewController: UIViewController {
     }
     
     private func setupTableView() {
+        tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
@@ -76,7 +78,7 @@ class CardsViewController: UIViewController {
         divider.anchor(top: tableView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
         footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
     }
     
     private func setupNavigationBar() {
@@ -84,7 +86,7 @@ class CardsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#0E3D5B")
+        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.view.tintColor = .white
         navigationItem.rightBarButtonItems = [addButton, editButton]
@@ -145,6 +147,8 @@ class CardsViewController: UIViewController {
             configureCell: { _, tableView, indexPath, card -> CardTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCell.reuseID, for: indexPath) as! CardTableViewCell
                 cell.shouldIndentWhileEditing = true
+                cell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+                cell.selectionStyle = .none
                 cell.accessoryType = .disclosureIndicator
                 cell.bind(card)
                 return cell

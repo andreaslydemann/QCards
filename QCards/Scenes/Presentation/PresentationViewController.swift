@@ -35,23 +35,16 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     private lazy var footerView: UIStackView = {
-        let footerView = UIStackView(arrangedSubviews: [settingsButton, playButton])
+        let footerView = UIStackView(arrangedSubviews: [stopButton])
         footerView.distribution = .equalCentering
         return footerView
     }()
     
-    private var settingsButton: UIButton = {
-        let settingsButton = UIButton(type: .system)
-        settingsButton.setImage(UIImage(named: "settings"), for: .normal)
-        settingsButton.tintColor = .black
-        return settingsButton
-    }()
-    
-    private var playButton: UIButton = {
-        let playButton = UIButton(type: .system)
-        playButton.setImage(UIImage(named: "play"), for: .normal)
-        playButton.tintColor = .black
-        return playButton
+    private var stopButton: UIButton = {
+        let stopButton = UIButton(type: .system)
+        stopButton.setImage(UIImage(named: "stop"), for: .normal)
+        stopButton.tintColor = .white
+        return stopButton
     }()
     
     private var divider: UIView = {
@@ -90,7 +83,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         divider.anchor(top: collectionView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
         footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
     }
     
     private func bindViewModel() {
@@ -99,7 +92,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
             .asDriverOnErrorJustComplete()
         
         let input = PresentationViewModel.Input(trigger: viewWillAppear,
-        dismissTrigger: settingsButton.rx.tap.asDriver())
+        dismissTrigger: stopButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input: input)
         
