@@ -129,13 +129,13 @@ class DecksViewController: UITableViewController {
             self.store.onNext((RowAction.edit, indexPath.row))
         })
         
-        edit.backgroundColor = UIColor.UIColorFromHex(hex: "#002B39")
+        edit.backgroundColor = UIColor.UIColorFromHex(hex: "#242E37")
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] _, indexPath in
             self.store.onNext((RowAction.delete, indexPath.row))
         })
         
-        delete.backgroundColor = UIColor.UIColorFromHex(hex: "#BD2F3A")
+        delete.backgroundColor = UIColor.UIColorFromHex(hex: "#DF245E")
         
         return [delete, edit]
     }

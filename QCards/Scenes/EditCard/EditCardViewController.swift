@@ -75,6 +75,7 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
     
     private func setupLayout() {
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        deleteButton.tintColor = UIColor.UIColorFromHex(hex: "#DF245E")
         
         contentTextView.delegate = self
         contentTextView.addSubview(placeholderLabel)

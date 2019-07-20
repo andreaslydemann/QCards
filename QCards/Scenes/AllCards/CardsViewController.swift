@@ -173,6 +173,8 @@ extension CardsViewController: UITableViewDelegate {
             self.store.onNext((RowAction.delete, indexPath.row))
         }
         
+        deleteButton.backgroundColor = UIColor.UIColorFromHex(hex: "#DF245E")
+        
         return [deleteButton]
     }
 }
