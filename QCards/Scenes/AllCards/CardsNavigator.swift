@@ -61,7 +61,8 @@ class DefaultCardsNavigator: CardsNavigator {
     
     func toSettings() {
         let navigator = DefaultSettingsNavigator(navigationController: navigationController)
-        let vc = SettingsViewController()
+        let vc = SettingsViewController(style: .grouped)
+        vc.viewModel = SettingsViewModel(useCase: services.makeCardsUseCase(), navigator: navigator)
         let nc = UINavigationController(rootViewController: vc)
         navigationController.present(nc, animated: true, completion: nil)
     }

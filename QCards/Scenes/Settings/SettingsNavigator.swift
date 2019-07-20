@@ -21,6 +21,7 @@ final class DefaultSettingsNavigator: SettingsNavigator {
     }
     
     func toCards() {
-        navigationController.popViewController(animated: false)
+        print("hello")
+        navigationController.dismiss(animated: true)
     }
 }

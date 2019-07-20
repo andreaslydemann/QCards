@@ -44,6 +44,7 @@
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
 		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
+		E18B60EE22E28F9D003D8314 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B60ED22E28F9D003D8314 /* SettingsViewModel.swift */; };
 		E1A49D5622DAA54A00B9F818 /* PresentationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5522DAA54A00B9F818 /* PresentationViewModel.swift */; };
 		E1A49D5822DFA01800B9F818 /* PresentationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5722DFA01800B9F818 /* PresentationCollectionViewCell.swift */; };
 		E1A49D5A22DFA48E00B9F818 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */; };
@@ -145,6 +146,7 @@
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
+		E18B60ED22E28F9D003D8314 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E1A49D5522DAA54A00B9F818 /* PresentationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewModel.swift; sourceTree = "<group>"; };
 		E1A49D5722DFA01800B9F818 /* PresentationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			children = (
 				E1A49D5B22DFA49C00B9F818 /* SettingsNavigator.swift */,
 				E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */,
+				E18B60ED22E28F9D003D8314 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				E1ED1DC922D7D4DF0052AEA9 /* CardItemViewModel.swift in Sources */,
 				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
 				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
+				E18B60EE22E28F9D003D8314 /* SettingsViewModel.swift in Sources */,
 				E116046A22D2A4C300E64FD4 /* CreateCardNavigator.swift in Sources */,
 				E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */,
 				E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */,
