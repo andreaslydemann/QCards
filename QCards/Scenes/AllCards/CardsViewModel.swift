@@ -31,6 +31,7 @@ final class CardsViewModel: ViewModelType {
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
         let selectedCard: Driver<Card>
+        let enablePresentation: Driver<Bool>
     }
     
     private let deck: Deck
@@ -82,6 +83,17 @@ final class CardsViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
         }
         
-        return Output(cards: cards, editing: editing, presentation: presentation, settings: settings, createCard: createCard, deleteCard: deleteCard, selectedCard: selectedCard)
+        let enablePresentation = cards.scan(false) { _, cards in
+            return !cards.isEmpty
+        }.startWith(false)
+        
+        return Output(cards: cards,
+                      editing: editing,
+                      presentation: presentation,
+                      settings: settings,
+                      createCard: createCard,
+                      deleteCard: deleteCard,
+                      selectedCard: selectedCard,
+                      enablePresentation: enablePresentation)
     }
 }

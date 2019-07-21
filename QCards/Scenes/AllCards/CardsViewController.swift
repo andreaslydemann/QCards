@@ -127,7 +127,10 @@ class CardsViewController: UIViewController {
          output.settings.drive(),
          output.createCard.drive(),
          output.deleteCard.drive(),
-         output.selectedCard.drive()]
+         output.selectedCard.drive(),
+         output.enablePresentation.do(onNext: { isEnabled in
+            self.playButton.isEnabled = isEnabled
+         }).drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
