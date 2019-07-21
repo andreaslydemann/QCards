@@ -26,12 +26,12 @@ class SettingsViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
-        setupTableView()
-        setupNavigationBar()
+        setupLayout()
+        setupNavigationItems()
         bindViewModel()
     }
     
-    private func setupTableView() {
+    private func setupLayout() {
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         
         enableTimerCell.titleLabel.text = "Enable timer"
@@ -54,12 +54,8 @@ class SettingsViewController: UITableViewController {
         timePerCardCell.selectionStyle = .none
     }
     
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.view.tintColor = .white
+    private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = okButton
-        navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.title = "Settings"
     }
     

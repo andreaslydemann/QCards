@@ -22,26 +22,19 @@ class DecksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        setupNavigationBar()
+        setupLayout()
+        setupNavigationItems()
         bindViewModel()
     }
     
-    private func setupTableView() {
-        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
+    private func setupLayout() {
         tableView.rowHeight = 65
+        tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }
     
-    private func setupNavigationBar() {
-        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
-        navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
-        navigationController?.navigationBar.barStyle = .black
+    private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = createDeckButton
-        navigationItem.rightBarButtonItem?.tintColor = .white
         navigationItem.title = "QCards"
     }
     

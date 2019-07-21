@@ -38,14 +38,14 @@ class CardsViewController: UIViewController {
     private var settingsButton: UIButton = {
         let settingsButton = UIButton(type: .system)
         settingsButton.setImage(UIImage(named: "settings"), for: .normal)
-        settingsButton.tintColor = .white
+        settingsButton.tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
         return settingsButton
     }()
     
     private var playButton: UIButton = {
         let playButton = UIButton(type: .system)
         playButton.setImage(UIImage(named: "play"), for: .normal)
-        playButton.tintColor = .white
+        playButton.tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
         return playButton
     }()
     
@@ -59,12 +59,13 @@ class CardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        setupNavigationBar()
+        setupLayout()
+        setupNavigationItems()
         bindViewModel()
     }
     
-    private func setupTableView() {
+    private func setupLayout() {
+        view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         
         tableView.rx.setDelegate(self)
@@ -77,20 +78,10 @@ class CardsViewController: UIViewController {
         tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: divider.topAnchor, trailing: view.trailingAnchor)
         divider.anchor(top: tableView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
         footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
-        
-        view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
     }
     
-    private func setupNavigationBar() {
-        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
-        navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.view.tintColor = .white
+    private func setupNavigationItems() {
         navigationItem.rightBarButtonItems = [addButton, editButton]
-        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     private func bindViewModel() {

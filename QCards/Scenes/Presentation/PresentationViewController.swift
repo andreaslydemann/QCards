@@ -43,7 +43,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     private var stopButton: UIButton = {
         let stopButton = UIButton(type: .system)
         stopButton.setImage(UIImage(named: "stop"), for: .normal)
-        stopButton.tintColor = .white
+        stopButton.tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
         return stopButton
     }()
     

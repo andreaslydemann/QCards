@@ -62,7 +62,7 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         setupLayout()
-        setupNavigationBar()
+        setupNavigationItems()
         bindViewModel()
     }
     
@@ -92,13 +92,8 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.view.tintColor = .white
+    private func setupNavigationItems() {
         navigationItem.rightBarButtonItems = [saveButton, deleteButton]
-        navigationItem.rightBarButtonItem?.tintColor = .white
-        navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
     private func bindViewModel() {

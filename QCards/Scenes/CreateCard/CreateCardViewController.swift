@@ -60,7 +60,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         setupLayout()
-        setupNavigationBar()
+        setupNavigationItems()
         bindViewModel()
     }
     
@@ -88,14 +88,9 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }
     
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.view.tintColor = .white
+    private func setupNavigationItems() {
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
-        navigationItem.rightBarButtonItem?.tintColor = .white
-        navigationItem.leftBarButtonItem?.tintColor = .white
         navigationItem.title = "Create Card"
     }
     

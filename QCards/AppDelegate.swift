@@ -20,7 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         self.window?.makeKeyAndVisible()
         
+        setupNavigationBar()
+        
         return true
+    }
+    
+    func setupNavigationBar() {
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.UIColorFromHex(hex: "#98D4F9")]
+        
+        UINavigationBar.appearance().titleTextAttributes = titleAttributes
+        UINavigationBar.appearance().largeTitleTextAttributes = titleAttributes
+        UINavigationBar.appearance().barTintColor = UIColor.UIColorFromHex(hex: "#15202B")
+        UINavigationBar.appearance().tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().barStyle = .black
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
