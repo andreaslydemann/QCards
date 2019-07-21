@@ -9,6 +9,8 @@
 import UIKit
 
 final class PresentationCollectionViewCell: UICollectionViewCell {
+    
+    static let cellId = "presentationCellIdentifier"
 
     let titleLabel: UILabel = {
         let label = UILabel()

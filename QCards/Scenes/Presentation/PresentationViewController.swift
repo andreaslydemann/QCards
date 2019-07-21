@@ -22,7 +22,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         
         collectionView.delegate = self
-        collectionView.register(PresentationCollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(PresentationCollectionViewCell.self, forCellWithReuseIdentifier: PresentationCollectionViewCell.cellId)
         collectionView.showsHorizontalScrollIndicator = true
         collectionView.isPagingEnabled = true
         
@@ -111,7 +111,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return RxCollectionViewSectionedAnimatedDataSource(
             animationConfiguration: AnimationConfiguration(reloadAnimation: .fade),
             configureCell: { _, collectionView, indexPath, card -> PresentationCollectionViewCell in
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! PresentationCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PresentationCollectionViewCell.cellId, for: indexPath) as! PresentationCollectionViewCell
                 cell.bind(card)
                 return cell
         })
