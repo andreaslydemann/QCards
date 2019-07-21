@@ -33,8 +33,8 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         return titleTextField
     }()
     
-    private var contentTextView: UITextView = {
-        let contentTextView = UITextView()
+    private var contentTextView: BulletedTextView = {
+        let contentTextView = BulletedTextView()
         contentTextView.textColor = .white
         contentTextView.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         contentTextView.layer.cornerRadius = 10

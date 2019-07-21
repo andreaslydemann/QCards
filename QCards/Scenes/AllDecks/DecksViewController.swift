@@ -29,6 +29,7 @@ class DecksViewController: UITableViewController {
     
     private func setupLayout() {
         tableView.rowHeight = 65
+        tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }

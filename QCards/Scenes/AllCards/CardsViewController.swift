@@ -67,6 +67,7 @@ class CardsViewController: UIViewController {
     private func setupLayout() {
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        tableView.tableFooterView = UIView(frame: .zero)
         
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
