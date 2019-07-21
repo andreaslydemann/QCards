@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupNavigationBar() {
-        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.UIColorFromHex(hex: "#98D4F9")]
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         UINavigationBar.appearance().titleTextAttributes = titleAttributes
         UINavigationBar.appearance().largeTitleTextAttributes = titleAttributes

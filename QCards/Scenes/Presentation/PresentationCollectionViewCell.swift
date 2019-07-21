@@ -9,6 +9,7 @@
 import UIKit
 
 final class PresentationCollectionViewCell: UICollectionViewCell {
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -31,7 +32,7 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
         addSubview(titleLabel)
         addSubview(contentTextView)
         
-        titleLabel.anchor(top: safeAreaLayoutGuide.topAnchor,
+        titleLabel.anchor(top: topAnchor,
                           leading: leadingAnchor,
                           bottom: nil,
                           trailing: trailingAnchor,
