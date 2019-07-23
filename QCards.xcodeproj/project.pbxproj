@@ -75,7 +75,7 @@
 		E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */; };
 		E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */; };
 		E1FEDA602242E90400D17BE3 /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA5F2242E90400D17BE3 /* DeckTableViewCell.swift */; };
-		E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA612242EBAF00D17BE3 /* Reusable.swift */; };
+		E1FEDA622242EBAF00D17BE3 /* Reusable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FEDA612242EBAF00D17BE3 /* Reusable+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +140,7 @@
 		E116047322D2B17C00E64FD4 /* CardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUseCase.swift; sourceTree = "<group>"; };
 		E118207821ADF09A00F1959B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		E118207A21ADF2AA00F1959B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		E11CA21722E4BD0A007752F0 /* BulletedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BulletedTextView.swift; path = ../Scenes/CreateCard/BulletedTextView.swift; sourceTree = "<group>"; };
+		E11CA21722E4BD0A007752F0 /* BulletedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletedTextView.swift; sourceTree = "<group>"; };
 		E129CC7D22D9E335005EF576 /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
 		E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationNavigator.swift; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckItemViewModel.swift; sourceTree = "<group>"; };
 		E1FEDA5F2242E90400D17BE3 /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
-		E1FEDA612242EBAF00D17BE3 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		E1FEDA612242EBAF00D17BE3 /* Reusable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reusable+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +405,7 @@
 				E154F9762215697C00A7081B /* UIAlertController+Ext.swift */,
 				E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */,
 				E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */,
+				E1FEDA612242EBAF00D17BE3 /* Reusable+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -466,11 +467,18 @@
 		E1BFE4DF221CA4EE005FF6DB /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E1C3489F22E721B500FDFEA3 /* Classes */,
 				E13C88BA22107D19009EDD13 /* Extensions */,
-				E1FEDA612242EBAF00D17BE3 /* Reusable.swift */,
-				E11CA21722E4BD0A007752F0 /* BulletedTextView.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		E1C3489F22E721B500FDFEA3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E11CA21722E4BD0A007752F0 /* BulletedTextView.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		E1E518C0222DB87200E4AED2 /* Domain */ = {
@@ -736,7 +744,7 @@
 				E14AB7D122E3CF96006B07CC /* UIViewController+Ext.swift in Sources */,
 				E1A49D5822DFA01800B9F818 /* PresentationCollectionViewCell.swift in Sources */,
 				E116045F22D0C47F00E64FD4 /* CardsViewController.swift in Sources */,
-				E1FEDA622242EBAF00D17BE3 /* Reusable.swift in Sources */,
+				E1FEDA622242EBAF00D17BE3 /* Reusable+Ext.swift in Sources */,
 				E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */,
 				E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */,
 				E129CC7E22D9E335005EF576 /* PresentationViewController.swift in Sources */,
