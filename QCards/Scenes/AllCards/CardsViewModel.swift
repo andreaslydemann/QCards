@@ -15,7 +15,8 @@ final class CardsViewModel: ViewModelType {
     
     struct Input {
         let trigger: Driver<Void>
-        let selection: Driver<IndexPath>
+        let selectionTrigger: Driver<IndexPath>
+        let moveCardTrigger: Driver<(ItemMovedEvent, [CardItemViewModel])>
         let presentationTrigger: Driver<Void>
         let settingsTrigger: Driver<Void>
         let createCardTrigger: Driver<Void>
@@ -31,6 +32,7 @@ final class CardsViewModel: ViewModelType {
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
         let selectedCard: Driver<Card>
+        let moveCard: Driver<[CardItemViewModel]>
         let enablePresentation: Driver<Bool>
     }
     
@@ -45,13 +47,24 @@ final class CardsViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let cards = input.trigger.flatMapLatest { _ in
+        let initialCards = input.trigger.flatMapLatest { _ in
             return self.useCase.cards(of: self.deck)
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { CardItemViewModel(with: $0) }}
         }
         
-        let selectedCard = input.selection
+        let moveCard = input.moveCardTrigger.map { element -> [CardItemViewModel] in
+            let moveEvent = element.0
+            var newCards = element.1
+            
+            newCards.insert(newCards.remove(at: moveEvent.sourceIndex.row), at: moveEvent.destinationIndex.row)
+            
+            return newCards
+        }
+        
+        let cards = Driver.merge(initialCards, moveCard)
+        
+        let selectedCard = input.selectionTrigger
             .withLatestFrom(cards) { (indexPath, cards) -> Card in
                 return cards[indexPath.row].card
             }
@@ -94,6 +107,7 @@ final class CardsViewModel: ViewModelType {
                       createCard: createCard,
                       deleteCard: deleteCard,
                       selectedCard: selectedCard,
+                      moveCard: moveCard,
                       enablePresentation: enablePresentation)
     }
 }

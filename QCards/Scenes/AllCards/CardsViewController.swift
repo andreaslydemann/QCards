@@ -17,7 +17,8 @@ class CardsViewController: UIViewController {
     var viewModel: CardsViewModel!
     
     private let disposeBag = DisposeBag()
-    private let store = PublishSubject<(RowAction, Int)>()
+    private let rowActionStore = PublishSubject<(RowAction, Int)>()
+    private let cardsStore = PublishSubject<[CardItemViewModel]>()
     
     private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
@@ -90,7 +91,7 @@ class CardsViewController: UIViewController {
             .mapToVoid()
             .asDriverOnErrorJustComplete()
         
-        let deleteCardTrigger = store
+        let deleteCardTrigger = rowActionStore
             .filter { $0.0 == RowAction.delete }.flatMap { _, row in
                 return UIAlertController
                     .present(in: self, text: UIAlertController.AlertText(
@@ -106,9 +107,12 @@ class CardsViewController: UIViewController {
             .filter { $0.0 == 0 }
             .map { $0.1 }
         
+        let moveCardTrigger = tableView.rx.itemMoved.withLatestFrom(cardsStore) { ($0, $1) }
+        
         let input = CardsViewModel.Input(
             trigger: viewWillAppear,
-            selection: tableView.rx.itemSelected.asDriver(),
+            selectionTrigger: tableView.rx.itemSelected.asDriver(),
+            moveCardTrigger: moveCardTrigger.asDriverOnErrorJustComplete(),
             presentationTrigger: playButton.rx.tap.asDriver(),
             settingsTrigger: settingsButton.rx.tap.asDriver(),
             createCardTrigger: addButton.rx.tap.asDriver(),
@@ -118,6 +122,9 @@ class CardsViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         [output.cards
+            .do(onNext: { cards in
+                self.cardsStore.onNext(cards)
+            })
             .map { [CardSection(items: $0)] }
             .drive(tableView.rx.items(dataSource: createDataSource())),
          output.editing.do(onNext: { editing in
@@ -128,6 +135,7 @@ class CardsViewController: UIViewController {
          output.createCard.drive(),
          output.deleteCard.drive(),
          output.selectedCard.drive(),
+         output.moveCard.drive(),
          output.enablePresentation.do(onNext: { isEnabled in
             self.playButton.isEnabled = isEnabled
          }).drive()]
@@ -165,7 +173,7 @@ extension CardsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { _, indexPath in
-            self.store.onNext((RowAction.delete, indexPath.row))
+            self.rowActionStore.onNext((RowAction.delete, indexPath.row))
         }
         
         deleteButton.backgroundColor = UIColor.UIColorFromHex(hex: "#DF245E")
