@@ -30,14 +30,14 @@ final class CardsUseCase: Domain.CardsUseCase {
     
     func save(cards: [Card]) -> Observable<Void> {
         return repository
-            .save(entity: cards.map { $0.asRealm() })
+            .save(entities: cards.map { $0.asRealm() })
     }
     
     func delete(card: Card) -> Observable<Void> {
-        return repository.delete(entity: card.asRealm(), id: card.uid)
+        return repository.delete(entity: card.asRealm())
     }
     
     func delete(cards: [Card]) -> Observable<Void> {
-        return repository.delete(entity: cards.map { $0.asRealm() })
+        return repository.delete(entities: cards.map { $0.asRealm() })
     }
 }

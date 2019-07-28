@@ -17,8 +17,9 @@ protocol AbstractRepository {
     func query(with predicate: NSPredicate,
                sortDescriptors: [NSSortDescriptor]) -> Observable<[T]>
     func save(entity: T) -> Observable<Void>
-    func save(entity: [T]) -> Observable<Void>
-    func delete(entity: T, id: Any) -> Observable<Void>
+    func save(entities: [T]) -> Observable<Void>
+    func delete(entity: T) -> Observable<Void>
+    func delete(entities: [T]) -> Observable<Void>
     func deleteAll() -> Observable<Void>
 }
 
@@ -69,21 +70,21 @@ final class Repository<T: IdentifiableObject>: AbstractRepository {
             }.subscribeOn(scheduler)
     }
     
-    func save(entity: [T]) -> Observable<Void> {
+    func save(entities: [T]) -> Observable<Void> {
         return Observable.deferred {
-            return self.realm.rx.save(entity: entity)
+            return self.realm.rx.save(entities: entities)
             }.subscribeOn(scheduler)
     }
     
-    func delete(entity: T, id: Any) -> Observable<Void> {
-        return Observable.deferred {
-            return self.realm.rx.delete(entity: entity, id: id)
-            }.subscribeOn(scheduler)
-    }
-    
-    func delete(entity: [T]) -> Observable<Void> {
+    func delete(entity: T) -> Observable<Void> {
         return Observable.deferred {
             return self.realm.rx.delete(entity: entity)
+            }.subscribeOn(scheduler)
+    }
+    
+    func delete(entities: [T]) -> Observable<Void> {
+        return Observable.deferred {
+            return self.realm.rx.delete(entities: entities)
             }.subscribeOn(scheduler)
     }
     

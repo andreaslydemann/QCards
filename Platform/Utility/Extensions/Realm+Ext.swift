@@ -41,11 +41,11 @@ extension Reactive where Base: Realm {
         }
     }
     
-    func save<R: Object>(entity: [R], update: Bool = true) -> Observable<Void> {
+    func save<R: Object>(entities: [R], update: Bool = true) -> Observable<Void> {
         return Observable.create { observer in
             do {
                 try self.base.write {
-                    self.base.add(entity, update: update ? .all : .error)
+                    self.base.add(entities, update: update ? .all : .error)
                 }
                 
                 observer.onNext(())
@@ -57,9 +57,9 @@ extension Reactive where Base: Realm {
         }
     }
     
-    func delete<R: Object>(entity: R, id: Any) -> Observable<Void> {
+    func delete<R: IdentifiableObject>(entity: R) -> Observable<Void> {
         return Observable.create { observer in
-            guard let object = self.base.object(ofType: R.self, forPrimaryKey: id) else { fatalError() }
+            guard let object = self.base.object(ofType: R.self, forPrimaryKey: entity.uid) else { fatalError() }
             
             do {
                 try self.base.write {
@@ -75,10 +75,10 @@ extension Reactive where Base: Realm {
         }
     }
     
-    func delete<R: IdentifiableObject>(entity: [R]) -> Observable<Void> {
+    func delete<R: IdentifiableObject>(entities: [R]) -> Observable<Void> {
         return Observable.create { observer in
-            let objects = entity.map { singleEntity -> Object in
-                guard let object = self.base.object(ofType: R.self, forPrimaryKey: singleEntity.uid) else { fatalError() }
+            let objects = entities.map { entity -> Object in
+                guard let object = self.base.object(ofType: R.self, forPrimaryKey: entity.uid) else { fatalError() }
                 return object
             }
             

@@ -29,6 +29,6 @@ final class DecksUseCase: Domain.DecksUseCase {
     }
     
     func delete(deck: Deck) -> Observable<Void> {
-        return repository.delete(entity: deck.asRealm(), id: deck.uid)
+        return repository.delete(entity: deck.asRealm())
     }
 }
