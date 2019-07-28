@@ -14,7 +14,6 @@ protocol CardsNavigator {
     func toCreateCard(_ deck: Deck)
     func toEditCard(_ card: Card)
     func toPresentation(_ cards: [Card])
-    func toSettings()
 }
 
 class DefaultCardsNavigator: CardsNavigator {
@@ -57,13 +56,5 @@ class DefaultCardsNavigator: CardsNavigator {
         vc.viewModel = PresentationViewModel(cards: cards, useCase: services.makeCardsUseCase(), navigator: navigator)
         
         navigationController.pushViewController(vc, animated: false)
-    }
-    
-    func toSettings() {
-        let navigator = DefaultSettingsNavigator(navigationController: navigationController)
-        let vc = SettingsViewController(style: .grouped)
-        vc.viewModel = SettingsViewModel(useCase: services.makeCardsUseCase(), navigator: navigator)
-        let nc = UINavigationController(rootViewController: vc)
-        navigationController.present(nc, animated: true, completion: nil)
     }
 }

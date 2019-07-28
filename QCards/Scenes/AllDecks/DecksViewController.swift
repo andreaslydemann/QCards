@@ -16,6 +16,7 @@ class DecksViewController: UITableViewController {
     
     var viewModel: DecksViewModel!
     private let disposeBag = DisposeBag()
+    private let settingsButton = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: nil)
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let store = PublishSubject<(RowAction, Int)>()
 
@@ -35,6 +36,7 @@ class DecksViewController: UITableViewController {
     }
     
     private func setupNavigationItems() {
+        navigationItem.leftBarButtonItem = settingsButton
         navigationItem.rightBarButtonItem = createDeckButton
         navigationItem.title = "QCards"
     }
@@ -88,7 +90,8 @@ class DecksViewController: UITableViewController {
                                          selection: selection.asDriverOnErrorJustComplete(),
                                          createDeckTrigger: createDeckTrigger.asDriverOnErrorJustComplete(),
                                          editDeckTrigger: editDeckTrigger.asDriverOnErrorJustComplete(),
-                                         deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete())
+                                         deleteDeckTrigger: deleteDeckTrigger.asDriverOnErrorJustComplete(),
+                                         settingsTrigger: settingsButton.rx.tap.asDriver())
         let output = viewModel.transform(input: input)
         
         [output.decks
@@ -97,7 +100,8 @@ class DecksViewController: UITableViewController {
          output.selectedDeck.drive(),
          output.createDeck.drive(),
          output.editDeck.drive(),
-         output.deleteDeck.drive()]
+         output.deleteDeck.drive(),
+         output.settings.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     

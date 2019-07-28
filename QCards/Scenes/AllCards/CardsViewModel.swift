@@ -18,7 +18,6 @@ final class CardsViewModel: ViewModelType {
         let selectionTrigger: Driver<IndexPath>
         let moveCardTrigger: Driver<(ItemMovedEvent, [CardItemViewModel])>
         let presentationTrigger: Driver<Void>
-        let settingsTrigger: Driver<Void>
         let createCardTrigger: Driver<Void>
         let deleteCardTrigger: Driver<Int>
         let editOrderTrigger: Driver<Void>
@@ -28,7 +27,6 @@ final class CardsViewModel: ViewModelType {
         let cards: Driver<[CardItemViewModel]>
         let editing: Driver<Bool>
         let presentation: Driver<[Card]>
-        let settings: Driver<Void>
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
         let saveCards: Driver<Void>
@@ -90,13 +88,6 @@ final class CardsViewModel: ViewModelType {
             .map { $0.map { $0.card } }
             .do(onNext: navigator.toPresentation)
         
-        let settings = input.settingsTrigger.withLatestFrom(cards)
-            .map { $0.map { $0.card } }
-            .flatMapLatest { [unowned self] in
-                return self.useCase.save(cards: $0)
-                    .asDriverOnErrorJustComplete()
-        }
-        
         let createCard = input.createCardTrigger
             .do(onNext: { self.navigator.toCreateCard(self.deck) })
         
@@ -116,7 +107,6 @@ final class CardsViewModel: ViewModelType {
         return Output(cards: cards,
                       editing: editing,
                       presentation: presentation,
-                      settings: settings,
                       createCard: createCard,
                       deleteCard: deleteCard,
                       saveCards: saveCards,

@@ -19,6 +19,7 @@ final class DecksViewModel: ViewModelType {
         let createDeckTrigger: Driver<String>
         let editDeckTrigger: Driver<(title: String, row: Int)>
         let deleteDeckTrigger: Driver<Int>
+        let settingsTrigger: Driver<Void>
     }
     
     struct Output {
@@ -27,6 +28,7 @@ final class DecksViewModel: ViewModelType {
         let createDeck: Driver<Void>
         let editDeck: Driver<Void>
         let deleteDeck: Driver<Void>
+        let settings: Driver<Void>
     }
     
     private let useCase: DecksUseCase
@@ -80,10 +82,14 @@ final class DecksViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
         }
         
+        let settings = input.settingsTrigger
+            .do(onNext: navigator.toSettings)
+        
         return Output(decks: decks,
                       selectedDeck: selectedDeck,
                       createDeck: createDeck,
                       editDeck: editDeck,
-                      deleteDeck: deleteDeck)
+                      deleteDeck: deleteDeck,
+                      settings: settings)
     }
 }

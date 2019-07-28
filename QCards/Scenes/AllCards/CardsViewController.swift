@@ -31,16 +31,9 @@ class CardsViewController: UIViewController {
     }()
     
     private lazy var footerView: UIStackView = {
-        let footerView = UIStackView(arrangedSubviews: [settingsButton, playButton])
+        let footerView = UIStackView(arrangedSubviews: [playButton])
         footerView.distribution = .equalCentering
         return footerView
-    }()
-    
-    private var settingsButton: UIButton = {
-        let settingsButton = UIButton(type: .system)
-        settingsButton.setImage(UIImage(named: "settings"), for: .normal)
-        settingsButton.tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
-        return settingsButton
     }()
     
     private var playButton: UIButton = {
@@ -114,7 +107,6 @@ class CardsViewController: UIViewController {
             selectionTrigger: tableView.rx.itemSelected.asDriver(),
             moveCardTrigger: moveCardTrigger.asDriverOnErrorJustComplete(),
             presentationTrigger: playButton.rx.tap.asDriver(),
-            settingsTrigger: settingsButton.rx.tap.asDriver(),
             createCardTrigger: addButton.rx.tap.asDriver(),
             deleteCardTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
             editOrderTrigger: editButton.rx.tap.asDriver())
@@ -131,7 +123,6 @@ class CardsViewController: UIViewController {
             self.tableView.isEditing = editing
          }).drive(),
          output.presentation.drive(),
-         output.settings.drive(),
          output.createCard.drive(),
          output.deleteCard.drive(),
          output.saveCards.drive(),
