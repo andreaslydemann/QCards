@@ -14,5 +14,5 @@ public protocol CardsUseCase {
     func save(card: Card) -> Observable<Void>
     func save(cards: [Card]) -> Observable<Void>
     func delete(card: Card) -> Observable<Void>
-    func delete(cards: [Card]) -> Observable<Void>
+    func deleteCards(of deck: Deck) -> Observable<Void>
 }

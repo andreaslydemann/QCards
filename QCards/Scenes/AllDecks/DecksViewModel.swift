@@ -87,13 +87,9 @@ final class DecksViewModel: ViewModelType {
                 .asDriverOnErrorJustComplete()
         }
         
-        let deleteCards = deckToDelete
-            .flatMapLatest { deck in
-                return self.cardsUseCase.cards(of: deck).asDriverOnErrorJustComplete()
-            }
-            .flatMapLatest { cards in
-                return self.cardsUseCase.delete(cards: cards).asDriverOnErrorJustComplete()
-        }
+        let deleteCards = deckToDelete.flatMapLatest({
+            return self.cardsUseCase.deleteCards(of: $0).asDriverOnErrorJustComplete()
+        })
         
         let settings = input.settingsTrigger
             .do(onNext: navigator.toSettings)

@@ -37,7 +37,9 @@ final class CardsUseCase: Domain.CardsUseCase {
         return repository.delete(entity: card.asRealm())
     }
     
-    func delete(cards: [Card]) -> Observable<Void> {
-        return repository.delete(entities: cards.map { $0.asRealm() })
+    func deleteCards(of deck: Deck) -> Observable<Void> {
+        return cards(of: deck).flatMapLatest { cards in
+            return self.repository.delete(entities: cards.map { $0.asRealm() })
+        }
     }
 }
