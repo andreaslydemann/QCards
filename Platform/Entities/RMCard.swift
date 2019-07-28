@@ -14,6 +14,7 @@ final class RMCard: Object {
     @objc dynamic var uid: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var content: String = ""
+    @objc dynamic var orderPosition: Int = 0
     @objc dynamic var deckId: String = ""
     
     override class func primaryKey() -> String? {
@@ -25,6 +26,7 @@ extension RMCard {
     static var uid: Attribute<String> { return Attribute("uid")}
     static var title: Attribute<String> { return Attribute("title")}
     static var content: Attribute<String> { return Attribute("content")}
+    static var orderPosition: Attribute<Int> { return Attribute("orderPosition")}
     static var deckId: Attribute<String> { return Attribute("deckId")}
 }
 
@@ -33,6 +35,7 @@ extension RMCard: DomainConvertibleType {
         return Card(uid: uid,
                     title: title,
                     content: content,
+                    orderPosition: orderPosition,
                     deckId: deckId)
     }
 }
@@ -43,6 +46,7 @@ extension Card: RealmRepresentable {
             object.uid = uid
             object.title = title
             object.content = content
+            object.orderPosition = orderPosition
             object.deckId = deckId
         }
     }

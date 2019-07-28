@@ -12,23 +12,23 @@ import Realm
 import RealmSwift
 import RxSwift
 
-final class DecksUseCase<Repository>: Domain.DecksUseCase where Repository: AbstractRepository, Repository.T == Deck {
+final class DecksUseCase: Domain.DecksUseCase {
     
-    private let repository: Repository
+    private let repository: Repository<RMDeck>
     
-    init(repository: Repository) {
+    init(repository: Repository<RMDeck>) {
         self.repository = repository
     }
     
     func decks() -> Observable<[Deck]> {
-        return repository.queryAll()
+        return repository.queryAll().mapToDomain()
     }
     
     func save(deck: Deck) -> Observable<Void> {
-        return repository.save(entity: deck)
+        return repository.save(entity: deck.asRealm())
     }
     
     func delete(deck: Deck) -> Observable<Void> {
-        return repository.delete(entity: deck)
+        return repository.delete(entity: deck.asRealm(), id: deck.uid)
     }
 }

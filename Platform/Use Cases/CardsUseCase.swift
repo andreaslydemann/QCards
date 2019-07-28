@@ -12,23 +12,28 @@ import Realm
 import RealmSwift
 import RxSwift
 
-final class CardsUseCase<Repository>: Domain.CardsUseCase where Repository: AbstractRepository, Repository.T == Card {
+final class CardsUseCase: Domain.CardsUseCase {
     
-    private let repository: Repository
+    private let repository: Repository<RMCard>
     
-    init(repository: Repository) {
+    init(repository: Repository<RMCard>) {
         self.repository = repository
     }
     
     func cards(of deck: Deck) -> Observable<[Card]> {
-        return repository.query(with: NSPredicate(format: "deckId == %@", deck.uid), sortDescriptors: [])
+        return repository.query(with: NSPredicate(format: "deckId == %@", deck.uid), sortDescriptors: []).mapToDomain()
     }
     
     func save(card: Card) -> Observable<Void> {
-        return repository.save(entity: card)
+        return repository.save(entity: card.asRealm())
+    }
+    
+    func save(cards: [Card]) -> Observable<Void> {
+        return repository
+            .save(entity: cards.map { $0.asRealm() })
     }
     
     func delete(card: Card) -> Observable<Void> {
-        return repository.delete(entity: card)
+        return repository.delete(entity: card.asRealm(), id: card.uid)
     }
 }

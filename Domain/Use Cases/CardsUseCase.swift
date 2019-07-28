@@ -12,5 +12,6 @@ import RxSwift
 public protocol CardsUseCase {
     func cards(of deck: Deck) -> Observable<[Card]>
     func save(card: Card) -> Observable<Void>
+    func save(cards: [Card]) -> Observable<Void>
     func delete(card: Card) -> Observable<Void>
 }

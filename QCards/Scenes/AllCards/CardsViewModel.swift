@@ -59,6 +59,12 @@ final class CardsViewModel: ViewModelType {
             
             newCards.insert(newCards.remove(at: moveEvent.sourceIndex.row), at: moveEvent.destinationIndex.row)
             
+            for (index, card) in newCards.enumerated() {
+                var newCard = card.card
+                newCard.orderPosition = index
+                _ = self.useCase.save(card: newCard)
+            }
+            
             return newCards
         }
         
@@ -81,8 +87,12 @@ final class CardsViewModel: ViewModelType {
             .map { $0.map { $0.card } }
             .do(onNext: navigator.toPresentation)
         
-        let settings = input.settingsTrigger
-            .do(onNext: navigator.toSettings)
+        let settings = input.settingsTrigger.withLatestFrom(cards)
+            .map { $0.map { $0.card } }
+        .flatMapLatest { [unowned self] in
+            return self.useCase.save(cards: $0)
+                .asDriverOnErrorJustComplete()
+        }
         
         let createCard = input.createCardTrigger
             .do(onNext: { self.navigator.toCreateCard(self.deck) })

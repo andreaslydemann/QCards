@@ -6,7 +6,6 @@
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
-import Foundation
 import Realm
 import RealmSwift
 import RxRealm
@@ -18,10 +17,12 @@ protocol AbstractRepository {
     func query(with predicate: NSPredicate,
                sortDescriptors: [NSSortDescriptor]) -> Observable<[T]>
     func save(entity: T) -> Observable<Void>
-    func delete(entity: T) -> Observable<Void>
+    func save(entity: [T]) -> Observable<Void>
+    func delete(entity: T, id: Any) -> Observable<Void>
+    func deleteAll() -> Observable<Void>
 }
 
-final class Repository<T: RealmRepresentable>: AbstractRepository where T == T.RealmType.DomainType, T.RealmType: Object {
+final class Repository<T: Object>: AbstractRepository {
     private let configuration: Realm.Configuration
     private let scheduler: RunLoopThreadScheduler
     
@@ -43,10 +44,9 @@ final class Repository<T: RealmRepresentable>: AbstractRepository where T == T.R
     func queryAll() -> Observable<[T]> {
         return Observable.deferred {
             let realm = self.realm
-            let objects = realm.objects(T.RealmType.self)
+            let objects = realm.objects(T.self)
             
             return Observable.array(from: objects)
-                .mapToDomain()
             }
             .subscribeOn(scheduler)
     }
@@ -55,12 +55,10 @@ final class Repository<T: RealmRepresentable>: AbstractRepository where T == T.R
                sortDescriptors: [NSSortDescriptor] = []) -> Observable<[T]> {
         return Observable.deferred {
             let realm = self.realm
-            let objects = realm.objects(T.RealmType.self)
+            let objects = realm.objects(T.self)
                 .filter(predicate)
                 .sorted(by: sortDescriptors.map(SortDescriptor.init))
-            
             return Observable.array(from: objects)
-                .mapToDomain()
             }
             .subscribeOn(scheduler)
     }
@@ -71,9 +69,21 @@ final class Repository<T: RealmRepresentable>: AbstractRepository where T == T.R
             }.subscribeOn(scheduler)
     }
     
-    func delete(entity: T) -> Observable<Void> {
+    func save(entity: [T]) -> Observable<Void> {
         return Observable.deferred {
-            return self.realm.rx.delete(entity: entity)
+            return self.realm.rx.save(entity: entity)
+            }.subscribeOn(scheduler)
+    }
+    
+    func delete(entity: T, id: Any) -> Observable<Void> {
+        return Observable.deferred {
+            return self.realm.rx.delete(entity: entity, id: id)
+            }.subscribeOn(scheduler)
+    }
+    
+    func deleteAll() -> Observable<Void> {
+        return Observable.deferred {
+            return self.realm.rx.deleteAll()
             }.subscribeOn(scheduler)
     }
 }

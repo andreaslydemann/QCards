@@ -41,7 +41,7 @@ final class CreateCardViewModel: ViewModelType {
         }
         
         let save = input.saveTrigger.withLatestFrom(Driver.combineLatest(input.title, input.content, Driver.just(deck)))
-            .map { Domain.Card(title: $0.0, content: $0.1, deckId: $0.2.uid) }
+            .map { Domain.Card(title: $0.0, content: $0.1, orderPosition: 0, deckId: $0.2.uid) }
             .flatMapLatest { [unowned self] in
                 return self.useCase.save(card: $0)
                     .asDriverOnErrorJustComplete()

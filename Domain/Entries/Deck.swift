@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Deck: Codable {
+public struct Deck {
     public let title: String
     public let uid: String
     public let createdAt: String
@@ -23,30 +23,6 @@ public struct Deck: Codable {
     
     public init(title: String) {
         self.init(title: title, uid: NSUUID().uuidString, createdAt: String(round(Date().timeIntervalSince1970 * 1000)))
-    }
-    
-    private enum CodingKeys: String, CodingKey {
-        case title
-        case uid
-        case createdAt
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        title = try container.decode(String.self, forKey: .title)
-        
-        if let createdAt = try container.decodeIfPresent(Int.self, forKey: .createdAt) {
-            self.createdAt = "\(createdAt)"
-        } else {
-            createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt) ?? ""
-        }
-        
-        if let uid = try container.decodeIfPresent(Int.self, forKey: .uid) {
-            self.uid = "\(uid)"
-        } else {
-            uid = try container.decodeIfPresent(String.self, forKey: .uid) ?? ""
-        }
     }
 }
 
