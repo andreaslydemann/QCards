@@ -10,7 +10,7 @@ import Domain
 import Realm
 import RealmSwift
 
-final class RMDeck: Object {
+final class RMDeck: Object, IdentifiableObject {
     @objc dynamic var uid: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var createdAt: String = ""

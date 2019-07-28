@@ -14,9 +14,9 @@ import RxSwift
 
 final class CardsUseCase: Domain.CardsUseCase {
     
-    private let repository: Repository<RMCard>
+    private let repository: Repository<Card.RealmType>
     
-    init(repository: Repository<RMCard>) {
+    init(repository: Repository<Card.RealmType>) {
         self.repository = repository
     }
     
@@ -35,5 +35,9 @@ final class CardsUseCase: Domain.CardsUseCase {
     
     func delete(card: Card) -> Observable<Void> {
         return repository.delete(entity: card.asRealm(), id: card.uid)
+    }
+    
+    func delete(cards: [Card]) -> Observable<Void> {
+        return repository.delete(entity: cards.map { $0.asRealm() })
     }
 }

@@ -10,7 +10,7 @@ import Domain
 import Realm
 import RealmSwift
 
-final class RMCard: Object {
+final class RMCard: Object, IdentifiableObject {
     @objc dynamic var uid: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var content: String = ""

@@ -28,20 +28,23 @@ final class DecksViewModel: ViewModelType {
         let createDeck: Driver<Void>
         let editDeck: Driver<Void>
         let deleteDeck: Driver<Void>
+        let deleteCards: Driver<Void>
         let settings: Driver<Void>
     }
     
-    private let useCase: DecksUseCase
+    private let decksUseCase: DecksUseCase
+    private let cardsUseCase: CardsUseCase
     private let navigator: DecksNavigator
     
-    init(useCase: DecksUseCase, navigator: DecksNavigator) {
-        self.useCase = useCase
+    init(decksUseCase: DecksUseCase, cardsUseCase: CardsUseCase, navigator: DecksNavigator) {
+        self.decksUseCase = decksUseCase
+        self.cardsUseCase = cardsUseCase
         self.navigator = navigator
     }
     
     func transform(input: Input) -> Output {
         let decks = input.trigger.flatMapLatest { _ in
-            return self.useCase.decks()
+            return self.decksUseCase.decks()
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { DeckItemViewModel(with: $0) }.sorted(by: {$0.createdAt > $1.createdAt}) }
         }
@@ -57,7 +60,7 @@ final class DecksViewModel: ViewModelType {
                 return Domain.Deck(title: title)
             }
             .flatMapLatest { [unowned self] in
-                return self.useCase.save(deck: $0)
+                return self.decksUseCase.save(deck: $0)
                     .asDriverOnErrorJustComplete()
         }
         
@@ -70,16 +73,26 @@ final class DecksViewModel: ViewModelType {
                 let (deck, title) = arg
                 return Domain.Deck(title: title, uid: deck.uid, createdAt: deck.createdAt)
             }.flatMapLatest { [unowned self] in
-                return self.useCase.save(deck: $0)
+                return self.decksUseCase.save(deck: $0)
                     .asDriverOnErrorJustComplete()
         }
         
-        let deleteDeck = input.deleteDeckTrigger
+        let deckToDelete = input.deleteDeckTrigger
             .withLatestFrom(decks) { row, decks in
                 return decks[row].deck
-            }.flatMapLatest { deck in
-                return self.useCase.delete(deck: deck)
-                    .asDriverOnErrorJustComplete()
+        }
+        
+        let deleteDeck = deckToDelete.flatMapLatest { deck in
+            return self.decksUseCase.delete(deck: deck)
+                .asDriverOnErrorJustComplete()
+        }
+        
+        let deleteCards = deckToDelete
+            .flatMapLatest { deck in
+                return self.cardsUseCase.cards(of: deck).asDriverOnErrorJustComplete()
+            }
+            .flatMapLatest { cards in
+                return self.cardsUseCase.delete(cards: cards).asDriverOnErrorJustComplete()
         }
         
         let settings = input.settingsTrigger
@@ -90,6 +103,7 @@ final class DecksViewModel: ViewModelType {
                       createDeck: createDeck,
                       editDeck: editDeck,
                       deleteDeck: deleteDeck,
+                      deleteCards: deleteCards,
                       settings: settings)
     }
 }

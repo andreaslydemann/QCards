@@ -22,7 +22,7 @@ protocol AbstractRepository {
     func deleteAll() -> Observable<Void>
 }
 
-final class Repository<T: Object>: AbstractRepository {
+final class Repository<T: IdentifiableObject>: AbstractRepository {
     private let configuration: Realm.Configuration
     private let scheduler: RunLoopThreadScheduler
     
@@ -78,6 +78,12 @@ final class Repository<T: Object>: AbstractRepository {
     func delete(entity: T, id: Any) -> Observable<Void> {
         return Observable.deferred {
             return self.realm.rx.delete(entity: entity, id: id)
+            }.subscribeOn(scheduler)
+    }
+    
+    func delete(entity: [T]) -> Observable<Void> {
+        return Observable.deferred {
+            return self.realm.rx.delete(entity: entity)
             }.subscribeOn(scheduler)
     }
     

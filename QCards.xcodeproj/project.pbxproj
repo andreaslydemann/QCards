@@ -39,6 +39,7 @@
 		E11CA21822E4BD0A007752F0 /* BulletedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CA21722E4BD0A007752F0 /* BulletedTextView.swift */; };
 		E129CC7E22D9E335005EF576 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129CC7D22D9E335005EF576 /* PresentationViewController.swift */; };
 		E129CC9022D9E774005EF576 /* PresentationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */; };
+		E13619F122EE28C30023F29C /* IdentifiableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13619F022EE28C20023F29C /* IdentifiableObject.swift */; };
 		E13C88BD22107D19009EDD13 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */; };
 		E13C88BE22107D19009EDD13 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13C88BC22107D19009EDD13 /* UIView+Ext.swift */; };
 		E14AB7D122E3CF96006B07CC /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */; };
@@ -143,6 +144,7 @@
 		E11CA21722E4BD0A007752F0 /* BulletedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletedTextView.swift; sourceTree = "<group>"; };
 		E129CC7D22D9E335005EF576 /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
 		E129CC8F22D9E774005EF576 /* PresentationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationNavigator.swift; sourceTree = "<group>"; };
+		E13619F022EE28C20023F29C /* IdentifiableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableObject.swift; sourceTree = "<group>"; };
 		E13C88BB22107D19009EDD13 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E13C88BC22107D19009EDD13 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		E1104B88222735C2001FFA9D /* Conversion */ = {
 			isa = PBXGroup;
 			children = (
+				E13619F022EE28C20023F29C /* IdentifiableObject.swift */,
 				E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */,
 				E1104B8B22273601001FFA9D /* RealmRepresentable.swift */,
 				E1104BB122274725001FFA9D /* Expression.swift */,
@@ -723,6 +726,7 @@
 				E1104B8C22273601001FFA9D /* RealmRepresentable.swift in Sources */,
 				E1104B95222736CB001FFA9D /* Realm+Ext.swift in Sources */,
 				E1104B9122273670001FFA9D /* RunLoopThreadScheduler.swift in Sources */,
+				E13619F122EE28C30023F29C /* IdentifiableObject.swift in Sources */,
 				E1104BB222274725001FFA9D /* Expression.swift in Sources */,
 				E1104BAA222742AF001FFA9D /* DecksUseCase.swift in Sources */,
 				E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */,

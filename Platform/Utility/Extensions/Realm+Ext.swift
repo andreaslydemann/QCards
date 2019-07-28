@@ -59,11 +59,32 @@ extension Reactive where Base: Realm {
     
     func delete<R: Object>(entity: R, id: Any) -> Observable<Void> {
         return Observable.create { observer in
+            guard let object = self.base.object(ofType: R.self, forPrimaryKey: id) else { fatalError() }
+            
             do {
-                guard let object = self.base.object(ofType: R.self, forPrimaryKey: id) else { fatalError() }
-                
                 try self.base.write {
                     self.base.delete(object)
+                }
+                
+                observer.onNext(())
+                observer.onCompleted()
+            } catch {
+                observer.onError(error)
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func delete<R: IdentifiableObject>(entity: [R]) -> Observable<Void> {
+        return Observable.create { observer in
+            let objects = entity.map { singleEntity -> Object in
+                guard let object = self.base.object(ofType: R.self, forPrimaryKey: singleEntity.uid) else { fatalError() }
+                return object
+            }
+            
+            do {
+                try self.base.write {
+                    self.base.delete(objects)
                 }
                 
                 observer.onNext(())
