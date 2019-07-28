@@ -134,6 +134,7 @@ class CardsViewController: UIViewController {
          output.settings.drive(),
          output.createCard.drive(),
          output.deleteCard.drive(),
+         output.saveCards.drive(),
          output.selectedCard.drive(),
          output.moveCard.drive(),
          output.enablePresentation.do(onNext: { isEnabled in

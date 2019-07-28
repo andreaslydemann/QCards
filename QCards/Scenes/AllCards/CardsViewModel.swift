@@ -31,6 +31,7 @@ final class CardsViewModel: ViewModelType {
         let settings: Driver<Void>
         let createCard: Driver<Void>
         let deleteCard: Driver<Void>
+        let saveCards: Driver<Void>
         let selectedCard: Driver<Card>
         let moveCard: Driver<[CardItemViewModel]>
         let enablePresentation: Driver<Bool>
@@ -50,7 +51,7 @@ final class CardsViewModel: ViewModelType {
         let initialCards = input.trigger.flatMapLatest { _ in
             return self.useCase.cards(of: self.deck)
                 .asDriverOnErrorJustComplete()
-                .map { $0.map { CardItemViewModel(with: $0) }}
+                .map { $0.map { CardItemViewModel(with: $0) }.sorted(by: {$0.card.orderPosition < $1.card.orderPosition})}
         }
         
         let moveCard = input.moveCardTrigger.map { element -> [CardItemViewModel] in
@@ -59,16 +60,18 @@ final class CardsViewModel: ViewModelType {
             
             newCards.insert(newCards.remove(at: moveEvent.sourceIndex.row), at: moveEvent.destinationIndex.row)
             
-            for (index, card) in newCards.enumerated() {
-                var newCard = card.card
-                newCard.orderPosition = index
-                _ = self.useCase.save(card: newCard)
-            }
-            
             return newCards
         }
         
         let cards = Driver.merge(initialCards, moveCard)
+        
+        let saveCards = moveCard
+            .map { $0.enumerated().map { (index, cardItem) -> Card in
+                return Card(uid: cardItem.card.uid, title: cardItem.title, content: cardItem.content, orderPosition: index, deckId: cardItem.card.deckId) } }
+            .flatMapLatest { [unowned self] in
+                return self.useCase.save(cards: $0)
+                    .asDriverOnErrorJustComplete()
+        }
         
         let selectedCard = input.selectionTrigger
             .withLatestFrom(cards) { (indexPath, cards) -> Card in
@@ -89,9 +92,9 @@ final class CardsViewModel: ViewModelType {
         
         let settings = input.settingsTrigger.withLatestFrom(cards)
             .map { $0.map { $0.card } }
-        .flatMapLatest { [unowned self] in
-            return self.useCase.save(cards: $0)
-                .asDriverOnErrorJustComplete()
+            .flatMapLatest { [unowned self] in
+                return self.useCase.save(cards: $0)
+                    .asDriverOnErrorJustComplete()
         }
         
         let createCard = input.createCardTrigger
@@ -108,7 +111,7 @@ final class CardsViewModel: ViewModelType {
         
         let enablePresentation = cards.scan(false) { _, cards in
             return !cards.isEmpty
-        }.startWith(false)
+            }.startWith(false)
         
         return Output(cards: cards,
                       editing: editing,
@@ -116,6 +119,7 @@ final class CardsViewModel: ViewModelType {
                       settings: settings,
                       createCard: createCard,
                       deleteCard: deleteCard,
+                      saveCards: saveCards,
                       selectedCard: selectedCard,
                       moveCard: moveCard,
                       enablePresentation: enablePresentation)

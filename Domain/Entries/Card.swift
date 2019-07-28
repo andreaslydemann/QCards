@@ -12,7 +12,7 @@ public struct Card: Codable {
     public let uid: String
     public let title: String
     public let content: String
-    public var orderPosition: Int
+    public let orderPosition: Int
     public let deckId: String
     
     public init(uid: String, title: String, content: String, orderPosition: Int, deckId: String
