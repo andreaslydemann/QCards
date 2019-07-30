@@ -17,7 +17,9 @@ final class SwitchTableViewCell: UITableViewCell {
     }()
     
     let cellSwitch: UISwitch = {
-        return UISwitch()
+        let cellSwitch = UISwitch()
+        cellSwitch.onTintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
+        return cellSwitch
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -22,6 +22,7 @@ class SettingsViewController: UITableViewController {
     var flashRedCell = SwitchTableViewCell()
     var showCountdownCell = SwitchTableViewCell()
     var timePerCardCell = TimeTableViewCell()
+    var darkModeCell = SwitchTableViewCell()
     
     override func loadView() {
         super.loadView()
@@ -52,6 +53,11 @@ class SettingsViewController: UITableViewController {
         timePerCardCell.accessoryType = .disclosureIndicator
         timePerCardCell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         timePerCardCell.selectionStyle = .none
+        
+        darkModeCell.titleLabel.text = "Enable dark mode"
+        darkModeCell.selectionStyle = .none
+        darkModeCell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        
     }
     
     private func setupNavigationItems() {
@@ -72,15 +78,28 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        switch section {
+        case 0: return 1
+        case 1: return 4
+        default: return 0
+        }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0: return enableTimerCell
-        case 1: return timePerCardCell
-        case 2: return flashRedCell
-        case 3: return showCountdownCell
+        switch indexPath.section {
+        case 0: return darkModeCell
+        case 1:
+            switch indexPath.row {
+            case 0: return enableTimerCell
+            case 1: return timePerCardCell
+            case 2: return flashRedCell
+            case 3: return showCountdownCell
+            default: fatalError("Unknown row")
+            }
         default: fatalError("Unknown row")
         }
     }
