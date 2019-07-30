@@ -33,6 +33,7 @@ final class CardsViewModel: ViewModelType {
         let selectedCard: Driver<Card>
         let moveCard: Driver<[CardItemViewModel]>
         let enablePresentation: Driver<Bool>
+        let cardsAvailable: Driver<Bool>
     }
     
     private let deck: Deck
@@ -62,6 +63,8 @@ final class CardsViewModel: ViewModelType {
         }
         
         let cards = Driver.merge(initialCards, moveCard)
+        
+        let cardsAvailable = cards.map({ $0.count > 0 }).asDriver(onErrorJustReturn: false)
         
         let saveCards = moveCard
             .map { $0.enumerated().map { (index, cardItem) -> Card in
@@ -112,6 +115,7 @@ final class CardsViewModel: ViewModelType {
                       saveCards: saveCards,
                       selectedCard: selectedCard,
                       moveCard: moveCard,
-                      enablePresentation: enablePresentation)
+                      enablePresentation: enablePresentation,
+                      cardsAvailable: cardsAvailable)
     }
 }

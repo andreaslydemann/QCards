@@ -50,6 +50,14 @@ class CardsViewController: UIViewController {
         return divider
     }()
     
+    private var noCardsLabel: UILabel = {
+        let label: UILabel  = UILabel()
+        label.text          = "This deck is so empty."
+        label.textColor     = .lightGray
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +68,7 @@ class CardsViewController: UIViewController {
     
     private func setupLayout() {
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        tableView.backgroundView  = noCardsLabel
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         tableView.tableFooterView = UIView(frame: .zero)
         
@@ -130,7 +139,8 @@ class CardsViewController: UIViewController {
          output.moveCard.drive(),
          output.enablePresentation.do(onNext: { isEnabled in
             self.playButton.isEnabled = isEnabled
-         }).drive()]
+         }).drive(),
+         output.cardsAvailable.drive(noCardsLabel.rx.isHidden)]
             .forEach({$0.disposed(by: disposeBag)})
     }
     

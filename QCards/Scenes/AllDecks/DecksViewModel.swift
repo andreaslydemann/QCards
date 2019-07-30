@@ -30,6 +30,7 @@ final class DecksViewModel: ViewModelType {
         let deleteDeck: Driver<Void>
         let deleteCards: Driver<Void>
         let settings: Driver<Void>
+        let decksAvailable: Driver<Bool>
     }
     
     private let decksUseCase: DecksUseCase
@@ -48,6 +49,8 @@ final class DecksViewModel: ViewModelType {
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { DeckItemViewModel(with: $0) }.sorted(by: {$0.createdAt > $1.createdAt}) }
         }
+        
+        let decksAvailable = decks.map({ $0.count > 0 }).asDriver(onErrorJustReturn: false)
         
         let selectedDeck = input.selection
             .withLatestFrom(decks) { (indexPath, decks) -> Deck in
@@ -100,6 +103,7 @@ final class DecksViewModel: ViewModelType {
                       editDeck: editDeck,
                       deleteDeck: deleteDeck,
                       deleteCards: deleteCards,
-                      settings: settings)
+                      settings: settings,
+                      decksAvailable: decksAvailable)
     }
 }

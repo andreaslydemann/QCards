@@ -20,6 +20,14 @@ class DecksViewController: UITableViewController {
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let store = PublishSubject<(RowAction, Int)>()
 
+    private var noDecksLabel: UILabel = {
+        let label: UILabel  = UILabel()
+        label.text          = "No decks found."
+        label.textColor     = .lightGray
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +38,7 @@ class DecksViewController: UITableViewController {
     
     private func setupLayout() {
         tableView.rowHeight = 65
+        tableView.backgroundView  = noDecksLabel
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
@@ -102,7 +111,8 @@ class DecksViewController: UITableViewController {
          output.editDeck.drive(),
          output.deleteDeck.drive(),
          output.deleteCards.drive(),
-         output.settings.drive()]
+         output.settings.drive(),
+         output.decksAvailable.drive(noDecksLabel.rx.isHidden)]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
