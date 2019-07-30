@@ -9,7 +9,7 @@
 import Foundation
 
 /// An attribute, representing an attribute on a model
-public struct Attribute<AttributeType> : Equatable {
+public struct Attribute<AttributeType>: Equatable {
     public let key: String
     
     public init(_ key: String) {
