@@ -54,6 +54,8 @@
 		E1A49D5822DFA01800B9F818 /* PresentationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5722DFA01800B9F818 /* PresentationCollectionViewCell.swift */; };
 		E1A49D5A22DFA48E00B9F818 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */; };
 		E1A49D5C22DFA49C00B9F818 /* SettingsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5B22DFA49C00B9F818 /* SettingsNavigator.swift */; };
+		E1A7881522F215D600842876 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7881422F215D600842876 /* UserDefaultsManager.swift */; };
+		E1A7881722F35CD100842876 /* SettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7881622F35CD100842876 /* SettingsUseCase.swift */; };
 		E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E422D7830F0082574B /* EditCardNavigator.swift */; };
 		E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E622D7831F0082574B /* EditCardViewController.swift */; };
 		E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E822D7832C0082574B /* EditCardViewModel.swift */; };
@@ -161,6 +163,8 @@
 		E1A49D5722DFA01800B9F818 /* PresentationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1A49D5B22DFA49C00B9F818 /* SettingsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigator.swift; sourceTree = "<group>"; };
+		E1A7881422F215D600842876 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E1A7881622F35CD100842876 /* SettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUseCase.swift; sourceTree = "<group>"; };
 		E1A854E422D7830F0082574B /* EditCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardNavigator.swift; sourceTree = "<group>"; };
 		E1A854E622D7831F0082574B /* EditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewController.swift; sourceTree = "<group>"; };
 		E1A854E822D7832C0082574B /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
@@ -226,7 +230,7 @@
 				E1104B822227354E001FFA9D /* Entities */,
 				E1104B8322273554001FFA9D /* Repository */,
 				E1104B852227356D001FFA9D /* Use Cases */,
-				E1104B842227355E001FFA9D /* Utility */,
+				E1104B842227355E001FFA9D /* Utilities */,
 				E1104BD02227D20A001FFA9D /* Platform.h */,
 				E1104B6A22272DA2001FFA9D /* Info.plist */,
 			);
@@ -251,13 +255,13 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		E1104B842227355E001FFA9D /* Utility */ = {
+		E1104B842227355E001FFA9D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				E1104B8622273599001FFA9D /* Extensions */,
 				E1104B8F22273657001FFA9D /* RxUnits */,
 			);
-			path = Utility;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E1104B852227356D001FFA9D /* Use Cases */ = {
@@ -266,6 +270,7 @@
 				E1104BAB222742C5001FFA9D /* UseCaseProvider.swift */,
 				E1104BA9222742AF001FFA9D /* DecksUseCase.swift */,
 				E116047322D2B17C00E64FD4 /* CardsUseCase.swift */,
+				E1A7881622F35CD100842876 /* SettingsUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -440,7 +445,8 @@
 				E1104BA62227420B001FFA9D /* Application */,
 				E1104BB42227488A001FFA9D /* Common */,
 				E1104BB7222748DE001FFA9D /* Scenes */,
-				E1BFE4DF221CA4EE005FF6DB /* Utility */,
+				E1A7881322F2158F00842876 /* Managers */,
+				E1BFE4DF221CA4EE005FF6DB /* Utilities */,
 				E15457F921A4C631002ED341 /* Supporting Files */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
 				E15457F321A4C61B002ED341 /* Info.plist */,
@@ -457,6 +463,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E1A7881322F2158F00842876 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E1A7881422F215D600842876 /* UserDefaultsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E1A854E322D782FA0082574B /* EditCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,13 +481,13 @@
 			path = EditCard;
 			sourceTree = "<group>";
 		};
-		E1BFE4DF221CA4EE005FF6DB /* Utility */ = {
+		E1BFE4DF221CA4EE005FF6DB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				E1C3489F22E721B500FDFEA3 /* Classes */,
 				E13C88BA22107D19009EDD13 /* Extensions */,
 			);
-			path = Utility;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E1C3489F22E721B500FDFEA3 /* Classes */ = {
@@ -731,6 +745,7 @@
 				E1104BAA222742AF001FFA9D /* DecksUseCase.swift in Sources */,
 				E1104BAC222742C5001FFA9D /* UseCaseProvider.swift in Sources */,
 				E1104BD32227D346001FFA9D /* Attribute.swift in Sources */,
+				E1A7881722F35CD100842876 /* SettingsUseCase.swift in Sources */,
 				E116047422D2B17C00E64FD4 /* CardsUseCase.swift in Sources */,
 				E116047222D2B0C100E64FD4 /* RMCard.swift in Sources */,
 				E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */,
@@ -774,6 +789,7 @@
 				E1FEDA602242E90400D17BE3 /* DeckTableViewCell.swift in Sources */,
 				E1ED1DC822D7D4DF0052AEA9 /* CardTableViewCell.swift in Sources */,
 				E1104BB6222748B0001FFA9D /* ViewModelType.swift in Sources */,
+				E1A7881522F215D600842876 /* UserDefaultsManager.swift in Sources */,
 				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
 				E18B60F422E379AD003D8314 /* TimeTableViewCell.swift in Sources */,
 				E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */,
