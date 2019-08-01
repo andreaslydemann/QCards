@@ -11,7 +11,7 @@
 		E1104B6F22272DA2001FFA9D /* Platform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */; };
 		E1104B8C22273601001FFA9D /* RealmRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B8B22273601001FFA9D /* RealmRepresentable.swift */; };
-		E1104B8E22273642001FFA9D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B8D22273642001FFA9D /* Repository.swift */; };
+		E1104B8E22273642001FFA9D /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B8D22273642001FFA9D /* RealmRepository.swift */; };
 		E1104B9122273670001FFA9D /* RunLoopThreadScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B9022273670001FFA9D /* RunLoopThreadScheduler.swift */; };
 		E1104B93222736BA001FFA9D /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B92222736BA001FFA9D /* Observable+Ext.swift */; };
 		E1104B95222736CB001FFA9D /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B94222736CB001FFA9D /* Realm+Ext.swift */; };
@@ -47,6 +47,9 @@
 		E15457EF21A4C61B002ED341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E15457EE21A4C61B002ED341 /* Assets.xcassets */; };
 		E15457F221A4C61B002ED341 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */; };
 		E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E154F9762215697C00A7081B /* UIAlertController+Ext.swift */; };
+		E15B4F1D22F35EC000C22C65 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B4F1C22F35EC000C22C65 /* UserDefaultsRepository.swift */; };
+		E15B4F1F22F360E000C22C65 /* RxSettingCompatible+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B4F1E22F360E000C22C65 /* RxSettingCompatible+Ext.swift */; };
+		E15B4F2322F36CFA00C22C65 /* SettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B4F2222F36CFA00C22C65 /* SettingsUseCase.swift */; };
 		E18B60EE22E28F9D003D8314 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B60ED22E28F9D003D8314 /* SettingsViewModel.swift */; };
 		E18B60F022E30A64003D8314 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B60EF22E30A64003D8314 /* SwitchTableViewCell.swift */; };
 		E18B60F422E379AD003D8314 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18B60F322E379AD003D8314 /* TimeTableViewCell.swift */; };
@@ -54,7 +57,6 @@
 		E1A49D5822DFA01800B9F818 /* PresentationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5722DFA01800B9F818 /* PresentationCollectionViewCell.swift */; };
 		E1A49D5A22DFA48E00B9F818 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */; };
 		E1A49D5C22DFA49C00B9F818 /* SettingsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A49D5B22DFA49C00B9F818 /* SettingsNavigator.swift */; };
-		E1A7881522F215D600842876 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7881422F215D600842876 /* UserDefaultsManager.swift */; };
 		E1A7881722F35CD100842876 /* SettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7881622F35CD100842876 /* SettingsUseCase.swift */; };
 		E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E422D7830F0082574B /* EditCardNavigator.swift */; };
 		E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A854E622D7831F0082574B /* EditCardViewController.swift */; };
@@ -118,7 +120,7 @@
 		E1104B6A22272DA2001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		E1104B8B22273601001FFA9D /* RealmRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepresentable.swift; sourceTree = "<group>"; };
-		E1104B8D22273642001FFA9D /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		E1104B8D22273642001FFA9D /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		E1104B9022273670001FFA9D /* RunLoopThreadScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoopThreadScheduler.swift; sourceTree = "<group>"; };
 		E1104B92222736BA001FFA9D /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		E1104B94222736CB001FFA9D /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
@@ -156,6 +158,9 @@
 		E15457F121A4C61B002ED341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E15457F321A4C61B002ED341 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E154F9762215697C00A7081B /* UIAlertController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Ext.swift"; sourceTree = "<group>"; };
+		E15B4F1C22F35EC000C22C65 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
+		E15B4F1E22F360E000C22C65 /* RxSettingCompatible+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSettingCompatible+Ext.swift"; sourceTree = "<group>"; };
+		E15B4F2222F36CFA00C22C65 /* SettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUseCase.swift; sourceTree = "<group>"; };
 		E18B60ED22E28F9D003D8314 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E18B60EF22E30A64003D8314 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		E18B60F322E379AD003D8314 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,7 +168,6 @@
 		E1A49D5722DFA01800B9F818 /* PresentationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1A49D5922DFA48E00B9F818 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1A49D5B22DFA49C00B9F818 /* SettingsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigator.swift; sourceTree = "<group>"; };
-		E1A7881422F215D600842876 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E1A7881622F35CD100842876 /* SettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUseCase.swift; sourceTree = "<group>"; };
 		E1A854E422D7830F0082574B /* EditCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardNavigator.swift; sourceTree = "<group>"; };
 		E1A854E622D7831F0082574B /* EditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewController.swift; sourceTree = "<group>"; };
@@ -228,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				E1104B822227354E001FFA9D /* Entities */,
-				E1104B8322273554001FFA9D /* Repository */,
+				E1104B8322273554001FFA9D /* Repositories */,
 				E1104B852227356D001FFA9D /* Use Cases */,
 				E1104B842227355E001FFA9D /* Utilities */,
 				E1104BD02227D20A001FFA9D /* Platform.h */,
@@ -247,12 +251,13 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		E1104B8322273554001FFA9D /* Repository */ = {
+		E1104B8322273554001FFA9D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				E1104B8D22273642001FFA9D /* Repository.swift */,
+				E1104B8D22273642001FFA9D /* RealmRepository.swift */,
+				E15B4F1C22F35EC000C22C65 /* UserDefaultsRepository.swift */,
 			);
-			path = Repository;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		E1104B842227355E001FFA9D /* Utilities */ = {
@@ -280,6 +285,7 @@
 			children = (
 				E1104B92222736BA001FFA9D /* Observable+Ext.swift */,
 				E1104B94222736CB001FFA9D /* Realm+Ext.swift */,
+				E15B4F1E22F360E000C22C65 /* RxSettingCompatible+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,7 +451,6 @@
 				E1104BA62227420B001FFA9D /* Application */,
 				E1104BB42227488A001FFA9D /* Common */,
 				E1104BB7222748DE001FFA9D /* Scenes */,
-				E1A7881322F2158F00842876 /* Managers */,
 				E1BFE4DF221CA4EE005FF6DB /* Utilities */,
 				E15457F921A4C631002ED341 /* Supporting Files */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
@@ -461,14 +466,6 @@
 				E15457F021A4C61B002ED341 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E1A7881322F2158F00842876 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				E1A7881422F215D600842876 /* UserDefaultsManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		E1A854E322D782FA0082574B /* EditCard */ = {
@@ -524,6 +521,7 @@
 				E1E518C9222DB9E400E4AED2 /* UseCaseProvider.swift */,
 				E1E518CB222DB9F000E4AED2 /* DecksUseCase.swift */,
 				E116046F22D2AFF700E64FD4 /* CardsUseCase.swift */,
+				E15B4F2222F36CFA00C22C65 /* SettingsUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -747,9 +745,11 @@
 				E1104BD32227D346001FFA9D /* Attribute.swift in Sources */,
 				E1A7881722F35CD100842876 /* SettingsUseCase.swift in Sources */,
 				E116047422D2B17C00E64FD4 /* CardsUseCase.swift in Sources */,
+				E15B4F1F22F360E000C22C65 /* RxSettingCompatible+Ext.swift in Sources */,
 				E116047222D2B0C100E64FD4 /* RMCard.swift in Sources */,
 				E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */,
-				E1104B8E22273642001FFA9D /* Repository.swift in Sources */,
+				E1104B8E22273642001FFA9D /* RealmRepository.swift in Sources */,
+				E15B4F1D22F35EC000C22C65 /* UserDefaultsRepository.swift in Sources */,
 				E1104B93222736BA001FFA9D /* Observable+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,7 +789,6 @@
 				E1FEDA602242E90400D17BE3 /* DeckTableViewCell.swift in Sources */,
 				E1ED1DC822D7D4DF0052AEA9 /* CardTableViewCell.swift in Sources */,
 				E1104BB6222748B0001FFA9D /* ViewModelType.swift in Sources */,
-				E1A7881522F215D600842876 /* UserDefaultsManager.swift in Sources */,
 				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
 				E18B60F422E379AD003D8314 /* TimeTableViewCell.swift in Sources */,
 				E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */,
@@ -802,6 +801,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15B4F2322F36CFA00C22C65 /* SettingsUseCase.swift in Sources */,
 				E116047022D2AFF700E64FD4 /* CardsUseCase.swift in Sources */,
 				E1E518CC222DB9F000E4AED2 /* DecksUseCase.swift in Sources */,
 				E1E518CA222DB9E400E4AED2 /* UseCaseProvider.swift in Sources */,

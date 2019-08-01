@@ -19,12 +19,17 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
     }
     
     public func makeDecksUseCase() -> Domain.DecksUseCase {
-        let repository = Repository<Deck.RealmType>(configuration: configuration)
+        let repository = RealmRepository<Deck.RealmType>(configuration: configuration)
         return DecksUseCase(repository: repository)
     }
     
     public func makeCardsUseCase() -> Domain.CardsUseCase {
-        let repository = Repository<Card.RealmType>(configuration: configuration)
+        let repository = RealmRepository<Card.RealmType>(configuration: configuration)
         return CardsUseCase(repository: repository)
+    }
+    
+    public func makeSettingsUseCase() -> Domain.SettingsUseCase {
+        let repository = UserDefaultsRepository(userDefaults: UserDefaults())
+        return SettingsUseCase(repository: repository)
     }
 }

@@ -15,18 +15,18 @@ final class SettingsViewModel: ViewModelType {
     
     struct Input {
         let okTrigger: Driver<Void>
-        let enableTimerTrigger: Observable<Bool>
+        let enableTimerTrigger: Driver<Bool>
     }
     
     struct Output {
         let dismiss: Driver<Void>
-        let showTimerSettings: Observable<Bool>
+        let timerEnabled: Driver<Bool>
     }
     
-    private let useCase: CardsUseCase
+    private let useCase: SettingsUseCase
     private let navigator: SettingsNavigator
     
-    init(useCase: CardsUseCase, navigator: SettingsNavigator) {
+    init(useCase: SettingsUseCase, navigator: SettingsNavigator) {
         self.useCase = useCase
         self.navigator = navigator
     }
@@ -35,8 +35,23 @@ final class SettingsViewModel: ViewModelType {
         let dismiss = input.okTrigger
             .do(onNext: navigator.toCards)
         
-        let showTimerSettings = input.enableTimerTrigger.map({ !$0 })
         
-        return Output(dismiss: dismiss, showTimerSettings: showTimerSettings)
+        let initialValue = useCase.getSetting(of: "EnableTimerKey", defaultValue: false)
+            .map { value in
+                print("read value: ", value)
+                return value }.asDriver(onErrorJustReturn: false)
+        
+        let valueAfterSaving = input.enableTimerTrigger.flatMap { value -> Driver<Bool> in
+            print("value to save: ", value)
+            return self.useCase
+                .saveSetting(with: value, key: "EnableTimerKey")
+                .map { value }
+                .asDriver(onErrorJustReturn: !value)
+        }.asDriver()
+        
+        let timerEnabled = Driver.merge(initialValue, valueAfterSaving)
+            .asDriver(onErrorJustReturn: false)
+        
+        return Output(dismiss: dismiss, timerEnabled: timerEnabled)
     }
 }

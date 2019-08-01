@@ -14,9 +14,9 @@ import RxSwift
 
 final class DecksUseCase: Domain.DecksUseCase {
     
-    private let repository: Repository<RMDeck>
+    private let repository: RealmRepository<RMDeck>
     
-    init(repository: Repository<RMDeck>) {
+    init(repository: RealmRepository<RMDeck>) {
         self.repository = repository
     }
     

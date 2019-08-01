@@ -61,14 +61,18 @@ class SettingsViewController: UITableViewController {
     }
     
     private func bindViewModel() {
-        let input = SettingsViewModel.Input(okTrigger: okButton.rx.tap.asDriver(), enableTimerTrigger: enableTimerCell.cellSwitch.rx.value.share(replay: 1, scope: .forever))
+        let input = SettingsViewModel.Input(okTrigger: okButton.rx.tap.asDriver(),
+                                            enableTimerTrigger: enableTimerCell.cellSwitch.rx.isOn.changed.asDriver())
         
         let output = viewModel.transform(input: input)
         
+        let showTimerCells = output.timerEnabled.map { !$0 }
+        
         [output.dismiss.drive(),
-         output.showTimerSettings.bind(to: flashRedCell.rx.isHidden),
-         output.showTimerSettings.bind(to: showCountdownCell.rx.isHidden),
-         output.showTimerSettings.bind(to: timePerCardCell.rx.isHidden)]
+         output.timerEnabled.drive(enableTimerCell.cellSwitch.rx.isOn),
+         showTimerCells.drive(flashRedCell.rx.isHidden),
+         showTimerCells.drive(showCountdownCell.rx.isHidden),
+         showTimerCells.drive(timePerCardCell.rx.isHidden)]
             .forEach({$0.disposed(by: disposeBag)})
     }
     

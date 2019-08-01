@@ -11,7 +11,7 @@ import RealmSwift
 import RxRealm
 import RxSwift
 
-protocol AbstractRepository {
+protocol AbstractRealmRepository {
     associatedtype T
     func queryAll() -> Observable<[T]>
     func query(with predicate: NSPredicate,
@@ -23,7 +23,7 @@ protocol AbstractRepository {
     func deleteAll() -> Observable<Void>
 }
 
-final class Repository<T: IdentifiableObject>: AbstractRepository {
+final class RealmRepository<T: IdentifiableObject>: AbstractRealmRepository {
     private let configuration: Realm.Configuration
     private let scheduler: RunLoopThreadScheduler
     
@@ -37,7 +37,7 @@ final class Repository<T: IdentifiableObject>: AbstractRepository {
     
     init(configuration: Realm.Configuration) {
         self.configuration = configuration
-        let name = "com.andreaslydemann.Platform.Repository"
+        let name = "com.andreaslydemann.Platform.RealmRepository"
         self.scheduler = RunLoopThreadScheduler(threadName: name)
         print("File 📁 url: \(RLMRealmPathForFile("default.realm"))")
     }

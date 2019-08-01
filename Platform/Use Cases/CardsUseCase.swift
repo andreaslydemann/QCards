@@ -14,9 +14,9 @@ import RxSwift
 
 final class CardsUseCase: Domain.CardsUseCase {
     
-    private let repository: Repository<Card.RealmType>
+    private let repository: RealmRepository<Card.RealmType>
     
-    init(repository: Repository<Card.RealmType>) {
+    init(repository: RealmRepository<Card.RealmType>) {
         self.repository = repository
     }
     
