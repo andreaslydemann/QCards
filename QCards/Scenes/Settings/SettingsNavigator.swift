@@ -10,7 +10,8 @@ import Domain
 import UIKit
 
 protocol SettingsNavigator {
-    func toCards()
+    func toDecks()
+    func toTimePerCard()
 }
 
 final class DefaultSettingsNavigator: SettingsNavigator {
@@ -20,7 +21,14 @@ final class DefaultSettingsNavigator: SettingsNavigator {
         self.navigationController = navigationController
     }
     
-    func toCards() {
+    func toDecks() {
         navigationController.dismiss(animated: true)
+    }
+    
+    func toTimePerCard() {
+        //let navigator = DefaultEditCardNavigator(navigationController: navigationController)
+        let vc = TimePerCardViewController()
+        //vc.viewModel = EditCardViewModel(card: card, useCase: services.makeCardsUseCase(), navigator: navigator)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

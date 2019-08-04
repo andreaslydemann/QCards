@@ -10,6 +10,7 @@
 		8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */; };
 		8E88E70F22F64DE60092DA8F /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70E22F64DE60092DA8F /* SettingsSection.swift */; };
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
+		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
 		E1104B6E22272DA2001FFA9D /* Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; };
 		E1104B6F22272DA2001FFA9D /* Platform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */; };
@@ -122,6 +123,7 @@
 		8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E70E22F64DE60092DA8F /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
+		8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewController.swift; sourceTree = "<group>"; };
 		E1104B6722272DA2001FFA9D /* Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1104B6A22272DA2001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
@@ -234,6 +236,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E88E71822F78B240092DA8F /* TimePerCard */ = {
+			isa = PBXGroup;
+			children = (
+				8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */,
+			);
+			path = TimePerCard;
+			sourceTree = "<group>";
+		};
 		E1104B6822272DA2001FFA9D /* Platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +346,7 @@
 		E1104BB7222748DE001FFA9D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8E88E71822F78B240092DA8F /* TimePerCard */,
 				E129CC7F22D9E4D2005EF576 /* Settings */,
 				E129CC7C22D9E2E3005EF576 /* Presentation */,
 				E1104BB822274917001FFA9D /* AllDecks */,
@@ -800,6 +811,7 @@
 				E18B60F022E30A64003D8314 /* SwitchTableViewCell.swift in Sources */,
 				E1FEDA602242E90400D17BE3 /* DeckTableViewCell.swift in Sources */,
 				E1ED1DC822D7D4DF0052AEA9 /* CardTableViewCell.swift in Sources */,
+				8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */,
 				E1104BB6222748B0001FFA9D /* ViewModelType.swift in Sources */,
 				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
 				E18B60F422E379AD003D8314 /* TimeTableViewCell.swift in Sources */,

@@ -34,7 +34,7 @@ final class SettingsViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let dismiss = input.okTrigger
-            .do(onNext: navigator.toCards)
+            .do(onNext: navigator.toDecks)
         
         let enableTimerViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable timer", userDefaultsKey: "EnableTimerKey")
         let timePerCardViewModel = TimeCellViewModel(useCase: useCase, navigator: navigator, userDefaultsKey: "TimePerCardKey")
@@ -46,7 +46,7 @@ final class SettingsViewModel: ViewModelType {
         
         let selectedEvent = input.selection.do(onNext: { [weak self] (item) in
             switch item {
-            case .timePerCardItem: self?.navigator.toCards()
+            case .timePerCardItem: self?.navigator.toTimePerCard()
             default: break
             }
         })

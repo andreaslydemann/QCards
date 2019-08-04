@@ -25,11 +25,15 @@ class SettingsViewController: UITableViewController {
         tableView.register(TimeTableViewCell.self, forCellReuseIdentifier: TimeTableViewCell.reuseID)
         
         setupLayout()
+        setupNavigationItems()
         bindViewModel()
     }
     
     private func setupLayout() {
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+    }
+    
+    private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = okButton
         navigationItem.title = "Settings"
     }
