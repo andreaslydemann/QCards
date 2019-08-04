@@ -13,18 +13,26 @@ import RealmSwift
 import RxSwift
 
 final class SettingsUseCase: Domain.SettingsUseCase {
-    
+
     private let repository: UserDefaultsRepository
     
     init(repository: UserDefaultsRepository) {
         self.repository = repository
     }
     
-    func getSetting(of key: String, defaultValue: Bool = false) -> Observable<Bool> {
+    func getSwitchSetting(of key: String, defaultValue: Bool = false) -> Observable<Bool> {
         return repository.get(key: key, defaultValue: defaultValue)
     }
     
-    func saveSetting(with value: Bool, key: String) -> Observable<Void> {
+    func saveSwitchSetting(with value: Bool, key: String) -> Observable<Void> {
+        return repository.save(value: value, key: key)
+    }
+
+    func getTimeSetting(of key: String) -> Observable<Int> {
+        return repository.get(key: key, defaultValue: nil)
+    }
+    
+    func saveTimeSetting(with value: Int, key: String) -> Observable<Void> {
         return repository.save(value: value, key: key)
     }
 }

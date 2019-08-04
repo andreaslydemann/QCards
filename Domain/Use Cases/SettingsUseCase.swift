@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 
 public protocol SettingsUseCase {
-    func getSetting(of key: String, defaultValue: Bool) -> Observable<Bool>
-    func saveSetting(with value: Bool, key: String) -> Observable<Void>
+    func getSwitchSetting(of key: String, defaultValue: Bool) -> Observable<Bool>
+    func saveSwitchSetting(with value: Bool, key: String) -> Observable<Void>
+    func getTimeSetting(of key: String) -> Observable<Int>
+    func saveTimeSetting(with value: Int, key: String) -> Observable<Void>
 }

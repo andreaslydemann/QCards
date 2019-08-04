@@ -15,12 +15,13 @@ final class SettingsViewModel: ViewModelType {
     
     struct Input {
         let okTrigger: Driver<Void>
-        let enableTimerTrigger: Driver<Bool>
+        let selection: Driver<SettingsSectionItem>
     }
     
     struct Output {
         let dismiss: Driver<Void>
-        let timerEnabled: Driver<Bool>
+        let items: [SettingsSection]
+        let selectedEvent: Driver<SettingsSectionItem>
     }
     
     private let useCase: SettingsUseCase
@@ -35,23 +36,21 @@ final class SettingsViewModel: ViewModelType {
         let dismiss = input.okTrigger
             .do(onNext: navigator.toCards)
         
+        let enableTimerViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable timer", userDefaultsKey: "EnableTimerKey")
+        let timePerCardViewModel = TimeCellViewModel(useCase: useCase, navigator: navigator, userDefaultsKey: "TimePerCardKey")
         
-        let initialValue = useCase.getSetting(of: "EnableTimerKey", defaultValue: false)
-            .map { value in
-                print("read value: ", value)
-                return value }.asDriver(onErrorJustReturn: false)
+        let items = [SettingsSection.setting(title: "", items: [
+            SettingsSectionItem.enableTimerItem(viewModel: enableTimerViewModel),
+            SettingsSectionItem.timePerCardItem(viewModel: timePerCardViewModel)
+            ])]
         
-        let valueAfterSaving = input.enableTimerTrigger.flatMap { value -> Driver<Bool> in
-            print("value to save: ", value)
-            return self.useCase
-                .saveSetting(with: value, key: "EnableTimerKey")
-                .map { value }
-                .asDriver(onErrorJustReturn: !value)
-        }.asDriver()
+        let selectedEvent = input.selection.do(onNext: { [weak self] (item) in
+            switch item {
+            case .timePerCardItem: self?.navigator.toCards()
+            default: break
+            }
+        })
         
-        let timerEnabled = Driver.merge(initialValue, valueAfterSaving)
-            .asDriver(onErrorJustReturn: false)
-        
-        return Output(dismiss: dismiss, timerEnabled: timerEnabled)
+        return Output(dismiss: dismiss, items: items, selectedEvent: selectedEvent)
     }
 }

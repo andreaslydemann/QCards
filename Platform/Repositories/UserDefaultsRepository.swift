@@ -12,7 +12,7 @@ import RxSwift
 protocol AbstractUserDefaultsRepository {
     func remove(key: String) -> Observable<Void>
     func save<T: RxSettingCompatible>(value: T, key: String) -> Observable<Void>
-    func get<T: RxSettingCompatible>(key: String, defaultValue: T) -> Observable<T>
+    func get<T: RxSettingCompatible>(key: String, defaultValue: T?) -> Observable<T>
 }
 
 final class UserDefaultsRepository: AbstractUserDefaultsRepository {
@@ -58,16 +58,23 @@ final class UserDefaultsRepository: AbstractUserDefaultsRepository {
             .subscribeOn(scheduler)
     }
     
-    public func get<T: RxSettingCompatible>(key: String, defaultValue: T) -> Observable<T> {
+    public func get<T: RxSettingCompatible>(key: String, defaultValue: T?) -> Observable<T> {
         return Observable.deferred {
             return Observable.create { observer in
-                var value: T = defaultValue
+                var value: T?
+                
+                if let defaultValue = defaultValue {
+                    value = defaultValue
+                }
                 
                 if self.isSet(key: key) {
                     value = T.fromPersistedValue(value: self.userDefaults.value(forKey: key) as Any)
                 }
                 
-                observer.onNext(value)
+                if let value = value {
+                    observer.onNext(value)
+                }
+                
                 observer.onCompleted()
                 
                 return Disposables.create()
