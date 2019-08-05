@@ -16,8 +16,10 @@ protocol SettingsNavigator {
 
 final class DefaultSettingsNavigator: SettingsNavigator {
     private let navigationController: UINavigationController
+    private let services: UseCaseProvider
     
-    init(navigationController: UINavigationController) {
+    init(services: UseCaseProvider, navigationController: UINavigationController) {
+        self.services = services
         self.navigationController = navigationController
     }
     
@@ -26,10 +28,9 @@ final class DefaultSettingsNavigator: SettingsNavigator {
     }
     
     func toTimePerCard() {
-        //let navigator = DefaultEditCardNavigator(navigationController: navigationController)
         let vc = TimePerCardViewController()
-        
-        //vc.viewModel = EditCardViewModel(card: card, useCase: services.makeCardsUseCase(), navigator: navigator)
+        let navigator = DefaultTimePerCardNavigator(navigationController: navigationController)
+        vc.viewModel = TimePerCardViewModel(useCase: services.makeSettingsUseCase(), navigator: navigator)
         navigationController.pushViewController(vc, animated: true)
     }
 }

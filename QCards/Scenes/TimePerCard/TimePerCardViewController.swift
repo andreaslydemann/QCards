@@ -13,12 +13,15 @@ import UIKit
 
 class TimePerCardViewController: UITableViewController {
     
-    private let disposeBag = DisposeBag()
+    var viewModel: TimePerCardViewModel!
     
+    private let disposeBag = DisposeBag()
     private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(TimePerCardTableViewCell.self, forCellReuseIdentifier: TimePerCardTableViewCell.reuseID)
         
         setupLayout()
         setupNavigationItems()
@@ -31,43 +34,49 @@ class TimePerCardViewController: UITableViewController {
     
     private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = saveButton
-        navigationItem.title = "Settings"
+        navigationItem.title = "Time per card"
     }
     
     private func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
         
-    }
-    
-    /*
-    func setupLayout() {
-        languageChanged.subscribe(onNext: { [weak self] () in
-            self?.navigationTitle = R.string.localizable.languageNavigationTitle.key.localized()
-            self?.saveButtonItem.title = R.string.localizable.commonSave.key.localized()
-        }).disposed(by: rx.disposeBag)
+        let input = TimePerCardViewModel.Input(trigger: viewWillAppear,
+                                               saveTrigger: saveButton.rx.tap.asDriver(),
+                                               selection: tableView.rx.modelSelected(TimePerCardCellViewModel.self).asDriver())
         
-        navigationItem.rightBarButtonItem = saveButtonItem
-        tableView.register(R.nib.languageCell)
-        tableView.headRefreshControl = nil
-        tableView.footRefreshControl = nil
-    }
-    
-    func bindViewModel() {
-        guard let viewModel = viewModel as? LanguageViewModel else { return }
-        
-        let refresh = Observable.of(Observable.just(()),
-                                    languageChanged.asObservable()).merge()
-        let input = LanguageViewModel.Input(trigger: refresh,
-                                            saveTrigger: saveButtonItem.rx.tap.asDriver(),
-                                            selection: tableView.rx.modelSelected(LanguageCellViewModel.self).asDriver())
         let output = viewModel.transform(input: input)
-        
-        output.items
-            .drive(tableView.rx.items(cellIdentifier: reuseIdentifier, cellType: LanguageCell.self)) { tableView, viewModel, cell in
-                cell.bind(to: viewModel)
-            }.disposed(by: rx.disposeBag)
-        
-        output.saved.drive(onNext: { [weak self] () in
-            self?.navigator.dismiss(sender: self)
-        }).disposed(by: rx.disposeBag)
-    }*/
+
+        output.items.map { [TimeSection(items: $0)] }
+            .drive(tableView!.rx.items(dataSource: createDataSource())).disposed(by: disposeBag)
+
+        [output.save.drive()]
+            .forEach({$0.disposed(by: disposeBag)})
+    }
+    
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<TimeSection> {
+        return RxTableViewSectionedReloadDataSource(
+            configureCell: { _, tableView, indexPath, viewModel -> TimePerCardTableViewCell in
+                let cell = tableView.dequeueReusableCell(withIdentifier: TimePerCardTableViewCell.reuseID, for: indexPath) as! TimePerCardTableViewCell
+                cell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+                cell.selectionStyle = .none
+                cell.accessoryType = .disclosureIndicator
+                cell.bind(viewModel)
+                return cell
+        },
+            canEditRowAtIndexPath: { _, _ in true }
+        )
+    }
+}
+
+struct TimeSection {
+    var items: [TimePerCardCellViewModel]
+}
+
+extension TimeSection: SectionModelType {
+    init(original: TimeSection, items: [TimePerCardCellViewModel]) {
+        self = original
+        self.items = items
+    }
 }

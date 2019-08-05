@@ -35,7 +35,7 @@ final class TimeCellViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let showTimeOptions = input.trigger
-            .do(onNext: { _ in print("yo")} )
+            .do(onNext: { _ in print("yo") })
         
         return Output(showTimeOptions: showTimeOptions)
     }

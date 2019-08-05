@@ -51,7 +51,7 @@ class SettingsViewController: UITableViewController {
          showTimerCells.drive(showCountdownCell.rx.isHidden),
          showTimerCells.drive(timePerCardCell.rx.isHidden)]
             .forEach({$0.disposed(by: disposeBag)})*/
-        
+
         [output.dismiss.drive(),
          output.selectedEvent.drive(),
          Driver.of(output.items)

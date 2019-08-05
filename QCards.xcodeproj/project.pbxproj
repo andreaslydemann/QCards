@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E278D6622F8AA5400D63738 /* TimePerCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6522F8AA5400D63738 /* TimePerCardViewModel.swift */; };
+		8E278D6822F8AB7E00D63738 /* TimePerCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */; };
+		8E278D6A22F8B58D00D63738 /* TimePerCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */; };
+		8E278D6C22F8B6C700D63738 /* TimePerCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6B22F8B6C700D63738 /* TimePerCardCellViewModel.swift */; };
 		8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */; };
 		8E88E70F22F64DE60092DA8F /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70E22F64DE60092DA8F /* SettingsSection.swift */; };
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
@@ -120,6 +124,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E278D6522F8AA5400D63738 /* TimePerCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewModel.swift; sourceTree = "<group>"; };
+		8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardNavigator.swift; sourceTree = "<group>"; };
+		8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardTableViewCell.swift; sourceTree = "<group>"; };
+		8E278D6B22F8B6C700D63738 /* TimePerCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E70E22F64DE60092DA8F /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
@@ -239,7 +247,11 @@
 		8E88E71822F78B240092DA8F /* TimePerCard */ = {
 			isa = PBXGroup;
 			children = (
+				8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */,
 				8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */,
+				8E278D6522F8AA5400D63738 /* TimePerCardViewModel.swift */,
+				8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */,
+				8E278D6B22F8B6C700D63738 /* TimePerCardCellViewModel.swift */,
 			);
 			path = TimePerCard;
 			sourceTree = "<group>";
@@ -804,7 +816,9 @@
 				E116046122D0E72700E64FD4 /* CardsViewModel.swift in Sources */,
 				E1A49D5622DAA54A00B9F818 /* PresentationViewModel.swift in Sources */,
 				E116046522D259B800E64FD4 /* RowAction.swift in Sources */,
+				8E278D6822F8AB7E00D63738 /* TimePerCardNavigator.swift in Sources */,
 				E116045D22D0C30D00E64FD4 /* CardsNavigator.swift in Sources */,
+				8E278D6A22F8B58D00D63738 /* TimePerCardTableViewCell.swift in Sources */,
 				E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */,
 				E1A49D5A22DFA48E00B9F818 /* SettingsViewController.swift in Sources */,
 				E11CA21822E4BD0A007752F0 /* BulletedTextView.swift in Sources */,
@@ -813,9 +827,11 @@
 				E1ED1DC822D7D4DF0052AEA9 /* CardTableViewCell.swift in Sources */,
 				8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */,
 				E1104BB6222748B0001FFA9D /* ViewModelType.swift in Sources */,
+				8E278D6622F8AA5400D63738 /* TimePerCardViewModel.swift in Sources */,
 				E154F9772215697C00A7081B /* UIAlertController+Ext.swift in Sources */,
 				E18B60F422E379AD003D8314 /* TimeTableViewCell.swift in Sources */,
 				E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */,
+				8E278D6C22F8B6C700D63738 /* TimePerCardCellViewModel.swift in Sources */,
 				E1A49D5C22DFA49C00B9F818 /* SettingsNavigator.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 			);
