@@ -28,6 +28,7 @@ final class DefaultSettingsNavigator: SettingsNavigator {
     func toTimePerCard() {
         //let navigator = DefaultEditCardNavigator(navigationController: navigationController)
         let vc = TimePerCardViewController()
+        
         //vc.viewModel = EditCardViewModel(card: card, useCase: services.makeCardsUseCase(), navigator: navigator)
         navigationController.pushViewController(vc, animated: true)
     }
