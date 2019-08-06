@@ -12,12 +12,13 @@ import RxSwift
 import UIKit
 
 enum TimePerCard: Int {
-    case infinite, thirtysec, onemin, twomin
-    static let allValues = [infinite, thirtysec, onemin, twomin]
+    case unlimited, thirtysec, onemin, twomin
+    
+    static let allValues = [unlimited, thirtysec, onemin, twomin]
     
     static func displayName(option: Int) -> String {
         switch TimePerCard(rawValue: option)! {
-        case .infinite: return "Infinite"
+        case .unlimited: return "Unlimited"
         case .thirtysec: return "30 seconds"
         case .onemin: return "One minute"
         case .twomin: return "Two minutes"

@@ -13,7 +13,7 @@ import RxSwift
 
 final class TimeCellViewModel: ViewModelType {
     
-    struct Input {}
+    struct Input { }
     
     struct Output {
         let timePerCard: Driver<Int>

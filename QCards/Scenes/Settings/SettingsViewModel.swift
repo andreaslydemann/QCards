@@ -37,13 +37,15 @@ final class SettingsViewModel: ViewModelType {
         let dismiss = input.okTrigger
             .do(onNext: navigator.toDecks)
         
-        let enableTimerViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable timer", userDefaultsKey: "EnableTimerKey")
         let timePerCardViewModel = TimeCellViewModel(useCase: useCase, title: "Time per card", userDefaultsKey: "TimePerCardKey")
+        let nextCardFlashViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable next card flashing", userDefaultsKey: "NextCardFlashKey")
+        let nextCardVibrateViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable next card vibrations", userDefaultsKey: "NextCardVibrateKey")
         
         let items = input.trigger.map {
-            [SettingsSection.setting(title: "", items: [
-                .enableTimerItem(viewModel: enableTimerViewModel),
-                .timePerCardItem(viewModel: timePerCardViewModel)
+            [SettingsSection.setting(title: "Timer", items: [
+                .timePerCardItem(viewModel: timePerCardViewModel),
+                .nextCardFlashItem(viewModel: nextCardFlashViewModel),
+                .nextCardVibrateItem(viewModel: nextCardVibrateViewModel)
                 ])]
         }
         

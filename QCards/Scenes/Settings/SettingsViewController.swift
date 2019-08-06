@@ -48,15 +48,6 @@ class SettingsViewController: UITableViewController {
         
         let output = viewModel.transform(input: input)
         
-        /*let showTimerCells = output.timerEnabled.map { !$0 }
-         
-         [output.dismiss.drive(),
-         output.timerEnabled.drive(enableTimerCell.cellSwitch.rx.isOn),
-         showTimerCells.drive(flashRedCell.rx.isHidden),
-         showTimerCells.drive(showCountdownCell.rx.isHidden),
-         showTimerCells.drive(timePerCardCell.rx.isHidden)]
-         .forEach({$0.disposed(by: disposeBag)})*/
-        
         [output.dismiss.drive(),
          output.selectedEvent.drive(),
          output.items
@@ -68,17 +59,18 @@ class SettingsViewController: UITableViewController {
         return RxTableViewSectionedReloadDataSource<SettingsSection>(
             configureCell: { dataSource, tableView, indexPath, item in
                 switch item {
-                case let .enableTimerItem(viewModel):
-                    let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.reuseID, for: indexPath) as! SwitchTableViewCell
+                case .timePerCardItem(let viewModel):
+                    let cell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.reuseID, for: indexPath) as! TimeTableViewCell
                     cell.bind(to: viewModel)
                     return cell
-                case let .timePerCardItem(viewModel):
-                    let cell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.reuseID, for: indexPath) as! TimeTableViewCell
+                case .nextCardFlashItem(let viewModel),
+                     .nextCardVibrateItem(let viewModel):
+                    let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.reuseID, for: indexPath) as! SwitchTableViewCell
                     cell.bind(to: viewModel)
                     return cell
                 }
         }, titleForHeaderInSection: { dataSource, index in
-                return dataSource[index].title
+            return dataSource[index].title
         })
     }
 }

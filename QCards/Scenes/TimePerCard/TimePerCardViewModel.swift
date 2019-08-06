@@ -25,7 +25,6 @@ final class TimePerCardViewModel: ViewModelType {
         let selectedOption: Driver<Int>
     }
     
-    //private var currentSelection: BehaviorRelay<Int>
     private let useCase: SettingsUseCase
     private let navigator: TimePerCardNavigator
     
