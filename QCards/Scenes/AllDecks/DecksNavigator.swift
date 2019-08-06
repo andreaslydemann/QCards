@@ -42,7 +42,7 @@ class DefaultDecksNavigator: DecksNavigator {
     }
     
     func toSettings() {
-        let vc = SettingsViewController(style: .grouped)
+        let vc = SettingsViewController()
         let nc = UINavigationController(rootViewController: vc)
         let navigator = DefaultSettingsNavigator(services: services, navigationController: nc)
         vc.viewModel = SettingsViewModel(useCase: services.makeSettingsUseCase(), navigator: navigator)

@@ -15,6 +15,7 @@ import UIKit
 class DecksViewController: UITableViewController {
     
     var viewModel: DecksViewModel!
+    
     private let disposeBag = DisposeBag()
     private let settingsButton = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: nil)
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)

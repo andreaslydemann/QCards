@@ -21,9 +21,7 @@ class SettingsViewController: UITableViewController {
     
     override func loadView() {
         super.loadView()
-        
-        tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.reuseID)
-        tableView.register(TimeTableViewCell.self, forCellReuseIdentifier: TimeTableViewCell.reuseID)
+
         
         setupLayout()
         setupNavigationItems()
@@ -32,6 +30,9 @@ class SettingsViewController: UITableViewController {
     
     private func setupLayout() {
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.reuseID)
+        tableView.register(TimeTableViewCell.self, forCellReuseIdentifier: TimeTableViewCell.reuseID)
     }
     
     private func setupNavigationItems() {

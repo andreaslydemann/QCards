@@ -39,7 +39,7 @@ final class SettingsViewModel: ViewModelType {
         
         let timePerCardViewModel = TimeCellViewModel(useCase: useCase, title: "Time per card", userDefaultsKey: "TimePerCardKey")
         let nextCardFlashViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable next card flashing", userDefaultsKey: "NextCardFlashKey")
-        let nextCardVibrateViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable next card vibrations", userDefaultsKey: "NextCardVibrateKey")
+        let nextCardVibrateViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable next card vibration", userDefaultsKey: "NextCardVibrateKey")
         
         let items = input.trigger.map {
             [SettingsSection.setting(title: "Timer", items: [

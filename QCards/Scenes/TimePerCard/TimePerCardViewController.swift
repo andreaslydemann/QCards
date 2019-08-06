@@ -36,8 +36,6 @@ class TimePerCardViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(TimePerCardTableViewCell.self, forCellReuseIdentifier: TimePerCardTableViewCell.reuseID)
-        
         setupLayout()
         setupNavigationItems()
         bindViewModel()
@@ -46,6 +44,7 @@ class TimePerCardViewController: UITableViewController {
     private func setupLayout() {
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.register(TimePerCardTableViewCell.self, forCellReuseIdentifier: TimePerCardTableViewCell.reuseID)
     }
     
     private func setupNavigationItems() {
