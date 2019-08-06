@@ -13,21 +13,19 @@ import RxSwift
 
 final class TimeCellViewModel: ViewModelType {
     
-    struct Input {
-
-    }
+    struct Input {}
     
     struct Output {
         let timePerCard: Driver<Int>
     }
     
     private let useCase: SettingsUseCase
-    private let navigator: SettingsNavigator
     private let userDefaultsKey: String
+    public let title: String
     
-    init(useCase: SettingsUseCase, navigator: SettingsNavigator, userDefaultsKey: String) {
+    init(useCase: SettingsUseCase, title: String, userDefaultsKey: String) {
         self.useCase = useCase
-        self.navigator = navigator
+        self.title = title
         self.userDefaultsKey = userDefaultsKey
     }
     

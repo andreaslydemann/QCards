@@ -38,7 +38,7 @@ final class SettingsViewModel: ViewModelType {
             .do(onNext: navigator.toDecks)
         
         let enableTimerViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable timer", userDefaultsKey: "EnableTimerKey")
-        let timePerCardViewModel = TimeCellViewModel(useCase: useCase, navigator: navigator, userDefaultsKey: "TimePerCardKey")
+        let timePerCardViewModel = TimeCellViewModel(useCase: useCase, title: "Time per card", userDefaultsKey: "TimePerCardKey")
         
         let items = input.trigger.map {
             [SettingsSection.setting(title: "", items: [

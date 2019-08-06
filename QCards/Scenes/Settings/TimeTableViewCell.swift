@@ -33,10 +33,8 @@ final class TimeTableViewCell: UITableViewCell {
     }
     
     private func setupLayout() {
-        
-        self.titleLabel.text = "Time per card"
-        self.accessoryType = .disclosureIndicator
         self.selectionStyle = .none
+        self.accessoryType = .disclosureIndicator
         self.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, timeLabel])
@@ -47,18 +45,12 @@ final class TimeTableViewCell: UITableViewCell {
     }
     
     func bind(to viewModel: TimeCellViewModel) {
-        timeLabel.text = "1 minute"
+        titleLabel.text = viewModel.title
         
-        //let trigger = switchView.rx.isOn.changed.asDriver()
-        
-        viewModel.transform(input: TimeCellViewModel.Input()).timePerCard.map { timePerCard in
-            switch TimePerCard(rawValue: timePerCard)! {
-            case .infinite: return "Infinite"
-            case .thirtysec: return "30 seconds"
-            case .onemin: return "One minute"
-            case .twomin: return "Two minutes"
-            }
-            }.drive(timeLabel.rx.text).disposed(by: disposeBag)
+        viewModel
+            .transform(input: TimeCellViewModel.Input()).timePerCard
+            .map { TimePerCard.displayName(option: $0) }
+            .drive(timeLabel.rx.text).disposed(by: disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

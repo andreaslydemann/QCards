@@ -11,6 +11,20 @@ import RxDataSources
 import RxSwift
 import UIKit
 
+enum TimePerCard: Int {
+    case infinite, thirtysec, onemin, twomin
+    static let allValues = [infinite, thirtysec, onemin, twomin]
+    
+    static func displayName(option: Int) -> String {
+        switch TimePerCard(rawValue: option)! {
+        case .infinite: return "Infinite"
+        case .thirtysec: return "30 seconds"
+        case .onemin: return "One minute"
+        case .twomin: return "Two minutes"
+        }
+    }
+}
+
 class TimePerCardViewController: UITableViewController {
     
     var viewModel: TimePerCardViewModel!
