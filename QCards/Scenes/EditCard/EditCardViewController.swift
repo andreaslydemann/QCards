@@ -91,7 +91,6 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
         deleteButton.tintColor = UIColor.UIColorFromHex(hex: "#DF245E")
     }
     
-    
     private func setupNavigationItems() {
         navigationItem.rightBarButtonItems = [saveButton, deleteButton]
     }

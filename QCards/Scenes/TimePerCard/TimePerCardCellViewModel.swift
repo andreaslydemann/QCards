@@ -9,25 +9,25 @@
 import Foundation
 
 enum TimePerCard: Int {
-    case infinite
-    case thirtysec
-    case onemin
-    case twomin
+    case infinite, thirtysec, onemin, twomin
+    static let allValues = [infinite, thirtysec, onemin, twomin]
 }
-
-extension TimePerCard: CaseIterable {}
 
 class TimePerCardCellViewModel {
     
     let timeOption: Int
-    
-    init(with timeOption: Int) {
-        self.timeOption = timeOption
-        //super.init()
+    let isSelected: Bool
+    var displayName: String {
+        switch TimePerCard(rawValue: timeOption)! {
+        case .infinite: return "Infinite"
+        case .thirtysec: return "30 seconds"
+        case .onemin: return "One minute"
+        case .twomin: return "Two minutes"
+        }
     }
-}
-
-func displayName(forTime time: Int) -> Int {
-    return time
     
+    init(with timeOption: Int, isSelected: Bool) {
+        self.timeOption = timeOption
+        self.isSelected = isSelected
+    }
 }

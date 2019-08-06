@@ -23,6 +23,13 @@ final class TimePerCardTableViewCell: UITableViewCell {
         
         titleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,
                           padding: .init(top: 15, left: 20, bottom: 12, right: 0), size: .init(width: 0, height: 0))
+        setupLayout()
+    }
+    
+    func setupLayout() {
+        backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        selectionStyle = .none
+        tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +37,7 @@ final class TimePerCardTableViewCell: UITableViewCell {
     }
     
     func bind(_ viewModel: TimePerCardCellViewModel) {
-        self.titleLabel.text = String(viewModel.timeOption)
+        self.titleLabel.text = viewModel.displayName
+        self.accessoryType = viewModel.isSelected ? .checkmark : .none
     }
 }

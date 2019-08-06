@@ -30,6 +30,7 @@ class TimePerCardViewController: UITableViewController {
     
     private func setupLayout() {
         tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     private func setupNavigationItems() {
@@ -51,7 +52,7 @@ class TimePerCardViewController: UITableViewController {
         output.items.map { [TimeSection(items: $0)] }
             .drive(tableView!.rx.items(dataSource: createDataSource())).disposed(by: disposeBag)
 
-        [output.save.drive()]
+        [output.save.drive(), output.selectedOption.drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
@@ -59,24 +60,10 @@ class TimePerCardViewController: UITableViewController {
         return RxTableViewSectionedReloadDataSource(
             configureCell: { _, tableView, indexPath, viewModel -> TimePerCardTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: TimePerCardTableViewCell.reuseID, for: indexPath) as! TimePerCardTableViewCell
-                cell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
-                cell.selectionStyle = .none
-                cell.accessoryType = .disclosureIndicator
                 cell.bind(viewModel)
                 return cell
         },
             canEditRowAtIndexPath: { _, _ in true }
         )
-    }
-}
-
-struct TimeSection {
-    var items: [TimePerCardCellViewModel]
-}
-
-extension TimeSection: SectionModelType {
-    init(original: TimeSection, items: [TimePerCardCellViewModel]) {
-        self = original
-        self.items = items
     }
 }

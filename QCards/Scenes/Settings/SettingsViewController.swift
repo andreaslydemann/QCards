@@ -10,6 +10,7 @@ import Domain
 import RxCocoa
 import RxDataSources
 import RxSwift
+import UIKit
 
 class SettingsViewController: UITableViewController {
     
@@ -39,41 +40,45 @@ class SettingsViewController: UITableViewController {
     }
     
     private func bindViewModel() {
-        let input = SettingsViewModel.Input(okTrigger: okButton.rx.tap.asDriver(), selection: tableView.rx.modelSelected(SettingsSectionItem.self).asDriver())
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        
+        let input = SettingsViewModel.Input(trigger: viewWillAppear, okTrigger: okButton.rx.tap.asDriver(), selection: tableView.rx.modelSelected(SettingsSectionItem.self).asDriver())
         
         let output = viewModel.transform(input: input)
         
         /*let showTimerCells = output.timerEnabled.map { !$0 }
-        
-        [output.dismiss.drive(),
+         
+         [output.dismiss.drive(),
          output.timerEnabled.drive(enableTimerCell.cellSwitch.rx.isOn),
          showTimerCells.drive(flashRedCell.rx.isHidden),
          showTimerCells.drive(showCountdownCell.rx.isHidden),
          showTimerCells.drive(timePerCardCell.rx.isHidden)]
-            .forEach({$0.disposed(by: disposeBag)})*/
-
+         .forEach({$0.disposed(by: disposeBag)})*/
+        
         [output.dismiss.drive(),
          output.selectedEvent.drive(),
-         Driver.of(output.items)
+         output.items
             .drive(tableView.rx.items(dataSource: createDataSource()))]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<SettingsSection> {
-        return RxTableViewSectionedReloadDataSource<SettingsSection>(configureCell: { dataSource, tableView, indexPath, item in
-            switch item {
-            case .enableTimerItem(let viewModel):
-                let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.reuseID, for: indexPath) as! SwitchTableViewCell
-                cell.bind(to: viewModel)
-                return cell
-            case .timePerCardItem(let viewModel):
-                let cell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.reuseID, for: indexPath) as! TimeTableViewCell
-                cell.bind(to: viewModel)
-                return cell
-            }
+        return RxTableViewSectionedReloadDataSource<SettingsSection>(
+            configureCell: { dataSource, tableView, indexPath, item in
+                switch item {
+                case let .enableTimerItem(viewModel):
+                    let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.reuseID, for: indexPath) as! SwitchTableViewCell
+                    cell.bind(to: viewModel)
+                    return cell
+                case let .timePerCardItem(viewModel):
+                    let cell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.reuseID, for: indexPath) as! TimeTableViewCell
+                    cell.bind(to: viewModel)
+                    return cell
+                }
         }, titleForHeaderInSection: { dataSource, index in
-            let section = dataSource[index]
-            return section.title
+                return dataSource[index].title
         })
     }
 }

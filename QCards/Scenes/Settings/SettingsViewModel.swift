@@ -14,13 +14,14 @@ import RxSwift
 final class SettingsViewModel: ViewModelType {
     
     struct Input {
+        let trigger: Driver<Void>
         let okTrigger: Driver<Void>
         let selection: Driver<SettingsSectionItem>
     }
     
     struct Output {
         let dismiss: Driver<Void>
-        let items: [SettingsSection]
+        let items: Driver<[SettingsSection]>
         let selectedEvent: Driver<SettingsSectionItem>
     }
     
@@ -39,10 +40,12 @@ final class SettingsViewModel: ViewModelType {
         let enableTimerViewModel = SwitchCellViewModel(useCase: useCase, title: "Enable timer", userDefaultsKey: "EnableTimerKey")
         let timePerCardViewModel = TimeCellViewModel(useCase: useCase, navigator: navigator, userDefaultsKey: "TimePerCardKey")
         
-        let items = [SettingsSection.setting(title: "", items: [
-            SettingsSectionItem.enableTimerItem(viewModel: enableTimerViewModel),
-            SettingsSectionItem.timePerCardItem(viewModel: timePerCardViewModel)
-            ])]
+        let items = input.trigger.map {
+            [SettingsSection.setting(title: "", items: [
+                .enableTimerItem(viewModel: enableTimerViewModel),
+                .timePerCardItem(viewModel: timePerCardViewModel)
+                ])]
+        }
         
         let selectedEvent = input.selection.do(onNext: { [weak self] (item) in
             switch item {

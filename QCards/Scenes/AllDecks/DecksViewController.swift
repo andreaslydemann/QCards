@@ -149,16 +149,3 @@ class DecksViewController: UITableViewController {
         return [delete, edit]
     }
 }
-
-struct DeckSection {
-    var items: [DeckItemViewModel]
-}
-
-extension DeckSection: AnimatableSectionModelType {
-    var identity: String { return "DeckSection" }
-    
-    init(original: DeckSection, items: [DeckItemViewModel]) {
-        self = original
-        self.items = items
-    }
-}

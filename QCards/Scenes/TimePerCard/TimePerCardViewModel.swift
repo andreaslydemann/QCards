@@ -22,6 +22,7 @@ final class TimePerCardViewModel: ViewModelType {
     struct Output {
         let items: Driver<[TimePerCardCellViewModel]>
         let save: Driver<Void>
+        let selectedOption: Driver<Int>
     }
     
     //private var currentSelection: BehaviorRelay<Int>
@@ -33,39 +34,29 @@ final class TimePerCardViewModel: ViewModelType {
         self.navigator = navigator
     }
     
-    func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
-        var i = 0
-        return AnyIterator {
-            let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
-            if next.hashValue != i { return nil }
-            i += 1
-            return next
-        }
-    }
-    
     func transform(input: Input) -> Output {
         
-        let items = input.trigger.map({ () -> [TimePerCardCellViewModel] in
-            return self.iterateEnum(TimePerCard.self).map({ timeOption -> TimePerCardCellViewModel in
-                return TimePerCardCellViewModel(with: timeOption.rawValue)
-            })
-        })
-        
-        let initialValue = useCase.getTimeSetting(of: "TimePerCardKey")
+        let initialValue = useCase.getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
             .map { $0 }.asDriver(onErrorJustReturn: 0)
         
-        let selection = input.selection.map { cellViewModel in
-            // self.currentSelection.accept(cellViewModel.timeOption)
-            return cellViewModel.timeOption
-        }.asDriver()
+        let selection = input.selection.map { $0.timeOption }.asDriver()
         
         let selectedOption = Driver.merge(initialValue, selection)
             .asDriver(onErrorJustReturn: 0)
         
-        let save = input.saveTrigger.withLatestFrom(selectedOption).map { option in
+        let save = input.saveTrigger.withLatestFrom(selectedOption)
+            .flatMapLatest { option in
                 return self.useCase.saveTimeSetting(with: option, key: "TimePerCardKey")
-            }.mapToVoid().do(onNext: navigator.toSettings)
+                    .asDriverOnErrorJustComplete()
+            }.do(onNext: navigator.toSettings)
         
-        return Output(items: items.asDriver(), save: save)
+        let items = selectedOption.map { selectedOption -> [TimePerCardCellViewModel] in
+            return TimePerCard.allValues.map({ timeOption -> TimePerCardCellViewModel in
+                return TimePerCardCellViewModel(with: timeOption.rawValue,
+                                                isSelected: timeOption.rawValue == selectedOption)
+            })
+        }
+        
+        return Output(items: items.asDriver(), save: save, selectedOption: selectedOption)
     }
 }

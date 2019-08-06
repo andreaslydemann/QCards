@@ -183,16 +183,3 @@ extension CardsViewController: UITableViewDelegate {
         return [deleteButton]
     }
 }
-
-struct CardSection {
-    var items: [CardItemViewModel]
-}
-
-extension CardSection: AnimatableSectionModelType {
-    var identity: String { return "CardSection" }
-    
-    init(original: CardSection, items: [CardItemViewModel]) {
-        self = original
-        self.items = items
-    }
-}

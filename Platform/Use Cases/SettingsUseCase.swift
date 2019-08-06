@@ -28,8 +28,8 @@ final class SettingsUseCase: Domain.SettingsUseCase {
         return repository.save(value: value, key: key)
     }
 
-    func getTimeSetting(of key: String) -> Observable<Int> {
-        return repository.get(key: key, defaultValue: nil)
+    func getTimeSetting(of key: String, defaultValue: Int?) -> Observable<Int> {
+        return repository.get(key: key, defaultValue: defaultValue)
     }
     
     func saveTimeSetting(with value: Int, key: String) -> Observable<Void> {

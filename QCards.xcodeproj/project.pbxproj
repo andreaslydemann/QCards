@@ -11,8 +11,11 @@
 		8E278D6822F8AB7E00D63738 /* TimePerCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */; };
 		8E278D6A22F8B58D00D63738 /* TimePerCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */; };
 		8E278D6C22F8B6C700D63738 /* TimePerCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6B22F8B6C700D63738 /* TimePerCardCellViewModel.swift */; };
+		8E278D6E22FA220800D63738 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6D22FA220800D63738 /* SettingsSection.swift */; };
+		8E278D7022FA224700D63738 /* TimeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6F22FA224700D63738 /* TimeSection.swift */; };
+		8E278D7222FA227800D63738 /* DeckSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D7122FA227800D63738 /* DeckSection.swift */; };
+		8E278D7422FA229400D63738 /* CardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D7322FA229400D63738 /* CardSection.swift */; };
 		8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */; };
-		8E88E70F22F64DE60092DA8F /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70E22F64DE60092DA8F /* SettingsSection.swift */; };
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
 		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
 		E1104B6E22272DA2001FFA9D /* Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; };
@@ -128,8 +131,11 @@
 		8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardNavigator.swift; sourceTree = "<group>"; };
 		8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardTableViewCell.swift; sourceTree = "<group>"; };
 		8E278D6B22F8B6C700D63738 /* TimePerCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardCellViewModel.swift; sourceTree = "<group>"; };
+		8E278D6D22FA220800D63738 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		8E278D6F22FA224700D63738 /* TimeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSection.swift; sourceTree = "<group>"; };
+		8E278D7122FA227800D63738 /* DeckSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSection.swift; sourceTree = "<group>"; };
+		8E278D7322FA229400D63738 /* CardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSection.swift; sourceTree = "<group>"; };
 		8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellViewModel.swift; sourceTree = "<group>"; };
-		8E88E70E22F64DE60092DA8F /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewController.swift; sourceTree = "<group>"; };
 		E1104B6722272DA2001FFA9D /* Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +258,7 @@
 				8E278D6522F8AA5400D63738 /* TimePerCardViewModel.swift */,
 				8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */,
 				8E278D6B22F8B6C700D63738 /* TimePerCardCellViewModel.swift */,
+				8E278D6F22FA224700D63738 /* TimeSection.swift */,
 			);
 			path = TimePerCard;
 			sourceTree = "<group>";
@@ -377,6 +384,7 @@
 				E1FEDA572242E0BA00D17BE3 /* DecksViewModel.swift */,
 				E1FEDA5F2242E90400D17BE3 /* DeckTableViewCell.swift */,
 				E1FEDA5D2242E75700D17BE3 /* DeckItemViewModel.swift */,
+				8E278D7122FA227800D63738 /* DeckSection.swift */,
 			);
 			path = AllDecks;
 			sourceTree = "<group>";
@@ -389,6 +397,7 @@
 				E116046022D0E72700E64FD4 /* CardsViewModel.swift */,
 				E1ED1DC722D7D4DF0052AEA9 /* CardItemViewModel.swift */,
 				E1ED1DC622D7D4DF0052AEA9 /* CardTableViewCell.swift */,
+				8E278D7322FA229400D63738 /* CardSection.swift */,
 			);
 			path = AllCards;
 			sourceTree = "<group>";
@@ -438,7 +447,7 @@
 				8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */,
 				E18B60F322E379AD003D8314 /* TimeTableViewCell.swift */,
 				8E88E71222F736660092DA8F /* TimeCellViewModel.swift */,
-				8E88E70E22F64DE60092DA8F /* SettingsSection.swift */,
+				8E278D6D22FA220800D63738 /* SettingsSection.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -791,6 +800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */,
+				8E278D7422FA229400D63738 /* CardSection.swift in Sources */,
 				E1104BA822274220001FFA9D /* Application.swift in Sources */,
 				E14AB7D122E3CF96006B07CC /* UIViewController+Ext.swift in Sources */,
 				E1A49D5822DFA01800B9F818 /* PresentationCollectionViewCell.swift in Sources */,
@@ -800,11 +810,11 @@
 				E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */,
 				E129CC7E22D9E335005EF576 /* PresentationViewController.swift in Sources */,
 				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
-				8E88E70F22F64DE60092DA8F /* SettingsSection.swift in Sources */,
 				E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */,
 				E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */,
 				E129CC9022D9E774005EF576 /* PresentationNavigator.swift in Sources */,
 				E1ED1DC922D7D4DF0052AEA9 /* CardItemViewModel.swift in Sources */,
+				8E278D6E22FA220800D63738 /* SettingsSection.swift in Sources */,
 				8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */,
 				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
 				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
@@ -823,6 +833,7 @@
 				E1A49D5A22DFA48E00B9F818 /* SettingsViewController.swift in Sources */,
 				E11CA21822E4BD0A007752F0 /* BulletedTextView.swift in Sources */,
 				E18B60F022E30A64003D8314 /* SwitchTableViewCell.swift in Sources */,
+				8E278D7022FA224700D63738 /* TimeSection.swift in Sources */,
 				E1FEDA602242E90400D17BE3 /* DeckTableViewCell.swift in Sources */,
 				E1ED1DC822D7D4DF0052AEA9 /* CardTableViewCell.swift in Sources */,
 				8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */,
@@ -833,6 +844,7 @@
 				E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */,
 				8E278D6C22F8B6C700D63738 /* TimePerCardCellViewModel.swift in Sources */,
 				E1A49D5C22DFA49C00B9F818 /* SettingsNavigator.swift in Sources */,
+				8E278D7222FA227800D63738 /* DeckSection.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
