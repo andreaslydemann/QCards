@@ -20,7 +20,7 @@ class DecksViewController: UITableViewController {
     private let settingsButton = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: nil)
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let store = PublishSubject<(RowAction, Int)>()
-
+    
     private var noDecksLabel: UILabel = {
         let label: UILabel  = UILabel()
         label.text          = "No decks found."
@@ -63,7 +63,10 @@ class DecksViewController: UITableViewController {
                 .present(in: self, text: UIAlertController.AlertText(
                     title: "Create deck", message: "Input a title for the deck"),
                          style: .alert, buttons: [.default("Add"), .cancel("Cancel")],
-                         textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
+                         textFields: [ {(textfield: UITextField) -> Void in
+                            textfield.placeholder = "Presentation"
+                            textfield.autocapitalizationType = .sentences
+                            } ])
             }
             .filter { $0.buttonIndex == 0 }
             .map { $0.1[0] }
@@ -74,7 +77,10 @@ class DecksViewController: UITableViewController {
                     .present(in: self, text: UIAlertController.AlertText(
                         title: "Edit deck", message: "Update the name of the deck"),
                              style: .alert, buttons: [.default("Update"), .cancel("Cancel")],
-                             textFields: [ {(textfield: UITextField) -> Void in textfield.placeholder = "Presentation"} ])
+                             textFields: [ {(textfield: UITextField) -> Void in
+                                textfield.placeholder = "Presentation"
+                                textfield.autocapitalizationType = .sentences
+                                } ])
                     .withLatestFrom(Observable.just(row)) { ($0, $1) }
             }
             .filter { $0.0.buttonIndex == 0 }
