@@ -75,7 +75,7 @@ final class PresentationViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
             }
         
-        let timeOut = countdownTime.map { $0 == 0 }.distinctUntilChanged()
+        let timeOut = Driver.combineLatest(countdownTime, timePerCard) { $0 == 0 && $1 != 0 }.distinctUntilChanged()
         let activeNextCardFlash = Driver.combineLatest(timeOut, nextCardFlash) { $0 && $1 }
         let activeNextCardVibrate = Driver.combineLatest(timeOut, nextCardVibrate) { $0 && $1 }
         let countdownText = countdownTime.map { "\($0) seconds left" }
