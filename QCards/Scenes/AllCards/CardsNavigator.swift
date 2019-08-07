@@ -53,7 +53,7 @@ class DefaultCardsNavigator: CardsNavigator {
         
         let navigator = DefaultPresentationNavigator(navigationController: navigationController)
         let vc = PresentationViewController()
-        vc.viewModel = PresentationViewModel(cards: cards, useCase: services.makeCardsUseCase(), navigator: navigator)
+        vc.viewModel = PresentationViewModel(cards: cards, cardsUseCase: services.makeCardsUseCase(), settingsUseCase: services.makeSettingsUseCase(), navigator: navigator)
         
         navigationController.pushViewController(vc, animated: false)
     }

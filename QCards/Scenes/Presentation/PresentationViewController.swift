@@ -17,11 +17,10 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     var viewModel: PresentationViewModel!
     
     private let disposeBag = DisposeBag()
+    private let store = PublishSubject<Int>()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
-        
-        collectionView.delegate = self
         collectionView.register(PresentationCollectionViewCell.self, forCellWithReuseIdentifier: PresentationCollectionViewCell.cellId)
         collectionView.showsHorizontalScrollIndicator = true
         collectionView.isPagingEnabled = true
@@ -95,15 +94,20 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
             .mapToVoid()
             .asDriverOnErrorJustComplete()
         
+        let nextCardTrigger = store.startWith(0).distinctUntilChanged().share()
+
         let input = PresentationViewModel.Input(trigger: viewWillAppear,
-        dismissTrigger: stopButton.rx.tap.asDriver())
+                                                nextCardTrigger: nextCardTrigger,
+                                                dismissTrigger: stopButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input: input)
         
         [output.cards
             .map { [CardSection(items: $0)] }
             .drive(collectionView.rx.items(dataSource: createDataSource())),
-            output.dismiss.drive()]
+         output.nextCard.drive(),
+         output.dismiss.drive(),
+         output.countDownTime.do(onNext: { print($0) }).drive()]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
@@ -115,6 +119,13 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
                 cell.bind(card)
                 return cell
         })
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let x = scrollView.contentOffset.x
+        let w = scrollView.bounds.size.width
+        let currentPage = Int(ceil(x / w))
+        self.store.onNext(currentPage)
     }
 }
 

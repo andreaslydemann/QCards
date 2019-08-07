@@ -21,7 +21,6 @@ class SettingsViewController: UITableViewController {
     
     override func loadView() {
         super.loadView()
-
         
         setupLayout()
         setupNavigationItems()
