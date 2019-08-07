@@ -21,6 +21,7 @@ final class PresentationViewModel: ViewModelType {
     
     struct Output {
         let cards: Driver<[CardItemViewModel]>
+        let hideCountdown: Driver<Bool>
         let cardNumber: Driver<String>
         let dismiss: Driver<Void>
         let countdownTime: Driver<String>
@@ -42,6 +43,8 @@ final class PresentationViewModel: ViewModelType {
         let timePerCard = settingsUseCase
             .getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
             .map { $0 }
+        
+        let hideCountdown = timePerCard.map { $0 == 0 }.asDriverOnErrorJustComplete()
         
         let cards = input.trigger.flatMapLatest {
             Driver.just(self.cards)
@@ -65,6 +68,7 @@ final class PresentationViewModel: ViewModelType {
             .do(onNext: navigator.toCards)
         
         return Output(cards: cards,
+                      hideCountdown: hideCountdown,
                       cardNumber: cardNumber,
                       dismiss: dismiss,
                       countdownTime: countdownTime)

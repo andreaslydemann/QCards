@@ -122,6 +122,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
             .drive(collectionView.rx.items(dataSource: createDataSource())),
          output.cardNumber.drive(cardNumber.rx.text),
          output.dismiss.drive(),
+         output.hideCountdown.drive(countdownTime.rx.isHidden),
          output.countdownTime.drive(countdownTime.rx.text)]
             .forEach({$0.disposed(by: disposeBag)})
     }
