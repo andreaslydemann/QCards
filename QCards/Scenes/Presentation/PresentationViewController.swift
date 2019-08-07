@@ -33,7 +33,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return collectionView
     }()
     
-    private lazy var footerView: UIView = {
+    let footerView: UIView = {
         let footerView = UIView()
         return footerView
     }()
@@ -128,8 +128,26 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
          output.cardNumber.drive(cardNumber.rx.text),
          output.dismiss.drive(),
          output.hideCountdown.drive(countdownTime.rx.isHidden),
+         output.activeNextCardFlash.do(onNext: { [weak self] (activeNextCardFlash) in
+            activeNextCardFlash ? self?.startAnimation() : self?.stopAnimation()
+         }).drive(),
          output.countdownTime.drive(countdownTime.rx.text)]
             .forEach({$0.disposed(by: disposeBag)})
+    }
+    
+    func startAnimation() {
+        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 1
+        pulseAnimation.fromValue = 1
+        pulseAnimation.toValue = 0
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = Float.greatestFiniteMagnitude
+        collectionView.layer.add(pulseAnimation, forKey: nil)
+    }
+    
+    func stopAnimation() {
+        collectionView.layer.removeAllAnimations()
     }
     
     private func createDataSource() -> RxCollectionViewSectionedAnimatedDataSource<CardSection> {

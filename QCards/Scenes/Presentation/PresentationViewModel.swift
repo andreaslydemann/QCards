@@ -23,6 +23,8 @@ final class PresentationViewModel: ViewModelType {
         let cards: Driver<[CardItemViewModel]>
         let hideCountdown: Driver<Bool>
         let cardNumber: Driver<String>
+        let activeNextCardFlash: Driver<Bool>
+        let activeNextCardVibrate: Driver<Bool>
         let dismiss: Driver<Void>
         let countdownTime: Driver<String>
     }
@@ -42,27 +44,41 @@ final class PresentationViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let timePerCard = settingsUseCase
             .getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
-            .map { $0 }
+            .asDriverOnErrorJustComplete()
         
-        let hideCountdown = timePerCard.map { $0 == 0 }.asDriverOnErrorJustComplete()
+        let nextCardFlash = settingsUseCase
+            .getSwitchSetting(of: "NextCardFlashKey", defaultValue: false)
+            .asDriverOnErrorJustComplete()
+        
+        let nextCardVibrate = settingsUseCase
+            .getSwitchSetting(of: "NextCardVibrateKey", defaultValue: false)
+            .asDriverOnErrorJustComplete()
+        
+        let hideCountdown = timePerCard.map { $0 == 0 }
         
         let cards = input.trigger.flatMapLatest {
             Driver.just(self.cards)
                 .map { $0.map { CardItemViewModel(with: $0) }}
         }
         
-        let nextCard = input.nextCardTrigger.startWith(0)
-        
-        let cardNumber = Observable.combineLatest(nextCard, cards.asObservable())
-            .map { "Card \($0 + 1 > $1.count ? $0 : $0 + 1) of \($1.count)" }
+        let nextCard = input.nextCardTrigger
+            .startWith(0)
             .asDriverOnErrorJustComplete()
         
-        let countdownTime = Observable.combineLatest(nextCard, timePerCard) { $1 }
+        let cardNumber = Driver.combineLatest(nextCard, cards)
+            .map { "Card \($0 + 1 > $1.count ? $0 : $0 + 1) of \($1.count)" }
+        
+        let countdownTime = Driver.combineLatest(nextCard, timePerCard) { $1 }
             .flatMap {
                 self.count(from: $0)
                     .takeUntil(input.nextCardTrigger)
-            }.map { "\($0) seconds left" }
-            .asDriverOnErrorJustComplete()
+                    .asDriverOnErrorJustComplete()
+            }
+        
+        let timeOut = countdownTime.map { $0 == 0 }.distinctUntilChanged()
+        let activeNextCardFlash = Driver.combineLatest(timeOut, nextCardFlash) { $0 && $1 }
+        let activeNextCardVibrate = Driver.combineLatest(timeOut, nextCardVibrate) { $0 && $1 }
+        let countdownText = countdownTime.map { "\($0) seconds left" }
         
         let dismiss = input.dismissTrigger
             .do(onNext: navigator.toCards)
@@ -70,8 +86,10 @@ final class PresentationViewModel: ViewModelType {
         return Output(cards: cards,
                       hideCountdown: hideCountdown,
                       cardNumber: cardNumber,
+                      activeNextCardFlash: activeNextCardFlash,
+                      activeNextCardVibrate: activeNextCardVibrate,
                       dismiss: dismiss,
-                      countdownTime: countdownTime)
+                      countdownTime: countdownText)
     }
     
     func count(from: Int, to: Int = 0, quickStart: Bool = true) -> Observable<Int> {
