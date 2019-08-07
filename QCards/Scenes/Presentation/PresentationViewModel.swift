@@ -51,7 +51,7 @@ final class PresentationViewModel: ViewModelType {
         let nextCard = input.nextCardTrigger.startWith(0)
         
         let cardNumber = Observable.combineLatest(nextCard, cards.asObservable())
-            .map { "Card \($0 + 1) of \($1.count)" }
+            .map { "Card \($0 + 1 > $1.count ? $0 : $0 + 1) of \($1.count)" }
             .asDriverOnErrorJustComplete()
         
         let countdownTime = Observable.combineLatest(nextCard, timePerCard) { $1 }

@@ -52,7 +52,7 @@ class CardsViewController: UIViewController {
     
     private var noCardsLabel: UILabel = {
         let label: UILabel  = UILabel()
-        label.text          = "This deck is so empty."
+        label.text          = "This deck is empty."
         label.textColor     = .lightGray
         label.textAlignment = .center
         return label
