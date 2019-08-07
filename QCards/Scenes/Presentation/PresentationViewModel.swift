@@ -21,9 +21,9 @@ final class PresentationViewModel: ViewModelType {
     
     struct Output {
         let cards: Driver<[CardItemViewModel]>
-        let nextCard: Driver<Int>
+        let cardNumber: Driver<String>
         let dismiss: Driver<Void>
-        let countDownTime: Driver<Int>
+        let countdownTime: Driver<String>
     }
     
     private let cards: [Card]
@@ -39,22 +39,35 @@ final class PresentationViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let timePerCard = settingsUseCase.getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
-            .map { $0 }.asDriver(onErrorJustReturn: 0)
+        let timePerCard = settingsUseCase
+            .getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
+            .map { $0 }
         
-        let cards = input.trigger.flatMapLatest { _ in
-            return Driver.just(self.cards)
+        let cards = input.trigger.flatMapLatest {
+            Driver.just(self.cards)
                 .map { $0.map { CardItemViewModel(with: $0) }}
         }
         
         let nextCard = input.nextCardTrigger.startWith(0)
         
-        let countDownTime = nextCard.mapToVoid().flatMap { self.count(from: 5).takeUntil(input.nextCardTrigger) }.asDriverOnErrorJustComplete()
+        let cardNumber = Observable.combineLatest(nextCard, cards.asObservable())
+            .map { "Card \($0 + 1) of \($1.count)" }
+            .asDriverOnErrorJustComplete()
+        
+        let countdownTime = Observable.combineLatest(nextCard, timePerCard) { $1 }
+            .flatMap {
+                self.count(from: $0)
+                    .takeUntil(input.nextCardTrigger)
+            }.map { "\($0) seconds left" }
+            .asDriverOnErrorJustComplete()
         
         let dismiss = input.dismissTrigger
             .do(onNext: navigator.toCards)
         
-        return Output(cards: cards, nextCard: nextCard.asDriverOnErrorJustComplete(), dismiss: dismiss, countDownTime: countDownTime)
+        return Output(cards: cards,
+                      cardNumber: cardNumber,
+                      dismiss: dismiss,
+                      countdownTime: countdownTime)
     }
     
     func count(from: Int, to: Int = 0, quickStart: Bool = true) -> Observable<Int> {

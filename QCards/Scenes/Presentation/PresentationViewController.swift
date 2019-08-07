@@ -34,9 +34,23 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     }()
     
     private lazy var footerView: UIStackView = {
-        let footerView = UIStackView(arrangedSubviews: [stopButton])
+        let footerView = UIStackView(arrangedSubviews: [countdownTime, stopButton, cardNumber])
         footerView.distribution = .equalCentering
         return footerView
+    }()
+    
+    let cardNumber: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let countdownTime: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
     }()
     
     private var stopButton: UIButton = {
@@ -52,6 +66,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         divider.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         return divider
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,9 +120,9 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         [output.cards
             .map { [CardSection(items: $0)] }
             .drive(collectionView.rx.items(dataSource: createDataSource())),
-         output.nextCard.drive(),
+         output.cardNumber.drive(cardNumber.rx.text),
          output.dismiss.drive(),
-         output.countDownTime.do(onNext: { print($0) }).drive()]
+         output.countdownTime.drive(countdownTime.rx.text)]
             .forEach({$0.disposed(by: disposeBag)})
     }
     
