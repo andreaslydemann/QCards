@@ -33,9 +33,8 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return collectionView
     }()
     
-    private lazy var footerView: UIStackView = {
-        let footerView = UIStackView(arrangedSubviews: [countdownTime, stopButton, cardNumber])
-        footerView.distribution = .equalCentering
+    private lazy var footerView: UIView = {
+        let footerView = UIView()
         return footerView
     }()
     
@@ -67,7 +66,6 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return divider
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,10 +95,17 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         view.addSubview(divider)
         view.addSubview(footerView)
         
+        footerView.addSubview(countdownTime)
+        footerView.addSubview(stopButton)
+        footerView.addSubview(cardNumber)
+        
         collectionView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: divider.topAnchor, trailing: view.trailingAnchor)
         divider.anchor(top: collectionView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
         footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
-        
+        countdownTime.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: nil)
+        stopButton.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+        cardNumber.anchor(top: footerView.topAnchor, leading: nil, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
     }
     
