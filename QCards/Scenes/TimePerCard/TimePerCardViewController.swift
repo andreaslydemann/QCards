@@ -12,7 +12,7 @@ import RxSwift
 import UIKit
 
 enum TimePerCard: Int {
-    case unlimited = 0, thirtysec = 5, onemin = 60, twomin = 120
+    case unlimited = 0, thirtysec = 30, onemin = 60, twomin = 120
     
     static let allValues = [unlimited, thirtysec, onemin, twomin]
     

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
+import AudioToolbox
 import Domain
 import RxCocoa
 import RxDataSources
@@ -128,8 +129,13 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
          output.cardNumber.drive(cardNumber.rx.text),
          output.dismiss.drive(),
          output.hideCountdown.drive(countdownTime.rx.isHidden),
-         output.activeNextCardFlash.do(onNext: { [weak self] (activeNextCardFlash) in
+         output.activeNextCardFlash.do(onNext: { [weak self] activeNextCardFlash in
             activeNextCardFlash ? self?.startAnimation() : self?.stopAnimation()
+         }).drive(),
+         output.activeNextCardVibrate.do(onNext: { [weak self] activeNextCardVibrate in
+            if activeNextCardVibrate {
+                self?.startVibration()
+            }
          }).drive(),
          output.countdownTime.drive(countdownTime.rx.text)]
             .forEach({$0.disposed(by: disposeBag)})
@@ -148,6 +154,10 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     
     func stopAnimation() {
         collectionView.layer.removeAllAnimations()
+    }
+    
+    func startVibration() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
     private func createDataSource() -> RxCollectionViewSectionedAnimatedDataSource<CardSection> {

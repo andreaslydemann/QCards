@@ -49,7 +49,7 @@ final class SettingsViewModel: ViewModelType {
                 ])]
         }
         
-        let selectedEvent = input.selection.do(onNext: { [weak self] (item) in
+        let selectedEvent = input.selection.do(onNext: { [weak self] item in
             switch item {
             case .timePerCardItem: self?.navigator.toTimePerCard()
             default: break
