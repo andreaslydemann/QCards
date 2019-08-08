@@ -35,14 +35,6 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setupNavigationItems() {
-        if let navigationController = navigationController {
-            print("hello")
-            themeService.rx
-                .bind({ [NSAttributedString.Key.foregroundColor: $0.activeTint] },
-                      to: navigationController.navigationBar.rx.titleTextAttributes)
-            .disposed(by: rx.disposeBag)
-        }
-        
         navigationItem.rightBarButtonItem = okButton
         navigationItem.title = NSLocalizedString("Settings.Navigation.Title", comment: "")
     }
