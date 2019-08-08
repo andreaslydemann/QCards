@@ -18,10 +18,10 @@ enum TimePerCard: Int {
     
     static func displayName(option: Int) -> String {
         switch TimePerCard(rawValue: option)! {
-        case .unlimited: return "Unlimited"
-        case .thirtysec: return "30 seconds"
-        case .onemin: return "One minute"
-        case .twomin: return "Two minutes"
+        case .unlimited: return NSLocalizedString("TimePerCard.UnlimitedOption.Title", comment: "")
+        case .thirtysec: return NSLocalizedString("TimePerCard.ThirtySecsOption.Title", comment: "")
+        case .onemin: return NSLocalizedString("TimePerCard.OneMinOption.Title", comment: "")
+        case .twomin: return NSLocalizedString("TimePerCard.TwoMinsOption.Title", comment: "")
         }
     }
 }
@@ -31,7 +31,8 @@ class TimePerCardViewController: UITableViewController {
     var viewModel: TimePerCardViewModel!
     
     private let disposeBag = DisposeBag()
-    private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
+    private let saveButton = UIBarButtonItem(title: NSLocalizedString("Common.Save", comment: ""),
+                                             style: .plain, target: self, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class TimePerCardViewController: UITableViewController {
     
     private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = saveButton
-        navigationItem.title = "Time per card"
+        navigationItem.title = NSLocalizedString("TimePerCard.Navigation.Title", comment: "")
     }
     
     private func bindViewModel() {

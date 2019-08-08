@@ -22,7 +22,7 @@ final class PresentationViewModel: ViewModelType {
     struct Output {
         let cards: Driver<[CardItemViewModel]>
         let hideCountdown: Driver<Bool>
-        let cardNumber: Driver<String>
+        let cardCount: Driver<String>
         let activeNextCardFlash: Driver<Bool>
         let activeNextCardVibrate: Driver<Bool>
         let dismiss: Driver<Void>
@@ -65,27 +65,31 @@ final class PresentationViewModel: ViewModelType {
             .startWith(0)
             .asDriverOnErrorJustComplete()
         
-        let cardNumber = Driver.combineLatest(nextCard, cards)
-            .map { "Card \($0 + 1 > $1.count ? $0 : $0 + 1) of \($1.count)" }
+        let cardCount = Driver.combineLatest(nextCard, cards)
+            .map { String(format: NSLocalizedString("Presentation.CardCount.Title", comment: ""),
+                          String($0 + 1 > $1.count ? $0 : $0 + 1), String($1.count))
+        }
         
         let countdownTime = Driver.combineLatest(nextCard, timePerCard) { $1 }
             .flatMap {
                 self.count(from: $0)
                     .takeUntil(input.nextCardTrigger)
                     .asDriverOnErrorJustComplete()
-            }
+        }
         
         let timeOut = Driver.combineLatest(countdownTime, timePerCard) { $0 == 0 && $1 != 0 }.distinctUntilChanged()
         let activeNextCardFlash = Driver.combineLatest(timeOut, nextCardFlash) { $0 && $1 }
         let activeNextCardVibrate = Driver.combineLatest(timeOut, nextCardVibrate) { $0 && $1 }
-        let countdownText = countdownTime.map { "\($0) seconds left" }
+        let countdownText = countdownTime.map {
+            String(format: NSLocalizedString("Presentation.Countdown.Title", comment: ""), String($0))
+        }
         
         let dismiss = input.dismissTrigger
             .do(onNext: navigator.toCards)
         
         return Output(cards: cards,
                       hideCountdown: hideCountdown,
-                      cardNumber: cardNumber,
+                      cardCount: cardCount,
                       activeNextCardFlash: activeNextCardFlash,
                       activeNextCardVibrate: activeNextCardVibrate,
                       dismiss: dismiss,

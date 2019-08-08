@@ -23,7 +23,7 @@ class DecksViewController: UITableViewController {
     
     private var noDecksLabel: UILabel = {
         let label: UILabel  = UILabel()
-        label.text          = "No decks found."
+        label.text          = NSLocalizedString("AllDecks.TableView.Background", comment: "")
         label.textColor     = .lightGray
         label.textAlignment = .center
         return label
@@ -48,7 +48,7 @@ class DecksViewController: UITableViewController {
     private func setupNavigationItems() {
         navigationItem.leftBarButtonItem = settingsButton
         navigationItem.rightBarButtonItem = createDeckButton
-        navigationItem.title = "QCards"
+        navigationItem.title = NSLocalizedString("AllDecks.Navigation.Title", comment: "")
     }
     
     private func bindViewModel() {
@@ -61,10 +61,10 @@ class DecksViewController: UITableViewController {
         let createDeckTrigger = createDeckButton.rx.tap.flatMap {
             return UIAlertController
                 .present(in: self, text: UIAlertController.AlertText(
-                    title: "Create deck", message: "Input a title for the deck"),
-                         style: .alert, buttons: [.default("Add"), .cancel("Cancel")],
+                    title: NSLocalizedString("AllDecks.CreateDeck.Title", comment: ""), message: NSLocalizedString("AllDecks.CreateDeck.Subtitle", comment: "")),
+                         style: .alert, buttons: [.default(NSLocalizedString("Common.Add", comment: "")), .cancel(NSLocalizedString("Common.Cancel", comment: ""))],
                          textFields: [ {(textfield: UITextField) -> Void in
-                            textfield.placeholder = "Presentation"
+                            textfield.placeholder = NSLocalizedString("AllDecks.CreateDeck.TitleField.Placeholder", comment: "")
                             textfield.autocapitalizationType = .sentences
                             } ])
             }
@@ -75,10 +75,10 @@ class DecksViewController: UITableViewController {
             .filter { $0.0 == RowAction.edit }.flatMap { _, row in
                 return UIAlertController
                     .present(in: self, text: UIAlertController.AlertText(
-                        title: "Edit deck", message: "Update the name of the deck"),
-                             style: .alert, buttons: [.default("Update"), .cancel("Cancel")],
+                        title: NSLocalizedString("AllDecks.EditDeck.Title", comment: ""), message: NSLocalizedString("AllDecks.EditDeck.Subtitle", comment: "")),
+                             style: .alert, buttons: [.default(NSLocalizedString("Common.Update", comment: "")), .cancel(NSLocalizedString("Common.Cancel", comment: ""))],
                              textFields: [ {(textfield: UITextField) -> Void in
-                                textfield.placeholder = "Presentation"
+                                textfield.placeholder = NSLocalizedString("AllDecks.EditDeck.TitleField.Placeholder", comment: "")
                                 textfield.autocapitalizationType = .sentences
                                 } ])
                     .withLatestFrom(Observable.just(row)) { ($0, $1) }
@@ -90,10 +90,10 @@ class DecksViewController: UITableViewController {
             .filter { $0.0 == RowAction.delete }.flatMap { _, row in
                 return UIAlertController
                     .present(in: self, text: UIAlertController.AlertText(
-                        title: "Do you want to delete this deck?",
-                        message: "You can't undo this action"),
+                        title: NSLocalizedString("AllDecks.DeleteDeck.Title", comment: ""),
+                        message: NSLocalizedString("AllDecks.DeleteDeck.Subtitle", comment: "")),
                              style: .alert,
-                             buttons: [.default("Yes"), .cancel("No")],
+                             buttons: [.default(NSLocalizedString("Common.Yes", comment: "")), .cancel(NSLocalizedString("Common.No", comment: ""))],
                              textFields: [])
                     .withLatestFrom(Observable.just(row)) { alertData, row in
                         return (alertData.0, row)
@@ -141,13 +141,13 @@ class DecksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let edit = UITableViewRowAction(style: .default, title: "Edit", handler: { [unowned self] _, indexPath in
+        let edit = UITableViewRowAction(style: .default, title: NSLocalizedString("Common.Edit", comment: ""), handler: { [unowned self] _, indexPath in
             self.store.onNext((RowAction.edit, indexPath.row))
         })
         
         edit.backgroundColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
         
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { [unowned self] _, indexPath in
+        let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Common.Delete", comment: ""), handler: { [unowned self] _, indexPath in
             self.store.onNext((RowAction.delete, indexPath.row))
         })
         

@@ -22,7 +22,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.register(PresentationCollectionViewCell.self, forCellWithReuseIdentifier: PresentationCollectionViewCell.cellId)
+        collectionView.register(PresentationCollectionViewCell.self, forCellWithReuseIdentifier: PresentationCollectionViewCell.reuseID)
         collectionView.showsHorizontalScrollIndicator = true
         collectionView.isPagingEnabled = true
         
@@ -39,7 +39,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return footerView
     }()
     
-    let cardNumber: UILabel = {
+    let cardCount: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 12)
@@ -98,14 +98,14 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         
         footerView.addSubview(countdownTime)
         footerView.addSubview(stopButton)
-        footerView.addSubview(cardNumber)
+        footerView.addSubview(cardCount)
         
         collectionView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: divider.topAnchor, trailing: view.trailingAnchor)
         divider.anchor(top: collectionView.bottomAnchor, leading: view.leadingAnchor, bottom: footerView.topAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 1))
         footerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 50))
         countdownTime.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: nil)
         stopButton.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
-        cardNumber.anchor(top: footerView.topAnchor, leading: nil, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+        cardCount.anchor(top: footerView.topAnchor, leading: nil, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
 
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
     }
@@ -126,7 +126,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         [output.cards
             .map { [CardSection(items: $0)] }
             .drive(collectionView.rx.items(dataSource: createDataSource())),
-         output.cardNumber.drive(cardNumber.rx.text),
+         output.cardCount.drive(cardCount.rx.text),
          output.dismiss.drive(),
          output.hideCountdown.drive(countdownTime.rx.isHidden),
          output.activeNextCardFlash.do(onNext: { [weak self] activeNextCardFlash in
@@ -164,7 +164,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return RxCollectionViewSectionedAnimatedDataSource(
             animationConfiguration: AnimationConfiguration(reloadAnimation: .fade),
             configureCell: { _, collectionView, indexPath, card -> PresentationCollectionViewCell in
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PresentationCollectionViewCell.cellId, for: indexPath) as! PresentationCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PresentationCollectionViewCell.reuseID, for: indexPath) as! PresentationCollectionViewCell
                 cell.bind(card)
                 return cell
         })

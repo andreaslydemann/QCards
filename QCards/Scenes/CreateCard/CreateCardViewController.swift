@@ -14,16 +14,16 @@ import UIKit
 class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     var viewModel: CreateCardViewModel!
-        
+    
     private let disposeBag = DisposeBag()
-    private let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: nil)
-    private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
+    private let cancelButton = UIBarButtonItem(title: NSLocalizedString("Common.Cancel", comment: ""), style: .plain, target: self, action: nil)
+    private let saveButton = UIBarButtonItem(title: NSLocalizedString("Common.Save", comment: ""), style: .plain, target: self, action: nil)
     
     private var titleTextField: UITextField = {
         let titleTextField = UITextField()
         titleTextField.textColor = .white
         titleTextField.attributedPlaceholder =
-            NSAttributedString(string: "Enter title",
+            NSAttributedString(string: NSLocalizedString("CreateCard.TitleField.Placeholder", comment: ""),
                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         titleTextField.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         titleTextField.layer.cornerRadius = 10
@@ -44,7 +44,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private lazy var placeholderLabel: UILabel = {
         let placeholderLabel = UILabel()
-        placeholderLabel.text = NSLocalizedString("Common.Yes", comment: "to")
+        placeholderLabel.text = NSLocalizedString("CreateCard.ContentField.Placeholder", comment: "")
         placeholderLabel.font = UIFont.systemFont(ofSize: (contentTextView.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
@@ -58,7 +58,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupLayout()
         setupNavigationItems()
         bindViewModel()
@@ -69,21 +69,21 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         
         contentTextView.delegate = self
         contentTextView.addSubview(placeholderLabel)
-
+        
         view.addSubview(titleTextField)
         view.addSubview(contentTextView)
         
         titleTextField.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                          leading: view.leadingAnchor,
-                          bottom: nil,
-                          trailing: view.trailingAnchor,
-                          padding: .init(top: 20, left: 15, bottom: 20, right: 15), size: .init(width: 0, height: 30))
+                              leading: view.leadingAnchor,
+                              bottom: nil,
+                              trailing: view.trailingAnchor,
+                              padding: .init(top: 20, left: 15, bottom: 20, right: 15), size: .init(width: 0, height: 30))
         
         contentTextView.anchor(top: titleTextField.bottomAnchor,
-                              leading: view.leadingAnchor,
-                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                              trailing: view.trailingAnchor,
-                              padding: .init(top: 20, left: 15, bottom: 0, right: 15))
+                               leading: view.leadingAnchor,
+                               bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                               trailing: view.trailingAnchor,
+                               padding: .init(top: 20, left: 15, bottom: 0, right: 15))
         
         view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
     }
@@ -91,7 +91,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     private func setupNavigationItems() {
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
-        navigationItem.title = "Create Card"
+        navigationItem.title = NSLocalizedString("CreateCard.Navigation.Title", comment: "")
     }
     
     private func bindViewModel() {

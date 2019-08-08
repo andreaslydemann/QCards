@@ -17,7 +17,8 @@ class SettingsViewController: UITableViewController {
     var viewModel: SettingsViewModel!
     
     private let disposeBag = DisposeBag()
-    private let okButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: nil)
+    private let okButton = UIBarButtonItem(title: NSLocalizedString("Common.OK", comment: ""),
+                                           style: .plain, target: self, action: nil)
     
     override func loadView() {
         super.loadView()
@@ -36,7 +37,7 @@ class SettingsViewController: UITableViewController {
     
     private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = okButton
-        navigationItem.title = "Settings"
+        navigationItem.title = NSLocalizedString("Settings.Navigation.Title", comment: "")
     }
     
     private func bindViewModel() {

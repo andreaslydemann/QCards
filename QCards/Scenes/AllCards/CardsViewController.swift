@@ -21,7 +21,7 @@ class CardsViewController: UIViewController {
     private let cardsStore = PublishSubject<[CardItemViewModel]>()
     
     private let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-    private let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: nil)
+    private let editButton = UIBarButtonItem(title: NSLocalizedString("Common.Edit", comment: ""), style: .plain, target: self, action: nil)
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.bounds)
@@ -52,7 +52,7 @@ class CardsViewController: UIViewController {
     
     private var noCardsLabel: UILabel = {
         let label: UILabel  = UILabel()
-        label.text          = "This deck is empty."
+        label.text          = NSLocalizedString("AllCards.TableView.Background", comment: "")
         label.textColor     = .lightGray
         label.textAlignment = .center
         return label
@@ -97,10 +97,11 @@ class CardsViewController: UIViewController {
             .filter { $0.0 == RowAction.delete }.flatMap { _, row in
                 return UIAlertController
                     .present(in: self, text: UIAlertController.AlertText(
-                        title: "Do you want to delete this card?",
-                        message: "You can't undo this action"),
+                        title: NSLocalizedString("AllCards.DeleteCard.Title", comment: ""),
+                        message: NSLocalizedString("AllCards.DeleteCard.Subtitle", comment: "")),
                              style: .alert,
-                             buttons: [.default("Yes"), .cancel("No")],
+                             buttons: [.default(NSLocalizedString("Common.Yes", comment: "")),
+                                       .cancel(NSLocalizedString("Common.No", comment: ""))],
                              textFields: [])
                     .withLatestFrom(Observable.just(row)) { alertData, row in
                         return (alertData.0, row)
@@ -174,7 +175,7 @@ extension CardsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { _, indexPath in
+        let deleteButton = UITableViewRowAction(style: .default, title: NSLocalizedString("Common.Delete", comment: "")) { _, indexPath in
             self.rowActionStore.onNext((RowAction.delete, indexPath.row))
         }
         

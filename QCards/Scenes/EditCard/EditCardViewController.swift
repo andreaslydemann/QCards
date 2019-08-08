@@ -17,14 +17,14 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
     
     private let disposeBag = DisposeBag()
     
-    private let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: nil)
-    private let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: nil)
+    private let saveButton = UIBarButtonItem(title: NSLocalizedString("Common.Save", comment: ""), style: .plain, target: self, action: nil)
+    private let deleteButton = UIBarButtonItem(title: NSLocalizedString("Common.Delete", comment: ""), style: .plain, target: self, action: nil)
     
     private var titleTextField: UITextField = {
         let titleTextField = UITextField()
         titleTextField.textColor = .white
         titleTextField.attributedPlaceholder =
-            NSAttributedString(string: "Enter title",
+            NSAttributedString(string: NSLocalizedString("EditCard.TitleField.Placeholder", comment: ""),
                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         titleTextField.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         titleTextField.layer.cornerRadius = 10
@@ -45,7 +45,7 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
     
     private lazy var placeholderLabel: UILabel = {
         let placeholderLabel = UILabel()
-        placeholderLabel.text = "Enter some text..."
+        placeholderLabel.text = NSLocalizedString("EditCard.ContentField.Placeholder", comment: "")
         placeholderLabel.font = UIFont.systemFont(ofSize: (contentTextView.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
@@ -97,15 +97,15 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
     
     private func bindViewModel() {
         let deleteCardTrigger = deleteButton.rx.tap.flatMap { row in
-                return UIAlertController
-                    .present(in: self, text: UIAlertController.AlertText(
-                        title: "Do you want to delete this card?",
-                        message: "You can't undo this action"),
-                             style: .alert,
-                             buttons: [.default("Yes"), .cancel("No")],
-                             textFields: [])
-                    .withLatestFrom(Observable.just(row)) { alertData, row in
-                        return (alertData.0, row)
+            return UIAlertController
+                .present(in: self, text: UIAlertController.AlertText(
+                    title: NSLocalizedString("EditCard.DeleteCard.Title", comment: ""),
+                    message: NSLocalizedString("EditCard.DeleteCard.Subtitle", comment: "")),
+                         style: .alert,
+                         buttons: [.default(NSLocalizedString("Common.Yes", comment: "")), .cancel(NSLocalizedString("Common.No", comment: ""))],
+                         textFields: [])
+                .withLatestFrom(Observable.just(row)) { alertData, row in
+                    return (alertData.0, row)
                 }
             }
             .filter { $0.0 == 0 }
@@ -116,7 +116,7 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
             deleteTrigger: deleteCardTrigger.asDriverOnErrorJustComplete(),
             title: titleTextField.rx.text.orEmpty.asDriver(),
             content: contentTextView.rx.text.orEmpty.asDriver())
-    
+        
         let output = viewModel.transform(input: input)
         
         [output.card.drive(cardBinding),
