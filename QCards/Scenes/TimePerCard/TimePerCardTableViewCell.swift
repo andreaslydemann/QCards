@@ -6,12 +6,13 @@
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 final class TimePerCardTableViewCell: UITableViewCell {
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -27,9 +28,12 @@ final class TimePerCardTableViewCell: UITableViewCell {
     }
     
     func setupLayout() {
-        backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
         selectionStyle = .none
-        tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
+        
+        themeService.rx
+            .bind({ $0.primary }, to: rx.backgroundColor)
+            .bind({ $0.action }, to: rx.tintColor)
+            .disposed(by: rx.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -19,6 +19,7 @@
 "Settings.TimePerCardSetting.Title" = "Time per card";
 "Settings.NextCardFlashSetting.Title" = "Enable next card flashing";
 "Settings.NextCardVibrateSetting.Title" = "Enable next card vibration";
+"Settings.DarkModeSetting.Title" = "Dark mode";
 "TimePerCard.Navigation.Title" = "Time per card";
 "TimePerCard.UnlimitedOption.Title" = "Unlimited";
 "TimePerCard.ThirtySecsOption.Title" = "30 seconds";

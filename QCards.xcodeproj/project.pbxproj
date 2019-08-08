@@ -19,6 +19,12 @@
 		8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */; };
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
 		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
+		8EFC000122FCB96C007BC676 /* DarkModeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */; };
+		8EFC000322FCC855007BC676 /* Reactive+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000222FCC855007BC676 /* Reactive+Ext.swift */; };
+		8EFC000522FCD4E9007BC676 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000422FCD4E9007BC676 /* NavigationController.swift */; };
+		8EFC000722FCDA42007BC676 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000622FCDA42007BC676 /* UITextField+Ext.swift */; };
+		8EFCFFFD22FC9C1B007BC676 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFCFFFC22FC9C1B007BC676 /* ThemeManager.swift */; };
+		8EFCFFFF22FCA277007BC676 /* RxTheme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCFFFE22FCA277007BC676 /* RxTheme.framework */; };
 		E1104B6E22272DA2001FFA9D /* Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; };
 		E1104B6F22272DA2001FFA9D /* Platform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1104B8A222735E0001FFA9D /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */; };
@@ -141,6 +147,12 @@
 		8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewController.swift; sourceTree = "<group>"; };
+		8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeCellViewModel.swift; sourceTree = "<group>"; };
+		8EFC000222FCC855007BC676 /* Reactive+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Ext.swift"; sourceTree = "<group>"; };
+		8EFC000422FCD4E9007BC676 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		8EFC000622FCDA42007BC676 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		8EFCFFFC22FC9C1B007BC676 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		8EFCFFFE22FCA277007BC676 /* RxTheme.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTheme.framework; path = Carthage/Build/iOS/RxTheme.framework; sourceTree = "<group>"; };
 		E1104B6722272DA2001FFA9D /* Platform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Platform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1104B6A22272DA2001FFA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1104B89222735E0001FFA9D /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
@@ -231,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EFCFFFF22FCA277007BC676 /* RxTheme.framework in Frameworks */,
 				E1E518B9222DB7F000E4AED2 /* Domain.framework in Frameworks */,
 				E1104B6E22272DA2001FFA9D /* Platform.framework in Frameworks */,
 				E1BFE4EC221CB0B1005FF6DB /* RxRealm.framework in Frameworks */,
@@ -264,6 +277,14 @@
 				8E278D6F22FA224700D63738 /* TimeSection.swift */,
 			);
 			path = TimePerCard;
+			sourceTree = "<group>";
+		};
+		8EFCFFFB22FC9BF0007BC676 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8EFCFFFC22FC9C1B007BC676 /* ThemeManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E1104B6822272DA2001FFA9D /* Platform */ = {
@@ -359,6 +380,7 @@
 		E1104BB42227488A001FFA9D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8EFC000422FCD4E9007BC676 /* NavigationController.swift */,
 				E1104BB5222748B0001FFA9D /* ViewModelType.swift */,
 				E116046422D259B800E64FD4 /* RowAction.swift */,
 			);
@@ -418,6 +440,7 @@
 		E122506821A60DF0005B2D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EFCFFFE22FCA277007BC676 /* RxTheme.framework */,
 				E1C6C78722CFB61000AE2484 /* Differentiator.framework */,
 				E1DB59F522CF8499000387A6 /* RxDataSources.framework */,
 				E1BFE4EB221CB0B1005FF6DB /* RxRealm.framework */,
@@ -448,6 +471,7 @@
 				E18B60ED22E28F9D003D8314 /* SettingsViewModel.swift */,
 				E18B60EF22E30A64003D8314 /* SwitchTableViewCell.swift */,
 				8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */,
+				8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */,
 				E18B60F322E379AD003D8314 /* TimeTableViewCell.swift */,
 				8E88E71222F736660092DA8F /* TimeCellViewModel.swift */,
 				8E278D6D22FA220800D63738 /* SettingsSection.swift */,
@@ -464,6 +488,8 @@
 				E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */,
 				E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */,
 				E1FEDA612242EBAF00D17BE3 /* Reusable+Ext.swift */,
+				8EFC000222FCC855007BC676 /* Reactive+Ext.swift */,
+				8EFC000622FCDA42007BC676 /* UITextField+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -496,6 +522,7 @@
 				E1104BB42227488A001FFA9D /* Common */,
 				E1104BB7222748DE001FFA9D /* Scenes */,
 				E1BFE4DF221CA4EE005FF6DB /* Utilities */,
+				8EFCFFFB22FC9BF0007BC676 /* Managers */,
 				E15457F921A4C631002ED341 /* Resources */,
 				E15457E721A4C619002ED341 /* AppDelegate.swift */,
 				E15457F321A4C61B002ED341 /* Info.plist */,
@@ -757,6 +784,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTheme.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
@@ -769,6 +798,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRealm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differentiator.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRelay.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxTheme.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -805,6 +836,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EFC000122FCB96C007BC676 /* DarkModeCellViewModel.swift in Sources */,
 				E1FEDA5A2242E0FE00D17BE3 /* DecksViewController.swift in Sources */,
 				8E278D7422FA229400D63738 /* CardSection.swift in Sources */,
 				E1104BA822274220001FFA9D /* Application.swift in Sources */,
@@ -816,6 +848,7 @@
 				E1A854E922D7832C0082574B /* EditCardViewModel.swift in Sources */,
 				E129CC7E22D9E335005EF576 /* PresentationViewController.swift in Sources */,
 				E1FEDA582242E0BA00D17BE3 /* DecksViewModel.swift in Sources */,
+				8EFCFFFD22FC9C1B007BC676 /* ThemeManager.swift in Sources */,
 				E1A854E722D7831F0082574B /* EditCardViewController.swift in Sources */,
 				E1A854E522D7830F0082574B /* EditCardNavigator.swift in Sources */,
 				E129CC9022D9E774005EF576 /* PresentationNavigator.swift in Sources */,
@@ -825,6 +858,7 @@
 				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
 				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
 				8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */,
+				8EFC000522FCD4E9007BC676 /* NavigationController.swift in Sources */,
 				E18B60EE22E28F9D003D8314 /* SettingsViewModel.swift in Sources */,
 				E116046A22D2A4C300E64FD4 /* CreateCardNavigator.swift in Sources */,
 				E1FEDA5C2242E4BE00D17BE3 /* Observable+Ext.swift in Sources */,
@@ -833,6 +867,8 @@
 				E1A49D5622DAA54A00B9F818 /* PresentationViewModel.swift in Sources */,
 				E116046522D259B800E64FD4 /* RowAction.swift in Sources */,
 				8E278D6822F8AB7E00D63738 /* TimePerCardNavigator.swift in Sources */,
+				8EFC000722FCDA42007BC676 /* UITextField+Ext.swift in Sources */,
+				8EFC000322FCC855007BC676 /* Reactive+Ext.swift in Sources */,
 				E116045D22D0C30D00E64FD4 /* CardsNavigator.swift in Sources */,
 				8E278D6A22F8B58D00D63738 /* TimePerCardTableViewCell.swift in Sources */,
 				E1FEDA5622419A1100D17BE3 /* DecksNavigator.swift in Sources */,

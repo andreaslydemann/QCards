@@ -40,13 +40,19 @@ final class SettingsViewModel: ViewModelType {
         let timePerCardViewModel = TimeCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.TimePerCardSetting.Title", comment: ""), userDefaultsKey: "TimePerCardKey")
         let nextCardFlashViewModel = SwitchCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.NextCardFlashSetting.Title", comment: ""), userDefaultsKey: "NextCardFlashKey")
         let nextCardVibrateViewModel = SwitchCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.NextCardVibrateSetting.Title", comment: ""), userDefaultsKey: "NextCardVibrateKey")
+        let darkModeViewModel = DarkModeCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.DarkModeSetting.Title", comment: ""), userDefaultsKey: "DarkModeKey")
         
-        let items = input.trigger.map {
-            [SettingsSection.setting(title: "", items: [
-                .timePerCardItem(viewModel: timePerCardViewModel),
-                .nextCardFlashItem(viewModel: nextCardFlashViewModel),
-                .nextCardVibrateItem(viewModel: nextCardVibrateViewModel)
-                ])]
+        let items = input.trigger.map { _ -> [SettingsSection] in
+            return [
+                SettingsSection.setting(title: "Timer", items: [
+                    .timePerCardItem(viewModel: timePerCardViewModel),
+                    .nextCardFlashItem(viewModel: nextCardFlashViewModel),
+                    .nextCardVibrateItem(viewModel: nextCardVibrateViewModel)
+                    ]),
+                SettingsSection.setting(title: "Appearance", items: [
+                    .darkModeItem(viewModel: darkModeViewModel)
+                    ])
+            ]
         }
         
         let selectedEvent = input.selection.do(onNext: { [weak self] item in

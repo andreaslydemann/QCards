@@ -33,7 +33,7 @@ class DefaultCardsNavigator: CardsNavigator {
         let navigator = DefaultCreateCardNavigator(navigationController: navigationController)
         let vc = CreateCardViewController()
         vc.viewModel = CreateCardViewModel(deck: deck, useCase: services.makeCardsUseCase(), navigator: navigator)
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = NavigationController(rootViewController: vc)
         navigationController.present(nc, animated: true, completion: nil)
     }
     

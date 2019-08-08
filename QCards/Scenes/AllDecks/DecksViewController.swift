@@ -16,15 +16,14 @@ class DecksViewController: UITableViewController {
     
     var viewModel: DecksViewModel!
     
-    private let disposeBag = DisposeBag()
     private let settingsButton = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: nil)
     private let createDeckButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     private let store = PublishSubject<(RowAction, Int)>()
     
-    private var noDecksLabel: UILabel = {
+    private lazy var noDecksLabel: UILabel = {
         let label: UILabel  = UILabel()
         label.text          = NSLocalizedString("AllDecks.TableView.Background", comment: "")
-        label.textColor     = .lightGray
+        themeService.rx.bind({ $0.inactiveTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.textAlignment = .center
         return label
     }()
@@ -42,7 +41,7 @@ class DecksViewController: UITableViewController {
         tableView.backgroundView  = noDecksLabel
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(DeckTableViewCell.self, forCellReuseIdentifier: DeckTableViewCell.reuseID)
-        view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        themeService.rx.bind({ $0.secondary }, to: view.rx.backgroundColor)
     }
     
     private func setupNavigationItems() {
@@ -120,7 +119,7 @@ class DecksViewController: UITableViewController {
          output.deleteCards.drive(),
          output.settings.drive(),
          output.decksAvailable.drive(noDecksLabel.rx.isHidden)]
-            .forEach({$0.disposed(by: disposeBag)})
+            .forEach({$0.disposed(by: rx.disposeBag)})
     }
     
     private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<DeckSection> {
@@ -130,7 +129,7 @@ class DecksViewController: UITableViewController {
                                                            deleteAnimation: .left),
             configureCell: { _, tableView, indexPath, deck -> DeckTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
-                cell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+                themeService.rx.bind({ $0.primary }, to: cell.rx.backgroundColor).disposed(by: self.rx.disposeBag)
                 cell.selectionStyle = .none
                 cell.accessoryType = .disclosureIndicator
                 cell.bind(deck)
@@ -144,14 +143,15 @@ class DecksViewController: UITableViewController {
         let edit = UITableViewRowAction(style: .default, title: NSLocalizedString("Common.Edit", comment: ""), handler: { [unowned self] _, indexPath in
             self.store.onNext((RowAction.edit, indexPath.row))
         })
-        
-        edit.backgroundColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
-        
+
         let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Common.Delete", comment: ""), handler: { [unowned self] _, indexPath in
             self.store.onNext((RowAction.delete, indexPath.row))
         })
         
-        delete.backgroundColor = UIColor.UIColorFromHex(hex: "#DF245E")
+        themeService.rx
+            .bind({ $0.action }, to: edit.rx.backgroundColor)
+            .bind({ $0.danger }, to: delete.rx.backgroundColor)
+            .disposed(by: rx.disposeBag)
         
         return [delete, edit]
     }

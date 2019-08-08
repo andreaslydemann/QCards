@@ -11,7 +11,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class SwitchCellViewModel: ViewModelType {
+class SwitchCellViewModel: ViewModelType {
     
     struct Input {
         let trigger: Driver<Bool>
@@ -21,8 +21,8 @@ final class SwitchCellViewModel: ViewModelType {
         let isEnabled: Driver<Bool>
     }
     
-    private let useCase: SettingsUseCase
-    private let userDefaultsKey: String
+    internal let useCase: SettingsUseCase
+    internal let userDefaultsKey: String
     public let title: String
     
     init(useCase: SettingsUseCase, title: String, userDefaultsKey: String) {

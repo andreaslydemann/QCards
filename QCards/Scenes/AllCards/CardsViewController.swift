@@ -16,7 +16,6 @@ class CardsViewController: UIViewController {
     
     var viewModel: CardsViewModel!
     
-    private let disposeBag = DisposeBag()
     private let rowActionStore = PublishSubject<(RowAction, Int)>()
     private let cardsStore = PublishSubject<[CardItemViewModel]>()
     
@@ -36,24 +35,24 @@ class CardsViewController: UIViewController {
         return footerView
     }()
     
-    private var playButton: UIButton = {
+    private lazy var playButton: UIButton = {
         let playButton = UIButton(type: .system)
         playButton.setImage(UIImage(named: "play"), for: .normal)
-        playButton.tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
+        themeService.rx.bind({ $0.action }, to: playButton.rx.tintColor).disposed(by: rx.disposeBag)
         return playButton
     }()
     
-    private var divider: UIView = {
+    private lazy var divider: UIView = {
         let divider = UIView()
-        divider.backgroundColor = .lightGray
+        themeService.rx.bind({ $0.inactiveTint }, to: divider.rx.backgroundColor).disposed(by: rx.disposeBag)
         divider.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         return divider
     }()
     
-    private var noCardsLabel: UILabel = {
+    private lazy var noCardsLabel: UILabel = {
         let label: UILabel  = UILabel()
         label.text          = NSLocalizedString("AllCards.TableView.Background", comment: "")
-        label.textColor     = .lightGray
+        themeService.rx.bind({ $0.inactiveTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.textAlignment = .center
         return label
     }()
@@ -67,13 +66,17 @@ class CardsViewController: UIViewController {
     }
     
     private func setupLayout() {
-        view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+
         tableView.backgroundView  = noCardsLabel
-        tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         tableView.tableFooterView = UIView(frame: .zero)
         
+        themeService.rx
+            .bind({ $0.primary }, to: view.rx.backgroundColor)
+            .bind({ $0.secondary }, to: tableView.rx.backgroundColor)
+            .disposed(by: rx.disposeBag)
+        
         tableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
+            .disposed(by: rx.disposeBag)
         
         view.addSubview(tableView)
         view.addSubview(divider)
@@ -142,7 +145,7 @@ class CardsViewController: UIViewController {
             self.playButton.isEnabled = isEnabled
          }).drive(),
          output.cardsAvailable.drive(noCardsLabel.rx.isHidden)]
-            .forEach({$0.disposed(by: disposeBag)})
+            .forEach({$0.disposed(by: rx.disposeBag)})
     }
     
     private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<CardSection> {
@@ -153,7 +156,7 @@ class CardsViewController: UIViewController {
             configureCell: { _, tableView, indexPath, card -> CardTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: CardTableViewCell.reuseID, for: indexPath) as! CardTableViewCell
                 cell.shouldIndentWhileEditing = true
-                cell.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+                themeService.rx.bind({ $0.primary }, to: cell.rx.backgroundColor).disposed(by: self.rx.disposeBag)
                 cell.selectionStyle = .none
                 cell.accessoryType = .disclosureIndicator
                 cell.bind(card)
@@ -179,7 +182,7 @@ extension CardsViewController: UITableViewDelegate {
             self.rowActionStore.onNext((RowAction.delete, indexPath.row))
         }
         
-        deleteButton.backgroundColor = UIColor.UIColorFromHex(hex: "#DF245E")
+        themeService.rx.bind({ $0.danger }, to: deleteButton.rx.backgroundColor).disposed(by: rx.disposeBag)
         
         return [deleteButton]
     }

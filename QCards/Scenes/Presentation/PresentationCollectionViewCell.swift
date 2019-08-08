@@ -10,18 +10,22 @@ import UIKit
 
 final class PresentationCollectionViewCell: UICollectionViewCell {
     
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 34)
         return label
     }()
     
-    private var contentTextView: UITextView = {
+    private lazy var contentTextView: UITextView = {
         let contentTextView = UITextView()
+        
+        themeService.rx
+            .bind({ $0.activeTint }, to: contentTextView.rx.textColor)
+            .bind({ $0.secondary }, to: contentTextView.rx.backgroundColor)
+            .disposed(by: rx.disposeBag)
+        
         contentTextView.isEditable = false
-        contentTextView.textColor = .white
-        contentTextView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
         contentTextView.font = UIFont.systemFont(ofSize: 14)
         return contentTextView
     }()
@@ -44,7 +48,7 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
                                trailing: trailingAnchor,
                                padding: .init(top: 15, left: 15, bottom: 15, right: 15))
         
-        backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
+        themeService.rx.bind({ $0.secondary }, to: rx.backgroundColor)
     }
     
     required init?(coder aDecoder: NSCoder) {

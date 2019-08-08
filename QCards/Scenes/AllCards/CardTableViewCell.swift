@@ -9,9 +9,9 @@
 import UIKit
 
 final class CardTableViewCell: UITableViewCell {
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()

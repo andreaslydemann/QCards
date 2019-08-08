@@ -30,7 +30,6 @@ class TimePerCardViewController: UITableViewController {
     
     var viewModel: TimePerCardViewModel!
     
-    private let disposeBag = DisposeBag()
     private let saveButton = UIBarButtonItem(title: NSLocalizedString("Common.Save", comment: ""),
                                              style: .plain, target: self, action: nil)
     
@@ -43,9 +42,9 @@ class TimePerCardViewController: UITableViewController {
     }
     
     private func setupLayout() {
-        tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
-        tableView.tableFooterView = UIView(frame: .zero)
+        themeService.rx.bind({ $0.secondary }, to: tableView.rx.backgroundColor).disposed(by: rx.disposeBag)
         tableView.register(TimePerCardTableViewCell.self, forCellReuseIdentifier: TimePerCardTableViewCell.reuseID)
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     private func setupNavigationItems() {
@@ -65,10 +64,10 @@ class TimePerCardViewController: UITableViewController {
         let output = viewModel.transform(input: input)
 
         output.items.map { [TimeSection(items: $0)] }
-            .drive(tableView!.rx.items(dataSource: createDataSource())).disposed(by: disposeBag)
+            .drive(tableView!.rx.items(dataSource: createDataSource())).disposed(by: rx.disposeBag)
 
         [output.save.drive(), output.selectedOption.drive()]
-            .forEach({$0.disposed(by: disposeBag)})
+            .forEach({$0.disposed(by: rx.disposeBag)})
     }
     
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<TimeSection> {

@@ -9,16 +9,16 @@
 import UIKit
 
 final class DeckTableViewCell: UITableViewCell {
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
     
-    let dateLabel: UILabel = {
+    lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()

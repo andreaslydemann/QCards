@@ -19,6 +19,7 @@
 "Settings.TimePerCardSetting.Title" = "Tid per kort";
 "Settings.NextCardFlashSetting.Title" = "Indikér kortskift med baggrundspuls";
 "Settings.NextCardVibrateSetting.Title" = "Indikér kortskift med vibration";
+"Settings.DarkModeSetting.Title" = "Mørk tilstand";
 "TimePerCard.Navigation.Title" = "Tid per kort";
 "TimePerCard.UnlimitedOption.Title" = "Ubegrænset";
 "TimePerCard.ThirtySecsOption.Title" = "30 sekunder";

@@ -15,18 +15,19 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
     
     var viewModel: EditCardViewModel!
     
-    private let disposeBag = DisposeBag()
-    
     private let saveButton = UIBarButtonItem(title: NSLocalizedString("Common.Save", comment: ""), style: .plain, target: self, action: nil)
     private let deleteButton = UIBarButtonItem(title: NSLocalizedString("Common.Delete", comment: ""), style: .plain, target: self, action: nil)
     
-    private var titleTextField: UITextField = {
+    private lazy var titleTextField: UITextField = {
         let titleTextField = UITextField()
-        titleTextField.textColor = .white
-        titleTextField.attributedPlaceholder =
-            NSAttributedString(string: NSLocalizedString("EditCard.TitleField.Placeholder", comment: ""),
-                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        titleTextField.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        
+        themeService.rx
+            .bind({ $0.primary }, to: titleTextField.rx.backgroundColor)
+            .bind({ $0.inactiveTint }, to: titleTextField.rx.placeholderColor)
+            .bind({ $0.activeTint }, to: titleTextField.rx.textColor)
+            .disposed(by: rx.disposeBag)
+        
+        titleTextField.placeholder = NSLocalizedString("EditCard.TitleField.Placeholder", comment: "")
         titleTextField.layer.cornerRadius = 10
         titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
         titleTextField.font = UIFont.systemFont(ofSize: 14)
@@ -34,10 +35,14 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
         return titleTextField
     }()
     
-    private var contentTextView: BulletedTextView = {
+    private lazy var contentTextView: BulletedTextView = {
         let contentTextView = BulletedTextView()
-        contentTextView.textColor = .white
-        contentTextView.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        
+        themeService.rx
+            .bind({ $0.activeTint }, to: contentTextView.rx.textColor)
+            .bind({ $0.primary }, to: contentTextView.rx.backgroundColor)
+            .disposed(by: rx.disposeBag)
+        
         contentTextView.layer.cornerRadius = 10
         contentTextView.font = UIFont.systemFont(ofSize: 14)
         return contentTextView
@@ -49,7 +54,7 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.font = UIFont.systemFont(ofSize: (contentTextView.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
-        placeholderLabel.textColor = UIColor.lightGray
+        themeService.rx.bind({ $0.inactiveTint}, to: placeholderLabel.rx.textColor).disposed(by: rx.disposeBag)
         placeholderLabel.isHidden = true
         return placeholderLabel
     }()
@@ -87,8 +92,10 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
                                trailing: view.trailingAnchor,
                                padding: .init(top: 20, left: 15, bottom: 0, right: 15))
         
-        view.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
-        deleteButton.tintColor = UIColor.UIColorFromHex(hex: "#DF245E")
+        themeService.rx
+            .bind({ $0.secondary}, to: view.rx.backgroundColor)
+            .bind({ $0.danger}, to: deleteButton.rx.tintColor)
+            .disposed(by: rx.disposeBag)
     }
     
     private func setupNavigationItems() {
@@ -123,7 +130,7 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
          output.save.drive(),
          output.saveEnabled.drive(saveButton.rx.isEnabled),
          output.delete.drive()]
-            .forEach({$0.disposed(by: disposeBag)})
+            .forEach({$0.disposed(by: rx.disposeBag)})
     }
     
     var cardBinding: Binder<Card> {

@@ -16,6 +16,7 @@ enum SettingsSectionItem {
     case timePerCardItem(viewModel: TimeCellViewModel)
     case nextCardVibrateItem(viewModel: SwitchCellViewModel)
     case nextCardFlashItem(viewModel: SwitchCellViewModel)
+    case darkModeItem(viewModel: SwitchCellViewModel)
 }
 
 extension SettingsSection: SectionModelType {

@@ -43,7 +43,7 @@ class DefaultDecksNavigator: DecksNavigator {
     
     func toSettings() {
         let vc = SettingsViewController()
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = NavigationController(rootViewController: vc)
         let navigator = DefaultSettingsNavigator(services: services, navigationController: nc)
         vc.viewModel = SettingsViewModel(useCase: services.makeSettingsUseCase(), navigator: navigator)
         navigationController.present(nc, animated: true, completion: nil)

@@ -16,7 +16,6 @@ class SettingsViewController: UITableViewController {
     
     var viewModel: SettingsViewModel!
     
-    private let disposeBag = DisposeBag()
     private let okButton = UIBarButtonItem(title: NSLocalizedString("Common.OK", comment: ""),
                                            style: .plain, target: self, action: nil)
     
@@ -29,13 +28,21 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setupLayout() {
-        tableView.backgroundColor = UIColor.UIColorFromHex(hex: "#10171E")
-        tableView.tableFooterView = UIView(frame: .zero)
+        themeService.rx.bind({ $0.secondary }, to: tableView.rx.backgroundColor)
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.reuseID)
         tableView.register(TimeTableViewCell.self, forCellReuseIdentifier: TimeTableViewCell.reuseID)
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     private func setupNavigationItems() {
+        if let navigationController = navigationController {
+            print("hello")
+            themeService.rx
+                .bind({ [NSAttributedString.Key.foregroundColor: $0.activeTint] },
+                      to: navigationController.navigationBar.rx.titleTextAttributes)
+            .disposed(by: rx.disposeBag)
+        }
+        
         navigationItem.rightBarButtonItem = okButton
         navigationItem.title = NSLocalizedString("Settings.Navigation.Title", comment: "")
     }
@@ -53,7 +60,7 @@ class SettingsViewController: UITableViewController {
          output.selectedEvent.drive(),
          output.items
             .drive(tableView.rx.items(dataSource: createDataSource()))]
-            .forEach({$0.disposed(by: disposeBag)})
+            .forEach({$0.disposed(by: rx.disposeBag)})
     }
     
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<SettingsSection> {
@@ -66,6 +73,10 @@ class SettingsViewController: UITableViewController {
                     return cell
                 case .nextCardFlashItem(let viewModel),
                      .nextCardVibrateItem(let viewModel):
+                    let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.reuseID, for: indexPath) as! SwitchTableViewCell
+                    cell.bind(to: viewModel)
+                    return cell
+                case .darkModeItem(let viewModel):
                     let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.reuseID, for: indexPath) as! SwitchTableViewCell
                     cell.bind(to: viewModel)
                     return cell

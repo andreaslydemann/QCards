@@ -17,7 +17,6 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     
     var viewModel: PresentationViewModel!
     
-    private let disposeBag = DisposeBag()
     private let store = PublishSubject<Int>()
     
     private lazy var collectionView: UICollectionView = {
@@ -39,30 +38,30 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return footerView
     }()
     
-    let cardCount: UILabel = {
+    lazy var cardCount: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
-    let countdownTime: UILabel = {
+    lazy var countdownTime: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
-    private var stopButton: UIButton = {
+    private lazy var stopButton: UIButton = {
         let stopButton = UIButton(type: .system)
         stopButton.setImage(UIImage(named: "stop"), for: .normal)
-        stopButton.tintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
+        themeService.rx.bind({ $0.action }, to: stopButton.rx.tintColor).disposed(by: rx.disposeBag)
         return stopButton
     }()
     
-    private var divider: UIView = {
+    private lazy var divider: UIView = {
         let divider = UIView()
-        divider.backgroundColor = .lightGray
+        themeService.rx.bind({ $0.inactiveTint }, to: divider.rx.backgroundColor).disposed(by: rx.disposeBag)
         divider.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         return divider
     }()
@@ -72,10 +71,6 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         
         setupCollectionView()
         bindViewModel()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +85,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     
     private func setupCollectionView() {
         collectionView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
+            .disposed(by: rx.disposeBag)
         
         view.addSubview(collectionView)
         view.addSubview(divider)
@@ -107,7 +102,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         stopButton.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
         cardCount.anchor(top: footerView.topAnchor, leading: nil, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
 
-        view.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        themeService.rx.bind({ $0.primary }, to: view.rx.backgroundColor).disposed(by: rx.disposeBag)
     }
     
     private func bindViewModel() {
@@ -138,7 +133,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
             }
          }).drive(),
          output.countdownTime.drive(countdownTime.rx.text)]
-            .forEach({$0.disposed(by: disposeBag)})
+            .forEach({$0.disposed(by: rx.disposeBag)})
     }
     
     func startAnimation() {

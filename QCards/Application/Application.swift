@@ -20,7 +20,7 @@ final class Application {
     }
     
     func configureMainInterface(in window: UIWindow) {
-        let navigationController = UINavigationController()
+        let navigationController = NavigationController()
         
         let navigator = DefaultDecksNavigator(services: realmUseCaseProvider,
                                               navigationController: navigationController)

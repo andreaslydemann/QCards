@@ -10,21 +10,19 @@ import RxSwift
 import UIKit
 
 final class TimeTableViewCell: UITableViewCell {
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
     
-    let timeLabel: UILabel = {
+    lazy var timeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.UIColorFromHex(hex: "#C7C7CC")
+        themeService.rx.bind({ $0.inactiveTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
-    
-    private let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,7 +33,7 @@ final class TimeTableViewCell: UITableViewCell {
     private func setupLayout() {
         self.selectionStyle = .none
         self.accessoryType = .disclosureIndicator
-        self.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        themeService.rx.bind({ $0.primary }, to: self.rx.backgroundColor).disposed(by: rx.disposeBag)
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, timeLabel])
         stackView.distribution = .equalSpacing
@@ -50,7 +48,7 @@ final class TimeTableViewCell: UITableViewCell {
         viewModel
             .transform(input: TimeCellViewModel.Input()).timePerCard
             .map { TimePerCard.displayName(option: $0) }
-            .drive(timeLabel.rx.text).disposed(by: disposeBag)
+            .drive(timeLabel.rx.text).disposed(by: rx.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

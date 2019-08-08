@@ -9,21 +9,19 @@
 import RxSwift
 import UIKit
 
-final class SwitchTableViewCell: UITableViewCell {
-    let titleLabel: UILabel = {
+class SwitchTableViewCell: UITableViewCell {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        themeService.rx.bind({ $0.activeTint }, to: label.rx.textColor).disposed(by: rx.disposeBag)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
     
-    let switchView: UISwitch = {
+    lazy var switchView: UISwitch = {
         let switchView = UISwitch()
-        switchView.onTintColor = UIColor.UIColorFromHex(hex: "#1DA1F2")
+        themeService.rx.bind({ $0.action }, to: switchView.rx.onTintColor).disposed(by: rx.disposeBag)
         return switchView
     }()
-    
-    private let disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,7 +31,8 @@ final class SwitchTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         self.selectionStyle = .none
-        self.backgroundColor = UIColor.UIColorFromHex(hex: "#15202B")
+        
+        themeService.rx.bind({ $0.primary }, to: self.rx.backgroundColor).disposed(by: rx.disposeBag)
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, switchView])
         stackView.distribution = .equalSpacing
@@ -50,7 +49,7 @@ final class SwitchTableViewCell: UITableViewCell {
         viewModel
             .transform(input: SwitchCellViewModel.Input(trigger: trigger))
             .isEnabled.drive(switchView.rx.isOn)
-            .disposed(by: disposeBag)
+            .disposed(by: rx.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
