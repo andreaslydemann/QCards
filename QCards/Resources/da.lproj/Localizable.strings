@@ -1,0 +1,45 @@
+/*
+  Localizable.strings
+  QCards
+ 
+  Created by Andreas Lüdemann on 08/08/2019.
+  Copyright © 2019 Andreas Lüdemann. All rights reserved.
+*/
+
+"Common.Yes" = "Ja";
+"Common.No" = "Nej";
+"Common.OK" = "OK";
+"Common.Cancel" = "Afbryd";
+"Common.Add" = "Tilføj";
+"Common.Update" = "Opdatér";
+"Common.Delete" = "Slet";
+"Common.Edit" = "Redigér";
+"Common.Save" = "Gem";
+"Settings.Navigation.Title" = "Indstillinger";
+"Settings.TimePerCardSetting.Title" = "Tid per kort";
+"Settings.NextCardFlashSetting.Title" = "Aktivér næste kort baggrundsindikator";
+"Settings.NextCardVibrateSetting.Title" = "Aktivér næste kort vibration";
+"TimePerCard.Navigation.Title" = "Tid per kort";
+"TimePerCard.UnlimitedOption.Title" = "Tid per kort";
+"TimePerCard.ThirtySecOption.Title" = "30 sekunder";
+"TimePerCard.OneMinOption.Title" = "1 minut";
+"TimePerCard.TwoMinsOption.Title" = "2 minutter";
+"AllDecks.Navigation.Title" = "QCards";
+"AllDecks.CreateDeck.Title" = "Redigér kortsamling";
+"AllDecks.CreateDeck.Subtitle" = "Opdatér titlen på kortsamlingen";
+"AllDecks.CreateDeck.TitleField.Placeholder" = "Præsentation";
+"AllDecks.EditDeck.Title" = "Opret kortsamling";
+"AllDecks.EditDeck.Subtitle" = "Indtast en titel på kortsamlingen";
+"AllDecks.EditDeck.TitleField.Placeholder" = "Præsentation";
+"AllDecks.DeleteDeck.Title" = "Vil du slette denne kortsamling?";
+"AllDecks.DeleteDeck.Subtitle" = "Du kan ikke fortryde denne handling";
+"AllCards.DeleteCard.Title" = "Vil du slette dette kort?";
+"AllDecks.DeleteDeck.Subtitle" = "Du kan ikke fortryde denne handling";
+"CreateCard.TitleField.Placeholder" = "Indtast en titel";
+"CreateCard.ContentField.Placeholder" = "Indtast noget tekst";
+"EditCard.TitleField.Placeholder" = "Indtast en titel";
+"EditCard.ContentField.Placeholder" = "Indtast noget tekst";
+"EditCard.Deleteard.Title" = "Vil du slette dette kort?";
+"EditCard.DeleteDeck.Subtitle" = "Du kan ikke fortryde denne handling";
+"Presentation.Countdown.Title" = "%@ sekunder tilbage";
+"Presentation.CardCount.Title" = "Kort %@ af %@";

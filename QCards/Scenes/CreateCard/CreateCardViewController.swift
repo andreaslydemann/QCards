@@ -44,7 +44,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private lazy var placeholderLabel: UILabel = {
         let placeholderLabel = UILabel()
-        placeholderLabel.text = "Enter some text..."
+        placeholderLabel.text = NSLocalizedString("Common.Yes", comment: "to")
         placeholderLabel.font = UIFont.systemFont(ofSize: (contentTextView.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentTextView.font?.pointSize)! / 2)
