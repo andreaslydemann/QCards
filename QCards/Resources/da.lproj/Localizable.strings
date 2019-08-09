@@ -16,6 +16,8 @@
 "Common.Edit" = "Redigér";
 "Common.Save" = "Gem";
 "Settings.Navigation.Title" = "Indstillinger";
+"Settings.TimerSection.Title" = "Timer";
+"Settings.AppearanceSection.Title" = "Udseende";
 "Settings.TimePerCardSetting.Title" = "Tid per kort";
 "Settings.NextCardFlashSetting.Title" = "Indikér kortskift med baggrundspuls";
 "Settings.NextCardVibrateSetting.Title" = "Indikér kortskift med vibration";

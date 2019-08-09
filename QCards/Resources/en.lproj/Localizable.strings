@@ -16,6 +16,8 @@
 "Common.Edit" = "Edit";
 "Common.Save" = "Save";
 "Settings.Navigation.Title" = "Settings";
+"Settings.TimerSection.Title" = "Timer";
+"Settings.AppearanceSection.Title" = "Appearance";
 "Settings.TimePerCardSetting.Title" = "Time per card";
 "Settings.NextCardFlashSetting.Title" = "Enable next card flashing";
 "Settings.NextCardVibrateSetting.Title" = "Enable next card vibration";

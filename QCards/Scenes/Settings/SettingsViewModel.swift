@@ -44,12 +44,12 @@ final class SettingsViewModel: ViewModelType {
         
         let items = input.trigger.map { _ -> [SettingsSection] in
             return [
-                SettingsSection.setting(title: "Timer", items: [
+                SettingsSection.setting(title: NSLocalizedString("Settings.TimerSection.Title", comment: ""), items: [
                     .timePerCardItem(viewModel: timePerCardViewModel),
                     .nextCardFlashItem(viewModel: nextCardFlashViewModel),
                     .nextCardVibrateItem(viewModel: nextCardVibrateViewModel)
                     ]),
-                SettingsSection.setting(title: "Appearance", items: [
+                SettingsSection.setting(title: NSLocalizedString("Settings.AppearanceSection.Title", comment: ""), items: [
                     .darkModeItem(viewModel: darkModeViewModel)
                     ])
             ]
