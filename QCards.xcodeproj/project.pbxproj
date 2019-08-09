@@ -19,6 +19,7 @@
 		8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */; };
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
 		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
+		8EE60F2522FD7A16000B1AAE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE60F2422FD7A16000B1AAE /* Constants.swift */; };
 		8EFC000122FCB96C007BC676 /* DarkModeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */; };
 		8EFC000322FCC855007BC676 /* Reactive+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000222FCC855007BC676 /* Reactive+Ext.swift */; };
 		8EFC000522FCD4E9007BC676 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000422FCD4E9007BC676 /* NavigationController.swift */; };
@@ -147,6 +148,7 @@
 		8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewController.swift; sourceTree = "<group>"; };
+		8EE60F2422FD7A16000B1AAE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeCellViewModel.swift; sourceTree = "<group>"; };
 		8EFC000222FCC855007BC676 /* Reactive+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Ext.swift"; sourceTree = "<group>"; };
 		8EFC000422FCD4E9007BC676 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				8EFC000422FCD4E9007BC676 /* NavigationController.swift */,
 				E1104BB5222748B0001FFA9D /* ViewModelType.swift */,
 				E116046422D259B800E64FD4 /* RowAction.swift */,
+				8EE60F2422FD7A16000B1AAE /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				E1FEDA5E2242E75700D17BE3 /* DeckItemViewModel.swift in Sources */,
 				8E278D6C22F8B6C700D63738 /* TimePerCardCellViewModel.swift in Sources */,
 				E1A49D5C22DFA49C00B9F818 /* SettingsNavigator.swift in Sources */,
+				8EE60F2522FD7A16000B1AAE /* Constants.swift in Sources */,
 				8E278D7222FA227800D63738 /* DeckSection.swift in Sources */,
 				E15457E821A4C619002ED341 /* AppDelegate.swift in Sources */,
 			);

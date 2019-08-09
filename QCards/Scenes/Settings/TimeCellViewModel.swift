@@ -30,7 +30,7 @@ final class TimeCellViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let timePerCard = useCase.getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
+        let timePerCard = useCase.getTimeSetting(of: K.UserDefaultsKeys.TimePerCardKey, defaultValue: 0)
             .map { $0 }.asDriver(onErrorJustReturn: 0)
 
         return Output(timePerCard: timePerCard)

@@ -37,10 +37,10 @@ final class SettingsViewModel: ViewModelType {
         let dismiss = input.okTrigger
             .do(onNext: navigator.toDecks)
         
-        let timePerCardViewModel = TimeCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.TimePerCardSetting.Title", comment: ""), userDefaultsKey: "TimePerCardKey")
-        let nextCardFlashViewModel = SwitchCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.NextCardFlashSetting.Title", comment: ""), userDefaultsKey: "NextCardFlashKey")
-        let nextCardVibrateViewModel = SwitchCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.NextCardVibrateSetting.Title", comment: ""), userDefaultsKey: "NextCardVibrateKey")
-        let darkModeViewModel = DarkModeCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.DarkModeSetting.Title", comment: ""), userDefaultsKey: "DarkModeKey")
+        let timePerCardViewModel = TimeCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.TimePerCardSetting.Title", comment: ""), userDefaultsKey: K.UserDefaultsKeys.TimePerCardKey)
+        let nextCardFlashViewModel = SwitchCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.NextCardFlashSetting.Title", comment: ""), userDefaultsKey: K.UserDefaultsKeys.NextCardFlashKey)
+        let nextCardVibrateViewModel = SwitchCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.NextCardVibrateSetting.Title", comment: ""), userDefaultsKey: K.UserDefaultsKeys.NextCardVibrateKey)
+        let darkModeViewModel = DarkModeCellViewModel(useCase: useCase, title: NSLocalizedString("Settings.DarkModeSetting.Title", comment: ""), userDefaultsKey: K.UserDefaultsKeys.DarkModeKey)
         
         let items = input.trigger.map { _ -> [SettingsSection] in
             return [

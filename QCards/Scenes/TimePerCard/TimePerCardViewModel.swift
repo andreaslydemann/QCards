@@ -35,7 +35,7 @@ final class TimePerCardViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        let initialValue = useCase.getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
+        let initialValue = useCase.getTimeSetting(of: K.UserDefaultsKeys.TimePerCardKey, defaultValue: 0)
             .map { $0 }.asDriver(onErrorJustReturn: 0)
         
         let selection = input.selection.map { $0.timeOption }.asDriver()
@@ -45,7 +45,7 @@ final class TimePerCardViewModel: ViewModelType {
         
         let save = input.saveTrigger.withLatestFrom(selectedOption)
             .flatMapLatest { option in
-                return self.useCase.saveTimeSetting(with: option, key: "TimePerCardKey")
+                return self.useCase.saveTimeSetting(with: option, key: K.UserDefaultsKeys.TimePerCardKey)
                     .asDriverOnErrorJustComplete()
             }.do(onNext: navigator.toSettings)
         

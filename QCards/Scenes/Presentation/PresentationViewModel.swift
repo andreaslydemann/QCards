@@ -43,15 +43,15 @@ final class PresentationViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let timePerCard = settingsUseCase
-            .getTimeSetting(of: "TimePerCardKey", defaultValue: 0)
+            .getTimeSetting(of: K.UserDefaultsKeys.TimePerCardKey, defaultValue: 0)
             .asDriverOnErrorJustComplete()
         
         let nextCardFlash = settingsUseCase
-            .getSwitchSetting(of: "NextCardFlashKey", defaultValue: false)
+            .getSwitchSetting(of: K.UserDefaultsKeys.NextCardFlashKey, defaultValue: false)
             .asDriverOnErrorJustComplete()
         
         let nextCardVibrate = settingsUseCase
-            .getSwitchSetting(of: "NextCardVibrateKey", defaultValue: false)
+            .getSwitchSetting(of: K.UserDefaultsKeys.NextCardVibrateKey, defaultValue: false)
             .asDriverOnErrorJustComplete()
         
         let hideCountdown = timePerCard.map { $0 == 0 }

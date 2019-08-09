@@ -73,14 +73,14 @@ enum ThemeType: ThemeProvider {
 
 extension ThemeType {
     static func currentTheme() -> ThemeType {
-        let isDark = UserDefaults.standard.bool(forKey: "DarkModeKey")
+        let isDark = UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.DarkModeKey)
         let theme = isDark ? ThemeType.dark : ThemeType.light
         theme.save()
         return theme
     }
     
     func save() {
-        UserDefaults.standard.set(self.isDark, forKey: "DarkModeKey")
+        UserDefaults.standard.set(self.isDark, forKey: K.UserDefaultsKeys.DarkModeKey)
     }
 }
 
