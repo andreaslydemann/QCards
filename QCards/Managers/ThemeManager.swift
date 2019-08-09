@@ -28,11 +28,11 @@ protocol Theme {
 }
 
 struct LightTheme: Theme {
-    let primary = UIColor.UIColorFromHex(hex: "#A8E4FF")
-    let secondary = UIColor.UIColorFromHex(hex: "#E3FCF1")
+    let primary = UIColor.white
+    let secondary = UIColor.UIColorFromHex(hex: "#E5EBEF")
     let activeTint = UIColor.black
     let inactiveTint = UIColor.darkGray
-    let action = UIColor.UIColorFromHex(hex: "#82A392")
+    let action = UIColor.UIColorFromHex(hex: "#1DA1F2")
     let danger = UIColor.UIColorFromHex(hex: "#DF245E")
     let statusBarStyle = UIStatusBarStyle.default
     let barStyle = UIBarStyle.default

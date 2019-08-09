@@ -22,7 +22,7 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
         
         themeService.rx
             .bind({ $0.activeTint }, to: contentTextView.rx.textColor)
-            .bind({ $0.secondary }, to: contentTextView.rx.backgroundColor)
+            .bind({ $0.primary }, to: contentTextView.rx.backgroundColor)
             .disposed(by: rx.disposeBag)
         
         contentTextView.isEditable = false
@@ -48,7 +48,7 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
                                trailing: trailingAnchor,
                                padding: .init(top: 15, left: 15, bottom: 15, right: 15))
         
-        themeService.rx.bind({ $0.secondary }, to: rx.backgroundColor)
+        themeService.rx.bind({ $0.primary }, to: rx.backgroundColor)
     }
     
     required init?(coder aDecoder: NSCoder) {

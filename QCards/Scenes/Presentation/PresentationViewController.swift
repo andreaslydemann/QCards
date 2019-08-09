@@ -33,7 +33,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         return collectionView
     }()
     
-    let footerView: UIView = {
+    lazy var footerView: UIView = {
         let footerView = UIView()
         return footerView
     }()
@@ -102,7 +102,10 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
         stopButton.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
         cardCount.anchor(top: footerView.topAnchor, leading: nil, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
 
-        themeService.rx.bind({ $0.primary }, to: view.rx.backgroundColor).disposed(by: rx.disposeBag)
+        themeService.rx
+            .bind({ $0.primary }, to: view.rx.backgroundColor)
+            .bind({ $0.primary }, to: collectionView.rx.backgroundColor)
+            .disposed(by: rx.disposeBag)
     }
     
     private func bindViewModel() {
