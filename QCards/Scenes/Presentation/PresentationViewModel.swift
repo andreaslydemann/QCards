@@ -98,7 +98,7 @@ final class PresentationViewModel: ViewModelType {
     
     func count(from: Int, to: Int = 0, quickStart: Bool = true) -> Observable<Int> {
         return Observable<Int>
-            .timer(0, period: 1, scheduler: MainScheduler.instance)
+            .timer(.seconds(0), period: .seconds(1), scheduler: MainScheduler.instance)
             .take(from - to + 1)
             .map { from - $0 }
     }
