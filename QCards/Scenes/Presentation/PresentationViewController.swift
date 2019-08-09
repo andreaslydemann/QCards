@@ -163,7 +163,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
             animationConfiguration: AnimationConfiguration(reloadAnimation: .fade),
             configureCell: { _, collectionView, indexPath, card -> PresentationCollectionViewCell in
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PresentationCollectionViewCell.reuseID, for: indexPath) as! PresentationCollectionViewCell
-                cell.bind(card)
+                cell.bind(to: card)
                 return cell
         })
     }

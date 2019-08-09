@@ -55,7 +55,7 @@ final class PresentationCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func bind(_ viewModel: CardItemViewModel) {
+    func bind(to viewModel: CardItemViewModel) {
         self.titleLabel.text = viewModel.title
         self.contentTextView.text = viewModel.content
     }

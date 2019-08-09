@@ -132,7 +132,7 @@ class DecksViewController: UITableViewController {
                 themeService.rx.bind({ $0.primary }, to: cell.rx.backgroundColor).disposed(by: self.rx.disposeBag)
                 cell.selectionStyle = .none
                 cell.accessoryType = .disclosureIndicator
-                cell.bind(deck)
+                cell.bind(to: deck)
                 return cell
         },
             canEditRowAtIndexPath: { _, _ in true }

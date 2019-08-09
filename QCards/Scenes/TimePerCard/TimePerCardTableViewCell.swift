@@ -40,7 +40,7 @@ final class TimePerCardTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func bind(_ viewModel: TimePerCardCellViewModel) {
+    func bind(to viewModel: TimePerCardCellViewModel) {
         self.titleLabel.text = viewModel.displayName
         self.accessoryType = viewModel.isSelected ? .checkmark : .none
     }

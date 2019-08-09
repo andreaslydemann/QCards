@@ -42,6 +42,9 @@ class TimePerCardViewController: UITableViewController {
     }
     
     private func setupLayout() {
+        tableView.rx.setDelegate(self)
+            .disposed(by: rx.disposeBag)
+        
         themeService.rx.bind({ $0.secondary }, to: tableView.rx.backgroundColor).disposed(by: rx.disposeBag)
         tableView.register(TimePerCardTableViewCell.self, forCellReuseIdentifier: TimePerCardTableViewCell.reuseID)
         tableView.tableFooterView = UIView(frame: .zero)
@@ -74,7 +77,7 @@ class TimePerCardViewController: UITableViewController {
         return RxTableViewSectionedReloadDataSource(
             configureCell: { _, tableView, indexPath, viewModel -> TimePerCardTableViewCell in
                 let cell = tableView.dequeueReusableCell(withIdentifier: TimePerCardTableViewCell.reuseID, for: indexPath) as! TimePerCardTableViewCell
-                cell.bind(viewModel)
+                cell.bind(to: viewModel)
                 return cell
         },
             canEditRowAtIndexPath: { _, _ in true }
