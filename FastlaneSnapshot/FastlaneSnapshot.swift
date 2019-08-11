@@ -8,10 +8,6 @@
 
 import XCTest
 
-let deckTitle = "My presentation"
-let cardTitle = "First topic"
-let cardContent = "Here are some very important points"
-
 class FastlaneSnapshot: XCTestCase {
     
     override func setUp() {
@@ -24,20 +20,14 @@ class FastlaneSnapshot: XCTestCase {
         app.launch()
     }
     
-    override func tearDown() {
-        let app = XCUIApplication()
-        
-        app.buttons["stop"].tap()
-        app.navigationBars[deckTitle].buttons["QCards"].tap()
-        app.tables.staticTexts[deckTitle].swipeLeft()
-        
-        app.buttons.element(boundBy: 3).tap()
-        app.buttons["yesButton"].tap()
-    }
-    
     func testGenerateScreenshots() {
-
+        
+        let deckTitle = localizedString("Snapshot.DeckTitle")
+        let cardTitle = localizedString("Snapshot.CardTitle")
+        let cardContent = localizedString("Snapshot.CardContent")
+        
         let app = XCUIApplication()
+        
         app.navigationBars["QCards"].buttons["settings"].tap()
         
         app.tables.cells.element(boundBy: 0).tap()
@@ -76,31 +66,12 @@ class FastlaneSnapshot: XCTestCase {
         app.buttons["play"].tap()
         
         snapshot("Presentation")
+        
+        app.buttons["stop"].tap()
+        app.navigationBars[deckTitle].buttons["QCards"].tap()
+        app.tables.staticTexts[deckTitle].swipeLeft()
+        
+        app.buttons.element(boundBy: 3).tap()
+        app.buttons["yesButton"].tap()
     }
-    /*
-    var currentLanguage: (langCode: String, localeCode: String)? {
-        let currentLocale = Locale(identifier: Locale.preferredLanguages.first!)
-        guard let langCode = currentLocale.languageCode else {
-            return nil
-        }
-        var localeCode = langCode
-        if let scriptCode = currentLocale.scriptCode {
-            localeCode = "\(langCode)-\(scriptCode)"
-        } else if let regionCode = currentLocale.regionCode {
-            localeCode = "\(langCode)-\(regionCode)"
-        }
-        return (langCode, localeCode)
-    }
-    
-    func localizedString(_ key: String) -> String {
-        let testBundle = Bundle(for: FastlaneSnapshot.self)
-        if let currentLanguage = currentLanguage,
-            let testBundlePath = testBundle.path(forResource: currentLanguage.localeCode, ofType: "lproj") ?? testBundle.path(forResource: currentLanguage.langCode, ofType: "lproj"),
-            let localizedBundle = Bundle(path: testBundlePath)
-        {
-            return NSLocalizedString(key, bundle: localizedBundle, comment: "")
-        }
-        return "?"
-    }*/
 }
-
