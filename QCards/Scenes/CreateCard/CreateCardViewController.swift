@@ -21,6 +21,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     private lazy var titleTextField: UITextField = {
         let titleTextField = UITextField()
         titleTextField.placeholder = NSLocalizedString("CreateCard.TitleField.Placeholder", comment: "")
+        titleTextField.accessibilityLabel = "cardTitleTextField"
         
         themeService.rx
             .bind({ $0.primary }, to: titleTextField.rx.backgroundColor)
@@ -37,6 +38,7 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
     
     private lazy var contentTextView: BulletedTextView = {
         let contentTextView = BulletedTextView()
+        contentTextView.accessibilityLabel = "cardContentTextView"
         
         themeService.rx
             .bind({ $0.activeTint }, to: contentTextView.rx.textColor)
@@ -98,6 +100,9 @@ class CreateCardViewController: UIViewController, UITextViewDelegate {
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.title = NSLocalizedString("CreateCard.Navigation.Title", comment: "")
+        navigationItem.accessibilityLabel = "createCardNavigationTitle"
+        cancelButton.accessibilityLabel = "cancelButton"
+        saveButton.accessibilityLabel = "saveButton"
     }
     
     private func bindViewModel() {

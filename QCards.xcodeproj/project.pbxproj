@@ -21,6 +21,8 @@
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
 		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
 		8EE60F2522FD7A16000B1AAE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE60F2422FD7A16000B1AAE /* Constants.swift */; };
+		8EF75E8D230001D300825F88 /* FastlaneSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */; };
+		8EF75E952300039C00825F88 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF75E942300039C00825F88 /* SnapshotHelper.swift */; };
 		8EFC000122FCB96C007BC676 /* DarkModeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */; };
 		8EFC000322FCC855007BC676 /* Reactive+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000222FCC855007BC676 /* Reactive+Ext.swift */; };
 		8EFC000522FCD4E9007BC676 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC000422FCD4E9007BC676 /* NavigationController.swift */; };
@@ -104,6 +106,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8EF75E8F230001D300825F88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E15457E321A4C619002ED341;
+			remoteInfo = QCards;
+		};
 		E1104B6C22272DA2001FFA9D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
@@ -150,6 +159,10 @@
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewController.swift; sourceTree = "<group>"; };
 		8EE60F2422FD7A16000B1AAE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastlaneSnapshot.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshot.swift; sourceTree = "<group>"; };
+		8EF75E8E230001D300825F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EF75E942300039C00825F88 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		8EFC000022FCB96C007BC676 /* DarkModeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeCellViewModel.swift; sourceTree = "<group>"; };
 		8EFC000222FCC855007BC676 /* Reactive+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Ext.swift"; sourceTree = "<group>"; };
 		8EFC000422FCD4E9007BC676 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -235,6 +248,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8EF75E87230001D300825F88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1104B6422272DA2001FFA9D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +301,16 @@
 				8E278D6F22FA224700D63738 /* TimeSection.swift */,
 			);
 			path = TimePerCard;
+			sourceTree = "<group>";
+		};
+		8EF75E8B230001D300825F88 /* FastlaneSnapshot */ = {
+			isa = PBXGroup;
+			children = (
+				8EF75E942300039C00825F88 /* SnapshotHelper.swift */,
+				8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */,
+				8EF75E8E230001D300825F88 /* Info.plist */,
+			);
+			path = FastlaneSnapshot;
 			sourceTree = "<group>";
 		};
 		8EFCFFFB22FC9BF0007BC676 /* Managers */ = {
@@ -505,6 +535,7 @@
 				E1E518C0222DB87200E4AED2 /* Domain */,
 				E15457E621A4C619002ED341 /* QCards */,
 				E1104B6822272DA2001FFA9D /* Platform */,
+				8EF75E8B230001D300825F88 /* FastlaneSnapshot */,
 				E15457E521A4C619002ED341 /* Products */,
 				E122506821A60DF0005B2D12 /* Frameworks */,
 			);
@@ -516,6 +547,7 @@
 				E15457E421A4C619002ED341 /* QCards.app */,
 				E1104B6722272DA2001FFA9D /* Platform.framework */,
 				E1E518B2222DB7F000E4AED2 /* Domain.framework */,
+				8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -625,6 +657,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8EF75E89230001D300825F88 /* FastlaneSnapshot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "FastlaneSnapshot" */;
+			buildPhases = (
+				8EF75E86230001D300825F88 /* Sources */,
+				8EF75E87230001D300825F88 /* Frameworks */,
+				8EF75E88230001D300825F88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8EF75E90230001D300825F88 /* PBXTargetDependency */,
+			);
+			name = FastlaneSnapshot;
+			productName = FastlaneSnapshot;
+			productReference = 8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E1104B6622272DA2001FFA9D /* Platform */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1104B7022272DA2001FFA9D /* Build configuration list for PBXNativeTarget "Platform" */;
@@ -689,10 +739,14 @@
 		E15457DC21A4C619002ED341 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Andreas Lüdemann";
 				TargetAttributes = {
+					8EF75E89230001D300825F88 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = E15457E321A4C619002ED341;
+					};
 					E1104B6622272DA2001FFA9D = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
@@ -735,11 +789,19 @@
 				E15457E321A4C619002ED341 /* QCards */,
 				E1E518B1222DB7F000E4AED2 /* Domain */,
 				E1104B6622272DA2001FFA9D /* Platform */,
+				8EF75E89230001D300825F88 /* FastlaneSnapshot */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8EF75E88230001D300825F88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1104B6522272DA2001FFA9D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -824,6 +886,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8EF75E86230001D300825F88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EF75E8D230001D300825F88 /* FastlaneSnapshot.swift in Sources */,
+				8EF75E952300039C00825F88 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1104B6322272DA2001FFA9D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -924,6 +995,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8EF75E90230001D300825F88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E15457E321A4C619002ED341 /* QCards */;
+			targetProxy = 8EF75E8F230001D300825F88 /* PBXContainerItemProxy */;
+		};
 		E1104B6D22272DA2001FFA9D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E1104B6622272DA2001FFA9D /* Platform */;
@@ -957,6 +1033,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8EF75E91230001D300825F88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = FastlaneSnapshot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.FastlaneSnapshot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QCards;
+			};
+			name = Debug;
+		};
+		8EF75E92230001D300825F88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = FastlaneSnapshot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.FastlaneSnapshot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QCards;
+			};
+			name = Release;
+		};
 		E1104B7122272DA2001FFA9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1261,6 +1377,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "FastlaneSnapshot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EF75E91230001D300825F88 /* Debug */,
+				8EF75E92230001D300825F88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E1104B7022272DA2001FFA9D /* Build configuration list for PBXNativeTarget "Platform" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

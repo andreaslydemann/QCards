@@ -51,8 +51,10 @@ class TimePerCardViewController: UITableViewController {
     }
     
     private func setupNavigationItems() {
+        saveButton.accessibilityLabel = "saveButton"
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.title = NSLocalizedString("TimePerCard.Navigation.Title", comment: "")
+
     }
     
     private func bindViewModel() {

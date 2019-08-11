@@ -48,6 +48,7 @@ class DecksViewController: UITableViewController {
         navigationItem.leftBarButtonItem = settingsButton
         navigationItem.rightBarButtonItem = createDeckButton
         navigationItem.title = NSLocalizedString("AllDecks.Navigation.Title", comment: "")
+        createDeckButton.accessibilityLabel = "createDeckButton"
     }
     
     private func bindViewModel() {
@@ -61,9 +62,10 @@ class DecksViewController: UITableViewController {
             return UIAlertController
                 .present(in: self, text: UIAlertController.AlertText(
                     title: NSLocalizedString("AllDecks.CreateDeck.Title", comment: ""), message: NSLocalizedString("AllDecks.CreateDeck.Subtitle", comment: "")),
-                         style: .alert, buttons: [.default(NSLocalizedString("Common.Add", comment: "")), .cancel(NSLocalizedString("Common.Cancel", comment: ""))],
+                         style: .alert, buttons: [.default(NSLocalizedString("Common.Add", comment: ""), "addButton"), .cancel(NSLocalizedString("Common.Cancel", comment: ""), "cancelButton")],
                          textFields: [ {(textfield: UITextField) -> Void in
                             textfield.placeholder = NSLocalizedString("AllDecks.CreateDeck.TitleField.Placeholder", comment: "")
+                            textfield.accessibilityLabel = "deckTitleTextField"
                             textfield.autocapitalizationType = .sentences
                             } ])
             }
@@ -75,7 +77,7 @@ class DecksViewController: UITableViewController {
                 return UIAlertController
                     .present(in: self, text: UIAlertController.AlertText(
                         title: NSLocalizedString("AllDecks.EditDeck.Title", comment: ""), message: NSLocalizedString("AllDecks.EditDeck.Subtitle", comment: "")),
-                             style: .alert, buttons: [.default(NSLocalizedString("Common.Update", comment: "")), .cancel(NSLocalizedString("Common.Cancel", comment: ""))],
+                             style: .alert, buttons: [.default(NSLocalizedString("Common.Update", comment: ""), "updateButton"), .cancel(NSLocalizedString("Common.Cancel", comment: ""), "cancelButton")],
                              textFields: [ {(textfield: UITextField) -> Void in
                                 textfield.placeholder = NSLocalizedString("AllDecks.EditDeck.TitleField.Placeholder", comment: "")
                                 textfield.autocapitalizationType = .sentences
@@ -92,7 +94,7 @@ class DecksViewController: UITableViewController {
                         title: NSLocalizedString("AllDecks.DeleteDeck.Title", comment: ""),
                         message: NSLocalizedString("AllDecks.DeleteDeck.Subtitle", comment: "")),
                              style: .alert,
-                             buttons: [.default(NSLocalizedString("Common.Yes", comment: "")), .cancel(NSLocalizedString("Common.No", comment: ""))],
+                             buttons: [.default(NSLocalizedString("Common.Yes", comment: ""), "yesButton"), .cancel(NSLocalizedString("Common.No", comment: ""), "noButton")],
                              textFields: [])
                     .withLatestFrom(Observable.just(row)) { alertData, row in
                         return (alertData.0, row)

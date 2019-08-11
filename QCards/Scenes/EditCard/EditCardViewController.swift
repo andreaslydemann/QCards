@@ -109,11 +109,11 @@ class EditCardViewController: UIViewController, UITextViewDelegate {
                     title: NSLocalizedString("EditCard.DeleteCard.Title", comment: ""),
                     message: NSLocalizedString("EditCard.DeleteCard.Subtitle", comment: "")),
                          style: .alert,
-                         buttons: [.default(NSLocalizedString("Common.Yes", comment: "")), .cancel(NSLocalizedString("Common.No", comment: ""))],
+                         buttons: [.default(NSLocalizedString("Common.Yes", comment: ""), "yesButton"), .cancel(NSLocalizedString("Common.No", comment: ""), "cancelButton")],
                          textFields: [])
                 .withLatestFrom(Observable.just(row)) { alertData, row in
                     return (alertData.0, row)
-                }
+            }
             }
             .filter { $0.0 == 0 }
             .map { $0.1 }

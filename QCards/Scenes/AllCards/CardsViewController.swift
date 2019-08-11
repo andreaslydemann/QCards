@@ -89,6 +89,7 @@ class CardsViewController: UIViewController {
     
     private func setupNavigationItems() {
         navigationItem.rightBarButtonItems = [addButton, editButton]
+        addButton.accessibilityLabel = "addButton"
     }
     
     private func bindViewModel() {
@@ -103,8 +104,8 @@ class CardsViewController: UIViewController {
                         title: NSLocalizedString("AllCards.DeleteCard.Title", comment: ""),
                         message: NSLocalizedString("AllCards.DeleteCard.Subtitle", comment: "")),
                              style: .alert,
-                             buttons: [.default(NSLocalizedString("Common.Yes", comment: "")),
-                                       .cancel(NSLocalizedString("Common.No", comment: ""))],
+                             buttons: [.default(NSLocalizedString("Common.Yes", comment: ""), "yesButton"),
+                                       .cancel(NSLocalizedString("Common.No", comment: ""), "noButton")],
                              textFields: [])
                     .withLatestFrom(Observable.just(row)) { alertData, row in
                         return (alertData.0, row)

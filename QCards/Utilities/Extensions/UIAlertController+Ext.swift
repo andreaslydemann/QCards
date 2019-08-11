@@ -14,10 +14,10 @@ extension UIAlertController {
     public typealias TextFieldConfiguration = ((UITextField) -> Void)
     
     public enum AlertButton {
-        case `default`(String)
-        case disabled(String)
-        case cancel(String)
-        case destructive(String)
+        case `default`(String, String)
+        case disabled(String, String)
+        case cancel(String, String)
+        case destructive(String, String)
     }
     
     struct AlertText {
@@ -45,14 +45,18 @@ extension UIAlertController {
                 
                 let action: UIAlertAction
                 switch buttons[buttonIndex] {
-                case .default(let title):
+                case .default(let title, let accessibilityLabel):
                     action = UIAlertAction(title: title, style: .default, handler: handler)
-                case .cancel(let title):
+                    action.accessibilityLabel = accessibilityLabel
+                case .cancel(let title, let accessibilityLabel):
                     action = UIAlertAction(title: title, style: .cancel, handler: handler)
-                case .destructive(let title):
+                    action.accessibilityLabel = accessibilityLabel
+                case .destructive(let title, let accessibilityLabel):
                     action = UIAlertAction(title: title, style: .destructive, handler: handler)
-                case .disabled(let title):
+                    action.accessibilityLabel = accessibilityLabel
+                case .disabled(let title, let accessibilityLabel):
                     action = UIAlertAction(title: title, style: .default, handler: handler)
+                    action.accessibilityLabel = accessibilityLabel
                     action.isEnabled = false
                 }
                 

@@ -42,6 +42,7 @@ class SettingsViewController: UITableViewController {
     private func setupNavigationItems() {
         navigationItem.rightBarButtonItem = okButton
         navigationItem.title = NSLocalizedString("Settings.Navigation.Title", comment: "")
+        okButton.accessibilityLabel = "okButton"
     }
     
     private func bindViewModel() {
