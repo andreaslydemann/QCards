@@ -7,5 +7,9 @@
 */
 
 "Snapshot.DeckTitle" = "My presentation";
-"Snapshot.CardTitle" = "First topic";
-"Snapshot.CardContent" = "Here are some very important points";
+"Snapshot.CardTitle1" = "First topic";
+"Snapshot.CardContent1" = "Here are some very important points";
+"Snapshot.CardTitle2" = "First topic";
+"Snapshot.CardContent2" = "Here are some very important points";
+"Snapshot.CardTitle3" = "First topic";
+"Snapshot.CardContent3" = "Here are some very important points";

@@ -7,5 +7,9 @@
 */
 
 "Snapshot.DeckTitle" = "Min præsentation";
-"Snapshot.CardTitle" = "Første emne";
-"Snapshot.CardContent" = "Her er nogle vigtige punkter";
+"Snapshot.CardTitle1" = "Første emne";
+"Snapshot.CardContent1" = "Her er nogle vigtige punkter \nHvad er nu det her?";
+"Snapshot.CardTitle2" = "Første emne";
+"Snapshot.CardContent2" = "Her er nogle vigtige punkter \nHvad er nu det her?";
+"Snapshot.CardTitle3" = "Første emne";
+"Snapshot.CardContent3" = "Her er nogle vigtige punkter \nHvad er nu det her?";
