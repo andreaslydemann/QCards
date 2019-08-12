@@ -64,7 +64,7 @@ Carthage/Build
 **/fastlane/Preview.html
 
 # snapshot generated screenshots
-**/fastlane/screenshots
+**/fastlane/screenshots/**/*.png
 
 # scan temporary files
 **/fastlane/test_output

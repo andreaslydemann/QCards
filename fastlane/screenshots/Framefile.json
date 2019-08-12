@@ -1,0 +1,38 @@
+{
+  "default": {
+    "keyword": {
+      "fonts": [
+        {
+          "font": "./fonts/BebasNeue-Regular.ttf",
+          "supported": ["da", "en-US"]
+        }
+      ],
+    "color": "#FFFFFF"
+    },
+    "title": {
+      "fonts": [
+        {
+          "font": "./fonts/BebasNeue-Regular.ttf",
+          "supported": ["da", "en-US"]
+        }
+      ],
+      "color": "#000000"
+    },
+    "background": "./background.jpg",
+    "padding": 50
+  },
+  "data": [
+    {
+      "filter": "AllCards"
+    },
+    {
+      "filter": "CreateCard"
+    },
+    {
+      "filter": "Presentation"
+    },
+    {
+      "filter": "PresentationDarkMode"
+    }
+  ]
+}

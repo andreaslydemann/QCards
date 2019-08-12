@@ -54,7 +54,7 @@ class FastlaneSnapshot: XCTestCase {
         
         snapshot("AllCards")
         
-        startPresentation(takeScreenshot: true, app: app)
+        startPresentation(takeScreenshot: true, isDarkMode: false, app: app)
         
         app.navigationBars[deckTitle].buttons["QCards"].tap()
         
@@ -62,7 +62,7 @@ class FastlaneSnapshot: XCTestCase {
         
         app.tables.staticTexts[deckTitle].tap()
         
-        startPresentation(takeScreenshot: true, app: app)
+        startPresentation(takeScreenshot: true, isDarkMode: true, app: app)
         
         app.navigationBars[deckTitle].buttons["QCards"].tap()
         
@@ -128,11 +128,17 @@ class FastlaneSnapshot: XCTestCase {
     }
     
     // AllCards
-    func startPresentation(takeScreenshot: Bool, app: XCUIApplication) {
+    func startPresentation(takeScreenshot: Bool, isDarkMode: Bool, app: XCUIApplication) {
         app.buttons["play"].tap()
         
         if takeScreenshot {
-            snapshot("Presentation")
+            var snapshotTitle = "Presentation"
+            
+            if isDarkMode {
+                snapshotTitle += "DarkMode"
+            }
+            
+            snapshot(snapshotTitle)
         }
         
         app.buttons["stop"].tap()
