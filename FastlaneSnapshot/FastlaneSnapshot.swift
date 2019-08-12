@@ -135,7 +135,7 @@ class FastlaneSnapshot: XCTestCase {
             var snapshotTitle = "Presentation"
             
             if isDarkMode {
-                snapshotTitle += "DarkMode"
+                snapshotTitle = "DarkMode"
             }
             
             snapshot(snapshotTitle)

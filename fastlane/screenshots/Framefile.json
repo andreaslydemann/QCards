@@ -7,7 +7,7 @@
           "supported": ["da", "en-US"]
         }
       ],
-    "color": "#FFFFFF"
+    "color": "#000000"
     },
     "title": {
       "fonts": [
@@ -16,7 +16,7 @@
           "supported": ["da", "en-US"]
         }
       ],
-      "color": "#000000"
+      "color": "#FFFFFF"
     },
     "background": "./background.jpg",
     "padding": 50
@@ -32,7 +32,7 @@
       "filter": "Presentation"
     },
     {
-      "filter": "PresentationDarkMode"
+      "filter": "DarkMode"
     }
   ]
 }
