@@ -6,10 +6,14 @@
   Copyright © 2019 Andreas Lüdemann. All rights reserved.
 */
 
-"Snapshot.DeckTitle" = "My presentation";
-"Snapshot.CardTitle1" = "First topic";
-"Snapshot.CardContent1" = "Here are some very important points";
-"Snapshot.CardTitle2" = "First topic";
+"Snapshot.DeckTitle" = "Cats 101";
+"Snapshot.CardTitle1" = "Introduction";
+"Snapshot.CardContent1" = "Cats are basically domestic pet animal which are used for household purpose. \n\nThe scientific name of a cat is FELIS CATUS. \n\nIt is often called the housecat when kept as an indoor pet, or simply the cat when there is no need to distinguish it from other felids and felines. \n\nTraits of cats: \n*They don't bark, they meow. \n*Usually aggresively fluffy.";
+"Snapshot.CardTitle2" = "Breeds of cat";
 "Snapshot.CardContent2" = "Here are some very important points";
-"Snapshot.CardTitle3" = "First topic";
+"Snapshot.CardTitle3" = "Anatomy of cat";
 "Snapshot.CardContent3" = "Here are some very important points";
+"Snapshot.CardTitle4" = "Diet of a cat";
+"Snapshot.CardContent4" = "Here are some very important points";
+"Snapshot.CardTitle5" = "Wrapping up";
+"Snapshot.CardContent5" = "Here are some very important points";

@@ -6,10 +6,14 @@
   Copyright © 2019 Andreas Lüdemann. All rights reserved.
 */
 
-"Snapshot.DeckTitle" = "Min præsentation";
-"Snapshot.CardTitle1" = "Første emne";
-"Snapshot.CardContent1" = "Her er nogle vigtige punkter \nHvad er nu det her?";
-"Snapshot.CardTitle2" = "Første emne";
-"Snapshot.CardContent2" = "Her er nogle vigtige punkter \nHvad er nu det her?";
-"Snapshot.CardTitle3" = "Første emne";
-"Snapshot.CardContent3" = "Her er nogle vigtige punkter \nHvad er nu det her?";
+"Snapshot.DeckTitle" = "Katte 101";
+"Snapshot.CardTitle1" = "Introduktion";
+"Snapshot.CardContent1" = "Katte er dybest set husdyr, der bruges til husholdningsbrug. \n\nDet videnskabelige navn på en kat er FELIS CATUS. \n\nDet kaldes ofte huskatte, når de opbevares som et indendørs kæledyr, eller blot katten, når det ikke er nødvendigt at skelne det fra andre kattedyr. \n\nKendetegn ved katte: \n*De gøer ikke, de meow'er. \n*De er normalt ekstremt fluffy.";
+"Snapshot.CardTitle2" = "Racer af katte";
+"Snapshot.CardContent2" = "Her er nogle vigtige punkter";
+"Snapshot.CardTitle3" = "Anatomien af katte";
+"Snapshot.CardContent3" = "Her er nogle vigtige punkter";
+"Snapshot.CardTitle4" = "Kattes kost";
+"Snapshot.CardContent4" = "Her er nogle vigtige punkter";
+"Snapshot.CardTitle5" = "Afslutning";
+"Snapshot.CardContent5" = "Her er nogle vigtige punkter";

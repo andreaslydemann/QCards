@@ -33,6 +33,12 @@ class FastlaneSnapshot: XCTestCase {
         let cardTitle3 = localizedString(key: "Snapshot.CardTitle3")
         let cardContent3 = localizedString(key: "Snapshot.CardContent3")
         
+        let cardTitle4 = localizedString(key: "Snapshot.CardTitle4")
+        let cardContent4 = localizedString(key: "Snapshot.CardContent4")
+        
+        let cardTitle5 = localizedString(key: "Snapshot.CardTitle5")
+        let cardContent5 = localizedString(key: "Snapshot.CardContent5")
+        
         let app = XCUIApplication()
         
         setTimePerCard(app)
@@ -43,6 +49,8 @@ class FastlaneSnapshot: XCTestCase {
         createCard(deckTitle, cardTitle: cardTitle1, cardContent: cardContent1, takeScreenshot: true, app: app)
         createCard(deckTitle, cardTitle: cardTitle2, cardContent: cardContent2, takeScreenshot: false, app: app)
         createCard(deckTitle, cardTitle: cardTitle3, cardContent: cardContent3, takeScreenshot: false, app: app)
+        createCard(deckTitle, cardTitle: cardTitle4, cardContent: cardContent4, takeScreenshot: false, app: app)
+        createCard(deckTitle, cardTitle: cardTitle5, cardContent: cardContent5, takeScreenshot: false, app: app)
         
         snapshot("AllCards")
         
