@@ -38,6 +38,36 @@
                ReferencedContainer = "container:QCards.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8E1DEFC3230940B7009D3897"
+               BuildableName = "QCardsTests.xctest"
+               BlueprintName = "QCardsTests"
+               ReferencedContainer = "container:QCards.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8E1DEFD1230940C5009D3897"
+               BuildableName = "DomainTests.xctest"
+               BlueprintName = "DomainTests"
+               ReferencedContainer = "container:QCards.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8E1DEFE0230940CE009D3897"
+               BuildableName = "PlatformTests.xctest"
+               BlueprintName = "PlatformTests"
+               ReferencedContainer = "container:QCards.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

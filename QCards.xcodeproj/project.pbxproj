@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E1DEFC7230940B7009D3897 /* QCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DEFC6230940B7009D3897 /* QCardsTests.swift */; };
+		8E1DEFD5230940C5009D3897 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DEFD4230940C5009D3897 /* DomainTests.swift */; };
+		8E1DEFD7230940C5009D3897 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E518B2222DB7F000E4AED2 /* Domain.framework */; };
+		8E1DEFE4230940CE009D3897 /* PlatformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DEFE3230940CE009D3897 /* PlatformTests.swift */; };
+		8E1DEFE6230940CE009D3897 /* Platform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1104B6722272DA2001FFA9D /* Platform.framework */; };
 		8E278D6622F8AA5400D63738 /* TimePerCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6522F8AA5400D63738 /* TimePerCardViewModel.swift */; };
 		8E278D6822F8AB7E00D63738 /* TimePerCardNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */; };
 		8E278D6A22F8B58D00D63738 /* TimePerCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */; };
@@ -108,6 +113,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8E1DEFC9230940B7009D3897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E15457E321A4C619002ED341;
+			remoteInfo = QCards;
+		};
+		8E1DEFD8230940C5009D3897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1E518B1222DB7F000E4AED2;
+			remoteInfo = Domain;
+		};
+		8E1DEFE7230940CE009D3897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1104B6622272DA2001FFA9D;
+			remoteInfo = Platform;
+		};
+		8E1DEFEC230940E1009D3897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E15457E321A4C619002ED341;
+			remoteInfo = QCards;
+		};
+		8E1DEFEE230940E7009D3897 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E15457E321A4C619002ED341;
+			remoteInfo = QCards;
+		};
 		8EF75E8F230001D300825F88 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E15457DC21A4C619002ED341 /* Project object */;
@@ -147,6 +187,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E1DEFC4230940B7009D3897 /* QCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E1DEFC6230940B7009D3897 /* QCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCardsTests.swift; sourceTree = "<group>"; };
+		8E1DEFC8230940B7009D3897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1DEFD2230940C5009D3897 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E1DEFD4230940C5009D3897 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		8E1DEFD6230940C5009D3897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1DEFE1230940CE009D3897 /* PlatformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlatformTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E1DEFE3230940CE009D3897 /* PlatformTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformTests.swift; sourceTree = "<group>"; };
+		8E1DEFE5230940CE009D3897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E278D6522F8AA5400D63738 /* TimePerCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewModel.swift; sourceTree = "<group>"; };
 		8E278D6722F8AB7E00D63738 /* TimePerCardNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardNavigator.swift; sourceTree = "<group>"; };
 		8E278D6922F8B58D00D63738 /* TimePerCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardTableViewCell.swift; sourceTree = "<group>"; };
@@ -253,6 +302,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8E1DEFC1230940B7009D3897 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E1DEFCF230940C5009D3897 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1DEFD7230940C5009D3897 /* Domain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E1DEFDE230940CE009D3897 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1DEFE6230940CE009D3897 /* Platform.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EF75E87230001D300825F88 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +367,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E1DEFC5230940B7009D3897 /* QCardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E1DEFC6230940B7009D3897 /* QCardsTests.swift */,
+				8E1DEFC8230940B7009D3897 /* Info.plist */,
+			);
+			path = QCardsTests;
+			sourceTree = "<group>";
+		};
+		8E1DEFD3230940C5009D3897 /* DomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E1DEFD4230940C5009D3897 /* DomainTests.swift */,
+				8E1DEFD6230940C5009D3897 /* Info.plist */,
+			);
+			path = DomainTests;
+			sourceTree = "<group>";
+		};
+		8E1DEFE2230940CE009D3897 /* PlatformTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E1DEFE3230940CE009D3897 /* PlatformTests.swift */,
+				8E1DEFE5230940CE009D3897 /* Info.plist */,
+			);
+			path = PlatformTests;
+			sourceTree = "<group>";
+		};
 		8E88E71822F78B240092DA8F /* TimePerCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,8 +639,11 @@
 			isa = PBXGroup;
 			children = (
 				E1E518C0222DB87200E4AED2 /* Domain */,
+				8E1DEFD3230940C5009D3897 /* DomainTests */,
 				E15457E621A4C619002ED341 /* QCards */,
+				8E1DEFC5230940B7009D3897 /* QCardsTests */,
 				E1104B6822272DA2001FFA9D /* Platform */,
+				8E1DEFE2230940CE009D3897 /* PlatformTests */,
 				8EF75E8B230001D300825F88 /* FastlaneSnapshot */,
 				E15457E521A4C619002ED341 /* Products */,
 				E122506821A60DF0005B2D12 /* Frameworks */,
@@ -555,6 +657,9 @@
 				E1104B6722272DA2001FFA9D /* Platform.framework */,
 				E1E518B2222DB7F000E4AED2 /* Domain.framework */,
 				8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */,
+				8E1DEFC4230940B7009D3897 /* QCardsTests.xctest */,
+				8E1DEFD2230940C5009D3897 /* DomainTests.xctest */,
+				8E1DEFE1230940CE009D3897 /* PlatformTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -664,6 +769,62 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8E1DEFC3230940B7009D3897 /* QCardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E1DEFCD230940B7009D3897 /* Build configuration list for PBXNativeTarget "QCardsTests" */;
+			buildPhases = (
+				8E1DEFC0230940B7009D3897 /* Sources */,
+				8E1DEFC1230940B7009D3897 /* Frameworks */,
+				8E1DEFC2230940B7009D3897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E1DEFCA230940B7009D3897 /* PBXTargetDependency */,
+			);
+			name = QCardsTests;
+			productName = QCardsTests;
+			productReference = 8E1DEFC4230940B7009D3897 /* QCardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8E1DEFD1230940C5009D3897 /* DomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E1DEFDA230940C5009D3897 /* Build configuration list for PBXNativeTarget "DomainTests" */;
+			buildPhases = (
+				8E1DEFCE230940C5009D3897 /* Sources */,
+				8E1DEFCF230940C5009D3897 /* Frameworks */,
+				8E1DEFD0230940C5009D3897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E1DEFD9230940C5009D3897 /* PBXTargetDependency */,
+				8E1DEFED230940E1009D3897 /* PBXTargetDependency */,
+			);
+			name = DomainTests;
+			productName = DomainTests;
+			productReference = 8E1DEFD2230940C5009D3897 /* DomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8E1DEFE0230940CE009D3897 /* PlatformTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E1DEFE9230940CE009D3897 /* Build configuration list for PBXNativeTarget "PlatformTests" */;
+			buildPhases = (
+				8E1DEFDD230940CE009D3897 /* Sources */,
+				8E1DEFDE230940CE009D3897 /* Frameworks */,
+				8E1DEFDF230940CE009D3897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E1DEFE8230940CE009D3897 /* PBXTargetDependency */,
+				8E1DEFEF230940E7009D3897 /* PBXTargetDependency */,
+			);
+			name = PlatformTests;
+			productName = PlatformTests;
+			productReference = 8E1DEFE1230940CE009D3897 /* PlatformTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8EF75E89230001D300825F88 /* FastlaneSnapshot */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "FastlaneSnapshot" */;
@@ -750,6 +911,18 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Andreas Lüdemann";
 				TargetAttributes = {
+					8E1DEFC3230940B7009D3897 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = E15457E321A4C619002ED341;
+					};
+					8E1DEFD1230940C5009D3897 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = E15457E321A4C619002ED341;
+					};
+					8E1DEFE0230940CE009D3897 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = E15457E321A4C619002ED341;
+					};
 					8EF75E89230001D300825F88 = {
 						CreatedOnToolsVersion = 10.3;
 						TestTargetID = E15457E321A4C619002ED341;
@@ -794,14 +967,38 @@
 			projectRoot = "";
 			targets = (
 				E15457E321A4C619002ED341 /* QCards */,
+				8E1DEFC3230940B7009D3897 /* QCardsTests */,
 				E1E518B1222DB7F000E4AED2 /* Domain */,
+				8E1DEFD1230940C5009D3897 /* DomainTests */,
 				E1104B6622272DA2001FFA9D /* Platform */,
+				8E1DEFE0230940CE009D3897 /* PlatformTests */,
 				8EF75E89230001D300825F88 /* FastlaneSnapshot */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8E1DEFC2230940B7009D3897 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E1DEFD0230940C5009D3897 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E1DEFDF230940CE009D3897 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EF75E88230001D300825F88 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -894,6 +1091,30 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8E1DEFC0230940B7009D3897 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1DEFC7230940B7009D3897 /* QCardsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E1DEFCE230940C5009D3897 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1DEFD5230940C5009D3897 /* DomainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E1DEFDD230940CE009D3897 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1DEFE4230940CE009D3897 /* PlatformTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EF75E86230001D300825F88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1004,6 +1225,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8E1DEFCA230940B7009D3897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E15457E321A4C619002ED341 /* QCards */;
+			targetProxy = 8E1DEFC9230940B7009D3897 /* PBXContainerItemProxy */;
+		};
+		8E1DEFD9230940C5009D3897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1E518B1222DB7F000E4AED2 /* Domain */;
+			targetProxy = 8E1DEFD8230940C5009D3897 /* PBXContainerItemProxy */;
+		};
+		8E1DEFE8230940CE009D3897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1104B6622272DA2001FFA9D /* Platform */;
+			targetProxy = 8E1DEFE7230940CE009D3897 /* PBXContainerItemProxy */;
+		};
+		8E1DEFED230940E1009D3897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E15457E321A4C619002ED341 /* QCards */;
+			targetProxy = 8E1DEFEC230940E1009D3897 /* PBXContainerItemProxy */;
+		};
+		8E1DEFEF230940E7009D3897 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E15457E321A4C619002ED341 /* QCards */;
+			targetProxy = 8E1DEFEE230940E7009D3897 /* PBXContainerItemProxy */;
+		};
 		8EF75E90230001D300825F88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E15457E321A4C619002ED341 /* QCards */;
@@ -1051,6 +1297,126 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8E1DEFCB230940B7009D3897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = QCardsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.QCardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QCards.app/QCards";
+			};
+			name = Debug;
+		};
+		8E1DEFCC230940B7009D3897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = QCardsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.QCardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QCards.app/QCards";
+			};
+			name = Release;
+		};
+		8E1DEFDB230940C5009D3897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = DomainTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QCards.app/QCards";
+			};
+			name = Debug;
+		};
+		8E1DEFDC230940C5009D3897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = DomainTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QCards.app/QCards";
+			};
+			name = Release;
+		};
+		8E1DEFEA230940CE009D3897 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = PlatformTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.PlatformTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QCards.app/QCards";
+			};
+			name = Debug;
+		};
+		8E1DEFEB230940CE009D3897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XX77A4QKHR;
+				INFOPLIST_FILE = PlatformTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.PlatformTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QCards.app/QCards";
+			};
+			name = Release;
+		};
 		8EF75E91230001D300825F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1395,6 +1761,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8E1DEFCD230940B7009D3897 /* Build configuration list for PBXNativeTarget "QCardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E1DEFCB230940B7009D3897 /* Debug */,
+				8E1DEFCC230940B7009D3897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E1DEFDA230940C5009D3897 /* Build configuration list for PBXNativeTarget "DomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E1DEFDB230940C5009D3897 /* Debug */,
+				8E1DEFDC230940C5009D3897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E1DEFE9230940CE009D3897 /* Build configuration list for PBXNativeTarget "PlatformTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E1DEFEA230940CE009D3897 /* Debug */,
+				8E1DEFEB230940CE009D3897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "FastlaneSnapshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
