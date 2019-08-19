@@ -6,6 +6,7 @@
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.
 //
 
+@testable import Domain
 import XCTest
 
 class DomainTests: XCTestCase {

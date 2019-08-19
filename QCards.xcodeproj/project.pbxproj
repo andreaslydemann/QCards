@@ -22,6 +22,10 @@
 		8E278D7422FA229400D63738 /* CardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E278D7322FA229400D63738 /* CardSection.swift */; };
 		8E486A3622FC5A7800A9BC43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E486A3822FC5A7800A9BC43 /* Localizable.strings */; };
 		8E4EAF4522FF92A300B79EAB /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E518B2222DB7F000E4AED2 /* Domain.framework */; };
+		8E76BBE2230B1D340053EE14 /* DecksViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E76BBE1230B1D340053EE14 /* DecksViewModelTests.swift */; };
+		8E76BBE4230B1D530053EE14 /* DecksNavigatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E76BBE3230B1D530053EE14 /* DecksNavigatorMock.swift */; };
+		8E76BBE6230B1D680053EE14 /* DecksUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E76BBE5230B1D680053EE14 /* DecksUseCaseMock.swift */; };
+		8E76BBE8230B1FE60053EE14 /* CardsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E76BBE7230B1FE60053EE14 /* CardsUseCaseMock.swift */; };
 		8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */; };
 		8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71222F736660092DA8F /* TimeCellViewModel.swift */; };
 		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
@@ -206,6 +210,10 @@
 		8E278D7322FA229400D63738 /* CardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSection.swift; sourceTree = "<group>"; };
 		8E486A3722FC5A7800A9BC43 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8E486A3922FC5AA900A9BC43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8E76BBE1230B1D340053EE14 /* DecksViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksViewModelTests.swift; sourceTree = "<group>"; };
+		8E76BBE3230B1D530053EE14 /* DecksNavigatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksNavigatorMock.swift; sourceTree = "<group>"; };
+		8E76BBE5230B1D680053EE14 /* DecksUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksUseCaseMock.swift; sourceTree = "<group>"; };
+		8E76BBE7230B1FE60053EE14 /* CardsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUseCaseMock.swift; sourceTree = "<group>"; };
 		8E88E70C22F646730092DA8F /* SwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71222F736660092DA8F /* TimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCellViewModel.swift; sourceTree = "<group>"; };
 		8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePerCardViewController.swift; sourceTree = "<group>"; };
@@ -370,6 +378,7 @@
 		8E1DEFC5230940B7009D3897 /* QCardsTests */ = {
 			isa = PBXGroup;
 			children = (
+				8E76BBDD230B1CCF0053EE14 /* Scenes */,
 				8E1DEFC6230940B7009D3897 /* QCardsTests.swift */,
 				8E1DEFC8230940B7009D3897 /* Info.plist */,
 			);
@@ -392,6 +401,25 @@
 				8E1DEFE5230940CE009D3897 /* Info.plist */,
 			);
 			path = PlatformTests;
+			sourceTree = "<group>";
+		};
+		8E76BBDD230B1CCF0053EE14 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8E76BBE0230B1CEC0053EE14 /* AllDecks */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		8E76BBE0230B1CEC0053EE14 /* AllDecks */ = {
+			isa = PBXGroup;
+			children = (
+				8E76BBE1230B1D340053EE14 /* DecksViewModelTests.swift */,
+				8E76BBE3230B1D530053EE14 /* DecksNavigatorMock.swift */,
+				8E76BBE5230B1D680053EE14 /* DecksUseCaseMock.swift */,
+				8E76BBE7230B1FE60053EE14 /* CardsUseCaseMock.swift */,
+			);
+			path = AllDecks;
 			sourceTree = "<group>";
 		};
 		8E88E71822F78B240092DA8F /* TimePerCard */ = {
@@ -1095,7 +1123,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E76BBE4230B1D530053EE14 /* DecksNavigatorMock.swift in Sources */,
 				8E1DEFC7230940B7009D3897 /* QCardsTests.swift in Sources */,
+				8E76BBE6230B1D680053EE14 /* DecksUseCaseMock.swift in Sources */,
+				8E76BBE8230B1FE60053EE14 /* CardsUseCaseMock.swift in Sources */,
+				8E76BBE2230B1D340053EE14 /* DecksViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,8 +1332,13 @@
 		8E1DEFCB230940B7009D3897 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = QCardsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1320,8 +1357,13 @@
 		8E1DEFCC230940B7009D3897 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = QCardsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1342,6 +1384,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DomainTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1362,6 +1408,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DomainTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1382,6 +1432,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PlatformTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1402,6 +1456,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PlatformTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
