@@ -47,6 +47,23 @@ class DecksViewModelTests: XCTestCase {
         XCTAssert(decksUseCase.decks_Called)
     }
     
+    func test_transform_selectedDeckInvoked_navigateToDeck() {
+        // arrange
+        let select = PublishSubject<IndexPath>()
+        let output = viewModel.transform(input: createInput(selection: select))
+        let decks = createDecks()
+        decksUseCase.decks_ReturnValue = Observable.just(decks)
+        
+        // act
+        output.decks.drive().disposed(by: rx.disposeBag)
+        output.selectedDeck.drive().disposed(by: rx.disposeBag)
+        select.onNext(IndexPath(row: 1, section: 0))
+        
+        // assert
+        XCTAssertTrue(navigator.toDeck_deck_Called)
+        XCTAssertEqual(navigator.toDeck_deck_ReceivedArguments, decks[0])
+    }
+    
     private func createInput(trigger: Observable<Void> = Observable.just(()),
                              selection: Observable<IndexPath> = Observable.never(),
                              createDeckTrigger: Observable<String> = Observable.never(),

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E1DEFC7230940B7009D3897 /* QCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DEFC6230940B7009D3897 /* QCardsTests.swift */; };
 		8E1DEFD5230940C5009D3897 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DEFD4230940C5009D3897 /* DomainTests.swift */; };
 		8E1DEFD7230940C5009D3897 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E518B2222DB7F000E4AED2 /* Domain.framework */; };
 		8E1DEFE4230940CE009D3897 /* PlatformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DEFE3230940CE009D3897 /* PlatformTests.swift */; };
@@ -192,7 +191,6 @@
 
 /* Begin PBXFileReference section */
 		8E1DEFC4230940B7009D3897 /* QCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E1DEFC6230940B7009D3897 /* QCardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QCardsTests.swift; sourceTree = "<group>"; };
 		8E1DEFC8230940B7009D3897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1DEFD2230940C5009D3897 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E1DEFD4230940C5009D3897 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
@@ -379,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				8E76BBDD230B1CCF0053EE14 /* Scenes */,
-				8E1DEFC6230940B7009D3897 /* QCardsTests.swift */,
 				8E1DEFC8230940B7009D3897 /* Info.plist */,
 			);
 			path = QCardsTests;
@@ -1124,7 +1121,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E76BBE4230B1D530053EE14 /* DecksNavigatorMock.swift in Sources */,
-				8E1DEFC7230940B7009D3897 /* QCardsTests.swift in Sources */,
 				8E76BBE6230B1D680053EE14 /* DecksUseCaseMock.swift in Sources */,
 				8E76BBE8230B1FE60053EE14 /* CardsUseCaseMock.swift in Sources */,
 				8E76BBE2230B1D340053EE14 /* DecksViewModelTests.swift in Sources */,
