@@ -69,6 +69,7 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNeedsStatusBarAppearanceUpdate()
         setupCollectionView()
         bindViewModel()
     }
@@ -81,6 +82,10 @@ class PresentationViewController: UIViewController, UICollectionViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return globalStatusBarStyle.value
     }
     
     private func setupCollectionView() {
