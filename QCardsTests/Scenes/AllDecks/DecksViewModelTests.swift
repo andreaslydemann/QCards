@@ -12,10 +12,6 @@ import RxCocoa
 import RxSwift
 import XCTest
 
-enum TestError: Error {
-    case test
-}
-
 class DecksViewModelTests: XCTestCase {
     
     var decksUseCase: DecksUseCaseMock!
