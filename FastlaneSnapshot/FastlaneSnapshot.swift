@@ -77,8 +77,8 @@ class FastlaneSnapshot: XCTestCase {
         app.tables.cells.element(boundBy: 0).tap()
         app.tables.cells.element(boundBy: 1).tap()
         
-        app.navigationBars.element(boundBy: 0).buttons["saveButton"].tap()
-        app.navigationBars.element(boundBy: 0).buttons["okButton"].tap()
+        app.navigationBars.element(boundBy: 1).buttons["saveButton"].tap()
+        app.navigationBars.element(boundBy: 1).buttons["okButton"].tap()
     }
     
     // AllDecks
@@ -124,7 +124,7 @@ class FastlaneSnapshot: XCTestCase {
         
         app.switches.element(boundBy: 2).tap()
         
-        app.navigationBars.element(boundBy: 0).buttons["okButton"].tap()
+        app.navigationBars.element(boundBy: 1).buttons["okButton"].tap()
     }
     
     // AllCards
