@@ -88,7 +88,6 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
-            view.textLabel?.font = UIFont(name: ".SFUIText-Bold", size: 14.0)!
             themeService.rx
                 .bind({ $0.activeTint }, to: view.textLabel!.rx.textColor)
                 .bind({ $0.secondary }, to: view.contentView.rx.backgroundColor)
