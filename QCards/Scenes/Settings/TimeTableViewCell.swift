@@ -32,7 +32,7 @@ final class TimeTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         self.selectionStyle = .none
-        self.accessoryType = .disclosureIndicator
+        createCustomCellDisclosureIndicator()
         themeService.rx.bind({ $0.primary }, to: self.rx.backgroundColor).disposed(by: rx.disposeBag)
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, timeLabel])

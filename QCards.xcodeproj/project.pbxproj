@@ -30,6 +30,7 @@
 		8E88E71A22F78B510092DA8F /* TimePerCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88E71922F78B510092DA8F /* TimePerCardViewController.swift */; };
 		8EBCDF792300783E00B4AB04 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBCDF7B2300783E00B4AB04 /* Localizable.strings */; };
 		8EBCDF7E23007A1C00B4AB04 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBCDF7D23007A1C00B4AB04 /* LocalizationHelper.swift */; };
+		8ECDB4F2234BDDA400337B6B /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDB4F1234BDDA400337B6B /* UITableViewCell+Ext.swift */; };
 		8EE60F2522FD7A16000B1AAE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE60F2422FD7A16000B1AAE /* Constants.swift */; };
 		8EF75E8D230001D300825F88 /* FastlaneSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */; };
 		8EF75E952300039C00825F88 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF75E942300039C00825F88 /* SnapshotHelper.swift */; };
@@ -218,6 +219,7 @@
 		8EBCDF7A2300783E00B4AB04 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBCDF7C2300784500B4AB04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBCDF7D23007A1C00B4AB04 /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
+		8ECDB4F1234BDDA400337B6B /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		8EE60F2422FD7A16000B1AAE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastlaneSnapshot.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshot.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 				E13C88BC22107D19009EDD13 /* UIView+Ext.swift */,
 				E154F9762215697C00A7081B /* UIAlertController+Ext.swift */,
 				E14AB7D022E3CF96006B07CC /* UIViewController+Ext.swift */,
+				8ECDB4F1234BDDA400337B6B /* UITableViewCell+Ext.swift */,
 				E1FEDA5B2242E4BE00D17BE3 /* Observable+Ext.swift */,
 				E1FEDA612242EBAF00D17BE3 /* Reusable+Ext.swift */,
 				8EFC000222FCC855007BC676 /* Reactive+Ext.swift */,
@@ -1200,6 +1203,7 @@
 				E1ED1DC922D7D4DF0052AEA9 /* CardItemViewModel.swift in Sources */,
 				8E278D6E22FA220800D63738 /* SettingsSection.swift in Sources */,
 				8E88E71322F736660092DA8F /* TimeCellViewModel.swift in Sources */,
+				8ECDB4F2234BDDA400337B6B /* UITableViewCell+Ext.swift in Sources */,
 				E116046C22D2A54900E64FD4 /* CreateCardViewModel.swift in Sources */,
 				E116046822D2A4AC00E64FD4 /* CreateCardViewController.swift in Sources */,
 				8E88E70D22F646730092DA8F /* SwitchCellViewModel.swift in Sources */,

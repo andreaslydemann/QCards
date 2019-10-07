@@ -133,7 +133,7 @@ class DecksViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DeckTableViewCell.reuseID, for: indexPath) as! DeckTableViewCell
                 themeService.rx.bind({ $0.primary }, to: cell.rx.backgroundColor).disposed(by: self.rx.disposeBag)
                 cell.selectionStyle = .none
-                cell.accessoryType = .disclosureIndicator
+                cell.createCustomCellDisclosureIndicator()
                 cell.bind(to: deck)
                 return cell
         },

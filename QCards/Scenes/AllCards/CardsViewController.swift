@@ -159,7 +159,7 @@ class CardsViewController: UIViewController {
                 cell.shouldIndentWhileEditing = true
                 themeService.rx.bind({ $0.primary }, to: cell.rx.backgroundColor).disposed(by: self.rx.disposeBag)
                 cell.selectionStyle = .none
-                cell.accessoryType = .disclosureIndicator
+                cell.createCustomCellDisclosureIndicator()
                 cell.bind(to: card)
                 return cell
         },
