@@ -27,14 +27,23 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E15457E321A4C619002ED341"
+            BuildableName = "QCards.app"
+            BlueprintName = "QCards"
+            ReferencedContainer = "container:QCards.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EF75E89230001D300825F88"
-               BuildableName = "FastlaneSnapshot.xctest"
-               BlueprintName = "FastlaneSnapshot"
+               BuildableName = "QCardsUITests.xctest"
+               BlueprintName = "QCardsUITests"
                ReferencedContainer = "container:QCards.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -69,17 +78,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E15457E321A4C619002ED341"
-            BuildableName = "QCards.app"
-            BlueprintName = "QCards"
-            ReferencedContainer = "container:QCards.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -108,8 +106,6 @@
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

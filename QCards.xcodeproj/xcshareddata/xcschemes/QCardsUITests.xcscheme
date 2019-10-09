@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EF75E89230001D300825F88"
-               BuildableName = "FastlaneSnapshot.xctest"
-               BlueprintName = "FastlaneSnapshot"
+               BuildableName = "QCardsUITests.xctest"
+               BlueprintName = "QCardsUITests"
                ReferencedContainer = "container:QCards.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EF75E89230001D300825F88"
-            BuildableName = "FastlaneSnapshot.xctest"
-            BlueprintName = "FastlaneSnapshot"
+            BuildableName = "QCardsUITests.xctest"
+            BlueprintName = "QCardsUITests"
             ReferencedContainer = "container:QCards.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EF75E89230001D300825F88"
-               BuildableName = "FastlaneSnapshot.xctest"
-               BlueprintName = "FastlaneSnapshot"
+               BuildableName = "QCardsUITests.xctest"
+               BlueprintName = "QCardsUITests"
                ReferencedContainer = "container:QCards.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EF75E89230001D300825F88"
-            BuildableName = "FastlaneSnapshot.xctest"
-            BlueprintName = "FastlaneSnapshot"
+            BuildableName = "QCardsUITests.xctest"
+            BlueprintName = "QCardsUITests"
             ReferencedContainer = "container:QCards.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EF75E89230001D300825F88"
-            BuildableName = "FastlaneSnapshot.xctest"
-            BlueprintName = "FastlaneSnapshot"
+            BuildableName = "QCardsUITests.xctest"
+            BlueprintName = "QCardsUITests"
             ReferencedContainer = "container:QCards.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

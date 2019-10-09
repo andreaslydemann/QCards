@@ -1,6 +1,6 @@
 //
 //  FastlaneSnapshot.swift
-//  FastlaneSnapshot
+//  QCardsUITests
 //
 //  Created by Andreas Lüdemann on 11/08/2019.
 //  Copyright © 2019 Andreas Lüdemann. All rights reserved.

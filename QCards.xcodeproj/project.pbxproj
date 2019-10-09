@@ -221,7 +221,7 @@
 		8EBCDF7D23007A1C00B4AB04 /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		8ECDB4F1234BDDA400337B6B /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		8EE60F2422FD7A16000B1AAE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastlaneSnapshot.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF75E8A230001D300825F88 /* QCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshot.swift; sourceTree = "<group>"; };
 		8EF75E8E230001D300825F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EF75E942300039C00825F88 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 			path = TimePerCard;
 			sourceTree = "<group>";
 		};
-		8EF75E8B230001D300825F88 /* FastlaneSnapshot */ = {
+		8EF75E8B230001D300825F88 /* QCardsUITests */ = {
 			isa = PBXGroup;
 			children = (
 				8EBCDF7B2300783E00B4AB04 /* Localizable.strings */,
@@ -443,7 +443,7 @@
 				8EF75E8C230001D300825F88 /* FastlaneSnapshot.swift */,
 				8EF75E8E230001D300825F88 /* Info.plist */,
 			);
-			path = FastlaneSnapshot;
+			path = QCardsUITests;
 			sourceTree = "<group>";
 		};
 		8EFCFFFB22FC9BF0007BC676 /* Managers */ = {
@@ -672,7 +672,7 @@
 				8E1DEFC5230940B7009D3897 /* QCardsTests */,
 				E1104B6822272DA2001FFA9D /* Platform */,
 				8E1DEFE2230940CE009D3897 /* PlatformTests */,
-				8EF75E8B230001D300825F88 /* FastlaneSnapshot */,
+				8EF75E8B230001D300825F88 /* QCardsUITests */,
 				E15457E521A4C619002ED341 /* Products */,
 				E122506821A60DF0005B2D12 /* Frameworks */,
 			);
@@ -684,7 +684,7 @@
 				E15457E421A4C619002ED341 /* QCards.app */,
 				E1104B6722272DA2001FFA9D /* Platform.framework */,
 				E1E518B2222DB7F000E4AED2 /* Domain.framework */,
-				8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */,
+				8EF75E8A230001D300825F88 /* QCardsUITests.xctest */,
 				8E1DEFC4230940B7009D3897 /* QCardsTests.xctest */,
 				8E1DEFD2230940C5009D3897 /* DomainTests.xctest */,
 				8E1DEFE1230940CE009D3897 /* PlatformTests.xctest */,
@@ -853,9 +853,9 @@
 			productReference = 8E1DEFE1230940CE009D3897 /* PlatformTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8EF75E89230001D300825F88 /* FastlaneSnapshot */ = {
+		8EF75E89230001D300825F88 /* QCardsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "FastlaneSnapshot" */;
+			buildConfigurationList = 8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "QCardsUITests" */;
 			buildPhases = (
 				8EF75E86230001D300825F88 /* Sources */,
 				8EF75E87230001D300825F88 /* Frameworks */,
@@ -866,9 +866,9 @@
 			dependencies = (
 				8EF75E90230001D300825F88 /* PBXTargetDependency */,
 			);
-			name = FastlaneSnapshot;
+			name = QCardsUITests;
 			productName = FastlaneSnapshot;
-			productReference = 8EF75E8A230001D300825F88 /* FastlaneSnapshot.xctest */;
+			productReference = 8EF75E8A230001D300825F88 /* QCardsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		E1104B6622272DA2001FFA9D /* Platform */ = {
@@ -1000,7 +1000,7 @@
 				8E1DEFD1230940C5009D3897 /* DomainTests */,
 				E1104B6622272DA2001FFA9D /* Platform */,
 				8E1DEFE0230940CE009D3897 /* PlatformTests */,
-				8EF75E89230001D300825F88 /* FastlaneSnapshot */,
+				8EF75E89230001D300825F88 /* QCardsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1480,14 +1480,14 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
-				INFOPLIST_FILE = FastlaneSnapshot/Info.plist;
+				INFOPLIST_FILE = QCardsUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.FastlaneSnapshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.QCardsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1500,14 +1500,14 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XX77A4QKHR;
-				INFOPLIST_FILE = FastlaneSnapshot/Info.plist;
+				INFOPLIST_FILE = QCardsUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.FastlaneSnapshot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreaslydemann.QCardsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1848,7 +1848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "FastlaneSnapshot" */ = {
+		8EF75E93230001D300825F88 /* Build configuration list for PBXNativeTarget "QCardsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EF75E91230001D300825F88 /* Debug */,
