@@ -6,4 +6,6 @@ xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
 before_install:
 - cd QCards
 - carthage bootstrap --platform iOS
-- bundler install
+- bundle install
+before_script:
+- bundle exec danger
