@@ -6,7 +6,7 @@ cache:
   directories:
     - Carthage
 
-xcode_workspace: QCards.xcworkspace
+xcode_project: QCards.xcodeproj
 xcode_scheme: QCards
 xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
 
@@ -18,5 +18,4 @@ before_install:
   - bundle install
 
 script:
-  - echo "Running the Dangerfile for this repo"
   - bundle exec danger --verbose
