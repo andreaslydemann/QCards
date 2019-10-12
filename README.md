@@ -1,5 +1,7 @@
 # QCards
 
+[![Build Status](https://travis-ci.com/andreaslydemann/QCards.svg?branch=master)](https://travis-ci.com/andreaslydemann/QCards)
+
 An iOS app for creating smarter cue cards. Use it for your next presentation to help you stay within topic and time.
 
 ---
