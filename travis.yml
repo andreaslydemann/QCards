@@ -4,4 +4,6 @@ xcode_workspace: QCards.xcworkspace
 xcode_scheme: QCards
 xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
 before_install:
+- cd QCards
 - carthage bootstrap --platform iOS
+- bundler install
