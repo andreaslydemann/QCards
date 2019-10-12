@@ -22,4 +22,5 @@ install:
   - bundle install
 
 script:
+  - ./ci/validate_branch_name.sh
   - bundle exec danger
