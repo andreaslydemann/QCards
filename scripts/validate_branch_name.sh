@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 LC_ALL=C
 
-local_branch="$(git rev-parse --abbrev-ref HEAD)"
+local_branch=$TRAVIS_PULL_REQUEST_BRANCH
 
 valid_branch_regex="^(feature|fix|hotfix|release)\/[a-z0-9._-]+$"
 
