@@ -5,8 +5,6 @@ def lineContainsPublicPropertyMethodClassOrStruct(line)
 	end
 	return false
 end
-swiftlint.config_file = '.swiftlint.yml'
-swiftlint.lint_files inline_mode: true fail_on_error: true
 
 def lineIsPropertyMethodClassOrStruct(line)
 	if line.include?("var") or line.include?("let") or line.include?("func") or line.include?("class") or line.include?("struct")
@@ -112,3 +110,10 @@ files_to_check = (git.modified_files + git.added_files).uniq
 		warn("Consider to place some `MARK:` lines for files over 200 lines big.")
 	end
 end
+
+# This is swiftlint plugin. More info: https://github.com/ashfurrow/danger-swiftlint
+#
+# This lints all Swift files and leave comments in PR if 
+# there is any issue with linting
+swiftlint.config_file = '.swiftlint.yml'
+swiftlint.lint_files inline_mode: true
