@@ -18,8 +18,8 @@ before_install:
 
 # install dependencies
 install:
-  - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
+  - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
   - bundle install
 
 script:
-  - bundle exec danger --verbose
+  - bundle exec danger
