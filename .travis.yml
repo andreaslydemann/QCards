@@ -18,7 +18,7 @@ before_install:
 
 # install dependencies
 install:
-  - travis_wait 30 carthage bootstrap --platform iOS --cache-builds
+  - travis_wait carthage bootstrap --platform iOS --cache-builds
   - bundle install
 
 script:
