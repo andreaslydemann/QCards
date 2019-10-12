@@ -10,11 +10,15 @@ xcode_project: QCards.xcodeproj
 xcode_scheme: QCards
 xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
 
+# prepare dependency managers
 before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
-  - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
   - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
+
+# install dependencies
+install:
+  - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
   - bundle install
 
 script:
