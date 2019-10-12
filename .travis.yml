@@ -7,7 +7,7 @@ cache:
     - Carthage
 
 xcode_project: QCards.xcodeproj
-xcode_scheme: QCardsTests
+xcode_scheme: QCards
 xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
 
 # prepare dependency managers
@@ -24,4 +24,3 @@ install:
 script:
   - ./scripts/validate_branch_name.sh
   - bundle exec danger
-  - 
