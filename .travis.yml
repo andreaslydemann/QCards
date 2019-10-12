@@ -13,4 +13,4 @@ before_install:
 - bundle install
 before_script:
 - bundle exec danger
-- carthage update --platform iOS --no-use-binaries --cache-builds
+- carthage bootstrap --platform iOS --cache-builds
