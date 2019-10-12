@@ -3,6 +3,9 @@ osx_image: xcode11.2
 cache:
   directories:
   - Carthage
+env:
+- GITHUB_ACCESS_TOKEN
+- DANGER_GITHUB_API_TOKEN
 xcode_workspace: QCards.xcworkspace
 xcode_scheme: QCards
 xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
@@ -13,4 +16,4 @@ before_install:
 - bundle install
 before_script:
 - bundle exec danger
-- carthage update --platform iOS --cache-builds
+- carthage update --no-use-binaries --platform iOS --cache-builds
