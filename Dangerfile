@@ -112,9 +112,5 @@ files_to_check = (git.modified_files + git.added_files).uniq
 end
 
 # This is swiftlint plugin. More info: https://github.com/ashfurrow/danger-swiftlint
-#
-# This lints all Swift files and leave comments in PR if 
-# there is any issue with linting
 swiftlint.config_file = '.swiftlint.yml'
 swiftlint.lint_files inline_mode: true
-swiftlint.lint_files fail_on_error: true
