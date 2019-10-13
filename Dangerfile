@@ -24,17 +24,6 @@ end
 # Warn when there is a big PR.
 warn("Big PR") if git.lines_of_code > 500
 
-# Check to see if any of our project files contains a line with "SOURCE_ROOT" which indicates that the file isn't in sync with Finder.
-["Rabbit.xcodeproj/project.pbxproj",
- "Coyote.xcodeproj/project.pbxproj"].each do |project_file|
- 	next unless File.file?(project_file)
-	File.readlines(project_file).each_with_index do |line, index|
-		if line.include?("sourceTree = SOURCE_ROOT;") and line.include?("PBXFileReference")
-			warn("Files should be in sync with project structure", file: project_file, line: index+1) 
-		end
-	end
-end
-
 # Mainly to encourage writing up some reasoning about the PR, rather than just leaving a title.
 if github.pr_body.length < 3 && git.lines_of_code > 10
   warn("Please provide a summary in the Pull Request description")
@@ -121,3 +110,7 @@ files_to_check = (git.modified_files + git.added_files).uniq
 		warn("Consider to place some `MARK:` lines for files over 200 lines big.")
 	end
 end
+
+# This is swiftlint plugin. More info: https://github.com/ashfurrow/danger-swiftlint
+swiftlint.config_file = '.swiftlint.yml'
+swiftlint.lint_files inline_mode: true
