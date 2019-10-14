@@ -24,7 +24,7 @@ end
 platform :ios do
   desc 'Runs the unit tests in QCards'
   lane :unit_test do
-    scan(scheme: "QCards")
+    scan(scheme: "QCardsTests")
   end
 
   desc 'Runs the UI tests in QCardsUITests'
