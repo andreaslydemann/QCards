@@ -5,6 +5,10 @@
 # fastlane scan --help
 
 devices(["iPhone 11 Pro", "iPad Pro (12.9-inch) (3rd generation)"])
-disable_concurrent_testing(true)
+
+# https://github.com/xcpretty/xcpretty/issues/295
+# set to true to fix output when using multiple devices
+disable_concurrent_testing(false)
+
 reset_simulator(true)
 clean(true)
