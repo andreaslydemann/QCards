@@ -41,16 +41,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8EF75E89230001D300825F88"
-               BuildableName = "QCardsUITests.xctest"
-               BlueprintName = "QCardsUITests"
-               ReferencedContainer = "container:QCards.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E1DEFC3230940B7009D3897"
                BuildableName = "QCardsTests.xctest"
                BlueprintName = "QCardsTests"

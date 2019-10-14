@@ -1,4 +1,4 @@
-language: objective-c
+language: swift
 osx_image: xcode11.1
 
 cache:
@@ -6,9 +6,9 @@ cache:
   directories:
     - Carthage
 
-xcode_project: QCards.xcodeproj
-xcode_scheme: QCards
-xcode_destination: platform=iOS Simulator,OS=13,name=iPhone 11 Pro
+branches:
+  only:
+    - master
 
 # prepare dependency managers
 before_install:
@@ -21,6 +21,19 @@ install:
   - travis_wait carthage bootstrap --platform iOS --cache-builds
   - bundle install
 
-script:
-  - ./scripts/validate_branch_name.sh
-  - bundle exec danger
+jobs:
+  include:
+    - stage: Validate
+      script:
+        - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./scripts/validate_branch_name.sh; fi'
+        - bundle exec danger
+
+    - stage: Test
+      name: "Unit Tests"
+      script:
+        - fastlane scan -s QCards
+
+    - stage: Test
+      name: "UI Tests"
+      script:
+        - fastlane scan -s QCardsUITests
