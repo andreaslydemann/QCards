@@ -29,19 +29,6 @@ if github.pr_body.length < 3 && git.lines_of_code > 10
   warn("Please provide a summary in the Pull Request description")
 end
 
-## Let's check if there are any changes in the project folder
-has_app_changes = !git.modified_files.grep(/Coyote/).empty?
-## Then, we should check if tests are updated
-has_test_changes = !git.modified_files.grep(/CoyoteTests/).empty?
-## Then, we should check if UI tests are updated
-has_ui_test_changes = !git.modified_files.grep(/CoyoteUITests/).empty?
-
-## Finally, let's combine them and put extra condition 
-## for changed number of lines of code
-if has_app_changes && !(has_test_changes || has_ui_test_changes) && git.lines_of_code > 20
-  warn("Tests were not updated", sticky: false)
-end
-
 # 
 # ** FILE CHECKS **
 # Checks for certain rules and warns if needed.
@@ -111,6 +98,6 @@ files_to_check = (git.modified_files + git.added_files).uniq
 	end
 end
 
-# This is swiftlint plugin. More info: https://github.com/ashfurrow/danger-swiftlint
+# This is a swiftlint plugin. More info: https://github.com/ashfurrow/danger-swiftlint
 swiftlint.config_file = '.swiftlint.yml'
 swiftlint.lint_files inline_mode: true
