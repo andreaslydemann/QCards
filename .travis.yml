@@ -24,6 +24,7 @@ install:
 jobs:
   include:
     - stage: "Code Validation"
+      name: "Code Validation"
       script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = true ]; then ./scripts/validate_branch_name.sh; fi'
         - bundle exec danger
