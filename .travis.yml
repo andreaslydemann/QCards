@@ -32,9 +32,9 @@ jobs:
     - stage: "Test"
       name: "Unit Tests"
       script:
-        - fastlane scan -s QCards
+        - bundle exec fastlane unit_test
 
     - stage: "Test"
       name: "UI Tests"
       script:
-        - fastlane scan -s QCardsUITests
+        - bundle exec fastlane ui_test
