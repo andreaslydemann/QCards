@@ -23,18 +23,18 @@ install:
 
 jobs:
   include:
-    - stage: "Code Validation"
-      name: "Code Validation"
+    - stage: "Code validation"
+      name: "Code validation"
       script:
         - 'if [ "$TRAVIS_PULL_REQUEST" = true ]; then ./scripts/validate_branch_name.sh; fi'
         - bundle exec danger
 
     - stage: "Test"
-      name: "Unit Tests"
+      name: "Unit tests"
       script:
-        - fastlane scan -s QCards
+        - bundle exec fastlane unit_test
 
     - stage: "Test"
-      name: "UI Tests"
+      name: "UI tests"
       script:
-        - fastlane scan -s QCardsUITests
+        - bundle exec fastlane ui_test
