@@ -31,8 +31,9 @@ jobs:
     - stage: "Code validation"
       name: "Code validation"
       script:
-        - 'if [ "$TRAVIS_PULL_REQUEST" = true ]; then ./scripts/validate-branch-name.sh; fi'
+        - ./scripts/validate-branch-name.sh
         - bundle exec danger
+      if: type = pull_request
 
     - stage: "Test"
       name: "Unit tests"
