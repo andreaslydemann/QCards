@@ -12,7 +12,7 @@ cache:
 branches:
   only:
     - master
-    - ^release\/.*$
+    - /^release\/.*$/
 
 # prepare dependency managers
 before_install:
