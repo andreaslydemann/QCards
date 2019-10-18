@@ -31,4 +31,9 @@ platform :ios do
   lane :ui_test do
     scan(scheme: "QCardsUITests")
   end
+
+  desc 'Deploys QCards to App Store'
+  lane :deploy_to_app_store do
+    puts "Deploy to App Store!"
+  end
 end
