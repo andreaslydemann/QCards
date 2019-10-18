@@ -48,4 +48,4 @@ jobs:
       name: "Deploy to App Store"
       script:
         - bundle exec fastlane deploy_to_app_store
-      if: branch =~ ^release\/.*$
+      if: branch =~ /^release\/.*$/
