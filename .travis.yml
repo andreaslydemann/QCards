@@ -1,14 +1,18 @@
+# environment setup
 language: swift
 osx_image: xcode11.1
 
+# caching of dependencies
 cache:
   bundler: true
   directories:
     - Carthage
 
+# branch safelist
 branches:
   only:
     - master
+    - /^release\/.*$/
 
 # prepare dependency managers
 before_install:
@@ -21,13 +25,15 @@ install:
   - travis_wait carthage bootstrap --platform iOS --cache-builds
   - bundle install
 
+# jobs and stages to run
 jobs:
   include:
     - stage: "Code validation"
       name: "Code validation"
       script:
-        - 'if [ "$TRAVIS_PULL_REQUEST" = true ]; then ./scripts/validate_branch_name.sh; fi'
+        - ./scripts/validate-branch-name.sh
         - bundle exec danger
+      if: type = pull_request
 
     - stage: "Test"
       name: "Unit tests"
@@ -38,3 +44,9 @@ jobs:
       name: "UI tests"
       script:
         - bundle exec fastlane ui_test
+
+    - stage: "Deploy"
+      name: "Deploy to App Store"
+      script:
+        - bundle exec fastlane deploy_to_app_store
+      if: branch =~ /^release\/.*$/
