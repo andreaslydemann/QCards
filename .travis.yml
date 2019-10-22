@@ -2,6 +2,15 @@
 language: swift
 osx_image: xcode11.1
 
+# environment variables
+env:
+  global:
+    - secure: NfiTRtLYBGDmJeunbfWKO3Ifb5Htcg3eNioaIaoRaLBg48v5OIc52Ouj7TfKF1tQvdWLUuWqBLwQ3pr9tVXtZ/24TtLkQWgQnvKAM6a1Ttmrdvegi9Sg8GRDPh+A2iwmn/muXzVDko7RCjEM6P5JkiPI/CndzobbrLdV/y0PSiWrYsVeQKDQNdRjyKb3Wc2LCLnyLMidGgr2UQzY6hLoqayUnEXYfpV+eqY7pVOTxlJKcngeCJjLcEXnlRp0K1tA6vq+wz0m4tNVF2NsVARCNDIm59GBD6RUefYoLW8tumEMYk3ZyE5qganquOuC3uE731u8+T/OnQ/dXqK5nn9IxrR7Bzyh9cBYCfv7w04FBvAO/rUlZiciv+ZlCyIi7NEM155x7yMk0lTZQi0sQZ941ryfAoqldN4zd4IWFIIAhFAjkZbf+JZBvOY76sNm7TJ4KYLI6dAzCJWvnPwWuX3E1dTz55GZ/xNdq3oHaTofU9CXwEXI4k3lJIzq/T/goH4X8NA6XJMdoYLJOMctf+CbHfpzxcImyZzl+oECc3Mc0eHqcKGAeVXBk04V+XudhXQKBSHgeU4WCxzh/uurdNTUe4NY563+yD5d0HZHsd/gBmN+FTH1HPgOwpX9Tf658aX3cDkSvHMb9F/wyLxFLvtI+HyRgd52r1iZPQhhN8x8PvA=
+    - secure: f0RXGRB97UBZtC/mVQE1HFTOIXtXauZcKvqyMpUX7narqhR7RPPJjOzebsxjEjOTLXr0bUKV3UblApLt5EW8UHO8bpziJ7Qz1KbIcQkz2jGqRfqNRM6ILB6FwmwGxjsxIbAdeh0t8rIDqIIY8PFpUHRejpvARVezuLEYmRHKEA4QePGOf+P2WLDiKJKU8aFDo9TeSHkJPrNr7943G3F66tTj8nfPi5ZwDvrngLt63AgnLNRbXhEHE+XOHLN6OlFhRBLXct6LhLrTGkBZ6ExXL2aTg0uMqy2tYiGO7/pjhjrH6hh9ME6SfupsGYuAMKxVlYNxZLF/thhOCrRvV37txEnLeiHAr9oGZ5xD/PbBKtX7BhYrxVIOjgy1hMlfmPPzE+uFqqLuuKfqIo884N3b0K2EcJ23nq58opWhm7Zwd6vsr4/BrTX/2KhLwGPu8q+Ro1DG34CkHex5HIcxcUMsGISXkEqc8hQbGLyhTyciMkJQzuvcEWjkYgdkuDEvYMsv7sfY+KZj0/HUZxOfLjfwHLowFTq2eATQJgwoYjvAz8COdKjcJqMXhc0rwV/6DGNEeo8XtLZ4BDyYJ7CjqEQz5FTAHwX4vzwh3rn2LmQTs1nLsq00DyxucOqOtfGOkhjG0P4SL5V82ebfVfTAae4sayxvUTeA0Ga5tjZSa1Yn29U=
+    - secure: mLHgd38VNrqCJVN9+BPXkRAdK4HT5k0rJTWu81D1sAJFxznwV3iJhoHh+pf/iaE4jDUgf7IJPnN3JjQLgMPuKVTtK+460zvvsEOyMebpoCqRpEozd7VPMusn5RlrQmvtKyWIk7kNxk/q4BlG/vDQcA+xeulNCxUacZq/yrVESgz9smmxheaBdH5pC5i3JanVXVSl2+JlLddqVK+kvlm7LOu2CNHLfQTwrgoi8/GLN8GZirpnu7SOwjG5BAlY1vMF+lH1ZZfdd8P8G9YfyOxMmL0aIdYzv2tWxwKdM/o5qKkZxvL+uM1J1YRABxEfCLauKCz3FZEE3QR7KCZ+LU2eWu//0M8H0BuW9aKInM9Ua9h5n2I0GeF++VrHQGrvF9nrfMLrO59jk8q4rMDchrTW+2LCXJ3hNtXy0HTNbnbcd9fQ5FWwllWuZCf4YvdedO1Xuhm6Sgsm4QiJ4QINu6gT03wO6BDQCRvUL5x4LPlWBBwVtCZoOsR00gN4T6WvGIq6G7jlUoXIr+0FCYeZ7KzhB9kY5Kq1kouT3yi972JzR31R7lXulmtfjaRFaMZ2KWQeDT+QF5KWVqRhWgkZnfPSdVZaT57wuQAjo4KLwzfg75btNPYUgaX48nK8PnuUOiYr56N05FAWTCaL1J2isTKlyFqV8173PkngUFk63yWt+9U=
+    - secure: idlplrUQ/i5mvfKDV2cZrNaadL+1gxr8T2Tvpv5IZroGGJP09pUfT9zCFv4ZM6XMZS0Z5XsrqwWAm3e9fgu8uY1qOeKolsdh+YSWTQprte4BSKwHUoZcYppE/F9J+o6GlnKLKenimwoXio8eX2YNv4Sc1MFd7KUkfHX8edYy5AnoRct1vlTWVTRPpatzPIsRVw/bOfWzjlv7P6R8nH5/199Rr2CV7iUVJXv9LoDCb5PoaAMnD/PeM4O/YGYJqdn/ArIiSJ44x7nXsSA7SUG9/CkznQnr9exP4BStg+1CdvTw3qopv2ud/2pRzQldUYVsShWJylDUDcjMITTlQAbLsgyy4NW0o6QUuS1v7Bn35Qg1SSX3hn0JHAQQuclMppYMaxyLINxGXmh4V0Yisf5Qb5tvOflo8Ntw9oqpvfkRXfHv1N39NwcwV4omXW3EqInzypmbujREIy19l3il+1Gryo2a52dJM7ymbyadu/yKmQmWJ7WzbhizpWz+aR5JUlxiC2GpEndXbMbpw0RgL+jCjmO5Nsj8k9lYNVsbUXfIk7QJ3z3fGJwYw4yBxfKP69iJdWWNb2kqQwfwlpufA2j0XmkikLpTm1J6OKnjjqrinmt7DZCx/l4GW68noRm0KRMSYnOU+3Qmj5HCjoPGajExDYfPLjZqraz/nmGbcvYbku4=
+    - secure: DbXbfMJYGJGybH6LfhkutUfP+Ib+UEqkDwlyQLD8xuPDQCmDHv7zkncOQTGgm931qdchwqii8CgLDzMUHCQOlYq+jn4mc6HO7EQeeNKsdPqYUs9XMS06Inh+7+nOfQPcppZfACQpav20/gzIfjwLdxn+nuJudBn4XPav9foPqXAvHdbia+H6Fz+hzt767ROliX0Qtz9fDN1YiZ9TJhe+/IWe50HDB4T7NpWuWPPGhUvbyNQFpvuJ+0j5KLoiNiLSJUCigXBEyKvqVdv1r2dpAMBUZbCMcNM3+fd5DfkQiJDgeuoxFohkE3oFzOcFaZSEtbiNucIKYkokvOgxT4jhp3tjXqEZDkFdhoLM3nWOcxvBeeLS/rzkn9laEJ9tjiHk0WvhYRij4E70qKgJ6oNOD21ANAi3Mmir29zFzaM6rwET2I1l7uumBReoDbDJ4cSBuZlj9mc22xH1YyVE9LNEx3lAU4beoIB4EsmKHTk+X5MtFXDhdOlvryagI7sYr1A1vWNKazysT+aLRWPgkDbAU1Z8x+QP3W38s/aDv9RbS4LdLMejJYqWPy1HJp5mcFAMBZYK/egTn8krF6tqpXVdyp9gVuEw+/HLMS99TVwJwXpilet2WNVhgaEjpDa90kz01nIZXB/rioWVZKpMlkB79wicrEteAJwJUUvQeqnOYCw=
+
 # caching of dependencies
 cache:
   bundler: true
@@ -28,25 +37,25 @@ install:
 # jobs and stages to run
 jobs:
   include:
-    - stage: "Code validation"
-      name: "Code validation"
+    - stage: Code validation
+      name: Code validation
       script:
         - ./scripts/validate-branch-name.sh
         - bundle exec danger
       if: type = pull_request
 
-    - stage: "Test"
-      name: "Unit tests"
+    - stage: Test
+      name: Unit tests
       script:
         - bundle exec fastlane unit_test
 
-    - stage: "Test"
-      name: "UI tests"
+    - stage: Test
+      name: UI tests
       script:
         - bundle exec fastlane ui_test
 
-    - stage: "Deploy"
-      name: "Deploy to App Store"
+    - stage: Deploy
+      name: Deploy to App Store
       script:
         - bundle exec fastlane deploy_to_app_store
       if: branch =~ /^release\/.*$/
