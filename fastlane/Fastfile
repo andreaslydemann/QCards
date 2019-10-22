@@ -48,7 +48,8 @@ platform :ios do
     match(
       keychain_name: keychain_name,
       keychain_password: keychain_password,
-      readonly: true
+      readonly: true,
+      verbose: true
     )
     
     increment_build_number(
