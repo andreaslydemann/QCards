@@ -19,12 +19,15 @@ before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
   - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
-  - echo -e "machine github.com\n  login $GITHUB_API_TOKEN" >> ~/.netrc
 
 # install dependencies
 install:
   - travis_wait carthage bootstrap --platform iOS --cache-builds
   - bundle install
+
+# authentication required by scripts
+before_script:
+  - echo "machine github.com login $GITHUB_API_TOKEN" >> ~/.netrc
 
 # jobs and stages to run
 jobs:
