@@ -42,7 +42,8 @@ platform :ios do
       password: keychain_password,
       default_keychain: true,
       timeout: 3600,
-      unlock: true
+      unlock: true,
+      add_to_search_list: true
     )
 
     match(
