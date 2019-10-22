@@ -20,12 +20,17 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane ios unit_test
 ```
-Runs the unit tests in QCards
+Runs the unit tests in QCardsTests
 ### ios ui_test
 ```
 fastlane ios ui_test
 ```
 Runs the UI tests in QCardsUITests
+### ios deploy_to_app_store
+```
+fastlane ios deploy_to_app_store
+```
+Deploys QCards to App Store
 
 ----
 

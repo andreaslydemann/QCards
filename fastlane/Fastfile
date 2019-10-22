@@ -34,6 +34,39 @@ platform :ios do
 
   desc 'Deploys QCards to App Store'
   lane :deploy_to_app_store do
-    puts "Deploy to App Store!"
+    keychain_name = ENV["FASTLANE_MATCH_KEYCHAIN_NAME"]
+    keychain_password = ENV["FASTLANE_MATCH_KEYCHAIN_PASSWORD"]
+
+    create_keychain(
+      name: keychain_name,
+      password: keychain_password,
+      default_keychain: true,
+      timeout: 3600,
+      unlock: true
+    )
+
+    match(
+      keychain_name: keychain_name,
+      keychain_password: keychain_password,
+      readonly: true
+    )
+    
+    increment_build_number(
+      build_number: latest_testflight_build_number() + 1
+    )
+
+    build_app(scheme: "QCards")
+
+    deliver(
+      submit_for_review: true,
+      reject_if_possible: true,
+      skip_screenshots: true,
+      skip_metadata: true,
+      force: true
+    )
+
+    delete_keychain(
+      name: keychain_name
+    )
   end
 end

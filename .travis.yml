@@ -28,25 +28,25 @@ install:
 # jobs and stages to run
 jobs:
   include:
-    - stage: "Code validation"
-      name: "Code validation"
+    - stage: Code validation
+      name: Code validation
       script:
         - ./scripts/validate-branch-name.sh
         - bundle exec danger
       if: type = pull_request
 
-    - stage: "Test"
-      name: "Unit tests"
+    - stage: Test
+      name: Unit tests
       script:
         - bundle exec fastlane unit_test
 
-    - stage: "Test"
-      name: "UI tests"
+    - stage: Test
+      name: UI tests
       script:
         - bundle exec fastlane ui_test
 
-    - stage: "Deploy"
-      name: "Deploy to App Store"
+    - stage: Deploy
+      name: Deploy to App Store
       script:
         - bundle exec fastlane deploy_to_app_store
       if: branch =~ /^release\/.*$/
