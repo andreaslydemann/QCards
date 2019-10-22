@@ -34,8 +34,8 @@ platform :ios do
 
   desc 'Deploys QCards to App Store'
   lane :deploy_to_app_store do
-    keychain_name = ENV["FASTLANE_MATCH_KEYCHAIN_NAME"]
-    keychain_password = ENV["FASTLANE_MATCH_KEYCHAIN_PASSWORD"]
+    keychain_name = ENV["MATCH_KEYCHAIN_NAME"]
+    keychain_password = ENV["MATCH_KEYCHAIN_PASSWORD"]
 
     create_keychain(
       name: keychain_name,
