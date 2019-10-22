@@ -42,15 +42,13 @@ platform :ios do
       password: keychain_password,
       default_keychain: true,
       timeout: 3600,
-      unlock: true,
-      add_to_search_list: true
+      unlock: true
     )
 
     match(
       keychain_name: keychain_name,
       keychain_password: keychain_password,
-      readonly: true,
-      verbose: true
+      readonly: true
     )
     
     increment_build_number(
