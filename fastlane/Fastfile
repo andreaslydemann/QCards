@@ -21,6 +21,14 @@ before_all do
   xcversion(version: "11.1")
 end
 
+def version_number
+  if ENV["TRAVIS_BRANCH"].match?(/^release\/.*$/)
+    return ENV["TRAVIS_BRANCH"].split("/").last
+  else
+    return get_version_number
+  end
+end
+
 platform :ios do
   desc 'Runs the unit tests in QCardsTests'
   lane :unit_test do
@@ -50,10 +58,9 @@ platform :ios do
       keychain_password: keychain_password,
       readonly: true
     )
-    
-    increment_build_number(
-      build_number: latest_testflight_build_number() + 1
-    )
+
+    increment_version_number(version_number: version_number)
+    increment_build_number
 
     build_app(scheme: "QCards")
 
