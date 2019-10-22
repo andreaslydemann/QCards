@@ -58,6 +58,7 @@ platform :ios do
     build_app(scheme: "QCards")
 
     deliver(
+      submit_for_review: true,
       reject_if_possible: true,
       skip_screenshots: true,
       skip_metadata: true,
