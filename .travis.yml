@@ -2,16 +2,11 @@
 language: swift
 osx_image: xcode11.1
 
-# uninstall old versions so cache won't grow indefinitely
-before_cache:
-  - brew cleanup
-
 # caching of dependencies
 cache:
   bundler: true
   directories:
     - Carthage
-    - $HOME/Library/Caches/Homebrew
 
 # branch safelist
 branches:
@@ -29,10 +24,6 @@ before_install:
 install:
   - travis_wait carthage bootstrap --platform iOS --cache-builds
   - bundle install
-
-# authentication required by scripts
-before_script:
-  - echo "machine github.com login $GITHUB_API_TOKEN" >> ~/.netrc
 
 # jobs and stages to run
 jobs:
@@ -57,5 +48,6 @@ jobs:
     - stage: Deploy
       name: Deploy to TestFlight
       script:
+        - echo "machine github.com login $GITHUB_API_TOKEN" >> ~/.netrc
         - bundle exec fastlane deploy_to_testflight
       if: branch =~ /^release\/.*$/
