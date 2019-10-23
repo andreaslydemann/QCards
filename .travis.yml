@@ -16,7 +16,7 @@ branches:
 
 # prepare dependency managers
 before_install:
-  - brew outdated carthage || brew update && brew upgrade carthage
+  - brew outdated carthage || brew upgrade carthage
   - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
 
 # install dependencies
