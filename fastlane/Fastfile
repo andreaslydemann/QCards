@@ -40,8 +40,8 @@ platform :ios do
     scan(scheme: "QCardsUITests")
   end
 
-  desc "Installs the certificates and profiles locally"
-  private_lane :certificates do |options|
+  desc "Installs the certificates locally"
+  private_lane :install_certificates do |options|
     UI.user_error!('No keychain name provided') if options[:temporary_keychain_name].nil?
     tmp_keychain = options[:temporary_keychain_name]
 
@@ -49,8 +49,8 @@ platform :ios do
       name: tmp_keychain,
       password: tmp_keychain,
       default_keychain: true,
+      timeout: 3600,
       unlock: true,
-      timeout: 3600
     )
 
     match(
@@ -59,14 +59,12 @@ platform :ios do
       keychain_password: tmp_keychain,
       readonly: true
     )
-
-    #sh "security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k #{tmp_keychain} #{tmp_keychain}"
   end
 
-  desc 'Deploys QCards to App Store'
-  lane :deploy_to_app_store do
+  desc 'Deploys QCards to TestFlight'
+  lane :deploy_to_testflight do
     tmp_keychain = "temporary_keychain"
-    certificates(temporary_keychain_name: tmp_keychain)
+    install_certificates(temporary_keychain_name: tmp_keychain)
 
     increment_version_number(version_number: version_number)
     increment_build_number(build_number: latest_testflight_build_number() + 1)

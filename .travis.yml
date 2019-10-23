@@ -48,16 +48,14 @@ jobs:
       name: Unit tests
       script:
         - bundle exec fastlane unit_test
-      if: type = pull_request
 
     - stage: Test
       name: UI tests
       script:
         - bundle exec fastlane ui_test
-      if: type = pull_request
 
     - stage: Deploy
-      name: Deploy to App Store
+      name: Deploy to TestFlight
       script:
-        - bundle exec fastlane deploy_to_app_store
+        - bundle exec fastlane deploy_to_testflight
       if: branch =~ /^release\/.*$/
