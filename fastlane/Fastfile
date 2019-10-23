@@ -47,7 +47,7 @@ platform :ios do
 
     create_keychain(
       username: tmp_keychain,
-      password: tmp_keychain
+      password: tmp_keychain,
       default_keychain: true,
       unlock: true,
       timeout: 3600,
