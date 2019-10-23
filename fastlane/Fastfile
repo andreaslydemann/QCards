@@ -41,7 +41,7 @@ platform :ios do
   end
 
   desc "Installs the certificates and profiles locally"
-  private_lane :certificates do
+  private_lane :certificates do |options|
     UI.user_error!('No keychain name provided') if options[:temporary_keychain_name].nil?
     tmp_keychain = options[:temporary_keychain_name]
 
