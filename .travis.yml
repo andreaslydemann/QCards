@@ -2,11 +2,16 @@
 language: swift
 osx_image: xcode11.1
 
+# uninstall old versions so cache won't grow indefinitely
+before_cache:
+  - brew cleanup
+
 # caching of dependencies
 cache:
   bundler: true
   directories:
     - Carthage
+    - $HOME/Library/Caches/Homebrew
 
 # branch safelist
 branches:
