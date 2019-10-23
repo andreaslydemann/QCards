@@ -55,7 +55,7 @@ jobs:
         - bundle exec fastlane ui_test
 
     - stage: Deploy
-      name: Deploy to TestFlight
+      name: Deploy to App Store
       script:
         - bundle exec fastlane deploy_to_testflight
       if: branch =~ /^release\/.*$/
