@@ -55,6 +55,7 @@ platform :ios do
     )
 
     match(
+      type: "appstore",
       keychain_name: tmp_keychain,
       keychain_password: tmp_keychain,
       readonly: true
