@@ -26,11 +26,11 @@ Runs the unit tests in QCardsTests
 fastlane ios ui_test
 ```
 Runs the UI tests in QCardsUITests
-### ios deploy_to_app_store
+### ios deploy_to_testflight
 ```
-fastlane ios deploy_to_app_store
+fastlane ios deploy_to_testflight
 ```
-Deploys QCards to App Store
+Deploys QCards to TestFlight
 
 ----
 
