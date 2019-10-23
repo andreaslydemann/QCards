@@ -46,7 +46,7 @@ platform :ios do
     tmp_keychain = options[:temporary_keychain_name]
 
     create_keychain(
-      username: tmp_keychain
+      username: tmp_keychain,
       password: tmp_keychain
       default_keychain: true,
       unlock: true,
