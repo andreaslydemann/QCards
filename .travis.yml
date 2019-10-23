@@ -16,6 +16,7 @@ branches:
 
 # prepare dependency managers
 before_install:
+  - brew update
   - brew outdated carthage || brew upgrade carthage
   - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
 
@@ -45,7 +46,7 @@ jobs:
         - bundle exec fastlane ui_test
 
     - stage: Deploy
-      name: Deploy to App Store
+      name: Deploy to TestFlight
       script:
         - echo "machine github.com login $GITHUB_API_TOKEN" >> ~/.netrc
         - bundle exec fastlane deploy_to_testflight
