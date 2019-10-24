@@ -41,7 +41,7 @@ platform :ios do
   end
 
   desc "Installs the certificates locally"
-  private_lane :install_certificates do |options|
+  private_lane :install_certificates do
     tmp_keychain = "temporary_keychain"
 
     create_keychain(
